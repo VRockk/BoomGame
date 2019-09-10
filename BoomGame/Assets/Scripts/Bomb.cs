@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,8 +11,12 @@ public class Bomb : MonoBehaviour
 
     public float destroyRadius = 1.0f;
     public float radius = 1.0f;
+    public float damageRadius = 1.0f;
     public float power = 100.0f;
-    public bool showGizmo = false;
+    public float upwardsForce = 100.0f;
+    public bool showPlacementGizmo = true;
+    public bool showExplosionGizmo = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -27,8 +32,12 @@ public class Bomb : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        if (showGizmo)
+        if (showExplosionGizmo)
         {
+            Gizmos.color = Color.blue;
+
+            Gizmos.DrawSphere(this.transform.position, damageRadius);
+
             Gizmos.color = Color.yellow;
 
             Gizmos.DrawSphere(this.transform.position, radius);
@@ -36,6 +45,13 @@ public class Bomb : MonoBehaviour
             Gizmos.color = Color.red;
 
             Gizmos.DrawSphere(this.transform.position, destroyRadius);
+        }
+        if (showPlacementGizmo)
+        {
+            Gizmos.color = Color.white;
+
+            Gizmos.DrawSphere(this.transform.position, 0.5f);
+
         }
     }
 
@@ -57,15 +73,16 @@ public class Bomb : MonoBehaviour
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(explosionPos, radius);
 
-
+        //Objects inside main explosive radius
         foreach (Collider2D hit in colliders)
         {
-            //SHattering object shatter in to multiple parts/bricks
             if (hit.gameObject.tag.Contains("ShatteringObject"))
             {
-                hit.gameObject.GetComponent<BrickLogic>().Shatter(explosionPos, power);
+
+                hit.gameObject.GetComponent<Brick>().Shatter(explosionPos, power, upwardsForce);
             }
             else
+
             {
                 Rigidbody2D rb = hit.GetComponent<Rigidbody2D>();
 
@@ -79,9 +96,10 @@ public class Bomb : MonoBehaviour
                     //Calculate force from the direction multiplied by the power. Force weaker by distance
                     Vector2 force = direction * (power / distance);
 
-                    rb.AddForce(force, ForceMode2D.Impulse);
+                    // Add additional upwards force
+                    force += new Vector2(0, upwardsForce);
 
-                    //rb.AddForce.AddExplosionForce(power, explosionPos, radius, 3.0F, ForceMode.Impulse);
+                    rb.AddForce(force, ForceMode2D.Impulse);
                 }
             }
         }
