@@ -151,6 +151,9 @@ public class Brick : MonoBehaviour
                         this.transform.position.x + pieceSpawnLocations[e].x,
                         this.transform.position.y + pieceSpawnLocations[e].y,
                         transform.position.z);
+
+                //newObject.transform.localRotation = this.transform.localRotation;
+                //this.transform.right 
             }
             newObjects.Add(newObject);
         }
