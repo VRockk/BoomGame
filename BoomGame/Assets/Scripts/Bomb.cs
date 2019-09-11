@@ -27,7 +27,7 @@ public class Bomb : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void OnDrawGizmos()
@@ -71,9 +71,25 @@ public class Bomb : MonoBehaviour
             }
         }
 
+
+        //Remove hitpoints on these
+        Collider2D[] damageColliders = Physics2D.OverlapCircleAll(explosionPos, damageRadius);
+
+        foreach (Collider2D hit in damageColliders)
+        {
+            if (hit.gameObject.tag.Contains("ShatteringObject"))
+            {
+
+                hit.gameObject.GetComponent<Brick>().hitpoints--;
+
+                if (hit.gameObject.GetComponent<Brick>().hitpoints <= 0)
+                    hit.gameObject.GetComponent<Brick>().Shatter(hit.transform.position, 100, 100);
+            }
+        }
+
         Collider2D[] colliders = Physics2D.OverlapCircleAll(explosionPos, radius);
 
-        //Objects inside main explosive radius
+        //Objects inside main explosive radius. Shatter or add force
         foreach (Collider2D hit in colliders)
         {
             if (hit.gameObject.tag.Contains("ShatteringObject"))
@@ -88,16 +104,7 @@ public class Bomb : MonoBehaviour
 
                 if (rb != null)
                 {
-                    // Calculating the direction from the bomb placement to the overlapping 
-                    Vector2 heading = hit.transform.position - explosionPos;
-                    float distance = heading.magnitude;
-                    Vector2 direction = heading / distance;
-
-                    //Calculate force from the direction multiplied by the power. Force weaker by distance
-                    Vector2 force = direction * (power / distance);
-
-                    // Add additional upwards force
-                    force += new Vector2(0, upwardsForce);
+                    Vector2 force = UtilityLibrary.CalculateExplosionForce(explosionPos, hit.transform.position, power, upwardsForce);
 
                     rb.AddForce(force, ForceMode2D.Impulse);
                 }
@@ -105,4 +112,5 @@ public class Bomb : MonoBehaviour
         }
         Destroy(this.gameObject);
     }
+
 }

@@ -10,15 +10,19 @@ public class Brick : MonoBehaviour
 
     public float gravityScale = 1.0f;
     public float mass = 100.0f;
+    public int hitpoints = 5;
+
+    [Tooltip("The velocity limit when the object is damaged if hit. Lower == Easier to destroy/shatter")]
+    public float damagedVelocity = 30.0f;
 
     //Does the object have an object below initially. If it doesnt, we dont need to do groundcheck in the beginning
     private bool hasInitialObjectBelow = false;
     private bool hasInitialObjectLeft = false;
-    private bool hasInitialObjectRight= false;
+    private bool hasInitialObjectRight = false;
     private bool isGrounded = false;
     private float distanceGround;
     private float distanceSides;
-
+    private bool shattered = false;
     private Rigidbody2D rigidBody;
 
     void OnDrawGizmos()
@@ -29,104 +33,96 @@ public class Brick : MonoBehaviour
             foreach (var pieceLocation in pieceSpawnLocations)
             {
                 Gizmos.color = Color.blue;
-
-                Gizmos.DrawSphere(this.transform.position + new Vector3(pieceLocation.x, pieceLocation.y, 0.0f), 0.2f);
+                Vector3 localPosition = this.transform.right * pieceLocation.x + (this.transform.up * pieceLocation.y);
+                Gizmos.DrawSphere(this.transform.position + new Vector3(localPosition.x, localPosition.y, 0.0f), 0.2f);
             }
         }
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+        if (rigidBody == null)
+            Debug.LogError("No Rigidbody found for object using Brick: " + this.gameObject.name);
         distanceGround = GetComponent<Collider2D>().bounds.extents.y;
         distanceSides = GetComponent<Collider2D>().bounds.extents.x;
 
-        if (SurroundsCheck(-Vector2.up, distanceGround + 0.1f))
+        if (SurroundsCheck(-Vector2.up, distanceGround + 0.1f, false))
         {
             hasInitialObjectBelow = true;
         }
         else
         {
             hasInitialObjectBelow = false;
-            if (SurroundsCheck(Vector2.left, distanceSides + 0.1f))
+            if (SurroundsCheck(Vector2.left, distanceSides + 0.1f, false))
             {
                 hasInitialObjectLeft = true;
             }
 
-            if (SurroundsCheck(Vector2.right, distanceSides + 0.1f))
+            if (SurroundsCheck(Vector2.right, distanceSides + 0.1f, false))
             {
                 hasInitialObjectRight = true;
             }
+        }
+
+        //No attached parts. set to dynamic from the beginnings
+        if (!hasInitialObjectBelow && !hasInitialObjectLeft && !hasInitialObjectRight)
+        {
+            SetObjectDynamic();
         }
     }
 
     void FixedUpdate()
     {
-        //Do ground check only if there was an object below this object initially
-        if (hasInitialObjectBelow)
+        //If not moving
+        if (rigidBody.velocity.magnitude == 0)
         {
-            RaycastHit2D hit = SurroundsCheck(-Vector2.up, distanceGround + 0.1f);
-            if (hit)
+            //Do ground check only if there was an object below this object initially
+            if (hasInitialObjectBelow)
             {
-                var rigidBody = GetComponent<Rigidbody2D>();
-                if (Mathf.Equals(rigidBody.velocity, Vector2.zero))
+                if (SurroundsCheck(-Vector2.up, distanceGround + 0.1f, true))
                 {
-                    isGrounded = true;
+                    if (Mathf.Equals(rigidBody.velocity, Vector2.zero))
+                    {
+                        isGrounded = true;
+                    }
+                }
+                else
+                {
+                    isGrounded = false;
+                    SetObjectDynamic();
                 }
             }
             else
             {
-                isGrounded = false;
-                var rigidBody = GetComponent<Rigidbody2D>();
-
-                rigidBody.bodyType = RigidbodyType2D.Dynamic;
-                rigidBody.mass = mass;
-                rigidBody.gravityScale = gravityScale;
-            }
-        }
-        else
-        {
-            //Check left and right if this object is "attached" to something
-            if((hasInitialObjectLeft && !SurroundsCheck(Vector2.left, distanceSides + 0.1f)) ||
-               (hasInitialObjectRight && !SurroundsCheck(Vector2.right, distanceSides + 0.1f)))
-            {
-
-                //No attachments. Set to dynamic
-                var rigidBody = GetComponent<Rigidbody2D>();
-                rigidBody.bodyType = RigidbodyType2D.Dynamic;
-                rigidBody.mass = mass;
-                rigidBody.gravityScale = gravityScale;
+                //Check left and right if this object is "attached" to something
+                if ((hasInitialObjectLeft && !SurroundsCheck(Vector2.left, distanceSides + 0.1f, true)) ||
+                   (hasInitialObjectRight && !SurroundsCheck(Vector2.right, distanceSides + 0.1f, true)))
+                {
+                    SetObjectDynamic();
+                }
             }
         }
     }
 
-    private RaycastHit2D SurroundsCheck(Vector2 traceDirection, float distance)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        //Need to disable this objects collider?? What would be better way?
-        GetComponent<Collider2D>().enabled = false;
-        //Do raycast under the object to check if it is grounded or not. 
-        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), traceDirection, distance);
-        GetComponent<Collider2D>().enabled = true;
+        var contact = collision.GetContact(0);
+        Debug.DrawRay(contact.point, contact.normal, Color.white);
 
-        return hit;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-        
-    void OnCollisionEnter(Collision collision)
-    {
-        print("Pew");
-        foreach (ContactPoint contact in collision.contacts)
+        //Check if the velocity is over the limit and apply damage. No more hitpoints -> Shatter
+        if (contact.relativeVelocity.magnitude > damagedVelocity)
         {
-            Debug.DrawRay(contact.point, contact.normal, Color.white);
+            hitpoints--;
+
+            if (hitpoints <= 0)
+                Shatter(this.transform.position, 100, 100);
         }
     }
-    
+
+
+    #region PUBLIC
+
     /// <summary>
     /// Shatters the object into smaller pieces
     /// Spawn new game object instances and sends them flying away from the force
@@ -136,6 +132,10 @@ public class Brick : MonoBehaviour
     /// <param name="upwardsForce">Additive power added upwards during explosion</param>
     public void Shatter(Vector3 explosionPos, float power, float upwardsForce)
     {
+        if (shattered)
+            return;
+
+        shattered = true;
 
         //Instantiate new objects
         List<GameObject> newObjects = new List<GameObject>();
@@ -146,11 +146,12 @@ public class Brick : MonoBehaviour
             //Set the position showed by the gizmos
             if (pieceSpawnLocations.Length >= e)
             {
-                newObject.transform.position =
+                Vector3 localPosition = this.transform.right * pieceSpawnLocations[e].x + (this.transform.up * pieceSpawnLocations[e].y);
+                newObject.transform.position = this.transform.position +
                     new Vector3(
-                        this.transform.position.x + pieceSpawnLocations[e].x,
-                        this.transform.position.y + pieceSpawnLocations[e].y,
-                        transform.position.z);
+                        localPosition.x,
+                        localPosition.y,
+                        0.0f);
 
                 //newObject.transform.localRotation = this.transform.localRotation;
                 //this.transform.right 
@@ -160,27 +161,61 @@ public class Brick : MonoBehaviour
 
         Destroy(this.gameObject);
 
+        //Add explosion force to new objects
         foreach (var newObject in newObjects)
         {
             Rigidbody2D rb = newObject.GetComponent<Rigidbody2D>();
 
             if (rb != null)
             {
-                // Calculating the direction from the bomb placement to the overlapping 
-                Vector2 heading = newObject.transform.position - explosionPos;
-                float distance = heading.magnitude;
-                Vector2 direction = heading / distance;
-
-                // Calculate force from the direction multiplied by the power. Force weaker by distance
-                Vector2 force = direction * (power / distance);
-
-                // Add additional upwards force
-                force = force + new Vector2(0, upwardsForce);
+                Vector2 force = UtilityLibrary.CalculateExplosionForce(explosionPos, newObject.transform.position, power, upwardsForce);
 
                 rb.AddForce(force, ForceMode2D.Impulse);
 
             }
         }
     }
+
+    #endregion
+
+
+    #region PRIVATE
+
+    private void SetObjectDynamic()
+    {
+        var rigidBody = GetComponent<Rigidbody2D>();
+        rigidBody.bodyType = RigidbodyType2D.Dynamic;
+        rigidBody.mass = mass;
+        rigidBody.gravityScale = gravityScale;
+
+    }
+
+    private bool SurroundsCheck(Vector2 traceDirection, float distance, bool checkIfMoving)
+    {
+        bool value = false;
+
+        //Need to disable this objects collider??  Issue here was that the raytrace would hit this objects collider first
+        GetComponent<Collider2D>().enabled = false;
+
+        //Do raycast to check if there are objects next to this one
+        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), traceDirection, distance);
+
+        value = hit;
+
+        if (hit && checkIfMoving)
+        {
+            if (hit.collider.gameObject.GetComponent<Rigidbody2D>() != null)
+            {
+                // Return false if the collided object is moving
+                value = !(hit.collider.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > 0);
+            }
+        }
+
+        GetComponent<Collider2D>().enabled = true;
+
+        return value;
+    }
+
+    #endregion
 
 }
