@@ -12,8 +12,8 @@ public class Brick : MonoBehaviour
     public float mass = 100.0f;
     public int hitpoints = 5;
 
-    [Tooltip("The velocity limit when the object is damaged if hit. Lower == Easier to destroy/shatter")]
-    public float damagedVelocity = 30.0f;
+    [Tooltip("The force when the object is damaged if hit. Lower == Easier to destroy/shatter")]
+    public float damagedForceLimit = 50000.0f;
 
     //Does the object have an object below initially. If it doesnt, we dont need to do groundcheck in the beginning
     private bool hasInitialObjectBelow = false;
@@ -107,16 +107,26 @@ public class Brick : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        var contact = collision.GetContact(0);
-        Debug.DrawRay(contact.point, contact.normal, Color.white);
+        if (hitpoints <= 0)
+            return;
 
-        //Check if the velocity is over the limit and apply damage. No more hitpoints -> Shatter
-        if (contact.relativeVelocity.magnitude > damagedVelocity)
+        var contact = collision.GetContact(0);
+
+        if (contact.rigidbody == null)
+            return;
+
+        // Force equals mass times acceleration
+        var hitForce = contact.rigidbody.mass * contact.relativeVelocity.magnitude * contact.relativeVelocity.magnitude;
+
+        //Check if the force over the limit and apply damage. No more hitpoints -> Shatter
+        //if (contact.relativeVelocity.magnitude > damagedVelocity)
+        if (hitForce > damagedForceLimit)
         {
+            //print(hitForce);
             hitpoints--;
 
-            if (hitpoints <= 0)
-                Shatter(this.transform.position, 100, 100);
+            if (hitpoints == 0)
+                Shatter(this.transform.position, 200, 100);
         }
     }
 

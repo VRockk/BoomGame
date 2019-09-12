@@ -55,7 +55,7 @@ public class Bomb : MonoBehaviour
         }
     }
 
-    IEnumerator Explode()
+    private IEnumerator Explode()
     {
         yield return new WaitForSeconds(delay);
         Vector3 explosionPos = transform.position;
@@ -71,7 +71,6 @@ public class Bomb : MonoBehaviour
             }
         }
 
-
         //Remove hitpoints on these
         Collider2D[] damageColliders = Physics2D.OverlapCircleAll(explosionPos, damageRadius);
 
@@ -79,17 +78,23 @@ public class Bomb : MonoBehaviour
         {
             if (hit.gameObject.tag.Contains("ShatteringObject"))
             {
-
+                //Remove hitpoints
                 hit.gameObject.GetComponent<Brick>().hitpoints--;
 
                 if (hit.gameObject.GetComponent<Brick>().hitpoints <= 0)
                     hit.gameObject.GetComponent<Brick>().Shatter(hit.transform.position, 100, 100);
             }
+            else if (hit.gameObject.tag.Contains("NPCBuilding"))
+            {
+                //Remove hitpoints
+                hit.gameObject.GetComponent<NPCBuildingLogic>().hitpoints--;
+                hit.gameObject.GetComponent<NPCBuildingLogic>().DamageBuilding();
+            }
         }
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(explosionPos, radius);
 
-        //Objects inside main explosive radius. Shatter or add force
+        //Objects inside main explosive radius. Shatter, destroy, add force
         foreach (Collider2D hit in colliders)
         {
             if (hit.gameObject.tag.Contains("ShatteringObject"))
@@ -97,8 +102,13 @@ public class Bomb : MonoBehaviour
 
                 hit.gameObject.GetComponent<Brick>().Shatter(explosionPos, power, upwardsForce);
             }
+            else if (hit.gameObject.tag.Contains("NPCBuilding"))
+            {
+                //Destroy NPC buildings if they are hit by the blast
+                hit.gameObject.GetComponent<NPCBuildingLogic>().hitpoints = 0;
+                hit.gameObject.GetComponent<NPCBuildingLogic>().DamageBuilding();
+            }
             else
-
             {
                 Rigidbody2D rb = hit.GetComponent<Rigidbody2D>();
 
