@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7072808867729113275}
   - component: {fileID: 7072808867729113272}
   m_Layer: 0
-  m_Name: _GM
-  m_TagString: Untagged
+  m_Name: GameController
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,5 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cee3f0ce908780a4082dcedef27a0c55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevel: Level_01
-  roundCounter: 1
+  maxRounds: 2
+  bomb: {fileID: 8650378973668689463, guid: 611357bb80b8fac48a60e3a228e7e00e, type: 3}
+  allowInput: 1
