@@ -67,7 +67,6 @@ public class NPCBuildingLogic : MonoBehaviour
             // TODO Error Checking
             spriteRenderer.sprite = buildingSprites[hitpoints];
         }
-
     }
 
     // Update is called once per frame

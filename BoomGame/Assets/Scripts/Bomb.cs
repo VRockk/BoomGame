@@ -21,7 +21,6 @@ public class Bomb : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(Explode());
     }
 
     // Update is called once per frame
@@ -53,6 +52,11 @@ public class Bomb : MonoBehaviour
             Gizmos.DrawSphere(this.transform.position, 0.5f);
 
         }
+    }
+
+    public void Detonate()
+    {
+        StartCoroutine(Explode());
     }
 
     private IEnumerator Explode()

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ShatteringObject
   - NPCBuilding
+  - Bomb
   layers:
   - Default
   - TransparentFX
@@ -16,8 +17,8 @@ TagManager:
   - 
   - 
   - Background
-  - 
-  - 
+  - Building
+  - Bomb
   - 
   - 
   - 
@@ -42,4 +43,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 1395147817
+    locked: 0
+  - name: Buildings
+    uniqueID: 3214484493
+    locked: 0
+  - name: Bombs
+    uniqueID: 2863152821
     locked: 0

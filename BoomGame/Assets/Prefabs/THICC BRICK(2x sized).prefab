@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8470355703502232634}
   - component: {fileID: 8470355703502232635}
   m_Layer: 0
-  m_Name: THICC BRICK
+  m_Name: THICC BRICK(2x sized)
   m_TagString: ShatteringObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,9 +69,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingLayerID: -1080482803
+  m_SortingLayer: 2
+  m_SortingOrder: 0
   m_Sprite: {fileID: 7141461044982298533, guid: b6f8bfa44f5d0f24d95f7026a7e6d9c8,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -160,4 +160,4 @@ MonoBehaviour:
   gravityScale: 5
   mass: 100
   hitpoints: 3
-  damagedVelocity: 30
+  damagedForceLimit: 50000

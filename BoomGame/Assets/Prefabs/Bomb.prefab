@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 777865067631648415}
   - component: {fileID: 4076446940255910833}
   - component: {fileID: 3363465718831260137}
-  m_Layer: 0
-  m_Name: Bomb!
-  m_TagString: Untagged
+  m_Layer: 10
+  m_Name: Bomb
+  m_TagString: Bomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8650378973668689463}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23.81, y: 11.65, z: 0}
-  m_LocalScale: {x: 0.285, y: 0.285, z: 0.285}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
   destroyRadius: 2
   radius: 10
   damageRadius: 15
-  power: 5000
+  power: 3000
   upwardsForce: 1000
   showPlacementGizmo: 1
   showExplosionGizmo: 0
@@ -87,9 +87,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingLayerID: -1431814475
+  m_SortingLayer: 3
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 36b2f91c91327514db5544414397adaf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
