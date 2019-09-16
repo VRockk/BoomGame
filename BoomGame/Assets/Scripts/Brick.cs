@@ -10,10 +10,10 @@ public class Brick : MonoBehaviour
 
     public float gravityScale = 1.0f;
     public float mass = 100.0f;
-    public int hitpoints = 5;
+    public int hitpoints = 2;
 
     [Tooltip("The force when the object is damaged if hit. Lower == Easier to destroy/shatter")]
-    public float damagedForceLimit = 50000.0f;
+    public float damagedForceLimit = 30000.0f;
 
     //Does the object have an object below initially. If it doesnt, we dont need to do groundcheck in the beginning
     private bool hasInitialObjectBelow = false;
@@ -25,6 +25,11 @@ public class Brick : MonoBehaviour
     private bool shattered = false;
     private Rigidbody2D rigidBody;
 
+
+    private bool allowDamage = true;
+    private float damageGateDelay = 0f;
+    private const float damageDelayDefault = 0.05f;
+
     void OnDrawGizmos()
     {
         //Draw indicators on piece spawn locations
@@ -33,7 +38,7 @@ public class Brick : MonoBehaviour
             foreach (var pieceLocation in pieceSpawnLocations)
             {
                 Gizmos.color = Color.blue;
-                Vector3 localPosition = this.transform.right * pieceLocation.x + (this.transform.up * pieceLocation.y);
+                Vector3 localPosition = (this.transform.right * pieceLocation.x * this.transform.localScale.x) + (this.transform.up * pieceLocation.y * this.transform.localScale.y);
                 Gizmos.DrawSphere(this.transform.position + new Vector3(localPosition.x, localPosition.y, 0.0f), 0.2f);
             }
         }
@@ -104,29 +109,44 @@ public class Brick : MonoBehaviour
             }
         }
     }
+    private void Update()
+    {
+        if (!allowDamage)
+        {
+            //Gate for damaging the building. Only allow damaging after a short delay after the previous damage
+            damageGateDelay -= Time.deltaTime;
+            if (damageGateDelay <= 0)
+                allowDamage = true;
+        }
+    }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (hitpoints <= 0)
-            return;
-
-        var contact = collision.GetContact(0);
-
-        if (contact.rigidbody == null)
-            return;
-
-        // Force equals mass times acceleration
-        var hitForce = contact.rigidbody.mass * contact.relativeVelocity.magnitude * contact.relativeVelocity.magnitude;
-
-        //Check if the force over the limit and apply damage. No more hitpoints -> Shatter
-        //if (contact.relativeVelocity.magnitude > damagedVelocity)
-        if (hitForce > damagedForceLimit)
+        if (allowDamage)
         {
-            //print(hitForce);
-            hitpoints--;
+            damageGateDelay = damageDelayDefault;
+            allowDamage = false;
+            if (hitpoints <= 0)
+                return;
 
-            if (hitpoints == 0)
-                Shatter(this.transform.position, 200, 100);
+            var contact = collision.GetContact(0);
+
+            if (contact.rigidbody == null)
+                return;
+
+            // Force equals mass times acceleration
+            var hitForce = contact.rigidbody.mass * contact.relativeVelocity.magnitude * contact.relativeVelocity.magnitude;
+
+            //Check if the force over the limit and apply damage. No more hitpoints -> Shatter
+            //if (contact.relativeVelocity.magnitude > damagedVelocity)
+            if (hitForce > damagedForceLimit)
+            {
+                //print(hitForce);
+                hitpoints--;
+
+                if (hitpoints == 0)
+                    Shatter(this.transform.position, 200, 100);
+            }
         }
     }
 
@@ -156,7 +176,7 @@ public class Brick : MonoBehaviour
             //Set the position showed by the gizmos
             if (pieceSpawnLocations.Length >= e)
             {
-                Vector3 localPosition = this.transform.right * pieceSpawnLocations[e].x + (this.transform.up * pieceSpawnLocations[e].y);
+                Vector3 localPosition = (this.transform.right * pieceSpawnLocations[e].x) + (this.transform.up * pieceSpawnLocations[e].y);
                 newObject.transform.position = this.transform.position +
                     new Vector3(
                         localPosition.x,

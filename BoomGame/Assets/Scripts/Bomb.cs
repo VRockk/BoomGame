@@ -62,7 +62,7 @@ public class Bomb : MonoBehaviour
     private IEnumerator Explode()
     {
         yield return new WaitForSeconds(delay);
-        Vector3 explosionPos = transform.position;
+        Vector3 explosionPos = this.transform.position;
 
         Collider2D[] destroyColliders = Physics2D.OverlapCircleAll(explosionPos, destroyRadius);
         foreach (Collider2D hit in destroyColliders)
@@ -90,9 +90,7 @@ public class Bomb : MonoBehaviour
             }
             else if (hit.gameObject.tag.Contains("NPCBuilding"))
             {
-                //Remove hitpoints
-                hit.gameObject.GetComponent<NPCBuildingLogic>().hitpoints--;
-                hit.gameObject.GetComponent<NPCBuildingLogic>().DamageBuilding();
+                hit.gameObject.GetComponent<NPCBuildingLogic>().DamageBuilding(1, false);
             }
         }
 
@@ -109,8 +107,7 @@ public class Bomb : MonoBehaviour
             else if (hit.gameObject.tag.Contains("NPCBuilding"))
             {
                 //Destroy NPC buildings if they are hit by the blast
-                hit.gameObject.GetComponent<NPCBuildingLogic>().hitpoints = 0;
-                hit.gameObject.GetComponent<NPCBuildingLogic>().DamageBuilding();
+                hit.gameObject.GetComponent<NPCBuildingLogic>().DamageBuilding(10000, false);
             }
             else
             {
