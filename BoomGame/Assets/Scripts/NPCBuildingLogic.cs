@@ -71,15 +71,18 @@ public class NPCBuildingLogic : MonoBehaviour
             }
 
             //switch to next building sprite
-            print(Hitpoints);
+            //print(Hitpoints);
             spriteRenderer.sprite = buildingSprites[Hitpoints];
             if (Hitpoints == 0)
             {
-                print("Building Destroyed: " + this.gameObject.name);
+                print("Building destroyed: " + this.gameObject.name);
                 //TODO Show smoke cloud effect when building is destroyed
 
                 //Disable collisions for now when building is destroyed.
-                GetComponent<PolygonCollider2D>().enabled = false;
+                var collider = GetComponent<Collider2D>();
+                if(collider != null)
+                    collider.enabled = false;
+
             }
         }
     }
