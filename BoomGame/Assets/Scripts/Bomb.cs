@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -94,7 +93,7 @@ public class Bomb : MonoBehaviour
             }
             else if (hit.gameObject.tag.Contains("NPCBuilding"))
             {
-                var npcHouse = hit.gameObject.GetComponent<NPCBuildingLogic>();
+                var npcHouse = hit.gameObject.GetComponent<NPCBuilding>();
 
                 if (npcHouse != null)
                 {
@@ -111,12 +110,12 @@ public class Bomb : MonoBehaviour
             if (hit.gameObject.tag.Contains("ShatteringObject"))
             {
                 var shatteringObject = hit.gameObject.GetComponent<ShatteringObject>();
-                if(shatteringObject != null)
+                if (shatteringObject != null)
                     shatteringObject.Shatter(explosionPos, power, upwardsForce);
             }
             else if (hit.gameObject.tag.Contains("NPCBuilding"))
             {
-                var npcHouse = hit.gameObject.GetComponent<NPCBuildingLogic>();
+                var npcHouse = hit.gameObject.GetComponent<NPCBuilding>();
 
                 if (npcHouse != null)
                 {

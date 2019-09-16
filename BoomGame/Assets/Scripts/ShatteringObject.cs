@@ -15,7 +15,13 @@ public class ShatteringObject : MonoBehaviour
     [Tooltip("The force when the object is damaged if hit. Lower == Easier to destroy/shatter")]
     public float damagedForceLimit = 30000.0f;
 
+
+    [HideInInspector]
     public bool isGrounded = true;
+
+    [HideInInspector]
+    public Vector3 initialPosition;
+
 
     //Does the object have an object below initially. If it doesnt, we dont need to do groundcheck in the beginning
     private bool hasInitialObjectBelow = false;
@@ -25,11 +31,10 @@ public class ShatteringObject : MonoBehaviour
     private float distanceSides;
     private bool shattered = false;
     private Rigidbody2D rigidBody;
-
-
     private bool allowDamage = true;
     private float damageGateDelay = 0f;
     private const float damageDelayDefault = 0.05f;
+
 
     void OnDrawGizmos()
     {
@@ -47,6 +52,7 @@ public class ShatteringObject : MonoBehaviour
 
     void Start()
     {
+        initialPosition = this.transform.position;
         rigidBody = GetComponent<Rigidbody2D>();
         if (rigidBody == null)
             Debug.LogError("No Rigidbody found for object using Brick: " + this.gameObject.name);
@@ -110,7 +116,8 @@ public class ShatteringObject : MonoBehaviour
             }
         }
     }
-    private void Update()
+
+    void Update()
     {
         if (!allowDamage)
         {
@@ -152,8 +159,6 @@ public class ShatteringObject : MonoBehaviour
         }
     }
 
-
-    #region PUBLIC
 
     /// <summary>
     /// Shatters the object into smaller pieces
@@ -208,10 +213,6 @@ public class ShatteringObject : MonoBehaviour
         }
     }
 
-    #endregion
-
-
-    #region PRIVATE
 
     private void SetObjectDynamic()
     {
@@ -250,6 +251,5 @@ public class ShatteringObject : MonoBehaviour
         return value;
     }
 
-    #endregion
 
 }
