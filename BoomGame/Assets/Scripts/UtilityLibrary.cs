@@ -23,6 +23,9 @@ public class UtilityLibrary
         // Calculating the direction from the bomb placement to the overlapping 
         Vector2 heading = hitObjectPosition - explosionPos;
         float distance = heading.magnitude;
+        if (distance == 0)
+            distance = 1;
+        //MonoBehaviour.print(hitObjectPosition + "   " + explosionPos + "   " + distance);
         Vector2 direction = heading / distance;
 
         //Calculate force from the direction multiplied by the power. Force weaker by distance
@@ -35,7 +38,37 @@ public class UtilityLibrary
 
     public static bool IsMouseOverUI()
     {
-        return EventSystem.current.IsPointerOverGameObject();
+        //PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        //eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        //List<RaycastResult> results = new List<RaycastResult>();
+        //EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+        //return results.Count > 0;
+        //return EventSystem.current.IsPointerOverGameObject();
+
+        if (EventSystem.current.IsPointerOverGameObject())
+            return true;
+
+        //check touch
+        if (Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began)
+        {
+            if (EventSystem.current.IsPointerOverGameObject(Input.touches[0].fingerId))
+                return true;
+        }
+
+        return false;
+    }
+
+
+    /// <summary>
+    /// Get the current mouse position
+    /// </summary>
+    /// <returns></returns>
+    public static Vector3 GetCurrentMousePosition()
+    {
+        Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f);
+        mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+        mousePos.z = 0f;
+        return mousePos;
     }
 
 }

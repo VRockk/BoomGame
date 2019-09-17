@@ -16,6 +16,9 @@ public class ShatteringObject : MonoBehaviour
     public float damagedForceLimit = 30000.0f;
 
 
+    [Tooltip("Is this object is ignored when checking for level clear?")]
+    public bool ignoreForClear = false;
+
     [HideInInspector]
     public bool isGrounded = true;
 
@@ -50,7 +53,7 @@ public class ShatteringObject : MonoBehaviour
         }
     }
 
-    void Start()
+    void Awake()
     {
         initialPosition = this.transform.position;
         rigidBody = GetComponent<Rigidbody2D>();
@@ -58,7 +61,10 @@ public class ShatteringObject : MonoBehaviour
             Debug.LogError("No Rigidbody found for object using Brick: " + this.gameObject.name);
         distanceGround = GetComponent<Collider2D>().bounds.extents.y;
         distanceSides = GetComponent<Collider2D>().bounds.extents.x;
+    }
 
+    void Start()
+    {
         if (SurroundsCheck(-Vector2.up, distanceGround + 0.1f, false))
         {
             hasInitialObjectBelow = true;
@@ -189,6 +195,9 @@ public class ShatteringObject : MonoBehaviour
                         localPosition.x,
                         localPosition.y,
                         0.0f);
+                //if(newObject.name.ToLower().Contains("wood"))
+                //print(newObject.transform.position + "   " + localPosition);
+
 
                 //newObject.transform.localRotation = this.transform.localRotation;
                 //this.transform.right 
@@ -205,8 +214,12 @@ public class ShatteringObject : MonoBehaviour
 
             if (rb != null)
             {
-                Vector2 force = UtilityLibrary.CalculateExplosionForce(explosionPos, newObject.transform.position, power, upwardsForce);
+                //print(explosionPos);
 
+                //if (newObject.name.ToLower().Contains("wood"))
+                //    print(explosionPos + "   " + newObject.transform.position);
+                Vector2 force = UtilityLibrary.CalculateExplosionForce(explosionPos, newObject.transform.position, power, upwardsForce);
+                
                 rb.AddForce(force, ForceMode2D.Impulse);
 
             }

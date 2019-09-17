@@ -21,6 +21,7 @@ public class GameController : MonoBehaviour
     private int shatteringObjectCount;
     private IngameHUD hud;
 
+    private int movementCheckCount;
 
     // Start is called before the first frame update
     void Start()
@@ -41,24 +42,39 @@ public class GameController : MonoBehaviour
         {
             if (!UtilityLibrary.IsMouseOverUI())
             {
-                //Left mouse click
+                //Left mouse click/clicking on screen (touching the screen is basically left mouse click in unity)
+                //
                 if (Input.GetMouseButtonDown(0))
                 {
-                    Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f);
-                    Vector3 worldPos;
-                    Ray ray = Camera.main.ScreenPointToRay(mousePos);
-                    RaycastHit hit;
-                    if (Physics.Raycast(ray, out hit, 1000f))
-                    {
-                        worldPos = hit.point;
-                    }
-                    else
-                    {
-                        worldPos = Camera.main.ScreenToWorldPoint(mousePos);
-                    }
-                    worldPos.z = 0f;
-                    Instantiate(bomb, worldPos, Quaternion.identity);
+                    print(UtilityLibrary.IsMouseOverUI());
+                    Vector3 mousePos = UtilityLibrary.GetCurrentMousePosition();
+
+
+                    //Check if there is a bomb already in the mouse position
+                    //if there is, we "attach" the bomb to the cursor
+                    //Add a variable to this class where you store the bomb object (GameObject)
+                    //
+
+                    //If cursor is over BombInventory while clicking(this is in IngameHUD), Instantiate new bomb to cursor position and store the bomb in the variable created earlier
+                    //
+
+                    //If nothing is under the cursor, Dont do anything
+
+                    Instantiate(bomb, mousePos, Quaternion.identity);
                 }
+                if(Input.GetMouseButton(0))
+                {
+                    //Mouse is held down
+
+                    //If
+                }
+                if (Input.GetMouseButtonUp(0))
+                {
+                    //Mouse up
+
+                    //If we have bomb in cursor (in the 
+                }
+
             }
         }
     }
@@ -67,13 +83,16 @@ public class GameController : MonoBehaviour
     {
         allowInput = false;
         //gameController.NextRound();
-
+        movementCheckCount = 0;
         //Check for movement once a second
         InvokeRepeating("CheckForMovement", 1.0f, 1.0f);
+
+        // TODO Make game faster after a while so the pieces settle down faster
     }
 
     private void CheckForMovement()
     {
+        movementCheckCount++;
         bool isMovement = false;
         var rigidBodies = GameObject.FindObjectsOfType<Rigidbody2D>();
         foreach (var body in rigidBodies)
@@ -87,9 +106,15 @@ public class GameController : MonoBehaviour
             }
         }
 
-        //If no movement, stop checking and start next round/next level if finished
-        if (!isMovement)
+        if(movementCheckCount == 5)
         {
+            Time.timeScale = 2;
+        }
+
+        //If no movement, stop checking and start next round/next level if finished
+        if (!isMovement || movementCheckCount > 15)
+        {
+            Time.timeScale = 1;
             CancelInvoke("CheckForMovement");
             NextRound();
         }
@@ -153,12 +178,14 @@ public class GameController : MonoBehaviour
         //Check if all shattering objects have been moved
         foreach (var obj in shatteringObjects)
         {
-            if (obj.initialPosition == obj.gameObject.transform.position)
+            if (!obj.ignoreForClear)
             {
-                return LevelClear.NotCleared;
+                if (obj.initialPosition == obj.gameObject.transform.position)
+                {
+                    return LevelClear.NotCleared;
+                }
             }
         }
-
 
         if (roundCounter == 1)
         {

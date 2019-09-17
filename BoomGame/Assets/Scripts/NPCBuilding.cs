@@ -56,6 +56,41 @@ public class NPCBuilding : MonoBehaviour
         }
     }
 
+    void Awake()
+    {
+        maxHitpoints = hitpoints;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer == null)
+        {
+            Debug.LogError("No spriterendered found from object implementing NPCBuildingLogic. " + this.gameObject.name);
+        }
+        else
+        {
+            // TODO Error Checking
+            spriteRenderer.sprite = buildingSprites[Hitpoints];
+        }
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (!allowDamage)
+        {
+            //print(damageGateDelay);
+            //Gate for damaging the building. Only allow damaging after a short delay after the previous damage
+            damageGateDelay -= Time.deltaTime;
+            if (damageGateDelay <= 0)
+                allowDamage = true;
+        }
+    }
+
+
+
     public void DamageBuilding(int damageAmount, bool addDamageDelay)
     {
         if (Hitpoints <= 0)
@@ -87,36 +122,6 @@ public class NPCBuilding : MonoBehaviour
                     collider.enabled = false;
 
             }
-        }
-    }
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        maxHitpoints = hitpoints;
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        if (spriteRenderer == null)
-        {
-            Debug.LogError("No spriterendered found from object implementing NPCBuildingLogic. " + this.gameObject.name);
-        }
-        else
-        {
-            // TODO Error Checking
-            spriteRenderer.sprite = buildingSprites[Hitpoints];
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (!allowDamage)
-        {
-            //print(damageGateDelay);
-            //Gate for damaging the building. Only allow damaging after a short delay after the previous damage
-            damageGateDelay -= Time.deltaTime;
-            if (damageGateDelay <= 0)
-                allowDamage = true;
         }
     }
 }

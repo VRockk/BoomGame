@@ -88,7 +88,7 @@ public class Bomb : MonoBehaviour
                     shatteringObject.hitpoints--;
 
                     if (shatteringObject.hitpoints <= 0)
-                        shatteringObject.Shatter(hit.transform.position, 100, 100);
+                        shatteringObject.Shatter(explosionPos, 100, 100);
                 }
             }
             else if (hit.gameObject.tag.Contains("NPCBuilding"))

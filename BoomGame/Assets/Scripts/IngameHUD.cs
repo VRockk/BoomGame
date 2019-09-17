@@ -10,9 +10,9 @@ public class IngameHUD : MonoBehaviour
     private GameObject detonatePanel;
     private GameObject failedPanel;
     private GameObject levelFinishPanel;
+    private GameObject bombPanel;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
 
@@ -22,13 +22,25 @@ public class IngameHUD : MonoBehaviour
         detonatePanel = GameObject.Find("DetonatePanel");
         failedPanel = GameObject.Find("FailedPanel");
         levelFinishPanel = GameObject.Find("LevelFinishPanel");
+        bombPanel = GameObject.Find("BombPanel");
 
         detonatePanel.GetComponent<CanvasGroup>().alpha = 1;
         detonatePanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
+
+        //TODO blocksRaycasts doesnt work on mobile
+        bombPanel.GetComponent<CanvasGroup>().alpha = 1;
+        bombPanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
+
         failedPanel.GetComponent<CanvasGroup>().alpha = 0;
         failedPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+
         levelFinishPanel.GetComponent<CanvasGroup>().alpha = 0;
         levelFinishPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
     }
 
     // Update is called once per frame
@@ -38,6 +50,10 @@ public class IngameHUD : MonoBehaviour
 
     public void DetonateAllBombs()
     {
+        //No bombs. Dont allow
+        if (GameObject.FindObjectsOfType<Bomb>().Length == 0)
+            return;
+
         //if (!allowInput)
         //    return;
 
@@ -71,43 +87,52 @@ public class IngameHUD : MonoBehaviour
 
     public void NextRound(int roundNumber)
     {
-        var asd = GameObject.Find("FailedPanel");
-        if(asd.activeSelf)
-        {
-
-        }
-
         detonatePanel.GetComponent<CanvasGroup>().alpha = 1;
-        failedPanel.GetComponent<CanvasGroup>().alpha = 0;
-        levelFinishPanel.GetComponent<CanvasGroup>().alpha = 0;
-
         detonatePanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
+
+        bombPanel.GetComponent<CanvasGroup>().alpha = 1;
+        bombPanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
+
+        failedPanel.GetComponent<CanvasGroup>().alpha = 0;
         failedPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+
+        levelFinishPanel.GetComponent<CanvasGroup>().alpha = 0;
         levelFinishPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+
         //TODO show "ROUND 2" text popup for a second or something like that
     }
 
     public void LevelFinished(LevelClear levelClear)
     {
         detonatePanel.GetComponent<CanvasGroup>().alpha = 0;
-        failedPanel.GetComponent<CanvasGroup>().alpha = 0;
-        levelFinishPanel.GetComponent<CanvasGroup>().alpha = 1;
-
         detonatePanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+
+        failedPanel.GetComponent<CanvasGroup>().alpha = 0;
         failedPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+
+        levelFinishPanel.GetComponent<CanvasGroup>().alpha = 1;
         levelFinishPanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
+
+        bombPanel.GetComponent<CanvasGroup>().alpha = 0;
+        bombPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+
     }
 
     public void LevelFailed()
     {
         //TODO show "Level failed" text popup or something like that
         detonatePanel.GetComponent<CanvasGroup>().alpha = 0;
-        failedPanel.GetComponent<CanvasGroup>().alpha = 1;
-        levelFinishPanel.GetComponent<CanvasGroup>().alpha = 0;
-
         detonatePanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+
+        failedPanel.GetComponent<CanvasGroup>().alpha = 1;
         failedPanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
+
+        levelFinishPanel.GetComponent<CanvasGroup>().alpha = 0;
         levelFinishPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+
+        bombPanel.GetComponent<CanvasGroup>().alpha = 0;
+        bombPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+
 
         //Invoke("ResetLevel", 2f);
     }
