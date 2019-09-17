@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -82,15 +81,24 @@ public class Bomb : MonoBehaviour
         {
             if (hit.gameObject.tag.Contains("ShatteringObject"))
             {
-                //Remove hitpoints
-                hit.gameObject.GetComponent<Brick>().hitpoints--;
+                var shatteringObject = hit.gameObject.GetComponent<ShatteringObject>();
+                if (shatteringObject != null)
+                {
+                    //Remove hitpoints
+                    shatteringObject.hitpoints--;
 
-                if (hit.gameObject.GetComponent<Brick>().hitpoints <= 0)
-                    hit.gameObject.GetComponent<Brick>().Shatter(hit.transform.position, 100, 100);
+                    if (shatteringObject.hitpoints <= 0)
+                        shatteringObject.Shatter(hit.transform.position, 100, 100);
+                }
             }
             else if (hit.gameObject.tag.Contains("NPCBuilding"))
             {
-                hit.gameObject.GetComponent<NPCBuildingLogic>().DamageBuilding(1, false);
+                var npcHouse = hit.gameObject.GetComponent<NPCBuilding>();
+
+                if (npcHouse != null)
+                {
+                    npcHouse.DamageBuilding(1, false);
+                }
             }
         }
 
@@ -101,13 +109,19 @@ public class Bomb : MonoBehaviour
         {
             if (hit.gameObject.tag.Contains("ShatteringObject"))
             {
-
-                hit.gameObject.GetComponent<Brick>().Shatter(explosionPos, power, upwardsForce);
+                var shatteringObject = hit.gameObject.GetComponent<ShatteringObject>();
+                if (shatteringObject != null)
+                    shatteringObject.Shatter(explosionPos, power, upwardsForce);
             }
             else if (hit.gameObject.tag.Contains("NPCBuilding"))
             {
-                //Destroy NPC buildings if they are hit by the blast
-                hit.gameObject.GetComponent<NPCBuildingLogic>().DamageBuilding(10000, false);
+                var npcHouse = hit.gameObject.GetComponent<NPCBuilding>();
+
+                if (npcHouse != null)
+                {
+                    //Destroy NPC buildings if they are hit by the blast
+                    npcHouse.DamageBuilding(10000, false);
+                }
             }
             else
             {
