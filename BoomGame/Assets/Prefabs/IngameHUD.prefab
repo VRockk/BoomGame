@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 9022399347938634409}
   - component: {fileID: 94713828075849468}
   - component: {fileID: 4665546812915051719}
+  - component: {fileID: 2843422701739191842}
   m_Layer: 5
   m_Name: Bomb1
-  m_TagString: Untagged
+  m_TagString: BombCard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,6 +77,32 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!61 &2843422701739191842
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571864279491893327}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 200, y: 150}
+  m_EdgeRadius: 0
 --- !u!1 &1023110743136236419
 GameObject:
   m_ObjectHideFlags: 0
@@ -889,7 +916,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 36b2f91c91327514db5544414397adaf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: faf759a33c709f54dbf0ad42b99b52e5, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

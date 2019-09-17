@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 
@@ -11,6 +12,8 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     public int maxRounds = 2;
+
+    //Temporary solution for bomb spawning
     public GameObject bomb;
     public string nextLevelName;
 
@@ -40,41 +43,84 @@ public class GameController : MonoBehaviour
     {
         if (allowInput)
         {
+            //Checking if mouse is over the UI.
             if (!UtilityLibrary.IsMouseOverUI())
             {
-                //Left mouse click/clicking on screen (touching the screen is basically left mouse click in unity)
-                //
+
+                //Left mouse click/clicking on screen (touching phones screen is basically the same as left mouse click in unity)
                 if (Input.GetMouseButtonDown(0))
                 {
                     print(UtilityLibrary.IsMouseOverUI());
+
                     Vector3 mousePos = UtilityLibrary.GetCurrentMousePosition();
 
 
-                    //Check if there is a bomb already in the mouse position
-                    //if there is, we "attach" the bomb to the cursor
-                    //Add a variable to this class where you store the bomb object (GameObject)
-                    //
+                    Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f));
+                    RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
 
-                    //If cursor is over BombInventory while clicking(this is in IngameHUD), Instantiate new bomb to cursor position and store the bomb in the variable created earlier
-                    //
+                    if (hit.collider != null)
+                    {
+                        print(hit.collider.gameObject.name);
+                    }
+
+                    //Check if there is a bomb already in the mouse position (the ray cast above does this)
+                    //if there is, we "attach" the bomb to the cursor. Add a variable to this class where you store the bomb object (GameObject). 
+                    //You know it is a bomb by doing check if the gameobject has tag property set "Bomb"
+
+
 
                     //If nothing is under the cursor, Dont do anything
 
-                    Instantiate(bomb, mousePos, Quaternion.identity);
+
+
+
+
+
+
+                    
+                    var bombInstance = Instantiate(bomb, mousePos, Quaternion.identity);
+
                 }
-                if(Input.GetMouseButton(0))
+                if (Input.GetMouseButton(0))
                 {
                     //Mouse is held down
 
-                    //If
+                    //If we have a bomb attached to the cursor ( we did that in the buttondown above) move it to cursor position
+
                 }
                 if (Input.GetMouseButtonUp(0))
                 {
                     //Mouse up
 
-                    //If we have bomb in cursor (in the 
-                }
+                    //If we have bomb in cursor when "button up" set the GameObject we created above to null
 
+                }
+            }
+            else
+            {
+                //now doing things while mouse over UI
+                if (Input.GetMouseButtonDown(0))
+                {
+                    Vector3 mousePos = UtilityLibrary.GetCurrentMousePosition();
+
+                    //If cursor is over BombInventory (the large bomb icon bottom left of the screen) while clicking(this is in IngameHUD)
+                    //Instantiate new bomb to cursor position and store the bomb in the variable created earlier
+                    
+                    //This code does a check on the mouse position if there are any User interface elements under the cursor.
+                    PointerEventData pointerData = new PointerEventData(EventSystem.current);
+                    pointerData.position = Input.mousePosition;
+                    List<RaycastResult> results = new List<RaycastResult>();
+                    EventSystem.current.RaycastAll(pointerData, results);
+
+                    foreach (RaycastResult result in results)
+                    {
+                        if (result.gameObject.tag == "BombCard")
+                            print(result.gameObject.name);
+                    }
+
+
+                    //var bombInstance = Instantiate(bomb, mousePos, Quaternion.identity);
+                }
             }
         }
     }
@@ -106,7 +152,7 @@ public class GameController : MonoBehaviour
             }
         }
 
-        if(movementCheckCount == 5)
+        if (movementCheckCount == 5)
         {
             Time.timeScale = 2;
         }

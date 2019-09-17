@@ -27,7 +27,6 @@ public class IngameHUD : MonoBehaviour
         detonatePanel.GetComponent<CanvasGroup>().alpha = 1;
         detonatePanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
 
-        //TODO blocksRaycasts doesnt work on mobile
         bombPanel.GetComponent<CanvasGroup>().alpha = 1;
         bombPanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
 

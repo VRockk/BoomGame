@@ -16,7 +16,7 @@ public class Bomb : MonoBehaviour
     public bool showPlacementGizmo = true;
     public bool showExplosionGizmo = false;
 
-
+    public GameObject explosion;
     // Start is called before the first frame update
     void Start()
     {
@@ -62,6 +62,11 @@ public class Bomb : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         Vector3 explosionPos = this.transform.position;
+
+        //Spawn explosion animation
+        //Probably not the right way to do this 
+        if (explosion != null)
+            Instantiate(explosion, explosionPos, Quaternion.identity);
 
         Collider2D[] destroyColliders = Physics2D.OverlapCircleAll(explosionPos, destroyRadius);
         foreach (Collider2D hit in destroyColliders)

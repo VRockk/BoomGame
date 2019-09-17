@@ -38,12 +38,11 @@ public class UtilityLibrary
 
     public static bool IsMouseOverUI()
     {
-        //PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
-        //eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-        //List<RaycastResult> results = new List<RaycastResult>();
-        //EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
-        //return results.Count > 0;
-        //return EventSystem.current.IsPointerOverGameObject();
+        var eventData = new PointerEventData(EventSystem.current);
+        eventData.position = Input.mousePosition;
+        var results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, results);
+        return results.Count > 0;
 
         if (EventSystem.current.IsPointerOverGameObject())
             return true;
@@ -65,6 +64,9 @@ public class UtilityLibrary
     /// <returns></returns>
     public static Vector3 GetCurrentMousePosition()
     {
+
+
+
         Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f);
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
         mousePos.z = 0f;
