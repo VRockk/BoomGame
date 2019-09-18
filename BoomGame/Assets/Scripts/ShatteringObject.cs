@@ -219,7 +219,7 @@ public class ShatteringObject : MonoBehaviour
                 //if (newObject.name.ToLower().Contains("wood"))
                 //    print(explosionPos + "   " + newObject.transform.position);
                 Vector2 force = UtilityLibrary.CalculateExplosionForce(explosionPos, newObject.transform.position, power, upwardsForce);
-                
+
                 rb.AddForce(force, ForceMode2D.Impulse);
 
             }

@@ -15,17 +15,40 @@ public class GameController : MonoBehaviour
 
     //Temporary solution for bomb spawning
     public GameObject bomb;
-    public GameObject bombUnderMouse;
     public string nextLevelName;
+
+    public int bombCount = 3;
+
 
     [HideInInspector]
     public bool allowInput;
 
-    private int roundCounter = 1;
+    [HideInInspector]
+    public int roundCounter = 1;
+
+    [HideInInspector]
+    public GameObject bombUnderMouse;
+
     private int shatteringObjectCount;
     private IngameHUD hud;
+    private CameraHandler cameraHandler;
 
     private int movementCheckCount;
+
+    private void Awake()
+    {
+
+        hud = GameObject.FindObjectOfType<IngameHUD>();
+
+        if (hud == null)
+            Debug.LogError("IngameHUD not found in the scene for the GameController");
+
+        cameraHandler = GameObject.FindObjectOfType<CameraHandler>();
+
+        if (cameraHandler == null)
+            Debug.LogError("CameraHandler not found in the scene for the GameController");
+
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -33,10 +56,8 @@ public class GameController : MonoBehaviour
         allowInput = true;
         roundCounter = 1;
         shatteringObjectCount = GameObject.FindGameObjectsWithTag("ShatteringObject").Length;
-        hud = GameObject.FindObjectOfType<IngameHUD>();
 
-        if (hud == null)
-            Debug.LogError("No IngameHUD found in the scene for the GameController");
+        hud.UpdateBombCount(bombCount);
     }
 
     // Update is called once per frame
@@ -48,86 +69,84 @@ public class GameController : MonoBehaviour
             if (!UtilityLibrary.IsMouseOverUI())
             {
 
-                //Left mouse click/clicking on screen (touching phones screen is basically the same as left mouse click in unity)
+                //Left click
                 if (Input.GetMouseButtonDown(0))
                 {
-                    print(UtilityLibrary.IsMouseOverUI());
+                    //print(UtilityLibrary.IsMouseOverUI());
 
                     Vector3 mousePos = UtilityLibrary.GetCurrentMousePosition();
 
-
-                    Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f));
+                    // Check if clicking on a bomb and "attach" it to cursor
+                    Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -10f));
                     RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
 
                     if (hit.collider != null)
                     {
                         print(hit.collider.gameObject.name);
-
-                        if(hit.collider.gameObject.tag == "Bomb")
+                        if (hit.collider.gameObject.tag == "Bomb")
                         {
                             bombUnderMouse = hit.collider.gameObject;
                         }
                     }
-                    
-                    //Check if there is a bomb already in the mouse position (the ray cast above does this)
-                    //if there is, we "attach" the bomb to the cursor. Add a variable to this class where you store the bomb object (GameObject). 
-                    //You know it is a bomb by doing check if the gameobject has tag property set "Bomb"
-
-                    //bombUnderMouse = GameObject.FindWithTag("Bomb");
-
-                    //If nothing is under the cursor, Dont do anything
-
-                   
-                   //var bombInstance = Instantiate(bomb, mousePos, Quaternion.identity);
-
                 }
                 if (Input.GetMouseButton(0))
                 {
-
                     Vector3 mousePos = UtilityLibrary.GetCurrentMousePosition();
-                    //Mouse is held down
 
-                    //If we have a bomb attached to the cursor ( we did that in the buttondown above) move it to cursor position   
+                    //Move bomb if its attached to cursor
                     if (bombUnderMouse != null)
                     {
-                        bombUnderMouse.transform.position = new Vector3(mousePos.x, mousePos.y, mousePos.z);
+                        //Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -10f));
 
+                        //RaycastHit2D[] hits = Physics2D.GetRayIntersectionAll(ray, Mathf.Infinity);
+
+                        //foreach (var hit in hits)
+                        //{
+                        //    print(hit.collider.gameObject.name);
+
+                        //    //Snap bomb position to shattering objects
+                        //    if (hit.collider.gameObject.tag == "ShatteringObject")
+                        //    {
+                        //        mousePos = new Vector3(hit.collider.gameObject.transform.position.x, hit.collider.gameObject.transform.position.y, 0f);
+                        //    }
+                        //}
+
+                        //Set new position for bomb. Add +1 to y axis so the bomb is over your finger
+                        bombUnderMouse.transform.position = new Vector3(mousePos.x, mousePos.y + 10f, -1f);
                     }
                 }
                 if (Input.GetMouseButtonUp(0))
                 {
-                    //Mouse up
-
-                    //If we have bomb in cursor when "button up" set the GameObject we created above to null
+                    //Mouse up. remove bomb from cursor
                     bombUnderMouse = null;
+                    //cameraHandler.defaultCameraSize;
+                    //cameraHandler.ZoomToSize(45f);
                 }
             }
             else
             {
-                //now doing things while mouse over UI
+                //mouse over UI
                 if (Input.GetMouseButtonDown(0))
                 {
                     Vector3 mousePos = UtilityLibrary.GetCurrentMousePosition();
 
-                    //If cursor is over BombInventory (the large bomb icon bottom left of the screen) while clicking(this is in IngameHUD)
-                    //Instantiate new bomb to cursor position and store the bomb in the variable created earlier
-                    
-                    //This code does a check on the mouse position if there are any User interface elements under the cursor.
                     PointerEventData pointerData = new PointerEventData(EventSystem.current);
                     pointerData.position = Input.mousePosition;
                     List<RaycastResult> results = new List<RaycastResult>();
                     EventSystem.current.RaycastAll(pointerData, results);
 
+                    //Create a new bomb instance when clicking on Bomb card
                     foreach (RaycastResult result in results)
                     {
                         if (result.gameObject.tag == "BombCard")
                         {
-                            bombUnderMouse = Instantiate(bomb, mousePos, Quaternion.identity);
+                            bombUnderMouse = Instantiate(bomb, new Vector3(mousePos.x, mousePos.y + 10f, -1f), Quaternion.identity);
+                            cameraHandler.ZoomToSize(35f, new Vector3(0, -5f, 0));
+                            bombCount--;
+                            hud.UpdateBombCount(bombCount);
+
                         }
                     }
-
-
-                    //var bombInstance = Instantiate(bomb, mousePos, Quaternion.identity);
                 }
             }
         }
@@ -196,6 +215,13 @@ public class GameController : MonoBehaviour
             else
             {
                 roundCounter++;
+                if (roundCounter == maxRounds && bombCount == 0)
+                {
+                    //Fail if no bombs left
+                    allowInput = false;
+                    hud.LevelFailed();
+                    return;
+                }
                 hud.NextRound(roundCounter);
 
                 allowInput = true;

@@ -14,6 +14,7 @@ public class CameraHandler : MonoBehaviour
     public float defaultCameraSize = 45f;
 
     private Camera cam;
+    private GameController gameController;
 
     private Vector3 lastPanPosition;
     private int panFingerId; // Touch mode only
@@ -29,17 +30,23 @@ public class CameraHandler : MonoBehaviour
     private int clicked = 0;
     private float clickTime = 0;
     private float clickDelay = 0.5f;
-    private float newCameraSize;
+    private float zoomCameraSize;
     private float origCameraSize;
     private Vector3 origCameraPos;
     private float smoothCameraAlpha = 0;
     private bool autoZoomCamera = false;
+    private Vector3 zoomCameraPos;
 
     void Awake()
     {
         cam = GetComponent<Camera>();
         cameraDefaultPos = cam.transform.position;
         cam.orthographicSize = defaultCameraSize;
+
+        gameController = GameObject.FindObjectOfType<GameController>();
+
+        if (gameController == null)
+            Debug.LogError("GameController not found in the scene for the IngameHUD");
     }
     // Start is called before the first frame update
     void Start()
@@ -52,23 +59,19 @@ public class CameraHandler : MonoBehaviour
     {
 
         //Smooth automatic camera zooming and positioning
-        if(autoZoomCamera)
+        if (autoZoomCamera)
         {
             smoothCameraAlpha += Time.deltaTime;
             if (smoothCameraAlpha > 1f)
                 smoothCameraAlpha = 1f;
 
-            var nextCamSize = Mathf.SmoothStep(origCameraSize, newCameraSize, smoothCameraAlpha);
+            var nextCamSize = Mathf.SmoothStep(origCameraSize, zoomCameraSize, smoothCameraAlpha);
             cam.orthographicSize = nextCamSize;
             //print(nextCamSize);
 
-            var camPosition = Vector3.Lerp(origCameraPos, cameraDefaultPos, smoothCameraAlpha);
+            var camPosition = Vector3.Lerp(origCameraPos, zoomCameraPos, smoothCameraAlpha);
             camPosition.z = transform.position.z;
             transform.position = camPosition;
-
-            //cam.
-            //PanCamera(camPosition);
-
 
             if (smoothCameraAlpha >= 1f)
             {
@@ -76,10 +79,9 @@ public class CameraHandler : MonoBehaviour
                 autoZoomCamera = false;
                 allowCameraMovement = true;
             }
-
         }
 
-        if (!allowCameraMovement)
+        if (!allowCameraMovement || gameController.bombUnderMouse != null)
         {
             return;
         }
@@ -94,7 +96,7 @@ public class CameraHandler : MonoBehaviour
     }
 
     void HandleMouse()
-    {       
+    {
         // On mouse down, capture it's position.
         // Otherwise, if the mouse is still down, pan the camera.
         //TODO Check that no bomb on cursor
@@ -102,7 +104,7 @@ public class CameraHandler : MonoBehaviour
         {
             lastPanPosition = Input.mousePosition;
 
-            DoubleClick();
+            //DoubleClick();
 
         }
         else if (Input.GetMouseButton(0))
@@ -194,15 +196,28 @@ public class CameraHandler : MonoBehaviour
         origCameraSize = cam.orthographicSize;
         origCameraPos = cam.transform.position;
         lastPanPosition = origCameraPos;
+        zoomCameraPos = cameraDefaultPos;
+
         //print(cam.orthographicSize);
         if (cam.orthographicSize < defaultCameraSize)
         {
-            newCameraSize = camSizeBounds[1];
+            zoomCameraSize = camSizeBounds[1];
         }
         else
         {
-            newCameraSize = camSizeBounds[0];
+            zoomCameraSize = camSizeBounds[0];
         }
+    }
+
+    public void ZoomToSize(float size, Vector3 position)
+    {
+        allowCameraMovement = false;
+        autoZoomCamera = true;
+        origCameraSize = cam.orthographicSize;
+        origCameraPos = cam.transform.position;
+        lastPanPosition = origCameraPos;
+        zoomCameraPos = position;
+        zoomCameraSize = size;
     }
 
     void PanCamera(Vector3 newPanPosition)
