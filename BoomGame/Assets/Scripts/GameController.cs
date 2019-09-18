@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour
 
     //Temporary solution for bomb spawning
     public GameObject bomb;
+    public GameObject bombUnderMouse;
     public string nextLevelName;
 
     [HideInInspector]
@@ -61,39 +62,44 @@ public class GameController : MonoBehaviour
                     if (hit.collider != null)
                     {
                         print(hit.collider.gameObject.name);
-                    }
 
+                        if(hit.collider.gameObject.tag == "Bomb")
+                        {
+                            bombUnderMouse = hit.collider.gameObject;
+                        }
+                    }
+                    
                     //Check if there is a bomb already in the mouse position (the ray cast above does this)
                     //if there is, we "attach" the bomb to the cursor. Add a variable to this class where you store the bomb object (GameObject). 
                     //You know it is a bomb by doing check if the gameobject has tag property set "Bomb"
 
-
+                    //bombUnderMouse = GameObject.FindWithTag("Bomb");
 
                     //If nothing is under the cursor, Dont do anything
 
-
-
-
-
-
-
-                    
-                    var bombInstance = Instantiate(bomb, mousePos, Quaternion.identity);
+                   
+                   //var bombInstance = Instantiate(bomb, mousePos, Quaternion.identity);
 
                 }
                 if (Input.GetMouseButton(0))
                 {
+
+                    Vector3 mousePos = UtilityLibrary.GetCurrentMousePosition();
                     //Mouse is held down
 
-                    //If we have a bomb attached to the cursor ( we did that in the buttondown above) move it to cursor position
+                    //If we have a bomb attached to the cursor ( we did that in the buttondown above) move it to cursor position   
+                    if (bombUnderMouse != null)
+                    {
+                        bombUnderMouse.transform.position = new Vector3(mousePos.x, mousePos.y, mousePos.z);
 
+                    }
                 }
                 if (Input.GetMouseButtonUp(0))
                 {
                     //Mouse up
 
                     //If we have bomb in cursor when "button up" set the GameObject we created above to null
-
+                    bombUnderMouse = null;
                 }
             }
             else
@@ -115,7 +121,9 @@ public class GameController : MonoBehaviour
                     foreach (RaycastResult result in results)
                     {
                         if (result.gameObject.tag == "BombCard")
-                            print(result.gameObject.name);
+                        {
+                            bombUnderMouse = Instantiate(bomb, mousePos, Quaternion.identity);
+                        }
                     }
 
 
