@@ -10,17 +10,17 @@ PrefabInstance:
     - target: {fileID: 8650378973668689463, guid: 611357bb80b8fac48a60e3a228e7e00e,
         type: 3}
       propertyPath: m_Name
-      value: Acid Bomb Variant
+      value: AcidBomb
       objectReference: {fileID: 0}
     - target: {fileID: 777865067631648415, guid: 611357bb80b8fac48a60e3a228e7e00e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.04
+      value: -217.96
       objectReference: {fileID: 0}
     - target: {fileID: 777865067631648415, guid: 611357bb80b8fac48a60e3a228e7e00e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.25
+      value: 79.13
       objectReference: {fileID: 0}
     - target: {fileID: 777865067631648415, guid: 611357bb80b8fac48a60e3a228e7e00e,
         type: 3}
@@ -67,15 +67,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4076446940255910833, guid: 611357bb80b8fac48a60e3a228e7e00e,
+    - target: {fileID: 777865067631648415, guid: 611357bb80b8fac48a60e3a228e7e00e,
         type: 3}
-      propertyPath: showExplosionGizmo
-      value: 1
+      propertyPath: m_LocalScale.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 777865067631648415, guid: 611357bb80b8fac48a60e3a228e7e00e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 4076446940255910833, guid: 611357bb80b8fac48a60e3a228e7e00e,
         type: 3}
       propertyPath: destroyRadius
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4076446940255910833, guid: 611357bb80b8fac48a60e3a228e7e00e,
+        type: 3}
+      propertyPath: radius
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4076446940255910833, guid: 611357bb80b8fac48a60e3a228e7e00e,
+        type: 3}
+      propertyPath: damageRadius
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4076446940255910833, guid: 611357bb80b8fac48a60e3a228e7e00e,
         type: 3}
@@ -89,20 +104,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4076446940255910833, guid: 611357bb80b8fac48a60e3a228e7e00e,
         type: 3}
-      propertyPath: damageRadius
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4076446940255910833, guid: 611357bb80b8fac48a60e3a228e7e00e,
-        type: 3}
-      propertyPath: radius
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4076446940255910833, guid: 611357bb80b8fac48a60e3a228e7e00e,
-        type: 3}
-      propertyPath: delay
+      propertyPath: showExplosionGizmo
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3363465718831260137, guid: 611357bb80b8fac48a60e3a228e7e00e,
+    - target: {fileID: 5543167865443859559, guid: 611357bb80b8fac48a60e3a228e7e00e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 5543167865443859559, guid: 611357bb80b8fac48a60e3a228e7e00e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 5543167865443859559, guid: 611357bb80b8fac48a60e3a228e7e00e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5543167865443859559, guid: 611357bb80b8fac48a60e3a228e7e00e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2218927617082429341, guid: 611357bb80b8fac48a60e3a228e7e00e,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2218927617082429341, guid: 611357bb80b8fac48a60e3a228e7e00e,
         type: 3}
       propertyPath: m_Sprite
       value: 
