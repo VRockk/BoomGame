@@ -66,27 +66,7 @@ public class IngameHUD : MonoBehaviour
 
     public void DetonateAllBombs()
     {
-        //No bombs. Dont allow
-        if (GameObject.FindObjectsOfType<Bomb>().Length == 0)
-            return;
-
-        //if (!allowInput)
-        //    return;
-
-        //allowInput = false;
-        //gameController.allowInput = false;
-
-        cameraHandler.ZoomToSize(45f, new Vector3(0, 0f, 0));
-
-        GameObject[] bombs = GameObject.FindGameObjectsWithTag("Bomb");
-        foreach (GameObject bombObject in bombs)
-        {
-            var bomb = bombObject.GetComponent<Bomb>();
-            if (bomb != null)
-                bomb.Detonate();
-        }
-        //gameController.WaitForNextRound();
-        gameController.Invoke("WaitForNextRound", 2f);
+        gameController.Detonation();
     }
 
     public void ResetLevel()
@@ -191,7 +171,7 @@ public class IngameHUD : MonoBehaviour
 
     private IEnumerator SetCanvasGroupAlpha(float delay, CanvasGroup canvasGroup, float alpha)
     {
-        print("sup2");
+        //print("sup2");
         yield return new WaitForSeconds(delay);
         canvasGroup.alpha = alpha;
     }
