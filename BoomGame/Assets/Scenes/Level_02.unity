@@ -1084,6 +1084,11 @@ PrefabInstance:
       propertyPath: nextLevelName
       value: Level_03
       objectReference: {fileID: 0}
+    - target: {fileID: 7072808867729113272, guid: 7275690b5ceda334e927d6cae6580ad2,
+        type: 3}
+      propertyPath: bombCount
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7275690b5ceda334e927d6cae6580ad2, type: 3}
 --- !u!1001 &411520636
@@ -1947,12 +1952,6 @@ PrefabInstance:
       propertyPath: buildingSprites.Array.data[0]
       value: 
       objectReference: {fileID: 21300000, guid: 6c0d6d3c685935548afa43c2538b96f3,
-        type: 3}
-    - target: {fileID: 5936197458324489959, guid: e8d3b378197eda441a558c6641c86cb0,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: ccf07860b1c411f45926d8397d1c8f54,
         type: 3}
     - target: {fileID: 662092027730414364, guid: e8d3b378197eda441a558c6641c86cb0,
         type: 3}
@@ -4704,6 +4703,12 @@ PrefabInstance:
       propertyPath: m_Points.m_Paths.Array.data[5].Array.data[4].y
       value: 4.41
       objectReference: {fileID: 0}
+    - target: {fileID: 5936197458324489959, guid: e8d3b378197eda441a558c6641c86cb0,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ccf07860b1c411f45926d8397d1c8f54,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8d3b378197eda441a558c6641c86cb0, type: 3}
 --- !u!1001 &973369541
