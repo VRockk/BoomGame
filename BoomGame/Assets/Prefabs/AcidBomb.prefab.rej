@@ -1,0 +1,22 @@
+diff a/BoomGame/Assets/Prefabs/AcidBomb.prefab b/BoomGame/Assets/Prefabs/AcidBomb.prefab	(rejected hunks)
+@@ -112,12 +112,20 @@
+        propertyPath: showPlacementGizmo
+        value: 0
+        objectReference: {fileID: 0}
+++<<<<<<< Updated upstream
+ +    - target: {fileID: 4076446940255910833, guid: 611357bb80b8fac48a60e3a228e7e00e,
+ +        type: 3}
+ +      propertyPath: explosion
+ +      value: 
+ +      objectReference: {fileID: 7994774777040310151, guid: 875026a1aa409fb41b64598c9c929903,
+ +        type: 3}
+++=======
++     - target: {fileID: 5241433061714825447, guid: 611357bb80b8fac48a60e3a228e7e00e,
++         type: 3}
++       propertyPath: m_Size.x
++       value: 5
++       objectReference: {fileID: 0}
+++>>>>>>> Stashed changes
+      - target: {fileID: 5543167865443859559, guid: 611357bb80b8fac48a60e3a228e7e00e,
+          type: 3}
+        propertyPath: m_LocalPosition.x

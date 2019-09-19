@@ -178,7 +178,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 3120797863376878361, guid: 7a91aaeb99df1684481e4dc32a3df672,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -258,7 +258,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 756772525673208520, guid: 7a91aaeb99df1684481e4dc32a3df672, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -499,7 +499,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 3018481031970172193, guid: 7a91aaeb99df1684481e4dc32a3df672,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -580,7 +580,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 4756384740438848557, guid: 7a91aaeb99df1684481e4dc32a3df672,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -661,7 +661,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -3323166253855169231, guid: 7a91aaeb99df1684481e4dc32a3df672,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -951,11 +951,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8062710335140832855}
     m_Modifications:
-    - target: {fileID: 7100608830386038689, guid: 97019ba74e81d7547a0d08637a4a34a5,
-        type: 3}
-      propertyPath: m_Name
-      value: IngameHUD
-      objectReference: {fileID: 0}
     - target: {fileID: 4097272024697027725, guid: 97019ba74e81d7547a0d08637a4a34a5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1061,6 +1056,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7100608830386038689, guid: 97019ba74e81d7547a0d08637a4a34a5,
+        type: 3}
+      propertyPath: m_Name
+      value: IngameHUD
+      objectReference: {fileID: 0}
     - target: {fileID: 7655097058267752275, guid: 97019ba74e81d7547a0d08637a4a34a5,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -1106,6 +1106,10 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3303201130435764, guid: 97019ba74e81d7547a0d08637a4a34a5, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97019ba74e81d7547a0d08637a4a34a5, type: 3}
 --- !u!224 &233754353650249413 stripped
@@ -1121,11 +1125,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8062710335140832855}
     m_Modifications:
-    - target: {fileID: 7072808867729113274, guid: 7275690b5ceda334e927d6cae6580ad2,
-        type: 3}
-      propertyPath: m_Name
-      value: GameController
-      objectReference: {fileID: 0}
     - target: {fileID: 7072808867729113275, guid: 7275690b5ceda334e927d6cae6580ad2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1180,6 +1179,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7072808867729113274, guid: 7275690b5ceda334e927d6cae6580ad2,
+        type: 3}
+      propertyPath: m_Name
+      value: GameController
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7275690b5ceda334e927d6cae6580ad2, type: 3}
