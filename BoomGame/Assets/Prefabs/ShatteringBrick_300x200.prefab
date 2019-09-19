@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1863442581099001726
+--- !u!1 &-586960980549432403
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,25 +8,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1863442581099001717}
-  - component: {fileID: 1863442581099001714}
-  - component: {fileID: 1863442581099001715}
-  - component: {fileID: 1863442581099001712}
-  - component: {fileID: 1863442581099001713}
+  - component: {fileID: 349281247299933752}
+  - component: {fileID: 6034437096803701225}
+  - component: {fileID: 6034437096803701224}
+  - component: {fileID: 6034437096803701227}
+  - component: {fileID: 6034437096803701226}
   m_Layer: 0
-  m_Name: ShatteringObjectBase
+  m_Name: ShatteringBrick_300x200
   m_TagString: ShatteringObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1863442581099001717
+--- !u!4 &349281247299933752
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1863442581099001726}
+  m_GameObject: {fileID: -586960980549432403}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -34,13 +34,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1863442581099001714
+--- !u!212 &6034437096803701225
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1863442581099001726}
+  m_GameObject: {fileID: -586960980549432403}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: -1080482803
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7141461044982298533, guid: b6f8bfa44f5d0f24d95f7026a7e6d9c8,
+  m_Sprite: {fileID: 7179831854299891039, guid: b4be78b86414cdb41b68e802b9692c60,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -84,13 +84,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &1863442581099001715
+--- !u!61 &6034437096803701224
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1863442581099001726}
+  m_GameObject: {fileID: -586960980549432403}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 6200000, guid: 6c5305bef19ddf64699d63dc7983e3c2, type: 2}
@@ -101,7 +101,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.42, y: 2.28}
+    oldSize: {x: 3.0300002, y: 2.0405228}
     newSize: {x: 3.42, y: 2.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -110,14 +110,14 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3, y: 2}
   m_EdgeRadius: 0
---- !u!50 &1863442581099001712
+--- !u!50 &6034437096803701227
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1863442581099001726}
+  m_GameObject: {fileID: -586960980549432403}
   m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -131,13 +131,13 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1863442581099001713
+--- !u!114 &6034437096803701226
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1863442581099001726}
+  m_GameObject: {fileID: -586960980549432403}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50afc76e2b398c546b7954a7ed37f1ec, type: 3}
@@ -151,15 +151,15 @@ MonoBehaviour:
   - {x: 0, y: -0.5}
   - {x: -1, y: -0.5}
   pieceObjects:
-  - {fileID: 173200965498113037, guid: ac6f03e6e3056a4429548d492d41c123, type: 3}
-  - {fileID: 173200965498113037, guid: ac6f03e6e3056a4429548d492d41c123, type: 3}
-  - {fileID: 173200965498113037, guid: ac6f03e6e3056a4429548d492d41c123, type: 3}
-  - {fileID: 173200965498113037, guid: ac6f03e6e3056a4429548d492d41c123, type: 3}
-  - {fileID: 173200965498113037, guid: ac6f03e6e3056a4429548d492d41c123, type: 3}
-  - {fileID: 173200965498113037, guid: ac6f03e6e3056a4429548d492d41c123, type: 3}
+  - {fileID: 3262556344422710767, guid: 0d4e6bfae5abb4f4a9e71dda84728db6, type: 3}
+  - {fileID: 3262556344422710767, guid: 9744b0d53b50f0f45800abbd523293f4, type: 3}
+  - {fileID: 3262556344422710767, guid: 8b5f14aa83b017a49b1f44e41dfa2ba1, type: 3}
+  - {fileID: 3262556344422710767, guid: d1feb762b2ebe5c43bc119d7ed6b747e, type: 3}
+  - {fileID: 3262556344422710767, guid: 2caec18c42e2e844caf41b92435fd751, type: 3}
+  - {fileID: 3262556344422710767, guid: 39e5a2601b5fa73408f8313300653854, type: 3}
   gravityScale: 3
   mass: 100
-  hitpoints: 2
+  hitpoints: 3
   damagedForceLimit: 30000
   ignoreForClear: 0
   isGrounded: 1

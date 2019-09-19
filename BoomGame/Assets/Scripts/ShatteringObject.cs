@@ -11,6 +11,7 @@ public class ShatteringObject : MonoBehaviour
     public float gravityScale = 1.0f;
     public float mass = 100.0f;
     public int hitpoints = 2;
+    public bool canShatter = true;
 
     [Tooltip("The force when the object is damaged if hit. Lower == Easier to destroy/shatter")]
     public float damagedForceLimit = 30000.0f;
@@ -175,7 +176,7 @@ public class ShatteringObject : MonoBehaviour
     /// <param name="upwardsForce">Additive power added upwards during explosion</param>
     public void Shatter(Vector3 explosionPos, float power, float upwardsForce)
     {
-        if (shattered)
+        if (shattered || !canShatter)
             return;
 
         shattered = true;
