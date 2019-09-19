@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class IngameHUD : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class IngameHUD : MonoBehaviour
     private GameObject failedPanel;
     private GameObject levelFinishPanel;
     private GameObject bombPanel;
+    private GameObject penta1Panel;
+    private GameObject penta2Panel;
+    private GameObject penta3Panel;
+    private GameObject bomb1Icon;
     private CameraHandler cameraHandler;
 
     private TextMeshProUGUI bombCountText;
@@ -32,6 +37,10 @@ public class IngameHUD : MonoBehaviour
         failedPanel = GameObject.Find("FailedPanel");
         levelFinishPanel = GameObject.Find("LevelFinishPanel");
         bombPanel = GameObject.Find("BombPanel");
+        penta1Panel = GameObject.Find("Penta1");
+        penta2Panel = GameObject.Find("Penta2");
+        penta3Panel = GameObject.Find("Penta3");
+        bomb1Icon = GameObject.Find("Bomb1Icon");
 
         detonatePanel.GetComponent<CanvasGroup>().alpha = 1;
         detonatePanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
@@ -48,6 +57,15 @@ public class IngameHUD : MonoBehaviour
         levelFinishPanel.GetComponent<CanvasGroup>().alpha = 0;
         levelFinishPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
 
+        penta1Panel.GetComponent<CanvasGroup>().alpha = 0;
+        penta1Panel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+
+        penta2Panel.GetComponent<CanvasGroup>().alpha = 0;
+        penta2Panel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+
+        penta3Panel.GetComponent<CanvasGroup>().alpha = 0;
+        penta3Panel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+
 
         bombCountText = GameObject.Find("Bomb1Count").GetComponent<TextMeshProUGUI>();
         bombCountText.text = gameController.bombCount.ToString();
@@ -57,6 +75,10 @@ public class IngameHUD : MonoBehaviour
     void Start()
     {
         ShowRoundText(2f, 1);
+
+        Bomb bomb = gameController.bomb.GetComponent<Bomb>();
+        bomb1Icon.GetComponent<Image>().sprite = bomb.inventoryIcon;
+        //bomb.inventoryIcon
     }
 
     // Update is called once per frame
@@ -119,14 +141,22 @@ public class IngameHUD : MonoBehaviour
 
         if (levelClear == LevelClear.OnePentagram)
         {
-
+            penta1Panel.GetComponent<CanvasGroup>().alpha = 1;
         }
         else if (levelClear == LevelClear.TwoPentagram)
         {
+            penta1Panel.GetComponent<CanvasGroup>().alpha = 1;
+
+            penta2Panel.GetComponent<CanvasGroup>().alpha = 1;
 
         }
         else if (levelClear == LevelClear.ThreePentagram)
         {
+            penta1Panel.GetComponent<CanvasGroup>().alpha = 1;
+
+            penta2Panel.GetComponent<CanvasGroup>().alpha = 1;
+
+            penta3Panel.GetComponent<CanvasGroup>().alpha = 1;
 
         }
 
@@ -155,6 +185,7 @@ public class IngameHUD : MonoBehaviour
     {
         bombCountText.text = bombCount.ToString();
     }
+
     private void ShowRoundText(float hideDelay, int roundNumber)
     {
         //var text = roundPanel.GetComponent<TextMeshProUGUI>();

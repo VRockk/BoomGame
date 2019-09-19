@@ -135,10 +135,11 @@ public class GameController : MonoBehaviour
                     //Create a new bomb instance when clicking on Bomb card
                     foreach (RaycastResult result in results)
                     {
+                        print(result.gameObject.name);
                         if (result.gameObject.tag == "BombCard")
                         {
                             bombUnderMouse = Instantiate(bomb, new Vector3(mousePos.x, mousePos.y + 10f, -1f), Quaternion.identity);
-                            cameraHandler.ZoomToSize(35f, new Vector3(0, -5f, 0));
+                            cameraHandler.ZoomToSize(35f, new Vector3(0, -2f, 0));
                             bombCount--;
                             hud.UpdateBombCount(bombCount);
 
@@ -172,7 +173,7 @@ public class GameController : MonoBehaviour
         //allowInput = false;
         //gameController.allowInput = false;
 
-        cameraHandler.ZoomToSize(45f, new Vector3(0, 0f, 0));
+        cameraHandler.ZoomToSize(45f, new Vector3(0, 2f, 0));
 
         GameObject[] bombs = GameObject.FindGameObjectsWithTag("Bomb");
         foreach (GameObject bombObject in bombs)

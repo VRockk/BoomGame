@@ -17,6 +17,8 @@ public class Bomb : MonoBehaviour
     public bool showExplosionGizmo = false;
 
     public GameObject explosion;
+
+    public Sprite inventoryIcon;
     // Start is called before the first frame update
     void Start()
     {

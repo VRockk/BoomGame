@@ -28,6 +28,7 @@ public class NPCBuilding : MonoBehaviour
     [HideInInspector]
     public int maxHitpoints;
 
+    public GameObject smokeAnimation;
 
     private SpriteRenderer spriteRenderer;
     private bool allowDamage = true;
@@ -116,6 +117,7 @@ public class NPCBuilding : MonoBehaviour
                 print("Building destroyed: " + this.gameObject.name);
                 //TODO Show smoke cloud effect when building is destroyed
 
+                Instantiate(smokeAnimation, transform.position, Quaternion.identity);
                 //Disable collisions for now when building is destroyed.
                 var collider = GetComponent<Collider2D>();
                 if (collider != null)
