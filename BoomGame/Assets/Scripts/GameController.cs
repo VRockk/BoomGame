@@ -109,7 +109,7 @@ public class GameController : MonoBehaviour
                         //}
 
                         //Set new position for bomb. Add +1 to y axis so the bomb is over your finger
-                        bombUnderMouse.transform.position = new Vector3(mousePos.x, mousePos.y + 10f, -1f);
+                        bombUnderMouse.transform.position = new Vector3(mousePos.x, mousePos.y + 5f, -1f);
                     }
                 }
                 if (Input.GetMouseButtonUp(0))
@@ -138,7 +138,7 @@ public class GameController : MonoBehaviour
                         print(result.gameObject.name);
                         if (result.gameObject.tag == "BombCard")
                         {
-                            bombUnderMouse = Instantiate(bomb, new Vector3(mousePos.x, mousePos.y + 10f, -1f), Quaternion.identity);
+                            bombUnderMouse = Instantiate(bomb, new Vector3(mousePos.x, mousePos.y + 5f, -1f), Quaternion.identity);
                             cameraHandler.ZoomToSize(35f, new Vector3(0, -2f, 0));
                             bombCount--;
                             hud.UpdateBombCount(bombCount);

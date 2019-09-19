@@ -7,6 +7,10 @@ using TMPro;
 
 public class IngameHUD : MonoBehaviour
 {
+
+    public Sprite detonatorUp;
+    public Sprite detonatorDown;
+
     private GameController gameController;
 
     private GameObject detonatePanel;
@@ -18,6 +22,7 @@ public class IngameHUD : MonoBehaviour
     private GameObject penta2Panel;
     private GameObject penta3Panel;
     private GameObject bomb1Icon;
+    private GameObject detonateButton;
     private CameraHandler cameraHandler;
 
     private TextMeshProUGUI bombCountText;
@@ -41,6 +46,7 @@ public class IngameHUD : MonoBehaviour
         penta2Panel = GameObject.Find("Penta2");
         penta3Panel = GameObject.Find("Penta3");
         bomb1Icon = GameObject.Find("Bomb1Icon");
+        detonateButton = GameObject.Find("DetonateButton"); 
 
         detonatePanel.GetComponent<CanvasGroup>().alpha = 1;
         detonatePanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
@@ -88,6 +94,7 @@ public class IngameHUD : MonoBehaviour
 
     public void DetonateAllBombs()
     {
+        detonateButton.GetComponent<Image>().sprite = detonatorDown;
         gameController.Detonation();
     }
 
@@ -109,6 +116,7 @@ public class IngameHUD : MonoBehaviour
     {
         detonatePanel.GetComponent<CanvasGroup>().alpha = 1;
         detonatePanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        detonateButton.GetComponent<Image>().sprite = detonatorUp;
 
         bombPanel.GetComponent<CanvasGroup>().alpha = 1;
         bombPanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
