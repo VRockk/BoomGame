@@ -37,7 +37,6 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
-
         hud = GameObject.FindObjectOfType<IngameHUD>();
 
         if (hud == null)
@@ -96,15 +95,13 @@ public class GameController : MonoBehaviour
                     //Move bomb if its attached to cursor
                     if (bombUnderMouse != null)
                     {
+                        ////Snap bomb position to shattering objects
                         //Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -10f));
-
                         //RaycastHit2D[] hits = Physics2D.GetRayIntersectionAll(ray, Mathf.Infinity);
-
                         //foreach (var hit in hits)
                         //{
                         //    print(hit.collider.gameObject.name);
 
-                        //    //Snap bomb position to shattering objects
                         //    if (hit.collider.gameObject.tag == "ShatteringObject")
                         //    {
                         //        mousePos = new Vector3(hit.collider.gameObject.transform.position.x, hit.collider.gameObject.transform.position.y, 0f);
@@ -126,7 +123,7 @@ public class GameController : MonoBehaviour
             else
             {
                 //mouse over UI
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(0) && bombCount > 0)
                 {
                     Vector3 mousePos = UtilityLibrary.GetCurrentMousePosition();
 
@@ -161,6 +158,33 @@ public class GameController : MonoBehaviour
         InvokeRepeating("CheckForMovement", 1.0f, 1.0f);
 
         // TODO Make game faster after a while so the pieces settle down faster
+    }
+
+    public void Detonation()
+    {
+        //No bombs. Dont allow
+        if (GameObject.FindObjectsOfType<Bomb>().Length == 0)
+            return;
+
+        //if (!allowInput)
+        //    return;
+
+        //allowInput = false;
+        //gameController.allowInput = false;
+
+        cameraHandler.ZoomToSize(45f, new Vector3(0, 0f, 0));
+
+        GameObject[] bombs = GameObject.FindGameObjectsWithTag("Bomb");
+        foreach (GameObject bombObject in bombs)
+        {
+            var bomb = bombObject.GetComponent<Bomb>();
+            if (bomb != null)
+                bomb.Detonate();
+        }
+
+
+        //gameController.WaitForNextRound();
+        Invoke("WaitForNextRound", 2f);
     }
 
     private void CheckForMovement()
