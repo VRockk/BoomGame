@@ -150,21 +150,36 @@ public class IngameHUD : MonoBehaviour
         if (levelClear == LevelClear.OnePentagram)
         {
             penta1Panel.GetComponent<CanvasGroup>().alpha = 1;
+            penta1Panel.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+
+            penta2Panel.GetComponent<CanvasGroup>().alpha = 1;
+            penta2Panel.GetComponent<Image>().color = new Color32(65, 65, 65, 255);
+
+            penta3Panel.GetComponent<CanvasGroup>().alpha = 1;
+            penta3Panel.GetComponent<Image>().color = new Color32(65, 65, 65, 255);
         }
         else if (levelClear == LevelClear.TwoPentagram)
         {
             penta1Panel.GetComponent<CanvasGroup>().alpha = 1;
+            penta1Panel.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
 
             penta2Panel.GetComponent<CanvasGroup>().alpha = 1;
+            penta2Panel.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+
+            penta3Panel.GetComponent<CanvasGroup>().alpha = 1;
+            penta3Panel.GetComponent<Image>().color = new Color32(65, 65, 65, 255);
 
         }
         else if (levelClear == LevelClear.ThreePentagram)
         {
             penta1Panel.GetComponent<CanvasGroup>().alpha = 1;
+            penta1Panel.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
 
             penta2Panel.GetComponent<CanvasGroup>().alpha = 1;
+            penta2Panel.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
 
             penta3Panel.GetComponent<CanvasGroup>().alpha = 1;
+            penta3Panel.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
 
         }
 
@@ -199,13 +214,11 @@ public class IngameHUD : MonoBehaviour
         //var text = roundPanel.GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI text = GameObject.Find("RoundText").GetComponent<TextMeshProUGUI>();
         text.text = "Round " + roundNumber;
-        //TextMesh
 
         roundPanel.GetComponent<CanvasGroup>().alpha = 1;
+        roundPanel.transform.localPosition = new Vector3(0, 0 ,0);
 
         StartCoroutine(SetCanvasGroupAlpha(hideDelay, roundPanel.GetComponent<CanvasGroup>(), 0));
-
-
     }
 
     private IEnumerator SetCanvasGroupAlpha(float delay, CanvasGroup canvasGroup, float alpha)
@@ -213,5 +226,6 @@ public class IngameHUD : MonoBehaviour
         //print("sup2");
         yield return new WaitForSeconds(delay);
         canvasGroup.alpha = alpha;
+        roundPanel.transform.localPosition = new Vector3(0, -10000f, 0);
     }
 }

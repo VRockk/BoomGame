@@ -159,7 +159,7 @@ public class GameController : MonoBehaviour
                         if (result.gameObject.tag == "BombCard")
                         {
                             bombUnderMouse = Instantiate(bomb, new Vector3(mousePos.x, mousePos.y + 5f, -1f), Quaternion.identity);
-                            cameraHandler.ZoomToSize(35f, new Vector3(0, -2f, 0));
+                            //cameraHandler.ZoomToSize(35f, new Vector3(0, -2f, 0));
                             bombCount--;
                             hud.UpdateBombCount(bombCount);
 
