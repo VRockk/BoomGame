@@ -15,10 +15,18 @@ public class Bomb : MonoBehaviour
     public float upwardsForce = 100.0f;
     public bool showPlacementGizmo = true;
     public bool showExplosionGizmo = false;
-
+    public AudioClip[] exposionScreamSounds;
     public GameObject explosion;
 
     public Sprite inventoryIcon;
+
+    private AudioSource audioSource;
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+            Debug.LogError("AudioSource not found in the scene for the Bomb");
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -62,7 +70,15 @@ public class Bomb : MonoBehaviour
 
     private IEnumerator Explode()
     {
+        if (exposionScreamSounds.Length > 0)
+        {
+            var screamSound = exposionScreamSounds[Random.Range(0, exposionScreamSounds.Length)];
+            if (audioSource != null)
+                audioSource.PlayOneShot(screamSound);
+        }
+
         yield return new WaitForSeconds(delay);
+
         Vector3 explosionPos = this.transform.position;
 
         //Spawn explosion animation

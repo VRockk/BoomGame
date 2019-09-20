@@ -35,6 +35,9 @@ public class GameController : MonoBehaviour
 
     private int movementCheckCount;
 
+    private AudioSource audioSource;
+    public AudioClip plopSound;
+
     private void Awake()
     {
         hud = GameObject.FindObjectOfType<IngameHUD>();
@@ -47,6 +50,10 @@ public class GameController : MonoBehaviour
         if (cameraHandler == null)
             Debug.LogError("CameraHandler not found in the scene for the GameController");
 
+        audioSource = GetComponent<AudioSource>();
+
+        if (audioSource == null)
+            Debug.LogError("AudioSource not found in the scene for the GameController");
     }
 
     // Start is called before the first frame update
@@ -67,7 +74,6 @@ public class GameController : MonoBehaviour
             //Checking if mouse is over the UI.
             if (!UtilityLibrary.IsMouseOverUI())
             {
-
                 //Left click
                 if (Input.GetMouseButtonDown(0))
                 {
@@ -85,40 +91,54 @@ public class GameController : MonoBehaviour
                         if (hit.collider.gameObject.tag == "Bomb")
                         {
                             bombUnderMouse = hit.collider.gameObject;
+                            if (audioSource != null)
+                            {
+                                audioSource.pitch = Random.Range(1.1f, 1.2f);
+                                audioSource.PlayOneShot(plopSound);
+                            }
                         }
                     }
                 }
-                if (Input.GetMouseButton(0))
+            }
+            if (Input.GetMouseButton(0))
+            {
+                Vector3 mousePos = UtilityLibrary.GetCurrentMousePosition();
+
+                //Move bomb if its attached to cursor
+                if (bombUnderMouse != null)
                 {
-                    Vector3 mousePos = UtilityLibrary.GetCurrentMousePosition();
+                    ////Snap bomb position to shattering objects
+                    //Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -10f));
+                    //RaycastHit2D[] hits = Physics2D.GetRayIntersectionAll(ray, Mathf.Infinity);
+                    //foreach (var hit in hits)
+                    //{
+                    //    print(hit.collider.gameObject.name);
 
-                    //Move bomb if its attached to cursor
-                    if (bombUnderMouse != null)
+                    //    if (hit.collider.gameObject.tag == "ShatteringObject")
+                    //    {
+                    //        mousePos = new Vector3(hit.collider.gameObject.transform.position.x, hit.collider.gameObject.transform.position.y, 0f);
+                    //    }
+                    //}
+
+                    //Set new position for bomb. Add +1 to y axis so the bomb is over your finger
+                    bombUnderMouse.transform.position = new Vector3(mousePos.x, mousePos.y + 5f, -1f);
+                }
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                if (bombUnderMouse != null)
+                {
+                    if (audioSource != null)
                     {
-                        ////Snap bomb position to shattering objects
-                        //Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -10f));
-                        //RaycastHit2D[] hits = Physics2D.GetRayIntersectionAll(ray, Mathf.Infinity);
-                        //foreach (var hit in hits)
-                        //{
-                        //    print(hit.collider.gameObject.name);
-
-                        //    if (hit.collider.gameObject.tag == "ShatteringObject")
-                        //    {
-                        //        mousePos = new Vector3(hit.collider.gameObject.transform.position.x, hit.collider.gameObject.transform.position.y, 0f);
-                        //    }
-                        //}
-
-                        //Set new position for bomb. Add +1 to y axis so the bomb is over your finger
-                        bombUnderMouse.transform.position = new Vector3(mousePos.x, mousePos.y + 5f, -1f);
+                        audioSource.pitch = Random.Range(0.9f, 1.1f);
+                        audioSource.PlayOneShot(plopSound);
                     }
                 }
-                if (Input.GetMouseButtonUp(0))
-                {
-                    //Mouse up. remove bomb from cursor
-                    bombUnderMouse = null;
-                    //cameraHandler.defaultCameraSize;
-                    //cameraHandler.ZoomToSize(45f);
-                }
+                //Mouse up. remove bomb from cursor
+                bombUnderMouse = null;
+                //cameraHandler.defaultCameraSize;
+                //cameraHandler.ZoomToSize(45f);
+
             }
             else
             {
@@ -143,12 +163,18 @@ public class GameController : MonoBehaviour
                             bombCount--;
                             hud.UpdateBombCount(bombCount);
 
+                            if (audioSource != null)
+                            {
+                                audioSource.pitch = Random.Range(1.1f, 1.2f);
+                                audioSource.PlayOneShot(plopSound);
+                            }
                         }
                     }
                 }
             }
         }
     }
+
 
     public void WaitForNextRound()
     {
