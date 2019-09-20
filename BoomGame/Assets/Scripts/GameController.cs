@@ -286,6 +286,8 @@ public class GameController : MonoBehaviour
 
     private LevelClear CheckLevelClear()
     {
+
+        //TODO NOT working correctly ;)
         bool buildingsDamaged = false;
 
         var npcBuildings = GameObject.FindObjectsOfType<NPCBuilding>();
