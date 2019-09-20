@@ -167,6 +167,7 @@ public class GameController : MonoBehaviour
                             {
                                 audioSource.pitch = Random.Range(1.1f, 1.2f);
                                 audioSource.PlayOneShot(plopSound);
+                                print(plopSound.name);
                             }
                         }
                     }
