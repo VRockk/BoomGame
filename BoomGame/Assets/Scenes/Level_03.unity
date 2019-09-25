@@ -845,11 +845,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2087376263710381257, guid: 5c0a3fea5f8f5ca4998f84b767419cbd,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 15.95
-      objectReference: {fileID: 0}
     - target: {fileID: 233754353650249413, guid: 5c0a3fea5f8f5ca4998f84b767419cbd,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -969,6 +964,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 121.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2087376263710381257, guid: 5c0a3fea5f8f5ca4998f84b767419cbd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 15.95
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c0a3fea5f8f5ca4998f84b767419cbd, type: 3}
@@ -2122,6 +2122,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971477, guid: 547b8ded41151764c8e36b36f1c02632,
+        type: 3}
+      propertyPath: ignoreForClear
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 547b8ded41151764c8e36b36f1c02632, type: 3}
 --- !u!1001 &1251678417
@@ -2987,6 +2992,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPCBuilding Variant 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8993791027074557582, guid: e8d3b378197eda441a558c6641c86cb0,
+        type: 3}
+      propertyPath: damagedForceLimit
+      value: 75000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8993791027074557582, guid: e8d3b378197eda441a558c6641c86cb0,
+        type: 3}
+      propertyPath: hitpoints
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3739359070453407852, guid: e8d3b378197eda441a558c6641c86cb0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3050,16 +3065,6 @@ PrefabInstance:
     - target: {fileID: 3739359070453407852, guid: e8d3b378197eda441a558c6641c86cb0,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8993791027074557582, guid: e8d3b378197eda441a558c6641c86cb0,
-        type: 3}
-      propertyPath: damagedForceLimit
-      value: 75000
-      objectReference: {fileID: 0}
-    - target: {fileID: 8993791027074557582, guid: e8d3b378197eda441a558c6641c86cb0,
-        type: 3}
-      propertyPath: hitpoints
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
