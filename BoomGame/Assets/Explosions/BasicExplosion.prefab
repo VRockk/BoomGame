@@ -251,8 +251,10 @@ GameObject:
   - component: {fileID: 356298781782570642}
   - component: {fileID: -1120864237464339259}
   - component: {fileID: -5661466210337497610}
+  - component: {fileID: -5520314533514088490}
+  - component: {fileID: 5940396537443168721}
   m_Layer: 0
-  m_Name: EXPLOSION
+  m_Name: BasicExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -392,6 +394,30 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-5520314533514088490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5654598993484723733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81078acb6cb1d844fb5bf304f5747b71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5940396537443168721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5654598993484723733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 248ecfde474163342b6adaf086bebcae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5717638272976893872
 GameObject:
   m_ObjectHideFlags: 0

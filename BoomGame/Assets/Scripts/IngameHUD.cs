@@ -23,17 +23,24 @@ public class IngameHUD : MonoBehaviour
     private GameObject penta3Panel;
     private GameObject bomb1Icon;
     private GameObject detonateButton;
+    private GameObject progressBar;
     private CameraHandler cameraHandler;
 
     private TextMeshProUGUI bombCountText;
+
+    private Canvas canvas;
     void Awake()
     {
+        canvas = GetComponent<Canvas>();
         gameController = GameObject.FindObjectOfType<GameController>();
+        cameraHandler = GameObject.FindObjectOfType<CameraHandler>();
+
+        if (canvas == null)
+            Debug.LogError("Canvas not found in the scene for the IngameHUD");
 
         if (gameController == null)
             Debug.LogError("GameController not found in the scene for the IngameHUD");
 
-        cameraHandler = GameObject.FindObjectOfType<CameraHandler>();
         if (cameraHandler == null)
             Debug.LogError("CameraHandler not found in the scene for the IngameHUD");
 
@@ -46,13 +53,14 @@ public class IngameHUD : MonoBehaviour
         penta2Panel = GameObject.Find("Penta2");
         penta3Panel = GameObject.Find("Penta3");
         bomb1Icon = GameObject.Find("Bomb1Icon");
-        detonateButton = GameObject.Find("DetonateButton"); 
+        detonateButton = GameObject.Find("DetonateButton");
+        progressBar = GameObject.Find("ProgressBar");
 
         detonatePanel.GetComponent<CanvasGroup>().alpha = 1;
         detonatePanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
 
         roundPanel.GetComponent<CanvasGroup>().alpha = 0;
-        roundPanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        roundPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
 
         bombPanel.GetComponent<CanvasGroup>().alpha = 1;
         bombPanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
@@ -216,16 +224,25 @@ public class IngameHUD : MonoBehaviour
         text.text = "Round " + roundNumber;
 
         roundPanel.GetComponent<CanvasGroup>().alpha = 1;
-        roundPanel.transform.localPosition = new Vector3(0, 0 ,0);
+        //roundPanel.transform.localPosition = new Vector3(0, 0 ,0);
 
         StartCoroutine(SetCanvasGroupAlpha(hideDelay, roundPanel.GetComponent<CanvasGroup>(), 0));
     }
 
     private IEnumerator SetCanvasGroupAlpha(float delay, CanvasGroup canvasGroup, float alpha)
     {
-        //print("sup2");
         yield return new WaitForSeconds(delay);
         canvasGroup.alpha = alpha;
-        roundPanel.transform.localPosition = new Vector3(0, -10000f, 0);
+        //roundPanel.transform.localPosition = new Vector3(0, -10000f, 0);
+    }
+
+
+    public void UpdateLevelProgressBar(float percent)
+    {
+        var slider = progressBar.GetComponent<Slider>();
+        if (slider != null)
+        {
+            slider.value = percent; 
+        }
     }
 }

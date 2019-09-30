@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
+using System.Linq;
+
 
 
 /// <summary>
@@ -38,6 +40,8 @@ public class GameController : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip plopSound;
 
+    private bool betweenRounds = false;
+
     private void Awake()
     {
         hud = GameObject.FindObjectOfType<IngameHUD>();
@@ -64,6 +68,8 @@ public class GameController : MonoBehaviour
         shatteringObjectCount = GameObject.FindGameObjectsWithTag("ShatteringObject").Length;
 
         hud.UpdateBombCount(bombCount);
+
+        InvokeRepeating("CalculateLevelClearScore", 0.2f, 0.2f);
     }
 
     // Update is called once per frame
@@ -174,16 +180,16 @@ public class GameController : MonoBehaviour
                 }
             }
         }
-    }
 
+    }
 
     public void WaitForNextRound()
     {
         allowInput = false;
         //gameController.NextRound();
         movementCheckCount = 0;
-        //Check for movement once a second
-        InvokeRepeating("CheckForMovement", 1.0f, 1.0f);
+
+        InvokeRepeating("CheckForMovement", 1f, 1f);
 
         // TODO Make game faster after a while so the pieces settle down faster
     }
@@ -209,6 +215,7 @@ public class GameController : MonoBehaviour
             if (bomb != null)
                 bomb.Detonate();
         }
+        betweenRounds = true;
 
 
         //gameController.WaitForNextRound();
@@ -248,7 +255,8 @@ public class GameController : MonoBehaviour
     private void NextRound()
     {
         LevelClear levelClear = CheckLevelClear();
-        print(levelClear);
+        //print(levelClear);
+        betweenRounds = false;
         //Always when Failed
         if (levelClear == LevelClear.Failed)
         {
@@ -339,11 +347,24 @@ public class GameController : MonoBehaviour
         }
     }
 
-
     private void LoadNextLevel()
     {
         //TODO: Show loading screens
         SceneManager.LoadScene(nextLevelName, LoadSceneMode.Single);
+    }
+
+    private void CalculateLevelClearScore()
+    {
+        //Only calculate when we are between rounds.
+        if (betweenRounds)
+        {
+            print("moi");
+            float stillObjects = GameObject.FindObjectsOfType<ShatteringObject>().Where(x => x.initialPosition == x.transform.position).Count();
+
+            float percentageMoved = ((float)shatteringObjectCount - stillObjects) / (float)shatteringObjectCount;
+            print(percentageMoved);
+            hud.UpdateLevelProgressBar(percentageMoved);
+        }
     }
 
 }
