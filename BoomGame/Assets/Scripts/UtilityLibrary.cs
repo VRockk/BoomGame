@@ -64,9 +64,6 @@ public class UtilityLibrary
     /// <returns></returns>
     public static Vector3 GetCurrentMousePosition()
     {
-
-
-
         Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f);
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
         mousePos.z = 0f;

@@ -80,8 +80,12 @@ public class IngameHUD : MonoBehaviour
         penta3Panel.GetComponent<CanvasGroup>().alpha = 0;
         penta3Panel.GetComponent<CanvasGroup>().blocksRaycasts = false;
 
+        progressBar.GetComponent<CanvasGroup>().alpha = 1;
+        progressBar.GetComponent<CanvasGroup>().blocksRaycasts = true;
+
 
         bombCountText = GameObject.Find("Bomb1Count").GetComponent<TextMeshProUGUI>();
+        print(bombCountText.gameObject.name);
         bombCountText.text = gameController.bombCount.ToString();
     }
 

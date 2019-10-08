@@ -69,7 +69,7 @@ public class GameController : MonoBehaviour
 
         hud.UpdateBombCount(bombCount);
 
-        InvokeRepeating("CalculateLevelClearScore", 0.2f, 0.2f);
+        InvokeRepeating("CalculateLevelClearScore", 0.1f, 0.1f);
     }
 
     // Update is called once per frame
@@ -315,36 +315,46 @@ public class GameController : MonoBehaviour
             }
         }
 
-        var shatteringObjects = GameObject.FindObjectsOfType<ShatteringObject>();
 
-        //Check if all shattering objects have been moved
-        foreach (var obj in shatteringObjects)
+        float percentageMoved = CalculatePercentageMovedObjects() * 100f;
+
+        if (percentageMoved < 90.0f)
         {
-            if (!obj.ignoreForClear)
-            {
-                if (obj.initialPosition == obj.gameObject.transform.position)
-                {
-                    return LevelClear.NotCleared;
-                }
-            }
+            return LevelClear.NotCleared;
         }
 
-        if (roundCounter == 1)
+        if(percentageMoved >= 50.0f)
         {
-            if (buildingsDamaged)
-            {
+            if (percentageMoved >= 75.0f)
+            {                
+                if (percentageMoved >= 90.0f)
+                {
+                    return LevelClear.ThreePentagram;
+
+                }
                 return LevelClear.TwoPentagram;
             }
-            return LevelClear.ThreePentagram;
+            return LevelClear.OnePentagram;
         }
-        else
-        {
-            if (buildingsDamaged)
-            {
-                return LevelClear.OnePentagram;
-            }
-            return LevelClear.ThreePentagram;
-        }
+
+        return LevelClear.Failed;
+
+        //if (roundCounter == 1)
+        //{
+        //    if (buildingsDamaged)
+        //    {
+        //        return LevelClear.TwoPentagram;
+        //    }
+        //    return LevelClear.ThreePentagram;
+        //}
+        //else
+        //{
+        //    if (buildingsDamaged)
+        //    {
+        //        return LevelClear.OnePentagram;
+        //    }
+        //    return LevelClear.ThreePentagram;
+        //}
     }
 
     private void LoadNextLevel()
@@ -355,16 +365,22 @@ public class GameController : MonoBehaviour
 
     private void CalculateLevelClearScore()
     {
+        //this sucks lol.
         //Only calculate when we are between rounds.
         if (betweenRounds)
         {
-            print("moi");
-            float stillObjects = GameObject.FindObjectsOfType<ShatteringObject>().Where(x => x.initialPosition == x.transform.position).Count();
-
-            float percentageMoved = ((float)shatteringObjectCount - stillObjects) / (float)shatteringObjectCount;
-            print(percentageMoved);
+            float percentageMoved = CalculatePercentageMovedObjects();
+            //print(percentageMoved);
             hud.UpdateLevelProgressBar(percentageMoved);
         }
     }
 
+    private float CalculatePercentageMovedObjects()
+    {
+        float percentageMoved;
+        float stillObjects = GameObject.FindObjectsOfType<ShatteringObject>().Where(x => x.initialPosition == x.transform.position).Count();
+
+        percentageMoved = ((float)shatteringObjectCount - stillObjects) / (float)shatteringObjectCount;
+        return percentageMoved;
+    }
 }
