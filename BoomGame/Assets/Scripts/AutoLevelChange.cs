@@ -7,6 +7,7 @@ public class AutoLevelChange : MonoBehaviour
 
     public string levelName = "MainMenu";
     public float delay = 5f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +22,6 @@ public class AutoLevelChange : MonoBehaviour
     }
     private void ChangeLevel()
     {
-        //print("sup2");
-        //yield return new WaitForSeconds(delay);
         UnityEngine.SceneManagement.SceneManager.LoadScene(levelName);
     }
 }
