@@ -59,6 +59,11 @@ public class NPCBuilding : MonoBehaviour
 
     void Awake()
     {
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
         maxHitpoints = hitpoints;
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (spriteRenderer == null)
@@ -70,11 +75,6 @@ public class NPCBuilding : MonoBehaviour
             // TODO Error Checking
             spriteRenderer.sprite = buildingSprites[Hitpoints];
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
     }
 
     // Update is called once per frame

@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Randomizes the pitch and volume of AudioSource found from this object
+/// </summary>
 public class AudioRandomizer : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Awake()
     {
 
