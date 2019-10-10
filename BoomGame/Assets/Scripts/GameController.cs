@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
+
 using System.Linq;
 
 
@@ -70,6 +71,8 @@ public class GameController : MonoBehaviour
         hud.UpdateBombCount(bombCount);
 
         InvokeRepeating("CalculateLevelClearScore", 0.1f, 0.1f);
+
+       
     }
 
     // Update is called once per frame
@@ -359,8 +362,11 @@ public class GameController : MonoBehaviour
 
     private void LoadNextLevel()
     {
+
+       
         //TODO: Show loading screens
         SceneManager.LoadScene(nextLevelName, LoadSceneMode.Single);
+        
     }
 
     private void CalculateLevelClearScore()
