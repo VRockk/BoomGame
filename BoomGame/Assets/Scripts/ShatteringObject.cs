@@ -24,8 +24,10 @@ public class ShatteringObject : MonoBehaviour
     public bool isGrounded = true;
 
     [HideInInspector]
-    public Vector3 initialPosition;
+    public bool createJoints = true;
 
+    [HideInInspector]
+    public Vector3 initialPosition;
 
     //Does the object have an object below initially. If it doesnt, we dont need to do groundcheck in the beginning
     private bool hasInitialObjectBelow = false;
@@ -39,6 +41,8 @@ public class ShatteringObject : MonoBehaviour
     private float damageGateDelay = 0f;
     private const float damageDelayDefault = 0.05f;
 
+
+    public List<string> attachedObjects = new List<string>();
 
     void OnDrawGizmos()
     {
@@ -67,63 +71,73 @@ public class ShatteringObject : MonoBehaviour
         distanceGround = GetComponent<Collider2D>().bounds.extents.y;
         distanceSides = GetComponent<Collider2D>().bounds.extents.x;
 
+        CreateJoints();
 
-        if (SurroundsCheck(-Vector2.up, distanceGround + 0.1f, false))
-        {
-            hasInitialObjectBelow = true;
-        }
-        else
-        {
-            hasInitialObjectBelow = false;
-            if (SurroundsCheck(Vector2.left, distanceSides + 0.1f, false))
-            {
-                hasInitialObjectLeft = true;
-            }
+        //var attachedTop
+        //check if any object below
+        //if (SurroundsCheck(-Vector2.up, distanceGround + 0.1f, false))
+        //{
 
-            if (SurroundsCheck(Vector2.right, distanceSides + 0.1f, false))
-            {
-                hasInitialObjectRight = true;
-            }
-        }
+        //    //hasInitialObjectBelow = true;
+        //}
 
-        //No attached parts. set to dynamic from the beginnings
-        if (!hasInitialObjectBelow && !hasInitialObjectLeft && !hasInitialObjectRight)
-        {
-            SetObjectDynamic();
-        }
+        //if (SurroundsCheck(-Vector2.up, distanceGround + 0.1f, false))
+        //{
+        //    hasInitialObjectBelow = true;
+        //}
+        //else
+        //{
+        //    hasInitialObjectBelow = false;
+        //    if (SurroundsCheck(Vector2.left, distanceSides + 0.1f, false))
+        //    {
+        //        hasInitialObjectLeft = true;
+        //    }
+
+        //    if (SurroundsCheck(Vector2.right, distanceSides + 0.1f, false))
+        //    {
+        //        hasInitialObjectRight = true;
+        //    }
+        //}
+
+        ////No attached parts. set to dynamic from the beginnings
+        //if (!hasInitialObjectBelow && !hasInitialObjectLeft && !hasInitialObjectRight)
+        //{
+        //    SetObjectDynamic();
+        //}
     }
 
     void FixedUpdate()
     {
         //If not moving
-        if (rigidBody.velocity.magnitude == 0)
-        {
-            //Do ground check only if there was an object below this object initially
-            if (hasInitialObjectBelow)
-            {
-                if (SurroundsCheck(-Vector2.up, distanceGround + 0.1f, true))
-                {
-                    if (Mathf.Equals(rigidBody.velocity, Vector2.zero))
-                    {
-                        isGrounded = true;
-                    }
-                }
-                else
-                {
-                    isGrounded = false;
-                    SetObjectDynamic();
-                }
-            }
-            else
-            {
-                //Check left and right if this object is "attached" to something
-                if ((hasInitialObjectLeft && !SurroundsCheck(Vector2.left, distanceSides + 0.1f, true)) ||
-                   (hasInitialObjectRight && !SurroundsCheck(Vector2.right, distanceSides + 0.1f, true)))
-                {
-                    SetObjectDynamic();
-                }
-            }
-        }
+
+        //if (rigidBody.velocity.magnitude == 0)
+        //{
+        //    //Do ground check only if there was an object below this object initially
+        //    if (hasInitialObjectBelow)
+        //    {
+        //        if (SurroundsCheck(-Vector2.up, distanceGround + 0.1f, true))
+        //        {
+        //            if (Mathf.Equals(rigidBody.velocity, Vector2.zero))
+        //            {
+        //                isGrounded = true;
+        //            }
+        //        }
+        //        else
+        //        {
+        //            isGrounded = false;
+        //            SetObjectDynamic();
+        //        }
+        //    }
+        //    else
+        //    {
+        //        //Check left and right if this object is "attached" to something
+        //        if ((hasInitialObjectLeft && !SurroundsCheck(Vector2.left, distanceSides + 0.1f, true)) ||
+        //           (hasInitialObjectRight && !SurroundsCheck(Vector2.right, distanceSides + 0.1f, true)))
+        //        {
+        //            SetObjectDynamic();
+        //        }
+        //    }
+        //}
     }
 
     void Update()
@@ -183,6 +197,8 @@ public class ShatteringObject : MonoBehaviour
 
         shattered = true;
 
+        //TODO optimization. We need create the new objects already in start because instantiating object can be laggy and set them invisible or something like that
+
         //Instantiate new objects
         List<GameObject> newObjects = new List<GameObject>();
         for (int e = 0; e < pieceObjects.Length; e++)
@@ -213,9 +229,10 @@ public class ShatteringObject : MonoBehaviour
         //Add explosion force to new objects
         foreach (var newObject in newObjects)
         {
-            Rigidbody2D rb = newObject.GetComponent<Rigidbody2D>();
+            Rigidbody2D rigidBody = newObject.GetComponent<Rigidbody2D>();
+            ShatteringObject shatteringObject = newObject.GetComponent<ShatteringObject>();
 
-            if (rb != null)
+            if (rigidBody != null)
             {
                 //print(explosionPos);
 
@@ -223,28 +240,26 @@ public class ShatteringObject : MonoBehaviour
                 //    print(explosionPos + "   " + newObject.transform.position);
                 Vector2 force = UtilityLibrary.CalculateExplosionForce(explosionPos, newObject.transform.position, power, upwardsForce);
 
-                rb.AddForce(force, ForceMode2D.Impulse);
-
+                rigidBody.AddForce(force, ForceMode2D.Impulse);
             }
+            if (shatteringObject != null)
+                shatteringObject.createJoints = false;
         }
     }
 
-
-    private void SetObjectDynamic()
-    {
-        var rigidBody = GetComponent<Rigidbody2D>();
-        rigidBody.bodyType = RigidbodyType2D.Dynamic;
-        rigidBody.mass = mass;
-        rigidBody.gravityScale = gravityScale;
-        rigidBody.drag = 0.1f;
-        rigidBody.constraints = RigidbodyConstraints2D.None;
-
-    }
-
-    private bool SurroundsCheck(Vector2 traceDirection, float distance, bool checkIfMoving)
+    /// <summary>
+    /// Checks the direction if there are is another object in that direction.
+    /// </summary>
+    /// <param name="traceDirection"></param>
+    /// <param name="distance"></param>
+    /// <param name="checkIfMoving"></param>
+    /// <param name="hitObject">Object that was hit</param>
+    /// <returns></returns>
+    private bool SurroundsCheck(Vector2 traceDirection, float distance, out GameObject hitObject)
     {
         bool value = false;
-
+        hitObject = null;
+        //gameObject = null;
         //Need to disable this objects collider??  Issue here was that the raytrace would hit this objects collider first
         GetComponent<Collider2D>().enabled = false;
 
@@ -253,12 +268,12 @@ public class ShatteringObject : MonoBehaviour
 
         value = hit;
 
-        if (hit && checkIfMoving)
+        if (hit)
         {
             if (hit.collider.gameObject.GetComponent<Rigidbody2D>() != null)
             {
-                // Return false if the collided object is moving
-                value = !(hit.collider.gameObject.GetComponent<Rigidbody2D>().velocity.magnitude > 0);
+                //print(hit.collider.gameObject.name);
+                hitObject = hit.collider.gameObject;
             }
         }
 
@@ -266,6 +281,93 @@ public class ShatteringObject : MonoBehaviour
 
         return value;
     }
+    
+    /// <summary>
+    /// Creates and attaches joints to objects next to this object
+    /// </summary>
+    private void CreateJoints()
+    {
+        if (!createJoints)
+            return;
+
+        var collider = GetComponent<Collider2D>();
+        if (collider != null)
+        {
+            GameObject upObject, downObject, leftObject, rightObject;
 
 
+            //Check if there are object next to this object and attach them to the joints.
+
+            //Check above
+            if (SurroundsCheck(Vector2.up, distanceGround + 0.1f, out upObject))
+            {
+                if (upObject != null)
+                {
+                    var shatteringObject = upObject.GetComponent<ShatteringObject>();
+                    //Check that we only have one joint between two objects
+                    if (!shatteringObject.attachedObjects.Contains(this.gameObject.name))
+                    {
+                        //Create a new joint and attach object to it
+                        FixedJoint2D jointUp = gameObject.AddComponent<FixedJoint2D>();
+                        attachedObjects.Add(upObject.name);
+                        jointUp.connectedBody = upObject.GetComponent<Rigidbody2D>();
+                        // Set anchor points to the edges of the object
+                        jointUp.anchor = new Vector2(0, collider.bounds.extents.y);
+                        jointUp.enableCollision = true;
+                    }
+                }
+            }
+
+            //Check below
+            if (SurroundsCheck(-Vector2.up, distanceGround + 0.1f, out downObject))
+            {
+                if (downObject != null)
+                {
+                    var shatteringObject = downObject.GetComponent<ShatteringObject>();
+                    if (!shatteringObject.attachedObjects.Contains(this.gameObject.name))
+                    {
+                        FixedJoint2D jointDown = gameObject.AddComponent<FixedJoint2D>();
+                        attachedObjects.Add(downObject.name);
+                        jointDown.connectedBody = downObject.GetComponent<Rigidbody2D>();
+                        jointDown.anchor = new Vector2(0, -collider.bounds.extents.y);
+                        jointDown.enableCollision = true;
+                    }
+                }
+            }
+
+            //Check right
+            if (SurroundsCheck(Vector2.right, distanceSides + 0.1f, out rightObject))
+            {
+                if (rightObject != null)
+                {
+                    var shatteringObject = rightObject.GetComponent<ShatteringObject>();
+                    if (!shatteringObject.attachedObjects.Contains(this.gameObject.name))
+                    {
+                        FixedJoint2D jointRight = gameObject.AddComponent<FixedJoint2D>();
+                        attachedObjects.Add(rightObject.name);
+                        jointRight.connectedBody = rightObject.GetComponent<Rigidbody2D>();
+                        jointRight.anchor = new Vector2(collider.bounds.extents.x, 0);
+                        jointRight.enableCollision = true;
+                    }
+                }
+            }
+
+            //Check left
+            if (SurroundsCheck(-Vector2.right, distanceSides + 0.1f, out leftObject))
+            {
+                if (leftObject != null)
+                {
+                    var shatteringObject = leftObject.GetComponent<ShatteringObject>();
+                    if (!shatteringObject.attachedObjects.Contains(this.gameObject.name))
+                    {
+                        FixedJoint2D jointLeft = gameObject.AddComponent<FixedJoint2D>();
+                        attachedObjects.Add(leftObject.name);
+                        jointLeft.connectedBody = leftObject.GetComponent<Rigidbody2D>();
+                        jointLeft.anchor = new Vector2(-collider.bounds.extents.x, 0);
+                        jointLeft.enableCollision = true;
+                    }
+                }
+            }
+        }
+    }
 }

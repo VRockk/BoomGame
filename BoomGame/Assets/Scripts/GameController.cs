@@ -309,6 +309,7 @@ public class GameController : MonoBehaviour
     private LevelClear CheckLevelClear()
     {
 
+        return LevelClear.NotCleared;
         //TODO NOT working correctly ;)
         bool buildingsDamaged = false;
 
