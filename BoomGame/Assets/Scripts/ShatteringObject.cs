@@ -56,16 +56,18 @@ public class ShatteringObject : MonoBehaviour
 
     void Awake()
     {
+    }
+
+    void Start()
+    {
         initialPosition = this.transform.position;
         rigidBody = GetComponent<Rigidbody2D>();
         if (rigidBody == null)
             Debug.LogError("No Rigidbody found for object using Brick: " + this.gameObject.name);
         distanceGround = GetComponent<Collider2D>().bounds.extents.y;
         distanceSides = GetComponent<Collider2D>().bounds.extents.x;
-    }
 
-    void Start()
-    {
+
         if (SurroundsCheck(-Vector2.up, distanceGround + 0.1f, false))
         {
             hasInitialObjectBelow = true;

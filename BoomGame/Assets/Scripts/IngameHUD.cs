@@ -31,6 +31,11 @@ public class IngameHUD : MonoBehaviour
     private Canvas canvas;
     void Awake()
     {
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
         canvas = GetComponent<Canvas>();
         gameController = GameObject.FindObjectOfType<GameController>();
         cameraHandler = GameObject.FindObjectOfType<CameraHandler>();
@@ -85,13 +90,10 @@ public class IngameHUD : MonoBehaviour
 
 
         bombCountText = GameObject.Find("Bomb1Count").GetComponent<TextMeshProUGUI>();
-        print(bombCountText.gameObject.name);
+        //print(bombCountText.gameObject.name);
         bombCountText.text = gameController.bombCount.ToString();
-    }
 
-    // Start is called before the first frame update
-    void Start()
-    {
+
         ShowRoundText(2f, 1);
 
         Bomb bomb = gameController.bomb.GetComponent<Bomb>();

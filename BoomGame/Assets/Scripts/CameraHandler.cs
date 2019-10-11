@@ -39,6 +39,10 @@ public class CameraHandler : MonoBehaviour
 
     void Awake()
     {
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
         cam = GetComponent<Camera>();
         cameraDefaultPos = cam.transform.position;
         cam.orthographicSize = defaultCameraSize;
@@ -47,10 +51,6 @@ public class CameraHandler : MonoBehaviour
 
         if (gameController == null)
             Debug.LogError("GameController not found in the scene for the IngameHUD");
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
 
     }
 
