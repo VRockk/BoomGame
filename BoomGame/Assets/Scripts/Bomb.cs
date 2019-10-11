@@ -23,13 +23,13 @@ public class Bomb : MonoBehaviour
     private AudioSource audioSource;
     private void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
-        if (audioSource == null)
-            Debug.LogError("AudioSource not found in the scene for the Bomb");
     }
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+            Debug.LogError("AudioSource not found in the scene for the Bomb");
     }
 
     // Update is called once per frame

@@ -24,7 +24,7 @@ public class GameController : MonoBehaviour
 
 
     [HideInInspector]
-    public bool allowInput;
+    public bool inputAllowed;
 
     [HideInInspector]
     public int roundCounter = 1;
@@ -45,6 +45,17 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         hud = GameObject.FindObjectOfType<IngameHUD>();
 
         if (hud == null)
@@ -59,12 +70,8 @@ public class GameController : MonoBehaviour
 
         if (audioSource == null)
             Debug.LogError("AudioSource not found in the scene for the GameController");
-    }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        allowInput = true;
+        inputAllowed = true;
         roundCounter = 1;
         shatteringObjectCount = GameObject.FindGameObjectsWithTag("ShatteringObject").Length;
 
@@ -75,10 +82,7 @@ public class GameController : MonoBehaviour
        
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (allowInput)
+        if (inputAllowed)
         {
             //Checking if mouse is over the UI.
             if (!UtilityLibrary.IsMouseOverUI())
@@ -188,7 +192,7 @@ public class GameController : MonoBehaviour
 
     public void WaitForNextRound()
     {
-        allowInput = false;
+        inputAllowed = false;
         //gameController.NextRound();
         movementCheckCount = 0;
 
@@ -263,7 +267,7 @@ public class GameController : MonoBehaviour
         //Always when Failed
         if (levelClear == LevelClear.Failed)
         {
-            allowInput = false;
+            inputAllowed = false;
             hud.LevelFailed();
             return;
         }
@@ -272,7 +276,7 @@ public class GameController : MonoBehaviour
         {
             if (roundCounter == maxRounds)
             {
-                allowInput = false;
+                inputAllowed = false;
                 hud.LevelFailed();
             }
             else
@@ -281,13 +285,13 @@ public class GameController : MonoBehaviour
                 if (roundCounter == maxRounds && bombCount == 0)
                 {
                     //Fail if no bombs left
-                    allowInput = false;
+                    inputAllowed = false;
                     hud.LevelFailed();
                     return;
                 }
                 hud.NextRound(roundCounter);
 
-                allowInput = true;
+                inputAllowed = true;
             }
         }
         else
