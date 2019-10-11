@@ -51,11 +51,6 @@ public class GameController : MonoBehaviour
     void Start()
     {
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         hud = GameObject.FindObjectOfType<IngameHUD>();
 
         if (hud == null)
@@ -79,9 +74,13 @@ public class GameController : MonoBehaviour
 
         InvokeRepeating("CalculateLevelClearScore", 0.1f, 0.1f);
 
-       
+
+
     }
 
+    // Update is called once per frame
+    void Update()
+    {
         if (inputAllowed)
         {
             //Checking if mouse is over the UI.
