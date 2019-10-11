@@ -27,7 +27,7 @@ public class GameController : MonoBehaviour
     public bool inputAllowed;
 
     [HideInInspector]
-    public int roundCounter = 1;
+    public int roundCounter = 0;
 
     [HideInInspector]
     public GameObject bombUnderMouse;
@@ -66,8 +66,9 @@ public class GameController : MonoBehaviour
         if (audioSource == null)
             Debug.LogError("AudioSource not found in the scene for the GameController");
 
-        inputAllowed = true;
-        roundCounter = 1;
+        //inputAllowed = true;
+        roundCounter = 0;
+        NextRound();
         shatteringObjectCount = GameObject.FindGameObjectsWithTag("ShatteringObject").Length;
 
         hud.UpdateBombCount(bombCount);
@@ -195,25 +196,26 @@ public class GameController : MonoBehaviour
         //gameController.NextRound();
         movementCheckCount = 0;
 
+        //Check block movement once a second
         InvokeRepeating("CheckForMovement", 1f, 1f);
 
-        // TODO Make game faster after a while so the pieces settle down faster
+        //TODO allow user to press for faster time scale
     }
 
     public void Detonation()
     {
         //No bombs. Dont allow
-        if (GameObject.FindObjectsOfType<Bomb>().Length == 0)
+        if (GameObject.FindObjectsOfType<Bomb>().Length == 0 || !inputAllowed)
             return;
 
-        //if (!allowInput)
-        //    return;
 
-        //allowInput = false;
-        //gameController.allowInput = false;
 
-        cameraHandler.ZoomToSize(45f, new Vector3(0, 2f, 0));
+        inputAllowed = false;
 
+        // zoom to default zoom level
+        //cameraHandler.ZoomToSize(45f, new Vector3(0, 2f, 0));
+
+        //get all bombs and detonate them
         GameObject[] bombs = GameObject.FindGameObjectsWithTag("Bomb");
         foreach (GameObject bombObject in bombs)
         {
@@ -224,10 +226,12 @@ public class GameController : MonoBehaviour
         betweenRounds = true;
 
 
-        //gameController.WaitForNextRound();
         Invoke("WaitForNextRound", 2f);
     }
 
+    /// <summary>
+    /// Checks for block movement. If waited enough time scale time faster and wait longer.
+    /// </summary>
     private void CheckForMovement()
     {
         movementCheckCount++;
@@ -261,6 +265,7 @@ public class GameController : MonoBehaviour
     private void NextRound()
     {
         LevelClear levelClear = CheckLevelClear();
+        print(levelClear);
         //print(levelClear);
         betweenRounds = false;
         //Always when Failed
@@ -288,9 +293,11 @@ public class GameController : MonoBehaviour
                     hud.LevelFailed();
                     return;
                 }
-                hud.NextRound(roundCounter);
+                float roundDelay = 2f;
+                hud.NextRound(roundCounter, roundDelay);
 
-                inputAllowed = true;
+                StartCoroutine(AllowInput(true, 2));
+                //inputAllowed = true;
             }
         }
         else
@@ -391,5 +398,11 @@ public class GameController : MonoBehaviour
 
         percentageMoved = ((float)shatteringObjectCount - stillObjects) / (float)shatteringObjectCount;
         return percentageMoved;
+    }
+
+    private IEnumerator AllowInput(bool allow, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        inputAllowed = allow;
     }
 }

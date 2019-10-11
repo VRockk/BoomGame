@@ -70,6 +70,9 @@ public class Bomb : MonoBehaviour
 
     private IEnumerator Explode()
     {
+
+        //Get random scream sound and play it.
+        //TODO play only one scream, now we play multiple sounds if we have multiple bombs
         if (exposionScreamSounds.Length > 0)
         {
             var screamSound = exposionScreamSounds[Random.Range(0, exposionScreamSounds.Length)];
@@ -86,6 +89,8 @@ public class Bomb : MonoBehaviour
         if (explosion != null)
             Instantiate(explosion, explosionPos, Quaternion.identity);
 
+
+        //Get objects in destroy radius and destory them. Smallest radius
         Collider2D[] destroyColliders = Physics2D.OverlapCircleAll(explosionPos, destroyRadius);
         foreach (Collider2D hit in destroyColliders)
         {
@@ -94,34 +99,6 @@ public class Bomb : MonoBehaviour
             if (rb != null)
             {
                 Destroy(hit.transform.gameObject);
-            }
-        }
-
-        //Remove hitpoints on these
-        Collider2D[] damageColliders = Physics2D.OverlapCircleAll(explosionPos, damageRadius);
-
-        foreach (Collider2D hit in damageColliders)
-        {
-            if (hit.gameObject.tag.Contains("ShatteringObject"))
-            {
-                var shatteringObject = hit.gameObject.GetComponent<ShatteringObject>();
-                if (shatteringObject != null)
-                {
-                    //Remove hitpoints
-                    shatteringObject.hitpoints--;
-
-                    if (shatteringObject.hitpoints <= 0)
-                        shatteringObject.Shatter(explosionPos, 100, 100);
-                }
-            }
-            else if (hit.gameObject.tag.Contains("NPCBuilding"))
-            {
-                var npcHouse = hit.gameObject.GetComponent<NPCBuilding>();
-
-                if (npcHouse != null)
-                {
-                    npcHouse.DamageBuilding(1, false);
-                }
             }
         }
 
@@ -155,6 +132,26 @@ public class Bomb : MonoBehaviour
                     Vector2 force = UtilityLibrary.CalculateExplosionForce(explosionPos, hit.transform.position, power, upwardsForce);
 
                     rb.AddForce(force, ForceMode2D.Impulse);
+                }
+            }
+        }
+
+        //Remove hitpoints on these
+        Collider2D[] damageColliders = Physics2D.OverlapCircleAll(explosionPos, damageRadius);
+
+        foreach (Collider2D hit in damageColliders)
+        {
+            if (hit.gameObject.tag.Contains("ShatteringObject"))
+            {
+                var shatteringObject = hit.gameObject.GetComponent<ShatteringObject>();
+                if (shatteringObject != null)
+                {
+                    //Remove hitpoints
+                    shatteringObject.hitpoints--;
+
+                    //No more hitpoints, shatter
+                    if (shatteringObject.hitpoints <= 0)
+                        shatteringObject.Shatter(explosionPos, 100, 100);
                 }
             }
         }
