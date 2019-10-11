@@ -8,8 +8,6 @@ public class ShatteringObject : MonoBehaviour
     public Vector2[] pieceSpawnLocations;
     public GameObject[] pieceObjects;
 
-    public float gravityScale = 1.0f;
-    public float mass = 100.0f;
     public int hitpoints = 2;
     public bool canShatter = true;
 
@@ -295,7 +293,7 @@ public class ShatteringObject : MonoBehaviour
         {
             GameObject upObject, downObject, leftObject, rightObject;
 
-
+            List<FixedJoint2D> joints = new List<FixedJoint2D>();
             //Check if there are object next to this object and attach them to the joints.
 
             //Check above
@@ -308,12 +306,12 @@ public class ShatteringObject : MonoBehaviour
                     if (!shatteringObject.attachedObjects.Contains(this.gameObject.name))
                     {
                         //Create a new joint and attach object to it
-                        FixedJoint2D jointUp = gameObject.AddComponent<FixedJoint2D>();
+                        FixedJoint2D joint = gameObject.AddComponent<FixedJoint2D>();
                         attachedObjects.Add(upObject.name);
-                        jointUp.connectedBody = upObject.GetComponent<Rigidbody2D>();
+                        joint.connectedBody = upObject.GetComponent<Rigidbody2D>();
                         // Set anchor points to the edges of the object
-                        jointUp.anchor = new Vector2(0, collider.bounds.extents.y);
-                        jointUp.enableCollision = true;
+                        //joint.anchor = new Vector2(0, collider.bounds.extents.y);
+                        joints.Add(joint);
                     }
                 }
             }
@@ -324,13 +322,15 @@ public class ShatteringObject : MonoBehaviour
                 if (downObject != null)
                 {
                     var shatteringObject = downObject.GetComponent<ShatteringObject>();
+                    //if ((shatteringObject != null && !shatteringObject.attachedObjects.Contains(this.gameObject.name)) || shatteringObject == null)
+
                     if (!shatteringObject.attachedObjects.Contains(this.gameObject.name))
                     {
-                        FixedJoint2D jointDown = gameObject.AddComponent<FixedJoint2D>();
+                        FixedJoint2D joint = gameObject.AddComponent<FixedJoint2D>();
                         attachedObjects.Add(downObject.name);
-                        jointDown.connectedBody = downObject.GetComponent<Rigidbody2D>();
-                        jointDown.anchor = new Vector2(0, -collider.bounds.extents.y);
-                        jointDown.enableCollision = true;
+                        joint.connectedBody = downObject.GetComponent<Rigidbody2D>();
+                        //joint.anchor = new Vector2(0, -collider.bounds.extents.y);
+                        joints.Add(joint);
                     }
                 }
             }
@@ -343,11 +343,11 @@ public class ShatteringObject : MonoBehaviour
                     var shatteringObject = rightObject.GetComponent<ShatteringObject>();
                     if (!shatteringObject.attachedObjects.Contains(this.gameObject.name))
                     {
-                        FixedJoint2D jointRight = gameObject.AddComponent<FixedJoint2D>();
+                        FixedJoint2D joint = gameObject.AddComponent<FixedJoint2D>();
                         attachedObjects.Add(rightObject.name);
-                        jointRight.connectedBody = rightObject.GetComponent<Rigidbody2D>();
-                        jointRight.anchor = new Vector2(collider.bounds.extents.x, 0);
-                        jointRight.enableCollision = true;
+                        joint.connectedBody = rightObject.GetComponent<Rigidbody2D>();
+                        //joint.anchor = new Vector2(collider.bounds.extents.x, 0);
+                        joints.Add(joint);
                     }
                 }
             }
@@ -360,13 +360,28 @@ public class ShatteringObject : MonoBehaviour
                     var shatteringObject = leftObject.GetComponent<ShatteringObject>();
                     if (!shatteringObject.attachedObjects.Contains(this.gameObject.name))
                     {
-                        FixedJoint2D jointLeft = gameObject.AddComponent<FixedJoint2D>();
+                        FixedJoint2D joint = gameObject.AddComponent<FixedJoint2D>();
                         attachedObjects.Add(leftObject.name);
-                        jointLeft.connectedBody = leftObject.GetComponent<Rigidbody2D>();
-                        jointLeft.anchor = new Vector2(-collider.bounds.extents.x, 0);
-                        jointLeft.enableCollision = true;
+                        joint.connectedBody = leftObject.GetComponent<Rigidbody2D>();
+                        //joint.anchor = new Vector2(-collider.bounds.extents.x, 0);
+                        joints.Add(joint);
                     }
                 }
+            }
+
+            //Set default values for all the new joints 
+            foreach(var joint in joints)
+            {
+                joint.enableCollision = true;
+                joint.autoConfigureConnectedAnchor = false;
+                //var limits = new JointAngleLimits2D();
+                //limits.min = 0;
+                //limits.max = 0;
+                //joint.limits = limits;
+                //joint.useMotor = true;
+                //var motor = new JointMotor2D();
+                //motor.maxMotorTorque = 1000000;
+                //motor.motorSpeed = 10000;
             }
         }
     }
