@@ -94,7 +94,7 @@ public class IngameHUD : MonoBehaviour
         bombCountText.text = gameController.bombCount.ToString();
 
 
-        ShowRoundText(2f, 1);
+        //ShowRoundText(2f, 1);
 
         Bomb bomb = gameController.bomb.GetComponent<Bomb>();
         bomb1Icon.GetComponent<Image>().sprite = bomb.inventoryIcon;
@@ -128,7 +128,7 @@ public class IngameHUD : MonoBehaviour
         //Application.LoadLevel();
     }
 
-    public void NextRound(int roundNumber)
+    public void NextRound(int roundNumber, float delay)
     {
         detonatePanel.GetComponent<CanvasGroup>().alpha = 1;
         detonatePanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
@@ -145,7 +145,7 @@ public class IngameHUD : MonoBehaviour
 
         //TODO show "ROUND 2" text popup for a second or something like that
 
-        ShowRoundText(2f, roundNumber);
+        ShowRoundText(delay, roundNumber);
     }
 
     public void LevelFinished(LevelClear levelClear)
