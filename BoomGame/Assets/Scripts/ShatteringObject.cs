@@ -29,6 +29,9 @@ public class ShatteringObject : MonoBehaviour
     [HideInInspector]
     public Vector3 initialPosition;
 
+    [HideInInspector]
+    public bool allowDamage = true;
+
     //Does the object have an object below initially. If it doesnt, we dont need to do groundcheck in the beginning
     private bool hasInitialObjectBelow = false;
     private bool hasInitialObjectLeft = false;
@@ -37,7 +40,6 @@ public class ShatteringObject : MonoBehaviour
     private float distanceSides;
     private bool shattered = false;
     private Rigidbody2D rigidBody;
-    private bool allowDamage = true;
     private float damageGateDelay = 0f;
     private const float damageDelayDefault = 0.05f;
 
@@ -243,7 +245,11 @@ public class ShatteringObject : MonoBehaviour
                 rigidBody.AddForce(force, ForceMode2D.Impulse);
             }
             if (shatteringObject != null)
+            {
                 shatteringObject.createJoints = false;
+                shatteringObject.allowDamage = false;
+                shatteringObject.damageGateDelay = 0.05f;
+            }
         }
     }
 
