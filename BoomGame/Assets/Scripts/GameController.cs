@@ -22,7 +22,6 @@ public class GameController : MonoBehaviour
 
     public int bombCount = 3;
 
-
     [HideInInspector]
     public bool inputAllowed;
 
@@ -43,6 +42,8 @@ public class GameController : MonoBehaviour
 
     private bool betweenRounds = false;
 
+    private WinLines winlines;
+
     private void Awake()
     {
     }
@@ -50,7 +51,6 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         hud = GameObject.FindObjectOfType<IngameHUD>();
 
         if (hud == null)
@@ -66,17 +66,22 @@ public class GameController : MonoBehaviour
         if (audioSource == null)
             Debug.LogError("AudioSource not found in the scene for the GameController");
 
+        var winlinesObj = GameObject.Find("Winlines");
+
+        if (winlinesObj == null)
+            Debug.LogError("No winlines found");
+
+        winlines = winlinesObj.GetComponent<WinLines>();
+
+        if (winlines == null)
+            Debug.LogError("No winlines found");
+
         //inputAllowed = true;
         roundCounter = 0;
         NextRound();
         shatteringObjectCount = GameObject.FindGameObjectsWithTag("ShatteringObject").Length;
 
         hud.UpdateBombCount(bombCount);
-
-        InvokeRepeating("CalculateLevelClearScore", 0.1f, 0.1f);
-
-
-
     }
 
     // Update is called once per frame
@@ -168,7 +173,7 @@ public class GameController : MonoBehaviour
                     //Create a new bomb instance when clicking on Bomb card
                     foreach (RaycastResult result in results)
                     {
-                        print(result.gameObject.name);
+                        //print(result.gameObject.name);
                         if (result.gameObject.tag == "BombCard")
                         {
                             bombUnderMouse = Instantiate(bomb, new Vector3(mousePos.x, mousePos.y + 5f, -1f), Quaternion.identity);
@@ -207,8 +212,6 @@ public class GameController : MonoBehaviour
         //No bombs. Dont allow
         if (GameObject.FindObjectsOfType<Bomb>().Length == 0 || !inputAllowed)
             return;
-
-
 
         inputAllowed = false;
 
@@ -265,7 +268,7 @@ public class GameController : MonoBehaviour
     private void NextRound()
     {
         LevelClear levelClear = CheckLevelClear();
-        print(levelClear);
+        
         //print(levelClear);
         betweenRounds = false;
         //Always when Failed
@@ -308,9 +311,7 @@ public class GameController : MonoBehaviour
 
     private LevelClear CheckLevelClear()
     {
-
-        return LevelClear.NotCleared;
-        //TODO NOT working correctly ;)
+        LevelClear levelClear = LevelClear.NotCleared;
         bool buildingsDamaged = false;
 
         var npcBuildings = GameObject.FindObjectsOfType<NPCBuilding>();
@@ -329,46 +330,39 @@ public class GameController : MonoBehaviour
             }
         }
 
+        //Find the brick that has the highest position 
+        var highestBrick = FindObjectsOfType<ShatteringObject>().OrderByDescending(x => x.gameObject.transform.position.y + x.GetComponent<Collider2D>().bounds.extents.y).First();
+        float highestBrickTopPos = highestBrick.transform.position.y + highestBrick.GetComponent<Collider2D>().bounds.extents.y;
 
-        float percentageMoved = CalculatePercentageMovedObjects() * 100f;
 
-        if (percentageMoved < 90.0f)
+        if(highestBrickTopPos <= winlines.threePentaLine)
+        {
+            levelClear = LevelClear.ThreePentagram;
+        }
+        else if (highestBrickTopPos <= winlines.twoPentaLine)
+        {
+            levelClear = LevelClear.TwoPentagram;
+        }
+        else if (highestBrickTopPos <= winlines.onePentaLine)
+        {
+            levelClear = LevelClear.OnePentagram;
+        }
+        else
         {
             return LevelClear.NotCleared;
         }
 
-        if(percentageMoved >= 50.0f)
+        if(buildingsDamaged)
         {
-            if (percentageMoved >= 75.0f)
-            {                
-                if (percentageMoved >= 90.0f)
-                {
-                    return LevelClear.ThreePentagram;
-
-                }
-                return LevelClear.TwoPentagram;
-            }
-            return LevelClear.OnePentagram;
+            if (levelClear == LevelClear.ThreePentagram)
+                levelClear = LevelClear.TwoPentagram;
+            else if (levelClear == LevelClear.TwoPentagram)
+                levelClear = LevelClear.OnePentagram;
+            else
+                levelClear = LevelClear.NotCleared;
         }
 
-        return LevelClear.Failed;
-
-        //if (roundCounter == 1)
-        //{
-        //    if (buildingsDamaged)
-        //    {
-        //        return LevelClear.TwoPentagram;
-        //    }
-        //    return LevelClear.ThreePentagram;
-        //}
-        //else
-        //{
-        //    if (buildingsDamaged)
-        //    {
-        //        return LevelClear.OnePentagram;
-        //    }
-        //    return LevelClear.ThreePentagram;
-        //}
+        return levelClear;
     }
 
     private void LoadNextLevel()
@@ -380,26 +374,6 @@ public class GameController : MonoBehaviour
         
     }
 
-    private void CalculateLevelClearScore()
-    {
-        //this sucks lol.
-        //Only calculate when we are between rounds.
-        if (betweenRounds)
-        {
-            float percentageMoved = CalculatePercentageMovedObjects();
-            //print(percentageMoved);
-            hud.UpdateLevelProgressBar(percentageMoved);
-        }
-    }
-
-    private float CalculatePercentageMovedObjects()
-    {
-        float percentageMoved;
-        float stillObjects = GameObject.FindObjectsOfType<ShatteringObject>().Where(x => x.initialPosition == x.transform.position).Count();
-
-        percentageMoved = ((float)shatteringObjectCount - stillObjects) / (float)shatteringObjectCount;
-        return percentageMoved;
-    }
 
     private IEnumerator AllowInput(bool allow, float delay)
     {
