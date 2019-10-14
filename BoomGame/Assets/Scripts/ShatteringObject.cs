@@ -36,7 +36,7 @@ public class ShatteringObject : MonoBehaviour
     private bool hasInitialObjectBelow = false;
     private bool hasInitialObjectLeft = false;
     private bool hasInitialObjectRight = false;
-    private float distanceGround;
+    private float distanceTop;
     private float distanceSides;
     private bool shattered = false;
     private Rigidbody2D rigidBody;
@@ -70,7 +70,7 @@ public class ShatteringObject : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         if (rigidBody == null)
             Debug.LogError("No Rigidbody found for object using Brick: " + this.gameObject.name);
-        distanceGround = GetComponent<Collider2D>().bounds.extents.y;
+        distanceTop = GetComponent<Collider2D>().bounds.extents.y;
         distanceSides = GetComponent<Collider2D>().bounds.extents.x;
 
         CreateJoints();
@@ -297,7 +297,7 @@ public class ShatteringObject : MonoBehaviour
             //Check if there are object next to this object and attach them to the joints.
 
             //Check above
-            if (SurroundsCheck(Vector2.up, distanceGround + 0.1f, out upObject))
+            if (SurroundsCheck(Vector2.up, distanceTop + 0.1f, out upObject))
             {
                 if (upObject != null)
                 {
@@ -317,7 +317,7 @@ public class ShatteringObject : MonoBehaviour
             }
 
             //Check below
-            if (SurroundsCheck(-Vector2.up, distanceGround + 0.1f, out downObject))
+            if (SurroundsCheck(-Vector2.up, distanceTop + 0.1f, out downObject))
             {
                 if (downObject != null)
                 {

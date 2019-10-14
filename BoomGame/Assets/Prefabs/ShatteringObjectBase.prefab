@@ -159,9 +159,12 @@ MonoBehaviour:
   - {fileID: 173200965498113037, guid: ac6f03e6e3056a4429548d492d41c123, type: 3}
   hitpoints: 2
   canShatter: 1
+  jointBreakForce: 150000
+  jointBreakTorque: 150000
   damagedForceLimit: 10000
   ignoreForClear: 0
   isGrounded: 1
   createJoints: 1
   initialPosition: {x: 0, y: 0, z: 0}
+  allowDamage: 1
   attachedObjects: []
