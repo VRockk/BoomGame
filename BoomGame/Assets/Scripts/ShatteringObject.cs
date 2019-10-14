@@ -210,18 +210,10 @@ public class ShatteringObject : MonoBehaviour
             //Set the position showed by the gizmos
             if (pieceSpawnLocations.Length >= e)
             {
+
                 Vector3 localPosition = (this.transform.right * pieceSpawnLocations[e].x) + (this.transform.up * pieceSpawnLocations[e].y);
-                newObject.transform.position = this.transform.position +
-                    new Vector3(
-                        localPosition.x,
-                        localPosition.y,
-                        0.0f);
-                //if(newObject.name.ToLower().Contains("wood"))
-                //print(newObject.transform.position + "   " + localPosition);
-
-
-                //newObject.transform.localRotation = this.transform.localRotation;
-                //this.transform.right 
+                newObject.transform.position = this.transform.position + new Vector3(localPosition.x, localPosition.y, 0.0f);
+                newObject.transform.localRotation = this.transform.localRotation;
             }
             newObjects.Add(newObject);
         }
@@ -287,7 +279,7 @@ public class ShatteringObject : MonoBehaviour
 
         return value;
     }
-    
+
     /// <summary>
     /// Creates and attaches joints to objects next to this object
     /// </summary>
@@ -378,7 +370,7 @@ public class ShatteringObject : MonoBehaviour
             }
 
             //Set default values for all the new joints 
-            foreach(var joint in joints)
+            foreach (var joint in joints)
             {
                 joint.enableCollision = true;
                 joint.autoConfigureConnectedAnchor = false;
