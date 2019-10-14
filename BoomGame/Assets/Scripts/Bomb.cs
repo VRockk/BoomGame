@@ -96,7 +96,7 @@ public class Bomb : MonoBehaviour
         {
             Rigidbody2D rb = hit.GetComponent<Rigidbody2D>();
 
-            if (rb != null)
+            if (rb != null && hit.gameObject.tag != "Ground")
             {
                 Destroy(hit.transform.gameObject);
             }
@@ -127,7 +127,7 @@ public class Bomb : MonoBehaviour
             {
                 Rigidbody2D rb = hit.GetComponent<Rigidbody2D>();
 
-                if (rb != null)
+                if (rb != null && hit.gameObject.tag != "Ground")
                 {
                     Vector2 force = UtilityLibrary.CalculateExplosionForce(explosionPos, hit.transform.position, power, upwardsForce);
 
