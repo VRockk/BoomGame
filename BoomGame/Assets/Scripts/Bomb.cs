@@ -89,16 +89,18 @@ public class Bomb : MonoBehaviour
         if (explosion != null)
             Instantiate(explosion, explosionPos, Quaternion.identity);
 
-
-        //Get objects in destroy radius and destory them. Smallest radius
-        Collider2D[] destroyColliders = Physics2D.OverlapCircleAll(explosionPos, destroyRadius);
-        foreach (Collider2D hit in destroyColliders)
+        if (destroyRadius > 0f)
         {
-            Rigidbody2D rb = hit.GetComponent<Rigidbody2D>();
-
-            if (rb != null && hit.gameObject.tag != "Ground")
+            //Get objects in destroy radius and destory them. Smallest radius
+            Collider2D[] destroyColliders = Physics2D.OverlapCircleAll(explosionPos, destroyRadius);
+            foreach (Collider2D hit in destroyColliders)
             {
-                Destroy(hit.transform.gameObject);
+                Rigidbody2D rb = hit.GetComponent<Rigidbody2D>();
+
+                if (rb != null && hit.gameObject.tag != "Ground")
+                {
+                    Destroy(hit.transform.gameObject);
+                }
             }
         }
 
@@ -110,7 +112,7 @@ public class Bomb : MonoBehaviour
             if (hit.gameObject.tag.Contains("ShatteringObject"))
             {
                 var shatteringObject = hit.gameObject.GetComponent<ShatteringObject>();
-                if (shatteringObject != null)
+                if (shatteringObject != null && shatteringObject.allowDamage)
                     shatteringObject.Shatter(explosionPos, power, upwardsForce);
             }
             else if (hit.gameObject.tag.Contains("NPCBuilding"))
@@ -144,7 +146,7 @@ public class Bomb : MonoBehaviour
             if (hit.gameObject.tag.Contains("ShatteringObject"))
             {
                 var shatteringObject = hit.gameObject.GetComponent<ShatteringObject>();
-                if (shatteringObject != null)
+                if (shatteringObject != null && shatteringObject.allowDamage)
                 {
                     //Remove hitpoints
                     shatteringObject.hitpoints--;
