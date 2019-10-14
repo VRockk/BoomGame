@@ -10,8 +10,8 @@ public class AdsController : MonoBehaviour
     public static AdsController adsInstance;
     
     
-    private string googlePlayStoreId = "3318672";
-    private string appleAppStoreId = "3318673";
+    private string googlePlayStoreId = "3324943";
+    private string appleAppStoreId = "3324942";
 
     private string video_ad = "video";
     private string rewarded_video_ad = "rewardedVideo";
