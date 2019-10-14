@@ -23,7 +23,6 @@ public class IngameHUD : MonoBehaviour
     private GameObject penta3Panel;
     private GameObject bomb1Icon;
     private GameObject detonateButton;
-    private GameObject progressBar;
     private CameraHandler cameraHandler;
 
     private TextMeshProUGUI bombCountText;
@@ -59,7 +58,6 @@ public class IngameHUD : MonoBehaviour
         penta3Panel = GameObject.Find("Penta3");
         bomb1Icon = GameObject.Find("Bomb1Icon");
         detonateButton = GameObject.Find("DetonateButton");
-        progressBar = GameObject.Find("ProgressBar");
 
         detonatePanel.GetComponent<CanvasGroup>().alpha = 1;
         detonatePanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
@@ -85,12 +83,9 @@ public class IngameHUD : MonoBehaviour
         penta3Panel.GetComponent<CanvasGroup>().alpha = 0;
         penta3Panel.GetComponent<CanvasGroup>().blocksRaycasts = false;
 
-        progressBar.GetComponent<CanvasGroup>().alpha = 1;
-        progressBar.GetComponent<CanvasGroup>().blocksRaycasts = true;
-
 
         bombCountText = GameObject.Find("Bomb1Count").GetComponent<TextMeshProUGUI>();
-        //print(bombCountText.gameObject.name);
+        print(bombCountText.gameObject.name);
         bombCountText.text = gameController.bombCount.ToString();
 
 
@@ -241,16 +236,6 @@ public class IngameHUD : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         canvasGroup.alpha = alpha;
-        //roundPanel.transform.localPosition = new Vector3(0, -10000f, 0);
     }
 
-
-    public void UpdateLevelProgressBar(float percent)
-    {
-        var slider = progressBar.GetComponent<Slider>();
-        if (slider != null)
-        {
-            slider.value = percent; 
-        }
-    }
 }
