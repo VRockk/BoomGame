@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 685828ebb1f3c98429201ddd64f4b493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitpoints: 1
+  damagedForceLimit: 10000
 --- !u!1001 &2378432064242319541
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24,17 +26,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoomBacgroundPiece_Left
       objectReference: {fileID: 0}
-    - target: {fileID: 4785638828270524803, guid: ac6f03e6e3056a4429548d492d41c123,
-        type: 3}
-      propertyPath: m_Mass
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 6652297626691305361, guid: ac6f03e6e3056a4429548d492d41c123,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: c1dca2aa5d4ddad498af2ca6482dfc27,
-        type: 3}
     - target: {fileID: 6032074837103792415, guid: ac6f03e6e3056a4429548d492d41c123,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -90,6 +81,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6652297626691305361, guid: ac6f03e6e3056a4429548d492d41c123,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c1dca2aa5d4ddad498af2ca6482dfc27,
+        type: 3}
     - target: {fileID: 5849968127907056663, guid: ac6f03e6e3056a4429548d492d41c123,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -109,6 +106,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Material
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5849968127907056663, guid: ac6f03e6e3056a4429548d492d41c123,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5849968127907056663, guid: ac6f03e6e3056a4429548d492d41c123,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 8.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785638828270524803, guid: ac6f03e6e3056a4429548d492d41c123,
+        type: 3}
+      propertyPath: m_Mass
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac6f03e6e3056a4429548d492d41c123, type: 3}
