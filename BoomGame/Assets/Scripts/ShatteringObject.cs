@@ -10,9 +10,11 @@ public class ShatteringObject : MonoBehaviour
 
     public int hitpoints = 2;
     public bool canShatter = true;
+    public float jointBreakForce = 50000f;
+    public float jointBreakTorque = 50000f;
 
     [Tooltip("The force when the object is damaged if hit. Lower == Easier to destroy/shatter")]
-    public float damagedForceLimit = 30000.0f;
+    public float damagedForceLimit = 10000.0f;
 
 
     [Tooltip("Is this object is ignored when checking for level clear?")]
@@ -303,7 +305,7 @@ public class ShatteringObject : MonoBehaviour
                 {
                     var shatteringObject = upObject.GetComponent<ShatteringObject>();
                     //Check that we only have one joint between two objects
-                    if (!shatteringObject.attachedObjects.Contains(this.gameObject.name))
+                    if (shatteringObject != null && !shatteringObject.attachedObjects.Contains(this.gameObject.name))
                     {
                         //Create a new joint and attach object to it
                         FixedJoint2D joint = gameObject.AddComponent<FixedJoint2D>();
@@ -324,7 +326,7 @@ public class ShatteringObject : MonoBehaviour
                     var shatteringObject = downObject.GetComponent<ShatteringObject>();
                     //if ((shatteringObject != null && !shatteringObject.attachedObjects.Contains(this.gameObject.name)) || shatteringObject == null)
 
-                    if (!shatteringObject.attachedObjects.Contains(this.gameObject.name))
+                    if (shatteringObject != null && !shatteringObject.attachedObjects.Contains(this.gameObject.name))
                     {
                         FixedJoint2D joint = gameObject.AddComponent<FixedJoint2D>();
                         attachedObjects.Add(downObject.name);
@@ -341,7 +343,7 @@ public class ShatteringObject : MonoBehaviour
                 if (rightObject != null)
                 {
                     var shatteringObject = rightObject.GetComponent<ShatteringObject>();
-                    if (!shatteringObject.attachedObjects.Contains(this.gameObject.name))
+                    if (shatteringObject != null && !shatteringObject.attachedObjects.Contains(this.gameObject.name))
                     {
                         FixedJoint2D joint = gameObject.AddComponent<FixedJoint2D>();
                         attachedObjects.Add(rightObject.name);
@@ -358,7 +360,7 @@ public class ShatteringObject : MonoBehaviour
                 if (leftObject != null)
                 {
                     var shatteringObject = leftObject.GetComponent<ShatteringObject>();
-                    if (!shatteringObject.attachedObjects.Contains(this.gameObject.name))
+                    if (shatteringObject != null && !shatteringObject.attachedObjects.Contains(this.gameObject.name))
                     {
                         FixedJoint2D joint = gameObject.AddComponent<FixedJoint2D>();
                         attachedObjects.Add(leftObject.name);
@@ -374,6 +376,8 @@ public class ShatteringObject : MonoBehaviour
             {
                 joint.enableCollision = true;
                 joint.autoConfigureConnectedAnchor = false;
+                joint.breakForce = jointBreakForce;
+                joint.breakTorque = jointBreakTorque;
                 //var limits = new JointAngleLimits2D();
                 //limits.min = 0;
                 //limits.max = 0;
