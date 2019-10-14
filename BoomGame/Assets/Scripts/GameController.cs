@@ -293,10 +293,10 @@ public class GameController : MonoBehaviour
                     hud.LevelFailed();
                     return;
                 }
-                float roundDelay = 2f;
+                float roundDelay = 0.5f;
                 hud.NextRound(roundCounter, roundDelay);
 
-                StartCoroutine(AllowInput(true, 2));
+                StartCoroutine(AllowInput(true, roundDelay));
                 //inputAllowed = true;
             }
         }

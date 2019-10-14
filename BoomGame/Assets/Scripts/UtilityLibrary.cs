@@ -17,6 +17,24 @@ public class UtilityLibrary
 {
 
 
+    public static Vector3 CalculateExplosionForceWithDistance(Vector3 explosionPos, Vector3 hitObjectPosition, float power, float upwardsForce)
+    {
+        Vector2 force;
+        // Calculating the direction from the bomb placement to the overlapping 
+        Vector2 heading = hitObjectPosition - explosionPos;
+        float distance = heading.magnitude;
+        if (distance == 0)
+            distance = 1;
+        Vector2 direction = heading / distance;
+
+        //Calculate force from the direction multiplied by the power. Force weaker by distance
+        force = direction * (power / distance);
+
+        // Add additional upwards force
+        force += new Vector2(0, upwardsForce);
+        return force;
+    }
+
     public static Vector3 CalculateExplosionForce(Vector3 explosionPos, Vector3 hitObjectPosition, float power, float upwardsForce)
     {
         Vector2 force;
@@ -25,11 +43,10 @@ public class UtilityLibrary
         float distance = heading.magnitude;
         if (distance == 0)
             distance = 1;
-        //MonoBehaviour.print(hitObjectPosition + "   " + explosionPos + "   " + distance);
         Vector2 direction = heading / distance;
 
-        //Calculate force from the direction multiplied by the power. Force weaker by distance
-        force = direction * (power / distance);
+        //Calculate force from the direction multiplied by the power. Force the same no matter the distance
+        force = direction * power;
 
         // Add additional upwards force
         force += new Vector2(0, upwardsForce);
