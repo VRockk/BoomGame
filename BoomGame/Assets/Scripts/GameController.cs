@@ -205,7 +205,7 @@ public class GameController : MonoBehaviour
         //Check block movement once a second
         InvokeRepeating("CheckForMovement", 1f, 1f);
 
-        //TODO allow user to press for faster time scale
+        //TODO allow user to press for the faster time scale
     }
 
     public bool Detonation()

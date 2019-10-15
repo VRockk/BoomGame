@@ -8,10 +8,12 @@ public class CameraHandler : MonoBehaviour
     private static readonly float zoomSpeedTouch = 0.1f;
     private static readonly float zoomSpeedMouse = 10f;
 
-    private static readonly float[] boundsXClosest = new float[] { -35f, 35f };
-    private static readonly float[] boundsYClosest = new float[] { -10f, 15f };
-    private static readonly float[] camSizeBounds = new float[] { 25f, 45f };
+    private float[] boundsXClosest = new float[] { -35f, 35f };
+    private float[] boundsYClosest = new float[] { -10f, 15f };
+    private float[] camSizeBounds = new float[] { 25f, 45f };
     public float defaultCameraSize = 45f;
+    public float minCameraSize = 25f;
+    public float maxCameraSize = 45f;
 
     private Camera cam;
     private GameController gameController;
@@ -50,9 +52,9 @@ public class CameraHandler : MonoBehaviour
         gameObject.transform.parent = null;
 
         cameraDefaultPos = cam.transform.position;
-        print(cameraDefaultPos);
         cam.orthographicSize = defaultCameraSize;
-
+        camSizeBounds[0] = minCameraSize;
+        camSizeBounds[1] = maxCameraSize;
         gameController = GameObject.FindObjectOfType<GameController>();
 
         if (gameController == null)
@@ -119,7 +121,7 @@ public class CameraHandler : MonoBehaviour
 
         // Check for scrolling to zoom the camera
         float scroll = Input.GetAxis("Mouse ScrollWheel");
-        print(scroll);
+        //print(scroll);
         ZoomCamera(scroll, zoomSpeedMouse);
     }
 
