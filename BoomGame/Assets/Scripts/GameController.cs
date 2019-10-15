@@ -44,6 +44,7 @@ public class GameController : MonoBehaviour
 
     private WinLines winlines;
 
+    private float roundDelay = 0.5f;
     private void Awake()
     {
     }
@@ -269,7 +270,7 @@ public class GameController : MonoBehaviour
     private void NextRound()
     {
         LevelClear levelClear = CheckLevelClear();
-        
+
         //print(levelClear);
         betweenRounds = false;
         //Always when Failed
@@ -297,7 +298,6 @@ public class GameController : MonoBehaviour
                     hud.LevelFailed();
                     return;
                 }
-                float roundDelay = 0.5f;
                 hud.NextRound(roundCounter, roundDelay);
 
                 StartCoroutine(AllowInput(true, roundDelay));
@@ -320,7 +320,7 @@ public class GameController : MonoBehaviour
         foreach (var building in npcBuildings)
         {
             //If any building is destroyed level is instantly failed
-            //Buildings can be damaged but you get lower score
+            //Buildings can be damaged but you get less pentagrams
             if (building.Hitpoints <= 0)
             {
                 return LevelClear.Failed;
@@ -332,19 +332,18 @@ public class GameController : MonoBehaviour
         }
 
         //Find the brick that has the highest position 
-        var highestBrick = FindObjectsOfType<ShatteringObject>().OrderByDescending(x => x.gameObject.transform.position.y + x.GetComponent<Collider2D>().bounds.extents.y).First();
+        var highestBrick = FindObjectsOfType<ShatteringObject>().Where(x => x.gameObject.transform.position.magnitude < 50).OrderByDescending(x => x.gameObject.transform.position.y + x.GetComponent<Collider2D>().bounds.extents.y).First();
         float highestBrickTopPos = highestBrick.transform.position.y + highestBrick.GetComponent<Collider2D>().bounds.extents.y;
 
-
-        if(highestBrickTopPos <= winlines.threePentaLine)
+        if (highestBrickTopPos <= winlines.threePentaLine)
         {
             levelClear = LevelClear.ThreePentagram;
         }
-        else if (highestBrickTopPos <= winlines.twoPentaLine)
+        else if (highestBrickTopPos <= winlines.twoPentaLine && (roundCounter == maxRounds || bombCount == 0))
         {
             levelClear = LevelClear.TwoPentagram;
         }
-        else if (highestBrickTopPos <= winlines.onePentaLine)
+        else if (highestBrickTopPos <= winlines.onePentaLine && (roundCounter == maxRounds || bombCount == 0))
         {
             levelClear = LevelClear.OnePentagram;
         }
@@ -353,7 +352,8 @@ public class GameController : MonoBehaviour
             return LevelClear.NotCleared;
         }
 
-        if(buildingsDamaged)
+        //Damaged buildings lower the pentagrams gained by one
+        if (buildingsDamaged)
         {
             if (levelClear == LevelClear.ThreePentagram)
                 levelClear = LevelClear.TwoPentagram;
@@ -369,10 +369,10 @@ public class GameController : MonoBehaviour
     private void LoadNextLevel()
     {
 
-       
+
         //TODO: Show loading screens
         SceneManager.LoadScene(nextLevelName, LoadSceneMode.Single);
-        
+
     }
 
 
