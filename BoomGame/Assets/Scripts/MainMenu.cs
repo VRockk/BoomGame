@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     
-    public GameObject shopPanel;
-    
     public void PlayGame()
     {
         SceneManager.LoadScene("Tutorial");
@@ -16,10 +14,7 @@ public class MainMenu : MonoBehaviour
     
     public void OpenPanel()
     {
-        if(shopPanel != null)
-        { 
-            shopPanel.SetActive(true);
-        }
+        SceneManager.LoadScene("Shop");
     }
 
 }
