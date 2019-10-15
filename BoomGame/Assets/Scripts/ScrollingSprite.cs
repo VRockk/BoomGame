@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingObject : MonoBehaviour
+public class ScrollingSprite : MonoBehaviour
 {
 
     public Vector2 amount;

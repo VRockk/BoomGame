@@ -85,7 +85,6 @@ public class IngameHUD : MonoBehaviour
 
 
         bombCountText = GameObject.Find("Bomb1Count").GetComponent<TextMeshProUGUI>();
-        print(bombCountText.gameObject.name);
         bombCountText.text = gameController.bombCount.ToString();
 
 
