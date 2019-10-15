@@ -205,7 +205,7 @@ public class GameController : MonoBehaviour
         //Check block movement once a second
         InvokeRepeating("CheckForMovement", 1f, 1f);
 
-        //TODO allow user to press for faster time scale
+        //TODO allow user to press for the faster time scale
     }
 
     public bool Detonation()
@@ -217,7 +217,7 @@ public class GameController : MonoBehaviour
         inputAllowed = false;
 
         // zoom to default zoom level
-        //cameraHandler.ZoomToSize(45f, new Vector3(0, 2f, 0));
+        cameraHandler.ZoomToSize(45f, new Vector3(0, 0, 0));
 
         //get all bombs and detonate them
         GameObject[] bombs = GameObject.FindGameObjectsWithTag("Bomb");
