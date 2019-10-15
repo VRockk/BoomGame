@@ -103,8 +103,10 @@ public class IngameHUD : MonoBehaviour
 
     public void DetonateAllBombs()
     {
-        detonateButton.GetComponent<Image>().sprite = detonatorDown;
-        gameController.Detonation();
+        if(gameController.Detonation())
+        {
+            detonateButton.GetComponent<Image>().sprite = detonatorDown;
+        }
     }
 
     public void ResetLevel()

@@ -207,11 +207,11 @@ public class GameController : MonoBehaviour
         //TODO allow user to press for faster time scale
     }
 
-    public void Detonation()
+    public bool Detonation()
     {
         //No bombs. Dont allow
         if (GameObject.FindObjectsOfType<Bomb>().Length == 0 || !inputAllowed)
-            return;
+            return false;
 
         inputAllowed = false;
 
@@ -230,6 +230,7 @@ public class GameController : MonoBehaviour
 
 
         Invoke("WaitForNextRound", 2f);
+        return true;
     }
 
     /// <summary>
