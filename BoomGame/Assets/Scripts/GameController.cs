@@ -217,7 +217,7 @@ public class GameController : MonoBehaviour
         inputAllowed = false;
 
         // zoom to default zoom level
-        //cameraHandler.ZoomToSize(45f, new Vector3(0, 2f, 0));
+        cameraHandler.ZoomToSize(45f, new Vector3(0, 0, 0));
 
         //get all bombs and detonate them
         GameObject[] bombs = GameObject.FindGameObjectsWithTag("Bomb");

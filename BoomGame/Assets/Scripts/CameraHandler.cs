@@ -6,7 +6,7 @@ public class CameraHandler : MonoBehaviour
 {
     private static readonly float panSpeed = 50f;
     private static readonly float zoomSpeedTouch = 0.1f;
-    private static readonly float zoomSpeedMouse = 15f;
+    private static readonly float zoomSpeedMouse = 10f;
 
     private static readonly float[] boundsXClosest = new float[] { -35f, 35f };
     private static readonly float[] boundsYClosest = new float[] { -10f, 15f };
@@ -44,20 +44,25 @@ public class CameraHandler : MonoBehaviour
     void Start()
     {
         cam = GetComponent<Camera>();
+
+        //cam.transform.position = cam.transform.position + cam.transform.parent.transform.position;
+        //remove camera from any prefab
+        gameObject.transform.parent = null;
+
         cameraDefaultPos = cam.transform.position;
+        print(cameraDefaultPos);
         cam.orthographicSize = defaultCameraSize;
 
         gameController = GameObject.FindObjectOfType<GameController>();
 
         if (gameController == null)
             Debug.LogError("GameController not found in the scene for the IngameHUD");
-
+        ZoomToSize(defaultCameraSize, cameraDefaultPos);
     }
 
     // Update is called once per frame
     void Update()
     {
-
         //Smooth automatic camera zooming and positioning
         if (autoZoomCamera)
         {
@@ -114,6 +119,7 @@ public class CameraHandler : MonoBehaviour
 
         // Check for scrolling to zoom the camera
         float scroll = Input.GetAxis("Mouse ScrollWheel");
+        print(scroll);
         ZoomCamera(scroll, zoomSpeedMouse);
     }
 
@@ -191,6 +197,7 @@ public class CameraHandler : MonoBehaviour
 
     void AutoZoom()
     {
+        //doesnt work
         allowCameraMovement = false;
         autoZoomCamera = true;
         origCameraSize = cam.orthographicSize;
@@ -258,11 +265,15 @@ public class CameraHandler : MonoBehaviour
         {
             return;
         }
+        if ((offset > 0 && cam.orthographicSize > camSizeBounds[0]) || (offset < 0 && cam.orthographicSize < camSizeBounds[1]))
+        {
+            //TODO smoothing
 
-        cam.orthographicSize = Mathf.Clamp(cam.orthographicSize - (offset * speed), camSizeBounds[0], camSizeBounds[1]);
+            cam.orthographicSize = Mathf.Clamp(cam.orthographicSize - (offset * speed), camSizeBounds[0], camSizeBounds[1]);
 
-        //Pan camera also when zooming in and out
-        PanCamera(Input.mousePosition);
+            //Pan camera also when zooming in and out
+            PanCamera(Input.mousePosition);
+        }
     }
 
 }
