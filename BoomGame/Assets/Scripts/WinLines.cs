@@ -50,20 +50,8 @@ public class WinLines : MonoBehaviour
         blueline = GameObject.Find("Blueline");
         greenline = GameObject.Find("Greenline");
 
-        if (redline == null)
-        {
-            Debug.LogError("No redline found");
-        }
-        if (blueline == null)
-        {
-            Debug.LogError("No blueline found");
-        }
-        if (greenline == null)
-        {
-            Debug.LogError("No greenline found");
-        }
-
-        SetLinePositions();
+        if(redline != null && blueline != null && greenline != null)
+            SetLinePositions();
 
     }
 
