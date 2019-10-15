@@ -5,6 +5,7 @@ using UnityEngine;
 public class OpenMainMenuPanel : MonoBehaviour
 {
     public GameObject MainMenuPanel;
+    public GameObject PrivacyPolicyPanel;
 
     public void OpenPanel()
     {

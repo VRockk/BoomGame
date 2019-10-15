@@ -1,18 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+public class OpenShopPanel : MonoBehaviour
 {
-    
     public GameObject shopPanel;
-    
-    public void PlayGame()
-    {
-        SceneManager.LoadScene("Tutorial");
-    }
-
     
     public void OpenPanel()
     {
@@ -21,5 +13,4 @@ public class MainMenu : MonoBehaviour
             shopPanel.SetActive(true);
         }
     }
-
 }
