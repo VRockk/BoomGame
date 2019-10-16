@@ -15,8 +15,6 @@ public enum LevelClear
 
 public class UtilityLibrary
 {
-
-
     public static Vector3 CalculateExplosionForceWithDistance(Vector3 explosionPos, Vector3 hitObjectPosition, float power, float upwardsForce)
     {
         Vector2 force;

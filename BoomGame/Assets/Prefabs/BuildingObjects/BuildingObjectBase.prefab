@@ -12,10 +12,9 @@ GameObject:
   - component: {fileID: 1863442581099001714}
   - component: {fileID: 1863442581099001715}
   - component: {fileID: 1863442581099001712}
-  - component: {fileID: 1863442581099001713}
   m_Layer: 0
-  m_Name: ShatteringObjectBase
-  m_TagString: ShatteringObject
+  m_Name: BuildingObjectBase
+  m_TagString: BuildingObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,40 +130,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1863442581099001713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1863442581099001726}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50afc76e2b398c546b7954a7ed37f1ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pieceSpawnLocations:
-  - {x: 1, y: 0.5}
-  - {x: 0, y: 0.5}
-  - {x: -1, y: 0.5}
-  - {x: 1, y: -0.5}
-  - {x: 0, y: -0.5}
-  - {x: -1, y: -0.5}
-  pieceObjects:
-  - {fileID: 173200965498113037, guid: ac6f03e6e3056a4429548d492d41c123, type: 3}
-  - {fileID: 173200965498113037, guid: ac6f03e6e3056a4429548d492d41c123, type: 3}
-  - {fileID: 173200965498113037, guid: ac6f03e6e3056a4429548d492d41c123, type: 3}
-  - {fileID: 173200965498113037, guid: ac6f03e6e3056a4429548d492d41c123, type: 3}
-  - {fileID: 173200965498113037, guid: ac6f03e6e3056a4429548d492d41c123, type: 3}
-  - {fileID: 173200965498113037, guid: ac6f03e6e3056a4429548d492d41c123, type: 3}
-  hitpoints: 2
-  canShatter: 1
-  jointBreakForce: 150000
-  jointBreakTorque: 150000
-  damagedForceLimit: 10000
-  ignoreForClear: 0
-  isGrounded: 1
-  createJoints: 1
-  initialPosition: {x: 0, y: 0, z: 0}
-  allowDamage: 1
-  attachedObjects: []
