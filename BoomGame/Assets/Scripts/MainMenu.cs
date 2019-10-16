@@ -16,5 +16,9 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Shop");
     }
+     public void OpenMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 
 }
