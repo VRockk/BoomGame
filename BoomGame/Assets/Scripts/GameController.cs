@@ -31,7 +31,6 @@ public class GameController : MonoBehaviour
     [HideInInspector]
     public GameObject bombUnderMouse;
 
-    private int shatteringObjectCount;
     private IngameHUD hud;
     private CameraHandler cameraHandler;
 
@@ -82,7 +81,6 @@ public class GameController : MonoBehaviour
         //inputAllowed = true;
         roundCounter = 0;
         NextRound();
-        shatteringObjectCount = GameObject.FindGameObjectsWithTag("ShatteringObject").Length;
 
         hud.UpdateBombCount(bombCount);
 
@@ -337,8 +335,8 @@ public class GameController : MonoBehaviour
         }
 
         //Find the brick that has the highest position 
-        var highestBrick = FindObjectsOfType<ShatteringObject>().Where(x => x.gameObject.transform.position.magnitude < 50).OrderByDescending(x => x.gameObject.transform.position.y + x.GetComponent<Collider2D>().bounds.extents.y).First();
-        float highestBrickTopPos = highestBrick.transform.position.y + highestBrick.GetComponent<Collider2D>().bounds.extents.y;
+        var buildingObject = FindObjectsOfType<BuildingObject>().Where(x => x.gameObject.transform.position.magnitude < 50).OrderByDescending(x => x.gameObject.transform.position.y + x.GetComponent<Collider2D>().bounds.extents.y).First();
+        float highestBrickTopPos = buildingObject.transform.position.y + buildingObject.GetComponent<Collider2D>().bounds.extents.y;
 
         if (highestBrickTopPos <= winlines.threePentaLine)
         {

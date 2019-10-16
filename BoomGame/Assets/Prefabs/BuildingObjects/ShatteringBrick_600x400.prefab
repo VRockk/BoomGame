@@ -1,5 +1,33 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7108630801149371217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1744478025674971482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50afc76e2b398c546b7954a7ed37f1ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jointBreakForce: 150000
+  jointBreakTorque: 150000
+  attachedObjects: []
+  pieceSpawnLocations:
+  - {x: -1.5, y: 1}
+  - {x: 1.5, y: 1}
+  - {x: -1.5, y: -1}
+  - {x: 1.5, y: -1}
+  pieceObjects:
+  - {fileID: 2125767834770424548, guid: 254d26bc9603cb04b93e99262d3724a1, type: 3}
+  - {fileID: 2146208788572942096, guid: 08ba443bd9845c74789cb26550e7325c, type: 3}
+  - {fileID: 6397904725382405405, guid: 97cab9ed5694a4048a487922e5a89daa, type: 3}
+  - {fileID: 4949998304276011551, guid: a39b47a73ead44548864ee1552220108, type: 3}
+  hitpoints: 2
+  damagedForceLimit: 12000
+  allowDamage: 1
 --- !u!1001 &137894847597702692
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10,7 +38,7 @@ PrefabInstance:
     - target: {fileID: 1863442581099001726, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_Name
-      value: ShatteringMetal_900x200
+      value: ShatteringBrick_600x400
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001717, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
@@ -36,95 +64,137 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -5650569683068494043, guid: b4be78b86414cdb41b68e802b9692c60,
+      objectReference: {fileID: -4029286902561464155, guid: b4be78b86414cdb41b68e802b9692c60,
         type: 3}
     - target: {fileID: 1863442581099001715, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 2.03
+      value: 6.0400004
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001715, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 9.042316
+      value: 4.0310326
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001715, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_Size.x
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001715, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_Size.y
-      value: 9
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863442581099001715, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 6c5305bef19ddf64699d63dc7983e3c2, type: 2}
+    - target: {fileID: 2274702447112346858, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_DampingRatio
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581742140529727283, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_DampingRatio
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2903137827647619805, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_DampingRatio
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9128301045423774736, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_DampingRatio
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001713, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: pieceSpawnLocations.Array.size
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001713, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: pieceObjects.Array.size
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001713, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: pieceSpawnLocations.Array.data[0].x
-      value: -3
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001713, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: pieceSpawnLocations.Array.data[0].y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001713, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: pieceSpawnLocations.Array.data[1].y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001713, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: pieceSpawnLocations.Array.data[2].y
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001713, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: pieceSpawnLocations.Array.data[2].x
-      value: 3
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001713, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: pieceObjects.Array.data[0]
       value: 
-      objectReference: {fileID: 6522876664913559363, guid: 4bfca3d45c294714ea38264b339875cd,
+      objectReference: {fileID: 6649006982650661179, guid: 80b0e34ba46c467458b6d275d3e6fb64,
         type: 3}
     - target: {fileID: 1863442581099001713, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: pieceObjects.Array.data[1]
       value: 
-      objectReference: {fileID: 3426046553121016473, guid: dafef1690d5b156488f458d7074edb47,
+      objectReference: {fileID: 6649006982650661179, guid: 80b0e34ba46c467458b6d275d3e6fb64,
         type: 3}
     - target: {fileID: 1863442581099001713, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: pieceObjects.Array.data[2]
       value: 
-      objectReference: {fileID: 3426046553121016473, guid: b725593a3a9078d458598fd855ffb4e3,
+      objectReference: {fileID: 6649006982650661179, guid: 80b0e34ba46c467458b6d275d3e6fb64,
         type: 3}
     - target: {fileID: 1863442581099001713, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: mass
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 1863442581099001713, guid: d58a38304fad7c74f99f67987213949d,
-        type: 3}
-      propertyPath: damagedForceLimit
-      value: 50000
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001713, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: pieceSpawnLocations.Array.data[1].x
-      value: 0
+      value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1863442581099001713, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: pieceSpawnLocations.Array.data[3].x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863442581099001713, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: pieceSpawnLocations.Array.data[3].y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863442581099001713, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: pieceObjects.Array.data[3]
+      value: 
+      objectReference: {fileID: 6649006982650661179, guid: 80b0e34ba46c467458b6d275d3e6fb64,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d58a38304fad7c74f99f67987213949d, type: 3}
+--- !u!1 &1744478025674971482 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1863442581099001726, guid: d58a38304fad7c74f99f67987213949d,
+    type: 3}
+  m_PrefabInstance: {fileID: 137894847597702692}
+  m_PrefabAsset: {fileID: 0}
