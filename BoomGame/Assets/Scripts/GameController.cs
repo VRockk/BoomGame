@@ -44,7 +44,7 @@ public class GameController : MonoBehaviour
     private WinLines winlines;
 
     public int salvageValue;
-    public GameMaster theGM;
+    public GameMaster gameMaster;
     private float roundDelay = 0.5f;
     private void Awake()
     {
@@ -84,7 +84,11 @@ public class GameController : MonoBehaviour
 
         hud.UpdateBombCount(bombCount);
 
-        theGM = FindObjectOfType<GameMaster>();
+       gameMaster = FindObjectOfType<GameMaster>();
+        print(gameMaster);
+        if (gameMaster == null)
+            Debug.LogError("No GameMaster found");
+            
     }
 
     // Update is called once per frame
@@ -309,7 +313,7 @@ public class GameController : MonoBehaviour
         else
         {
             hud.LevelFinished(levelClear);
-            theGM.AddSalvage(salvageValue);
+            gameMaster.AddSalvage(salvageValue);
         }
     }
 
