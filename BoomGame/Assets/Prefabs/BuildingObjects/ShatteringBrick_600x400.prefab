@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jointBreakForce: 200000
   jointBreakTorque: 200000
+  materialType: 0
   attachedObjects: []
+  allowDamage: 1
   pieceSpawnLocations:
   - {x: -1.5, y: 1}
   - {x: 1.5, y: 1}
@@ -27,7 +29,8 @@ MonoBehaviour:
   - {fileID: 4949998304276011551, guid: a39b47a73ead44548864ee1552220108, type: 3}
   hitpoints: 2
   damagedForceLimit: 15000
-  allowDamage: 1
+  shatterParticle: {fileID: 4077663246738028735, guid: 57e2faf8fcbcaa742998edee10c41a54,
+    type: 3}
 --- !u!1001 &137894847597702692
 PrefabInstance:
   m_ObjectHideFlags: 0
