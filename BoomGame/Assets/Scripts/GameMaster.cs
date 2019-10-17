@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GameMaster : MonoBehaviour
 {
     
-    public int currentSalvage;
+    public static int currentSalvage;
 
 
     // Start is called before the first frame update
