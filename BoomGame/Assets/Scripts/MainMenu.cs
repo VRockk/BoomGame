@@ -8,18 +8,18 @@ using TMPro;
 public class MainMenu : MonoBehaviour
 {
     public TextMeshProUGUI salvageText;
-    public int currentSalvage;
+    
 
 
     void Start()
     {
-        salvageText.text = " " + currentSalvage;
+        salvageText.text = "" + GameMaster.currentSalvage;
     }
 
 
     void Update()
     {
-        salvageText.text = " " + currentSalvage;
+        salvageText.text = "" + GameMaster.currentSalvage;
 
 
     }
