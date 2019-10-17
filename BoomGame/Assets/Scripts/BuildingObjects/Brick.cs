@@ -111,7 +111,8 @@ public class Brick : BuildingObject
 
         shattered = true;
 
-        Instantiate(shatterParticle, this.transform.position, this.transform.rotation);
+        if(shatterParticle != null)
+            Instantiate(shatterParticle, this.transform.position, this.transform.rotation);
         //TODO optimization. We need create the new objects already in start because instantiating object can be laggy and set them invisible or something like that
 
         //Instantiate new objects

@@ -19,6 +19,9 @@ public class Bomb : MonoBehaviour
 
     public Sprite inventoryIcon;
 
+
+    public GameObject explosionParticles;
+
     protected virtual void Awake()
     {
     }
@@ -77,6 +80,9 @@ public class Bomb : MonoBehaviour
         //Spawn explosion animation
         if (explosion != null)
             Instantiate(explosion, this.transform.position, Quaternion.identity);
+
+        if(explosionParticles != null)
+            Instantiate(explosionParticles, this.transform.position, Quaternion.identity);
 
         ExplosionEffect();
         Destroy(this.gameObject);
