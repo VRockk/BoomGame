@@ -118,7 +118,7 @@ public class IngameHUD : MonoBehaviour
     public void NextLevel()
     {
         //To load video ads
-        AdsController.adsInstance.ShowVideoOrInterstitialAds();
+        //AdsController.adsInstance.ShowVideoOrInterstitialAds();
         //TODO: Show loading screens
         SceneManager.LoadSceneAsync(gameController.nextLevelName, LoadSceneMode.Single);
         //Application.LoadLevel();
