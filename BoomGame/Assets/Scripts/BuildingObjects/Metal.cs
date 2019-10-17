@@ -11,11 +11,9 @@ public class Metal : BuildingObject
     public Sprite bendLeftSprite;
     public Sprite bendRightSprite;
 
-    [HideInInspector]
-    public bool allowDamage = true;
 
     private bool melting = false;
-    private float meltSpeed = 1f;
+    private float meltSpeed = 0.5f;
 
     protected override void OnDrawGizmos()
     {
@@ -24,6 +22,7 @@ public class Metal : BuildingObject
 
     protected override void Awake()
     {
+        materialType = MaterialType.Metal;
         base.Awake();
     }
 
@@ -43,7 +42,8 @@ public class Metal : BuildingObject
         if (melting)
         {
             var yScale = transform.localScale.y - (Time.deltaTime * meltSpeed);
-            transform.localScale = new Vector3(1, yScale, 1);
+            //var xScale = transform.localScale.x + (Time.deltaTime * meltSpeed);
+            transform.localScale = new Vector3(transform.localScale.x, yScale, transform.localScale.z);
 
             if (yScale <= 0.0f)
             {

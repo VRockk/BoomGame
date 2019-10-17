@@ -16,9 +16,6 @@ public class Brick : BuildingObject
     [Tooltip("The force when the object is damaged if hit. Lower == Easier to destroy/shatter")]
     public float damagedForceLimit = 10000.0f;
 
-    [HideInInspector]
-    public bool allowDamage = true;
-
     private bool shattered = false;
     private float damageGateDelay = 0f;
     private const float damageDelayDefault = 0.05f;
@@ -40,6 +37,7 @@ public class Brick : BuildingObject
 
     protected override void Awake()
     {
+        materialType = MaterialType.Brick;
         base.Awake();
     }
 

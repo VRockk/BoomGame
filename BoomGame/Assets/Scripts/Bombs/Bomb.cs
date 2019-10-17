@@ -90,11 +90,14 @@ public class Bomb : MonoBehaviour
             Collider2D[] destroyColliders = Physics2D.OverlapCircleAll(this.transform.position, destroyRadius);
             foreach (Collider2D hit in destroyColliders)
             {
-                if (hit.gameObject.tag.Contains("BuildingObject"))
+                var buildingObject = hit.gameObject.GetComponent<BuildingObject>();
+                if (buildingObject != null)
                 {
-                    var brick = hit.gameObject.GetComponent<Brick>();
-                    if (brick != null && brick.allowDamage)
-                        Destroy(hit.transform.gameObject);
+                    if (buildingObject.materialType == MaterialType.Brick || buildingObject.materialType == MaterialType.Wood)
+                    {
+                        if (buildingObject.allowDamage)
+                            Destroy(hit.transform.gameObject);
+                    }
                 }
             }
         }
@@ -108,15 +111,35 @@ public class Bomb : MonoBehaviour
             {
                 if (hit.gameObject.tag.Contains("BuildingObject"))
                 {
-                    var brick = hit.gameObject.GetComponent<Brick>();
-                    if (brick != null && brick.allowDamage)
-                        brick.Shatter(this.transform.position, power, upwardsForce);
+                    var buildingObject = hit.gameObject.GetComponent<BuildingObject>();
 
-                    var metal = hit.gameObject.GetComponent<Metal>();
-                    if (metal != null)
+                    if (buildingObject.materialType == MaterialType.Brick)
                     {
-                        metal.Bend(transform.position);
+                        var brick = hit.gameObject.GetComponent<Brick>();
+                        if (brick != null && brick.allowDamage)
+                            brick.Shatter(this.transform.position, power, upwardsForce);
                     }
+                    else if(buildingObject.materialType == MaterialType.Wood)
+                    {
+                        Destroy(hit.transform.gameObject);
+                    }
+                    else if(buildingObject.materialType == MaterialType.Metal)
+                    {
+                        var metal = hit.gameObject.GetComponent<Metal>();
+                        if (metal != null)
+                        {
+                            metal.Bend(transform.position);
+                        }
+                        Rigidbody2D rb = hit.GetComponent<Rigidbody2D>();
+
+                        if (rb != null)
+                        {
+                            Vector2 force = UtilityLibrary.CalculateExplosionForce(this.transform.position, hit.transform.position, power, upwardsForce);
+
+                            rb.AddForce(force, ForceMode2D.Impulse);
+                        }
+                    }
+
                 }
                 else if (hit.gameObject.tag.Contains("NPCBuilding"))
                 {
