@@ -5,13 +5,20 @@ using UnityEngine.UI;
 
 public class GameMaster : MonoBehaviour
 {
-    public Text salvageText;
+    
     public int currentSalvage;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        GameMaster[] gameMaster = FindObjectsOfType<GameMaster>();
+        if (gameMaster.Length == 2)
+        {
+            Destroy(this.gameObject);
+        }
+
+
         if (PlayerPrefs.HasKey("CurrentSalvage"))
         {
             currentSalvage = PlayerPrefs.GetInt("CurrentSalvage");
@@ -21,7 +28,8 @@ public class GameMaster : MonoBehaviour
             PlayerPrefs.SetInt("CurrentSalvage", 0);
         }
 
-        salvageText.text = "Salvage: " + currentSalvage;
+        
+        
     }
 
     // Update is called once per frame
@@ -36,8 +44,15 @@ public class GameMaster : MonoBehaviour
 
         currentSalvage += salvageToAdd;
         PlayerPrefs.SetInt("CurrentSalvage", currentSalvage);
-        salvageText.text = "Salvage: " + currentSalvage;
+        
 
+    }
+
+    void Awake()
+    {
+
+        DontDestroyOnLoad(this.gameObject);
+        
     }
 
 }

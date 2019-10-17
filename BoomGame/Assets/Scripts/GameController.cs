@@ -31,7 +31,6 @@ public class GameController : MonoBehaviour
     [HideInInspector]
     public GameObject bombUnderMouse;
 
-    private int shatteringObjectCount;
     private IngameHUD hud;
     private CameraHandler cameraHandler;
 
@@ -45,7 +44,7 @@ public class GameController : MonoBehaviour
     private WinLines winlines;
 
     public int salvageValue;
-    public GameMaster theGM;
+    public GameMaster gameMaster;
     private float roundDelay = 0.5f;
     private void Awake()
     {
@@ -82,11 +81,14 @@ public class GameController : MonoBehaviour
         //inputAllowed = true;
         roundCounter = 0;
         NextRound();
-        shatteringObjectCount = GameObject.FindGameObjectsWithTag("ShatteringObject").Length;
 
         hud.UpdateBombCount(bombCount);
 
-        theGM = FindObjectOfType<GameMaster>();
+       gameMaster = FindObjectOfType<GameMaster>();
+        print(gameMaster);
+        if (gameMaster == null)
+            Debug.LogError("No GameMaster found");
+            
     }
 
     // Update is called once per frame
@@ -311,7 +313,7 @@ public class GameController : MonoBehaviour
         else
         {
             hud.LevelFinished(levelClear);
-            theGM.AddSalvage(salvageValue);
+            gameMaster.AddSalvage(salvageValue);
         }
     }
 
@@ -337,8 +339,8 @@ public class GameController : MonoBehaviour
         }
 
         //Find the brick that has the highest position 
-        var highestBrick = FindObjectsOfType<ShatteringObject>().Where(x => x.gameObject.transform.position.magnitude < 50).OrderByDescending(x => x.gameObject.transform.position.y + x.GetComponent<Collider2D>().bounds.extents.y).First();
-        float highestBrickTopPos = highestBrick.transform.position.y + highestBrick.GetComponent<Collider2D>().bounds.extents.y;
+        var buildingObject = FindObjectsOfType<BuildingObject>().Where(x => x.gameObject.transform.position.magnitude < 50).OrderByDescending(x => x.gameObject.transform.position.y + x.GetComponent<Collider2D>().bounds.extents.y).First();
+        float highestBrickTopPos = buildingObject.transform.position.y + buildingObject.GetComponent<Collider2D>().bounds.extents.y;
 
         if (highestBrickTopPos <= winlines.threePentaLine)
         {

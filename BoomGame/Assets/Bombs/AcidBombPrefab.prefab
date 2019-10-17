@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 777865067631648415}
-  - component: {fileID: 4076446940255910833}
   - component: {fileID: 5241433061714825447}
   - component: {fileID: -3006081140999557805}
+  - component: {fileID: 7552722541894028444}
   m_Layer: 10
   m_Name: AcidBombPrefab
   m_TagString: Bomb
@@ -34,33 +34,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4076446940255910833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8650378973668689463}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26c6dcb04d861364599e70b3a4519c05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delay: 1
-  destroyRadius: 10
-  radius: 0
-  damageRadius: 0
-  power: 0
-  upwardsForce: 10
-  showPlacementGizmo: 0
-  showExplosionGizmo: 0
-  exposionScreamSounds:
-  - {fileID: 8300000, guid: 552cac100a7be65459879b947a545de1, type: 3}
-  - {fileID: 8300000, guid: b17f74e89e8f68c44893b2d5955bdbd6, type: 3}
-  explosion: {fileID: 7994774777040310151, guid: 875026a1aa409fb41b64598c9c929903,
-    type: 3}
-  inventoryIcon: {fileID: 4939461253666965060, guid: 19a5692f40e0b5945994aa7305638ce2,
-    type: 3}
 --- !u!61 &5241433061714825447
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -183,6 +156,32 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7552722541894028444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8650378973668689463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf83264aff269ed41a55d6804215a2a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 1
+  destroyRadius: 0
+  radius: 10
+  damageRadius: 0
+  power: 0
+  upwardsForce: 0
+  showPlacementGizmo: 1
+  showExplosionGizmo: 0
+  exposionScreamSounds:
+  - {fileID: 8300000, guid: 552cac100a7be65459879b947a545de1, type: 3}
+  explosion: {fileID: 7994774777040310151, guid: 875026a1aa409fb41b64598c9c929903,
+    type: 3}
+  inventoryIcon: {fileID: 4939461253666965060, guid: 19a5692f40e0b5945994aa7305638ce2,
+    type: 3}
 --- !u!1 &9089397330957044251
 GameObject:
   m_ObjectHideFlags: 0
