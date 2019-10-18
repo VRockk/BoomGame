@@ -44,5 +44,33 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("CampaingMap");
     }
+     public void OpenLevel_02()
+    {
+        SceneManager.LoadScene("Level_02");
+    }
+     public void OpenLevel_03()
+    {
+        SceneManager.LoadScene("Level_03");
+    }
+     public void OpenLevel_04()
+    {
+        SceneManager.LoadScene("Level_04");
+    }
+     public void OpenLevel_05()
+    {
+        SceneManager.LoadScene("Level_05");
+    }
+     public void OpenLevel_06()
+    {
+        SceneManager.LoadScene("Level_06");
+    }
+     public void OpenLevel_07()
+    {
+        SceneManager.LoadScene("Level_07");
+    }
+     public void OpenLevel_08()
+    {
+        SceneManager.LoadScene("Level_08");
+    }
 
 }
