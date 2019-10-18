@@ -40,5 +40,9 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+     public void OpenCampaing()
+    {
+        SceneManager.LoadScene("CampaingMap");
+    }
 
 }
