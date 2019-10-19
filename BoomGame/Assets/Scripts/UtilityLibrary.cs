@@ -13,6 +13,14 @@ public enum LevelClear
     ThreePentagram = 3 // Level cleared on first round and no damage to buildings
 }
 
+public enum MaterialType
+{
+    None = 0,
+    Brick = 1,
+    Metal = 2,
+    Wood = 3
+}
+
 public class UtilityLibrary
 {
     public static Vector3 CalculateExplosionForceWithDistance(Vector3 explosionPos, Vector3 hitObjectPosition, float power, float upwardsForce)

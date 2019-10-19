@@ -8,8 +8,8 @@ using UnityEngine.Monetization;
 public class AdsController : MonoBehaviour
 {
     public static AdsController adsInstance;
-    
-    
+
+
     private string googlePlayStoreId = "3324943";
     private string appleAppStoreId = "3324942";
 
@@ -19,10 +19,11 @@ public class AdsController : MonoBehaviour
 
     private void Awake()
     {
-        if(adsInstance != null)
+        if (adsInstance != null)
         {
             Destroy(gameObject);
-        } else
+        }
+        else
         {
             adsInstance = this;
             DontDestroyOnLoad(gameObject);
@@ -43,49 +44,49 @@ public class AdsController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    /*    
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if (Monetization.IsReady(video_ad)){
-                ShowAdPlacementContent ad = null;
-                ad = Monetization.GetPlacementContent(video_ad) as ShowAdPlacementContent;
-
-                if (ad != null)
-                {
-                    ad.Show();
-                }
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            if (Monetization.IsReady(rewarded_video_ad))
+        /*    
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                Debug.Log("test");
-                ShowAdPlacementContent ad = null;
-                ad = Monetization.GetPlacementContent(rewarded_video_ad) as ShowAdPlacementContent;
+                if (Monetization.IsReady(video_ad)){
+                    ShowAdPlacementContent ad = null;
+                    ad = Monetization.GetPlacementContent(video_ad) as ShowAdPlacementContent;
 
-                if (ad != null)
-                {
-                    ad.Show();
+                    if (ad != null)
+                    {
+                        ad.Show();
+                    }
                 }
             }
-        }
 
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            if (Monetization.IsReady(banner_ad))
+            if (Input.GetKeyDown(KeyCode.R))
             {
-                Debug.Log("test");
-                ShowAdPlacementContent ad = null;
-                ad = Monetization.GetPlacementContent(banner_ad) as ShowAdPlacementContent;
-
-                if (ad != null)
+                if (Monetization.IsReady(rewarded_video_ad))
                 {
-                    ad.Show();
+                    Debug.Log("test");
+                    ShowAdPlacementContent ad = null;
+                    ad = Monetization.GetPlacementContent(rewarded_video_ad) as ShowAdPlacementContent;
+
+                    if (ad != null)
+                    {
+                        ad.Show();
+                    }
                 }
             }
-        }*/
+
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                if (Monetization.IsReady(banner_ad))
+                {
+                    Debug.Log("test");
+                    ShowAdPlacementContent ad = null;
+                    ad = Monetization.GetPlacementContent(banner_ad) as ShowAdPlacementContent;
+
+                    if (ad != null)
+                    {
+                        ad.Show();
+                    }
+                }
+            }*/
     }
     public void ShowVideoOrInterstitialAds()
     {

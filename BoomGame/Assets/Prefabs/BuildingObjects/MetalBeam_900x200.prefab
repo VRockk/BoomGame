@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jointBreakForce: 500000
   jointBreakTorque: 500000
+  materialType: 0
   attachedObjects: []
+  allowDamage: 1
   bendLeftSprite: {fileID: -2151823001335124872, guid: b4be78b86414cdb41b68e802b9692c60,
     type: 3}
   bendRightSprite: {fileID: 618557542491236705, guid: b4be78b86414cdb41b68e802b9692c60,
     type: 3}
-  allowDamage: 1
 --- !u!1001 &137894847597702692
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30,7 +31,7 @@ PrefabInstance:
     - target: {fileID: 1863442581099001726, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_Name
-      value: MetaBeam_900x200
+      value: MetalBeam_900x200
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001717, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
@@ -51,11 +52,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1863442581099001712, guid: d58a38304fad7c74f99f67987213949d,
-        type: 3}
-      propertyPath: m_Mass
-      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
@@ -155,6 +151,11 @@ PrefabInstance:
         type: 3}
       propertyPath: materialType
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863442581099001712, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_Mass
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1863442581099001713, guid: d58a38304fad7c74f99f67987213949d, type: 3}

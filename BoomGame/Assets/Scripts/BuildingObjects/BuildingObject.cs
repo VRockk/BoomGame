@@ -9,10 +9,14 @@ public class BuildingObject : MonoBehaviour
     public float jointBreakTorque = 50000f;
     protected bool createJoints = true;
 
+    [HideInInspector]
+    public MaterialType materialType = MaterialType.None;
 
     [HideInInspector]
     public List<string> attachedObjects = new List<string>();
-
+    
+    [HideInInspector]
+    public bool allowDamage = true;
 
 
     protected virtual void OnDrawGizmos()

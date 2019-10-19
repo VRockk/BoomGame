@@ -16,8 +16,7 @@ public class Brick : BuildingObject
     [Tooltip("The force when the object is damaged if hit. Lower == Easier to destroy/shatter")]
     public float damagedForceLimit = 10000.0f;
 
-    [HideInInspector]
-    public bool allowDamage = true;
+    public GameObject shatterParticle;
 
     private bool shattered = false;
     private float damageGateDelay = 0f;
@@ -40,6 +39,7 @@ public class Brick : BuildingObject
 
     protected override void Awake()
     {
+        materialType = MaterialType.Brick;
         base.Awake();
     }
 
@@ -111,6 +111,8 @@ public class Brick : BuildingObject
 
         shattered = true;
 
+        if(shatterParticle != null)
+            Instantiate(shatterParticle, this.transform.position, this.transform.rotation);
         //TODO optimization. We need create the new objects already in start because instantiating object can be laggy and set them invisible or something like that
 
         //Instantiate new objects

@@ -1,5 +1,22 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-1111979131129888693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1744478025674971482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1becf639c9fdbf3458e348f42dbf9a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jointBreakForce: 50000
+  jointBreakTorque: 50000
+  materialType: 0
+  attachedObjects: []
+  allowDamage: 1
 --- !u!1001 &137894847597702692
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10,7 +27,7 @@ PrefabInstance:
     - target: {fileID: 1863442581099001726, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_Name
-      value: ShatteringWood_200x900
+      value: WoodBoard_200x900
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001717, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
@@ -128,3 +145,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d58a38304fad7c74f99f67987213949d, type: 3}
+--- !u!1 &1744478025674971482 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1863442581099001726, guid: d58a38304fad7c74f99f67987213949d,
+    type: 3}
+  m_PrefabInstance: {fileID: 137894847597702692}
+  m_PrefabAsset: {fileID: 0}
