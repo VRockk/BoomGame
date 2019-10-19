@@ -319,7 +319,7 @@ public class GameController : MonoBehaviour
     private LevelClear CheckLevelClear()
     {
         LevelClear levelClear = LevelClear.NotCleared;
-        bool buildingsDamaged = false;
+        //bool buildingsDamaged = false;
 
         var npcBuildings = GameObject.FindObjectsOfType<NPCBuilding>();
         //Check if any buildings have been destroyed
@@ -331,10 +331,10 @@ public class GameController : MonoBehaviour
             {
                 return LevelClear.Failed;
             }
-            if (building.Hitpoints < building.maxHitpoints)
-            {
-                buildingsDamaged = true;
-            }
+            //if (building.Hitpoints < building.maxHitpoints)
+            //{
+            //    buildingsDamaged = true;
+            //}
         }
 
         //Find the brick that has the highest position 
@@ -359,15 +359,15 @@ public class GameController : MonoBehaviour
         }
 
         //Damaged buildings lower the pentagrams gained by one
-        if (buildingsDamaged)
-        {
-            if (levelClear == LevelClear.ThreePentagram)
-                levelClear = LevelClear.TwoPentagram;
-            else if (levelClear == LevelClear.TwoPentagram)
-                levelClear = LevelClear.OnePentagram;
-            else
-                levelClear = LevelClear.NotCleared;
-        }
+        //if (buildingsDamaged)
+        //{
+        //    if (levelClear == LevelClear.ThreePentagram)
+        //        levelClear = LevelClear.TwoPentagram;
+        //    else if (levelClear == LevelClear.TwoPentagram)
+        //        levelClear = LevelClear.OnePentagram;
+        //    else
+        //        levelClear = LevelClear.NotCleared;
+        //}
 
         return levelClear;
     }
