@@ -5,31 +5,40 @@ using UnityEngine.UI;
 
 public class GameMaster : MonoBehaviour
 {
+
+    public int currentSalvage;
+
+    private AudioSource audioSource;
     
-    public static int currentSalvage;
-
-
+    void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
     // Start is called before the first frame update
     void Start()
     {
+        
+        //If we have a situation where we already have a GameMaster, destroy the new one.
         GameMaster[] gameMaster = FindObjectsOfType<GameMaster>();
         if (gameMaster.Length == 2)
         {
             Destroy(this.gameObject);
         }
 
+        audioSource = GetComponent<AudioSource>();
 
         if (PlayerPrefs.HasKey("CurrentSalvage"))
         {
             currentSalvage = PlayerPrefs.GetInt("CurrentSalvage");
-        } else
+        }
+        else
         {
             currentSalvage = 0;
             PlayerPrefs.SetInt("CurrentSalvage", 0);
         }
 
-        
-        
+
+
     }
 
     // Update is called once per frame
@@ -37,22 +46,19 @@ public class GameMaster : MonoBehaviour
     {
 
 
-        
+
     }
 
-    public void AddSalvage (int salvageToAdd) {
-
+    public void AddSalvage(int salvageToAdd)
+    {
         currentSalvage += salvageToAdd;
         PlayerPrefs.SetInt("CurrentSalvage", currentSalvage);
-        
-
     }
 
-    void Awake()
+    public void SetMusic(AudioClip clip)
     {
-
-        DontDestroyOnLoad(this.gameObject);
-        
+        //TODO Fade out/fade in
+        audioSource.clip = clip;
     }
 
 }
