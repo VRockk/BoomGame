@@ -14,7 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jointBreakForce: 50000
   jointBreakTorque: 50000
+  createJointToGround: 0
+  ignoredJoints: []
+  materialType: 0
   attachedObjects: []
+  allowDamage: 1
   pieceSpawnLocations:
   - {x: -9.3666, y: 0}
   - {x: 0, y: 0}
@@ -25,7 +29,7 @@ MonoBehaviour:
   - {fileID: 9043856613933628880, guid: fb4ea2b1159947b4084d4816c388913b, type: 3}
   hitpoints: 2
   damagedForceLimit: 5000
-  allowDamage: 1
+  shatterParticle: {fileID: 0}
 --- !u!1001 &4300245070406751688
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -118,11 +122,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.y
       value: 8.204981
-      objectReference: {fileID: 0}
-    - target: {fileID: 1863442581099001715, guid: d58a38304fad7c74f99f67987213949d,
-        type: 3}
-      propertyPath: m_Material
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001713, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
