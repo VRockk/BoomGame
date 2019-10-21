@@ -59,7 +59,7 @@ public class MainMenu : MonoBehaviour
     }
     public void OpenMainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MainMenuScene");
     }
     public void OpenCampaign()
     {

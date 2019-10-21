@@ -84,11 +84,11 @@ public class GameController : MonoBehaviour
 
         hud.UpdateBombCount(bombCount);
 
-       gameMaster = FindObjectOfType<GameMaster>();
+        gameMaster = FindObjectOfType<GameMaster>();
         print(gameMaster);
         if (gameMaster == null)
             Debug.LogError("No GameMaster found");
-            
+
     }
 
     // Update is called once per frame
@@ -163,6 +163,8 @@ public class GameController : MonoBehaviour
                 bombUnderMouse = null;
                 //cameraHandler.defaultCameraSize;
                 //cameraHandler.ZoomToSize(45f);
+
+                //TODO Check if bomb is under UI 
 
             }
             else
