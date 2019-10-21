@@ -15,14 +15,15 @@ public class IngameHUD : MonoBehaviour
 
     public GameObject detonatePanel;
     public GameObject roundPanel;
-    public GameObject failedPanel;
     public GameObject levelFinishPanel;
     public GameObject bombPanel;
-    private GameObject penta1Panel;
-    private GameObject penta2Panel;
-    private GameObject penta3Panel;
     public GameObject bomb1Icon;
     public GameObject detonateButton;
+    public GameObject resetButton;
+    public GameObject nextLevelButton;
+
+    public GameObject endScreen;
+
     private CameraHandler cameraHandler;
 
     private TextMeshProUGUI bombCountText;
@@ -45,9 +46,6 @@ public class IngameHUD : MonoBehaviour
         if (cameraHandler == null)
             Debug.LogError("CameraHandler not found in the scene for the IngameHUD");
 
-        penta1Panel = GameObject.Find("Penta1");
-        penta2Panel = GameObject.Find("Penta2");
-        penta3Panel = GameObject.Find("Penta3");
 
         detonatePanel.GetComponent<CanvasGroup>().alpha = 1;
         detonatePanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
@@ -58,31 +56,15 @@ public class IngameHUD : MonoBehaviour
         bombPanel.GetComponent<CanvasGroup>().alpha = 1;
         bombPanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
 
-        failedPanel.GetComponent<CanvasGroup>().alpha = 0;
-        failedPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
-
         levelFinishPanel.GetComponent<CanvasGroup>().alpha = 0;
         levelFinishPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
-
-        penta1Panel.GetComponent<CanvasGroup>().alpha = 0;
-        penta1Panel.GetComponent<CanvasGroup>().blocksRaycasts = false;
-
-        penta2Panel.GetComponent<CanvasGroup>().alpha = 0;
-        penta2Panel.GetComponent<CanvasGroup>().blocksRaycasts = false;
-
-        penta3Panel.GetComponent<CanvasGroup>().alpha = 0;
-        penta3Panel.GetComponent<CanvasGroup>().blocksRaycasts = false;
 
 
         bombCountText = GameObject.Find("Bomb1Count").GetComponent<TextMeshProUGUI>();
         bombCountText.text = gameController.bombCount.ToString();
 
-
-        //ShowRoundText(2f, 1);
-
         Bomb bomb = gameController.bomb.GetComponent<Bomb>();
         bomb1Icon.GetComponent<Image>().sprite = bomb.inventoryIcon;
-        //bomb.inventoryIcon
     }
 
     // Update is called once per frame
@@ -92,7 +74,7 @@ public class IngameHUD : MonoBehaviour
 
     public void DetonateAllBombs()
     {
-        if(gameController.Detonation())
+        if (gameController.Detonation())
         {
             detonateButton.GetComponent<Image>().sprite = detonatorDown;
         }
@@ -123,9 +105,6 @@ public class IngameHUD : MonoBehaviour
         bombPanel.GetComponent<CanvasGroup>().alpha = 1;
         bombPanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
 
-        failedPanel.GetComponent<CanvasGroup>().alpha = 0;
-        failedPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
-
         levelFinishPanel.GetComponent<CanvasGroup>().alpha = 0;
         levelFinishPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
 
@@ -139,71 +118,52 @@ public class IngameHUD : MonoBehaviour
         detonatePanel.GetComponent<CanvasGroup>().alpha = 0;
         detonatePanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
 
-        failedPanel.GetComponent<CanvasGroup>().alpha = 0;
-        failedPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
-
-        levelFinishPanel.GetComponent<CanvasGroup>().alpha = 1;
-        levelFinishPanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
-
         bombPanel.GetComponent<CanvasGroup>().alpha = 0;
         bombPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
 
+        resetButton.SetActive(true);
+        nextLevelButton.SetActive(true);
 
-        if (levelClear == LevelClear.OnePentagram)
+        if (levelClear == LevelClear.Failed)
         {
-            penta1Panel.GetComponent<CanvasGroup>().alpha = 1;
-            penta1Panel.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
-
-            penta2Panel.GetComponent<CanvasGroup>().alpha = 1;
-            penta2Panel.GetComponent<Image>().color = new Color32(65, 65, 65, 255);
-
-            penta3Panel.GetComponent<CanvasGroup>().alpha = 1;
-            penta3Panel.GetComponent<Image>().color = new Color32(65, 65, 65, 255);
+            nextLevelButton.SetActive(false);
         }
-        else if (levelClear == LevelClear.TwoPentagram)
-        {
-            penta1Panel.GetComponent<CanvasGroup>().alpha = 1;
-            penta1Panel.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
 
-            penta2Panel.GetComponent<CanvasGroup>().alpha = 1;
-            penta2Panel.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
-
-            penta3Panel.GetComponent<CanvasGroup>().alpha = 1;
-            penta3Panel.GetComponent<Image>().color = new Color32(65, 65, 65, 255);
-
-        }
-        else if (levelClear == LevelClear.ThreePentagram)
-        {
-            penta1Panel.GetComponent<CanvasGroup>().alpha = 1;
-            penta1Panel.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
-
-            penta2Panel.GetComponent<CanvasGroup>().alpha = 1;
-            penta2Panel.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
-
-            penta3Panel.GetComponent<CanvasGroup>().alpha = 1;
-            penta3Panel.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
-
-        }
+        ShowEndScreen(levelClear);
 
     }
 
-    public void LevelFailed()
+    private void ShowEndScreen(LevelClear levelClear)
     {
-        //TODO show "Level failed" text popup or something like that
-        detonatePanel.GetComponent<CanvasGroup>().alpha = 0;
-        detonatePanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        if (endScreen != null)
+        {
+            var endScreenClone = Instantiate(endScreen);
+            var endscreenScript = endScreenClone.GetComponent<EndScreen>();
 
-        failedPanel.GetComponent<CanvasGroup>().alpha = 1;
-        failedPanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
-
-        levelFinishPanel.GetComponent<CanvasGroup>().alpha = 0;
-        levelFinishPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
-
-        bombPanel.GetComponent<CanvasGroup>().alpha = 0;
-        bombPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
-
-
-        //Invoke("ResetLevel", 2f);
+            if (levelClear == LevelClear.Failed)
+            {
+                endscreenScript.Enable(0);
+                nextLevelButton.SetActive(false);
+            }
+            else if (levelClear == LevelClear.OnePentagram)
+            {
+                endscreenScript.Enable(1);
+            }
+            else if (levelClear == LevelClear.TwoPentagram)
+            {
+                endscreenScript.Enable(2);
+            }
+            else if (levelClear == LevelClear.ThreePentagram)
+            {
+                endscreenScript.Enable(3);
+            }
+        }
+    }
+    public void ShowFinishPanel()
+    {
+        //TODO only after animation
+        levelFinishPanel.GetComponent<CanvasGroup>().alpha = 1;
+        levelFinishPanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
     }
 
     public void UpdateBombCount(int bombCount)
