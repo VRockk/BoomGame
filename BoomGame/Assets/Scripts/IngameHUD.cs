@@ -13,21 +13,22 @@ public class IngameHUD : MonoBehaviour
 
     private GameController gameController;
 
-    private GameObject detonatePanel;
-    private GameObject roundPanel;
-    private GameObject failedPanel;
-    private GameObject levelFinishPanel;
-    private GameObject bombPanel;
+    public GameObject detonatePanel;
+    public GameObject roundPanel;
+    public GameObject failedPanel;
+    public GameObject levelFinishPanel;
+    public GameObject bombPanel;
     private GameObject penta1Panel;
     private GameObject penta2Panel;
     private GameObject penta3Panel;
-    private GameObject bomb1Icon;
-    private GameObject detonateButton;
+    public GameObject bomb1Icon;
+    public GameObject detonateButton;
     private CameraHandler cameraHandler;
 
     private TextMeshProUGUI bombCountText;
 
     private Canvas canvas;
+
     void Awake()
     {
     }
@@ -35,12 +36,8 @@ public class IngameHUD : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        canvas = GetComponent<Canvas>();
         gameController = GameObject.FindObjectOfType<GameController>();
         cameraHandler = GameObject.FindObjectOfType<CameraHandler>();
-
-        if (canvas == null)
-            Debug.LogError("Canvas not found in the scene for the IngameHUD");
 
         if (gameController == null)
             Debug.LogError("GameController not found in the scene for the IngameHUD");
@@ -48,16 +45,9 @@ public class IngameHUD : MonoBehaviour
         if (cameraHandler == null)
             Debug.LogError("CameraHandler not found in the scene for the IngameHUD");
 
-        detonatePanel = GameObject.Find("DetonatePanel");
-        roundPanel = GameObject.Find("RoundPanel");
-        failedPanel = GameObject.Find("FailedPanel");
-        levelFinishPanel = GameObject.Find("LevelFinishPanel");
-        bombPanel = GameObject.Find("BombPanel");
         penta1Panel = GameObject.Find("Penta1");
         penta2Panel = GameObject.Find("Penta2");
         penta3Panel = GameObject.Find("Penta3");
-        bomb1Icon = GameObject.Find("Bomb1Icon");
-        detonateButton = GameObject.Find("DetonateButton");
 
         detonatePanel.GetComponent<CanvasGroup>().alpha = 1;
         detonatePanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
@@ -239,4 +229,8 @@ public class IngameHUD : MonoBehaviour
         canvasGroup.alpha = alpha;
     }
 
+    public void OpenMainMenu()
+    {
+        SceneManager.LoadScene("MainMenuScene");
+    }
 }
