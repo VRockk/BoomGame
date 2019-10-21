@@ -13,6 +13,8 @@ public class MainMenu : MonoBehaviour
 
     public GameObject privacyPolicyPanel;
     public GameObject mainMenuPanel;
+    public GameObject campaignMapPanel;
+    public GameObject shopPanel;
 
     bool showPrivacyPolicy = true;
 
@@ -59,7 +61,7 @@ public class MainMenu : MonoBehaviour
     }
     public void OpenMainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MainMenuScene");
     }
     public void OpenCampaign()
     {
@@ -110,5 +112,24 @@ public class MainMenu : MonoBehaviour
         mainMenuPanel.SetActive(true);
         privacyPolicyPanel.SetActive(false);
     }
-
+    public void CloseCampaingMap()
+    {
+        mainMenuPanel.SetActive(true);
+        campaignMapPanel.SetActive(false);
+    }
+    public void OpenCampaignMap()
+    {
+        mainMenuPanel.SetActive(false);
+        campaignMapPanel.SetActive(true);
+    }
+    public void CloseShop()
+    {
+        mainMenuPanel.SetActive(true);
+        shopPanel.SetActive(false);
+    }
+    public void OpenShop()
+    {
+        mainMenuPanel.SetActive(false);
+        shopPanel.SetActive(true);
+    }
 }
