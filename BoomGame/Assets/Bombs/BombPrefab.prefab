@@ -52,7 +52,6 @@ MonoBehaviour:
   damageRadius: 12
   power: 2000
   upwardsForce: 500
-  showPlacementGizmo: 0
   showExplosionGizmo: 1
   exposionScreamSounds:
   - {fileID: 8300000, guid: b17f74e89e8f68c44893b2d5955bdbd6, type: 3}
@@ -61,6 +60,7 @@ MonoBehaviour:
     type: 3}
   inventoryIcon: {fileID: 7137309111187667727, guid: 19a5692f40e0b5945994aa7305638ce2,
     type: 3}
+  explosionParticles: {fileID: 0}
 --- !u!61 &5241433061714825447
 BoxCollider2D:
   m_ObjectHideFlags: 0
