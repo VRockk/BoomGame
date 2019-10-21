@@ -39,7 +39,6 @@ public class GameController : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip plopSound;
 
-    private bool betweenRounds = false;
 
     private WinLines winlines;
 
@@ -234,7 +233,6 @@ public class GameController : MonoBehaviour
             if (bomb != null)
                 bomb.Detonate();
         }
-        betweenRounds = true;
 
 
         Invoke("WaitForNextRound", 2f);
@@ -254,7 +252,7 @@ public class GameController : MonoBehaviour
             //Check if there is a bit of movement still
             if (body.velocity.magnitude > 0.1f)
             {
-                print(body.gameObject.name + "   " + body.velocity.magnitude);
+                //print(body.gameObject.name + "   " + body.velocity.magnitude);
                 isMovement = true;
                 break;
             }
@@ -279,12 +277,12 @@ public class GameController : MonoBehaviour
         LevelClear levelClear = CheckLevelClear();
 
         //print(levelClear);
-        betweenRounds = false;
+
         //Always when Failed
         if (levelClear == LevelClear.Failed)
         {
             inputAllowed = false;
-            hud.LevelFailed();
+            hud.LevelFinished(LevelClear.Failed);
             return;
         }
 
@@ -293,7 +291,7 @@ public class GameController : MonoBehaviour
             if (roundCounter == maxRounds)
             {
                 inputAllowed = false;
-                hud.LevelFailed();
+                hud.LevelFinished(LevelClear.Failed);
             }
             else
             {
@@ -302,7 +300,7 @@ public class GameController : MonoBehaviour
                 {
                     //Fail if no bombs left
                     inputAllowed = false;
-                    hud.LevelFailed();
+                    hud.LevelFinished(LevelClear.Failed);
                     return;
                 }
                 hud.NextRound(roundCounter, roundDelay);
