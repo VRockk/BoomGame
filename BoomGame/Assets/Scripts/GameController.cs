@@ -6,8 +6,7 @@ using UnityEngine.SceneManagement;
 
 
 using System.Linq;
-
-
+using System;
 
 /// <summary>
 /// Resposible for the ingame logic and input
@@ -16,8 +15,7 @@ public class GameController : MonoBehaviour
 {
     public int maxRounds = 2;
 
-    //Temporary solution for bomb spawning
-    public GameObject bomb;
+    public GameObject[] bombs;
     public string nextLevelName;
 
     public int bombCount = 3;
@@ -83,11 +81,21 @@ public class GameController : MonoBehaviour
 
         hud.UpdateBombCount(bombCount);
 
+        CreateBombIcons();
+
         gameMaster = FindObjectOfType<GameMaster>();
         print(gameMaster);
         if (gameMaster == null)
             Debug.LogError("No GameMaster found");
 
+    }
+
+    private void CreateBombIcons()
+    {
+        foreach(var bomb in bombs)
+        {
+            hud.CreateBombCard(bomb);
+        }
     }
 
     // Update is called once per frame
@@ -117,7 +125,7 @@ public class GameController : MonoBehaviour
                             bombUnderMouse = hit.collider.gameObject;
                             if (audioSource != null)
                             {
-                                audioSource.pitch = Random.Range(1.1f, 1.2f);
+                                audioSource.pitch = UnityEngine.Random.Range(1.1f, 1.2f);
                                 audioSource.PlayOneShot(plopSound);
                             }
                         }
@@ -154,10 +162,15 @@ public class GameController : MonoBehaviour
                 {
                     if (audioSource != null)
                     {
-                        audioSource.pitch = Random.Range(0.9f, 1.1f);
+                        audioSource.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
                         audioSource.PlayOneShot(plopSound);
                     }
                 }
+
+                //TODO Check if bomb is under UI
+
+
+
                 //Mouse up. remove bomb from cursor
                 bombUnderMouse = null;
                 //cameraHandler.defaultCameraSize;
@@ -181,17 +194,19 @@ public class GameController : MonoBehaviour
                     //Create a new bomb instance when clicking on Bomb card
                     foreach (RaycastResult result in results)
                     {
+                        var parentObject = result.gameObject.transform.parent.gameObject;
                         //print(result.gameObject.name);
-                        if (result.gameObject.tag == "BombCard")
+                        if (parentObject.tag == "BombCard")
                         {
-                            bombUnderMouse = Instantiate(bomb, new Vector3(mousePos.x, mousePos.y + 5f, -1f), Quaternion.identity);
+                            var bombCardScript = parentObject.GetComponent<BombCard>();
+                            bombUnderMouse = Instantiate(bombCardScript.bombPrefab, new Vector3(mousePos.x, mousePos.y + 5f, -1f), Quaternion.identity);
                             //cameraHandler.ZoomToSize(35f, new Vector3(0, -2f, 0));
                             bombCount--;
                             hud.UpdateBombCount(bombCount);
 
                             if (audioSource != null)
                             {
-                                audioSource.pitch = Random.Range(1.1f, 1.2f);
+                                audioSource.pitch = UnityEngine.Random.Range(1.1f, 1.2f);
                                 audioSource.PlayOneShot(plopSound);
                             }
                         }
