@@ -17,6 +17,7 @@ public class Bomb : MonoBehaviour
     public AudioClip[] exposionScreamSounds;
     public GameObject explosion;
 
+    public GameObject bombAreaIndicator;
     public Sprite inventoryIcon;
 
 
@@ -29,6 +30,10 @@ public class Bomb : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
+
+        //TODO Get bomb upgrade info and set radius settings
+
+        bombAreaIndicator.transform.localScale = new Vector3(damageRadius / 5, damageRadius / 5, 1);
     }
 
     // Update is called once per frame
