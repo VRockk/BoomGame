@@ -40,7 +40,8 @@ public class GameController : MonoBehaviour
 
     private WinLines winlines;
 
-    public int salvageValue;
+    public int salvageValue = 30;
+    public int bonusSalvageForSavedBomb = 10;
     public GameMaster gameMaster;
     private float roundDelay = 0.5f;
     private void Awake()
@@ -79,7 +80,7 @@ public class GameController : MonoBehaviour
         roundCounter = 0;
         NextRound();
 
-        hud.UpdateBombCount(bombCount);
+        //hud.UpdateBombCount(bombCount);
 
         CreateBombIcons();
 
@@ -328,8 +329,12 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            var bonusSalvage = 0;
-            //TODO Calculate bonus salvage
+            var bonusSalvage = bombCount * bonusSalvageForSavedBomb;
+
+            //TODO check level progress from playerprefs and see if we already have gained salvage from this level.
+            //TODO Calculate bonus salvage.
+
+            
 
             hud.LevelFinished(levelClear, salvageValue, bonusSalvage);
             gameMaster.AddSalvage(salvageValue + bonusSalvage);

@@ -17,6 +17,7 @@ public class IngameHUD : MonoBehaviour
     public GameObject roundPanel;
     public GameObject levelFinishPanel;
     public GameObject bombPanel;
+    public GameObject mainMenuButton;
     public GameObject detonateButton;
     public GameObject resetButton;
     public GameObject nextLevelButton;
@@ -32,8 +33,8 @@ public class IngameHUD : MonoBehaviour
 
     private Canvas canvas;
 
-    private float salvageAmount = 0;
-    private float bonusSalvage = 0;
+    private int salvageAmount = 0;
+    private int bonusSalvage = 0;
     void Awake()
     {
     }
@@ -51,18 +52,16 @@ public class IngameHUD : MonoBehaviour
             Debug.LogError("CameraHandler not found in the scene for the IngameHUD");
 
 
-        detonatePanel.GetComponent<CanvasGroup>().alpha = 1;
-        detonatePanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        detonatePanel.SetActive(true);
 
-        roundPanel.GetComponent<CanvasGroup>().alpha = 0;
-        roundPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        roundPanel.SetActive(false);
 
-        bombPanel.GetComponent<CanvasGroup>().alpha = 1;
-        bombPanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        bombPanel.SetActive(true);
 
-        levelFinishPanel.GetComponent<CanvasGroup>().alpha = 0;
-        levelFinishPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
-        
+        mainMenuButton.SetActive(true);
+
+        levelFinishPanel.SetActive(false);
+
         bombCountText = GameObject.Find("BombCount").GetComponent<TextMeshProUGUI>();
         bombCountText.text = gameController.bombCount.ToString();
 
@@ -99,35 +98,33 @@ public class IngameHUD : MonoBehaviour
 
     public void NextRound(int roundNumber, float delay)
     {
-        detonatePanel.GetComponent<CanvasGroup>().alpha = 1;
-        detonatePanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        detonatePanel.SetActive(true);
         detonateButton.GetComponent<Image>().sprite = detonatorUp;
 
-        bombPanel.GetComponent<CanvasGroup>().alpha = 1;
-        bombPanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        bombPanel.SetActive(true);
 
-        levelFinishPanel.GetComponent<CanvasGroup>().alpha = 0;
-        levelFinishPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        levelFinishPanel.SetActive(false);
 
         ShowRoundText(delay, roundNumber);
     }
 
-    public void LevelFinished(LevelClear levelClear, float salvage, float bonus)
+    public void LevelFinished(LevelClear levelClear, int salvage, int bonus)
     {
         salvageAmount = salvage;
         bonusSalvage = bonus;
-        detonatePanel.GetComponent<CanvasGroup>().alpha = 0;
-        detonatePanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
 
-        bombPanel.GetComponent<CanvasGroup>().alpha = 0;
-        bombPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
-
+        detonatePanel.SetActive(false);
+        bombPanel.SetActive(false);
+        mainMenuButton.SetActive(false);
         resetButton.SetActive(true);
         nextLevelButton.SetActive(true);
 
+
         if (levelClear == LevelClear.Failed)
         {
-            nextLevelButton.SetActive(false);
+            //nextLevelButton.SetActive(true);
+            nextLevelButton.GetComponent<Button>().interactable = false;
+            nextLevelButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(0.35f, 0.35f, 0.35f, 1);
         }
 
         ShowEndScreen(levelClear);
@@ -141,10 +138,14 @@ public class IngameHUD : MonoBehaviour
             var endScreenClone = Instantiate(endScreen);
             var endscreenScript = endScreenClone.GetComponent<EndScreen>();
 
+            salvagePanel.SetActive(true);
+
             if (levelClear == LevelClear.Failed)
             {
                 endscreenScript.Enable(0);
-                nextLevelButton.SetActive(false);
+                salvagePanel.SetActive(false);
+                //salvagePanel.GetComponent<CanvasGroup>().alpha = 0;
+                //salvagePanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
             }
             else if (levelClear == LevelClear.OnePentagram)
             {
@@ -163,9 +164,29 @@ public class IngameHUD : MonoBehaviour
 
     public void ShowFinishPanel()
     {
+        levelFinishPanel.SetActive(true);
         levelFinishPanel.GetComponent<CanvasGroup>().alpha = 1;
         levelFinishPanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
- 
+
+        if (salvagePanel.activeInHierarchy)
+        {
+            var salvageGain = GameObject.Find("SalvageGain");
+            var salvageBonusGain = GameObject.Find("SalvageBonusGain");
+            var salvageBonus = GameObject.Find("SalvageBonus");
+
+            salvageGain.SetActive(true);
+            salvageBonus.SetActive(false);
+            salvageBonusGain.SetActive(false);
+            salvageGain.GetComponent<TextMeshProUGUI>().text = salvageAmount.ToString();
+
+            if (bonusSalvage > 0)
+            {
+                salvageBonus.SetActive(true);
+                salvageBonusGain.SetActive(true);
+                salvageBonusGain.GetComponent<TextMeshProUGUI>().text = bonusSalvage.ToString();
+            }
+        }
+
     }
 
     public void UpdateBombCount(int bombCount)
@@ -175,20 +196,19 @@ public class IngameHUD : MonoBehaviour
 
     private void ShowRoundText(float hideDelay, int roundNumber)
     {
-        //var text = roundPanel.GetComponent<TextMeshProUGUI>();
+        roundPanel.SetActive(true);
+
         TextMeshProUGUI text = GameObject.Find("RoundText").GetComponent<TextMeshProUGUI>();
         text.text = "Round " + roundNumber;
 
-        roundPanel.GetComponent<CanvasGroup>().alpha = 1;
-        //roundPanel.transform.localPosition = new Vector3(0, 0 ,0);
 
-        StartCoroutine(SetCanvasGroupAlpha(hideDelay, roundPanel.GetComponent<CanvasGroup>(), 0));
+        StartCoroutine(ActivateObjectWithDelay(hideDelay, roundPanel, false));
     }
 
-    private IEnumerator SetCanvasGroupAlpha(float delay, CanvasGroup canvasGroup, float alpha)
+    private IEnumerator ActivateObjectWithDelay(float delay, GameObject panel, bool active)
     {
         yield return new WaitForSeconds(delay);
-        canvasGroup.alpha = alpha;
+        panel.SetActive(active);
     }
 
     public void OpenMainMenu()
@@ -217,7 +237,7 @@ public class IngameHUD : MonoBehaviour
 
         var cardImage = card.GetComponentInChildren<Image>();
         cardImage.sprite = bomb.GetComponent<Bomb>().inventoryIcon;
-        
+
         //Set sprite aspect ratio so different size icons fit correcly
         var cardAspectRatioFitter = card.GetComponent<AspectRatioFitter>();
         cardAspectRatioFitter.aspectRatio = cardImage.sprite.rect.width / cardImage.sprite.rect.height;

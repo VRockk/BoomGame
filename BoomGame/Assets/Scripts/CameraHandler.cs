@@ -88,7 +88,7 @@ public class CameraHandler : MonoBehaviour
             }
         }
 
-        if (!allowCameraMovement || gameController.bombUnderMouse != null)
+        if (!gameController.inputAllowed || !allowCameraMovement || gameController.bombUnderMouse != null)
         {
             return;
         }
