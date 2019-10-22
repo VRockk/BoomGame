@@ -165,9 +165,11 @@ public class GameController : MonoBehaviour
                         audioSource.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
                         audioSource.PlayOneShot(plopSound);
                     }
+
+                    //TODO Check if bomb is under UI
+
                 }
 
-                //TODO Check if bomb is under UI
 
 
 
@@ -297,7 +299,7 @@ public class GameController : MonoBehaviour
         if (levelClear == LevelClear.Failed)
         {
             inputAllowed = false;
-            hud.LevelFinished(LevelClear.Failed);
+            hud.LevelFinished(LevelClear.Failed, 0, 0);
             return;
         }
 
@@ -306,7 +308,7 @@ public class GameController : MonoBehaviour
             if (roundCounter == maxRounds)
             {
                 inputAllowed = false;
-                hud.LevelFinished(LevelClear.Failed);
+                hud.LevelFinished(LevelClear.Failed, 0, 0);
             }
             else
             {
@@ -315,7 +317,7 @@ public class GameController : MonoBehaviour
                 {
                     //Fail if no bombs left
                     inputAllowed = false;
-                    hud.LevelFinished(LevelClear.Failed);
+                    hud.LevelFinished(LevelClear.Failed, 0, 0);
                     return;
                 }
                 hud.NextRound(roundCounter, roundDelay);
@@ -326,8 +328,12 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            hud.LevelFinished(levelClear);
-            gameMaster.AddSalvage(salvageValue);
+            var bonusSalvage = 0;
+            //TODO Calculate bonus salvage
+
+            hud.LevelFinished(levelClear, salvageValue, bonusSalvage);
+            gameMaster.AddSalvage(salvageValue + bonusSalvage);
+
         }
     }
 

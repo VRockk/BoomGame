@@ -20,6 +20,7 @@ public class IngameHUD : MonoBehaviour
     public GameObject detonateButton;
     public GameObject resetButton;
     public GameObject nextLevelButton;
+    public GameObject salvagePanel;
 
     public GameObject bombCardPrefab;
 
@@ -31,6 +32,8 @@ public class IngameHUD : MonoBehaviour
 
     private Canvas canvas;
 
+    private float salvageAmount = 0;
+    private float bonusSalvage = 0;
     void Awake()
     {
     }
@@ -59,8 +62,7 @@ public class IngameHUD : MonoBehaviour
 
         levelFinishPanel.GetComponent<CanvasGroup>().alpha = 0;
         levelFinishPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
-
-
+        
         bombCountText = GameObject.Find("BombCount").GetComponent<TextMeshProUGUI>();
         bombCountText.text = gameController.bombCount.ToString();
 
@@ -107,13 +109,13 @@ public class IngameHUD : MonoBehaviour
         levelFinishPanel.GetComponent<CanvasGroup>().alpha = 0;
         levelFinishPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
 
-        //TODO show "ROUND 2" text popup for a second or something like that
-
         ShowRoundText(delay, roundNumber);
     }
 
-    public void LevelFinished(LevelClear levelClear)
+    public void LevelFinished(LevelClear levelClear, float salvage, float bonus)
     {
+        salvageAmount = salvage;
+        bonusSalvage = bonus;
         detonatePanel.GetComponent<CanvasGroup>().alpha = 0;
         detonatePanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
 
@@ -161,9 +163,9 @@ public class IngameHUD : MonoBehaviour
 
     public void ShowFinishPanel()
     {
-        //TODO only after animation
         levelFinishPanel.GetComponent<CanvasGroup>().alpha = 1;
         levelFinishPanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
+ 
     }
 
     public void UpdateBombCount(int bombCount)
@@ -199,7 +201,7 @@ public class IngameHUD : MonoBehaviour
         if (bomb == null)
             return;
 
-        //Get current bomb cards 
+        //Get current bomb cards and add position offset for each one
         float leftOffset = 0;
         var bombCards = GameObject.FindGameObjectsWithTag("BombCard");
         foreach (var bombCard in bombCards)
@@ -208,19 +210,18 @@ public class IngameHUD : MonoBehaviour
             leftOffset += bombCardTransform.sizeDelta.x + 5f;
         }
 
+        //Create new bomb card and set sprite, size and positioning
         var card = Instantiate(bombCardPrefab);
         card.transform.SetParent(bombPanel.transform);
         var cardTransform = card.GetComponent<RectTransform>();
 
-        var cardAspectRatioFitter = card.GetComponent<AspectRatioFitter>();
-
         var cardImage = card.GetComponentInChildren<Image>();
         cardImage.sprite = bomb.GetComponent<Bomb>().inventoryIcon;
+        
+        //Set sprite aspect ratio so different size icons fit correcly
+        var cardAspectRatioFitter = card.GetComponent<AspectRatioFitter>();
+        cardAspectRatioFitter.aspectRatio = cardImage.sprite.rect.width / cardImage.sprite.rect.height;
 
-
-        var iconWidth = cardImage.sprite.rect.width;
-        var iconHeight = cardImage.sprite.rect.height;
-        cardAspectRatioFitter.aspectRatio = iconWidth / iconHeight;
         cardTransform.localPosition = new Vector3(leftOffset, 5f, 0);
 
 
