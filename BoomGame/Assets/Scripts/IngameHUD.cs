@@ -17,10 +17,11 @@ public class IngameHUD : MonoBehaviour
     public GameObject roundPanel;
     public GameObject levelFinishPanel;
     public GameObject bombPanel;
-    public GameObject bomb1Icon;
     public GameObject detonateButton;
     public GameObject resetButton;
     public GameObject nextLevelButton;
+
+    public GameObject bombCardPrefab;
 
     public GameObject endScreen;
 
@@ -60,11 +61,9 @@ public class IngameHUD : MonoBehaviour
         levelFinishPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
 
 
-        bombCountText = GameObject.Find("Bomb1Count").GetComponent<TextMeshProUGUI>();
+        bombCountText = GameObject.Find("BombCount").GetComponent<TextMeshProUGUI>();
         bombCountText.text = gameController.bombCount.ToString();
 
-        Bomb bomb = gameController.bomb.GetComponent<Bomb>();
-        bomb1Icon.GetComponent<Image>().sprite = bomb.inventoryIcon;
     }
 
     // Update is called once per frame
@@ -159,6 +158,7 @@ public class IngameHUD : MonoBehaviour
             }
         }
     }
+
     public void ShowFinishPanel()
     {
         //TODO only after animation
@@ -192,5 +192,39 @@ public class IngameHUD : MonoBehaviour
     public void OpenMainMenu()
     {
         SceneManager.LoadScene("MainMenuScene");
+    }
+
+    public void CreateBombCard(GameObject bomb)
+    {
+        if (bomb == null)
+            return;
+
+        //Get current bomb cards 
+        float leftOffset = 0;
+        var bombCards = GameObject.FindGameObjectsWithTag("BombCard");
+        foreach (var bombCard in bombCards)
+        {
+            var bombCardTransform = bombCard.GetComponent<RectTransform>();
+            leftOffset += bombCardTransform.sizeDelta.x + 5f;
+        }
+
+        var card = Instantiate(bombCardPrefab);
+        card.transform.SetParent(bombPanel.transform);
+        var cardTransform = card.GetComponent<RectTransform>();
+
+        var cardAspectRatioFitter = card.GetComponent<AspectRatioFitter>();
+
+        var cardImage = card.GetComponentInChildren<Image>();
+        cardImage.sprite = bomb.GetComponent<Bomb>().inventoryIcon;
+
+
+        var iconWidth = cardImage.sprite.rect.width;
+        var iconHeight = cardImage.sprite.rect.height;
+        cardAspectRatioFitter.aspectRatio = iconWidth / iconHeight;
+        cardTransform.localPosition = new Vector3(leftOffset, 5f, 0);
+
+
+        var bombCardScript = card.GetComponent<BombCard>();
+        bombCardScript.bombPrefab = bomb;
     }
 }

@@ -119,17 +119,21 @@ public class Brick : BuildingObject
         List<GameObject> newObjects = new List<GameObject>();
         for (int e = 0; e < pieceObjects.Length; e++)
         {
-            var newObject = Instantiate(pieceObjects[e]);
-
-            //Set the position showed by the gizmos
-            if (pieceSpawnLocations.Length >= e)
+            //only create everyother
+            if (UnityEngine.Random.value >= 0.5)
             {
+                var newObject = Instantiate(pieceObjects[e]);
 
-                Vector3 localPosition = (this.transform.right * pieceSpawnLocations[e].x) + (this.transform.up * pieceSpawnLocations[e].y);
-                newObject.transform.position = this.transform.position + new Vector3(localPosition.x, localPosition.y, 0.0f);
-                newObject.transform.localRotation = this.transform.localRotation;
+                //Set the position showed by the gizmos
+                if (pieceSpawnLocations.Length >= e)
+                {
+
+                    Vector3 localPosition = (this.transform.right * pieceSpawnLocations[e].x) + (this.transform.up * pieceSpawnLocations[e].y);
+                    newObject.transform.position = this.transform.position + new Vector3(localPosition.x, localPosition.y, 0.0f);
+                    newObject.transform.localRotation = this.transform.localRotation;
+                }
+                newObjects.Add(newObject);
             }
-            newObjects.Add(newObject);
         }
 
         Destroy(this.gameObject);
