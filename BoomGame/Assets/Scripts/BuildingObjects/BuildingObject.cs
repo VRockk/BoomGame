@@ -7,11 +7,11 @@ public class BuildingObject : MonoBehaviour
 {
     public float jointBreakForce = 50000f;
     public float jointBreakTorque = 50000f;
+    public bool createJoints = true;
     public bool createJointToGround = false;
 
     public List<GameObject> ignoredJoints = new List<GameObject>();
 
-    protected bool createJoints = true;
 
     [HideInInspector]
     public MaterialType materialType = MaterialType.None;

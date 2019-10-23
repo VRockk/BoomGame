@@ -51,6 +51,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Time.timeScale = 0.2f;
         hud = GameObject.FindObjectOfType<IngameHUD>();
 
         if (hud == null)
