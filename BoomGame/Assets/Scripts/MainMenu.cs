@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class MainMenu : MonoBehaviour
 {
@@ -132,4 +133,5 @@ public class MainMenu : MonoBehaviour
         mainMenuPanel.SetActive(false);
         shopPanel.SetActive(true);
     }
+
 }
