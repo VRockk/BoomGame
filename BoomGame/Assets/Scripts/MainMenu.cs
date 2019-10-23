@@ -17,14 +17,13 @@ public class MainMenu : MonoBehaviour
     public GameObject campaignMapPanel;
     public GameObject shopPanel;
 
-    bool showPrivacyPolicy = true;
 
     void Start()
     {
         UpdateSalvage();
-        if (mainMenuPanel != null && privacyPolicyPanel != null)
+        if (privacyPolicyPanel != null)
         {
-            if (showPrivacyPolicy)
+            if (!gameMaster.PrivacyPolicyAccepted)
             {
                 mainMenuPanel.SetActive(false);
                 privacyPolicyPanel.SetActive(true);
@@ -112,7 +111,15 @@ public class MainMenu : MonoBehaviour
     {
         mainMenuPanel.SetActive(true);
         privacyPolicyPanel.SetActive(false);
+        gameMaster.PrivacyPolicyAccepted = true;
     }
+
+    public void OpenPrivacyPolicy()
+    {
+        mainMenuPanel.SetActive(false);
+        privacyPolicyPanel.SetActive(true);
+    }
+
     public void CloseCampaingMap()
     {
         mainMenuPanel.SetActive(true);
