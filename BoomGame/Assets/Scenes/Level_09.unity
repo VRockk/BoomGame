@@ -120,6 +120,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &32631066 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+    type: 3}
+  m_PrefabInstance: {fileID: 2027431088}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &34199737
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,6 +215,21 @@ Transform:
   - {fileID: 2018323025}
   - {fileID: 174752294}
   - {fileID: 276178325}
+  - {fileID: 151671020}
+  - {fileID: 453935095}
+  - {fileID: 672949555}
+  - {fileID: 1903803568}
+  - {fileID: 852635382}
+  - {fileID: 1219812899}
+  - {fileID: 867281215}
+  - {fileID: 32631066}
+  - {fileID: 1676881297}
+  - {fileID: 1367484596}
+  - {fileID: 229218516}
+  - {fileID: 1592059851}
+  - {fileID: 655488835}
+  - {fileID: 199599495}
+  - {fileID: 284324707}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -282,12 +303,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -372,12 +393,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -462,12 +483,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -481,6 +502,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
     type: 3}
   m_PrefabInstance: {fileID: 147307540}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &151671020 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1901666819}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &174752293
 PrefabInstance:
@@ -552,12 +579,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -642,12 +669,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -662,6 +689,90 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 176011118}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &176669663
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 34199738}
+    m_Modifications:
+    - target: {fileID: 1744478025674971482, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_Name
+      value: ShatteringBrick_600x400 (63)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.9000015
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -22.470001
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 63
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: jointBreakForce
+      value: 500000
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: jointBreakTorque
+      value: 500000
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: createJointToGround
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 35276085a900e50439c917ba0f4fe4a0, type: 3}
 --- !u!1001 &195341359
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -732,12 +843,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -752,6 +863,96 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 195341359}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &199599495 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1403961052}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &215729603
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 34199738}
+    m_Modifications:
+    - target: {fileID: 1744478025674971482, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_Name
+      value: ShatteringBrick_600x400 (72)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -42.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -26.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: jointBreakForce
+      value: 500000
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: jointBreakTorque
+      value: 500000
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: createJointToGround
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 35276085a900e50439c917ba0f4fe4a0, type: 3}
 --- !u!1001 &223535656
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -822,12 +1023,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -842,6 +1043,96 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 223535656}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &229218516 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+    type: 3}
+  m_PrefabInstance: {fileID: 215729603}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &260893444
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 34199738}
+    m_Modifications:
+    - target: {fileID: 1744478025674971482, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_Name
+      value: ShatteringBrick_600x400 (73)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -42.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -22.470001
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 73
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: jointBreakForce
+      value: 500000
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: jointBreakTorque
+      value: 500000
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: createJointToGround
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 35276085a900e50439c917ba0f4fe4a0, type: 3}
 --- !u!1001 &276178324
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -912,12 +1203,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -931,6 +1222,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
     type: 3}
   m_PrefabInstance: {fileID: 276178324}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &284324707 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1586695087}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &310416292
 PrefabInstance:
@@ -1002,12 +1299,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -1022,6 +1319,90 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 310416292}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &321036646
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 34199738}
+    m_Modifications:
+    - target: {fileID: 1744478025674971482, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_Name
+      value: ShatteringBrick_600x400 (66)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -10.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 66
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: jointBreakForce
+      value: 500000
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: jointBreakTorque
+      value: 500000
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: createJointToGround
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 35276085a900e50439c917ba0f4fe4a0, type: 3}
 --- !u!1001 &325645001
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1110,6 +1491,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8650378973668689463, guid: 611357bb80b8fac48a60e3a228e7e00e,
         type: 3}
+    - target: {fileID: 8572952852546758728, guid: 73f9cc04d4bd6c546b14ed77c15d7a3b,
+        type: 3}
+      propertyPath: bombCount
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1503803168660335380, guid: 73f9cc04d4bd6c546b14ed77c15d7a3b,
         type: 3}
       propertyPath: m_IsActive
@@ -1119,6 +1505,51 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4296697111228332408, guid: 73f9cc04d4bd6c546b14ed77c15d7a3b,
+        type: 3}
+      propertyPath: m_Positions.Array.data[1].z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4296697111228332408, guid: 73f9cc04d4bd6c546b14ed77c15d7a3b,
+        type: 3}
+      propertyPath: m_Positions.Array.data[0].y
+      value: -14.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 4296697111228332408, guid: 73f9cc04d4bd6c546b14ed77c15d7a3b,
+        type: 3}
+      propertyPath: m_Positions.Array.data[1].y
+      value: -14.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 6767139014544626117, guid: 73f9cc04d4bd6c546b14ed77c15d7a3b,
+        type: 3}
+      propertyPath: m_Positions.Array.data[1].z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6767139014544626117, guid: 73f9cc04d4bd6c546b14ed77c15d7a3b,
+        type: 3}
+      propertyPath: m_Positions.Array.data[0].y
+      value: -7.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6767139014544626117, guid: 73f9cc04d4bd6c546b14ed77c15d7a3b,
+        type: 3}
+      propertyPath: m_Positions.Array.data[1].y
+      value: -7.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4100585785092599918, guid: 73f9cc04d4bd6c546b14ed77c15d7a3b,
+        type: 3}
+      propertyPath: m_Positions.Array.data[1].z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4100585785092599918, guid: 73f9cc04d4bd6c546b14ed77c15d7a3b,
+        type: 3}
+      propertyPath: m_Positions.Array.data[0].y
+      value: -19.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 4100585785092599918, guid: 73f9cc04d4bd6c546b14ed77c15d7a3b,
+        type: 3}
+      propertyPath: m_Positions.Array.data[1].y
+      value: -19.49
       objectReference: {fileID: 0}
     - target: {fileID: 8635113290220577396, guid: 73f9cc04d4bd6c546b14ed77c15d7a3b,
         type: 3}
@@ -1135,53 +1566,92 @@ PrefabInstance:
       propertyPath: twoPentaLine
       value: -14.26
       objectReference: {fileID: 0}
-    - target: {fileID: 4296697111228332408, guid: 73f9cc04d4bd6c546b14ed77c15d7a3b,
-        type: 3}
-      propertyPath: m_Positions.Array.data[1].z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4296697111228332408, guid: 73f9cc04d4bd6c546b14ed77c15d7a3b,
-        type: 3}
-      propertyPath: m_Positions.Array.data[0].y
-      value: -14.26
-      objectReference: {fileID: 0}
-    - target: {fileID: 4296697111228332408, guid: 73f9cc04d4bd6c546b14ed77c15d7a3b,
-        type: 3}
-      propertyPath: m_Positions.Array.data[1].y
-      value: -14.26
-      objectReference: {fileID: 0}
-    - target: {fileID: 6767139014544626117, guid: 73f9cc04d4bd6c546b14ed77c15d7a3b,
-        type: 3}
-      propertyPath: m_Positions.Array.data[1].z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6767139014544626117, guid: 73f9cc04d4bd6c546b14ed77c15d7a3b,
-        type: 3}
-      propertyPath: m_Positions.Array.data[0].y
-      value: -7.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6767139014544626117, guid: 73f9cc04d4bd6c546b14ed77c15d7a3b,
-        type: 3}
-      propertyPath: m_Positions.Array.data[1].y
-      value: -7.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4100585785092599918, guid: 73f9cc04d4bd6c546b14ed77c15d7a3b,
-        type: 3}
-      propertyPath: m_Positions.Array.data[1].z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4100585785092599918, guid: 73f9cc04d4bd6c546b14ed77c15d7a3b,
-        type: 3}
-      propertyPath: m_Positions.Array.data[0].y
-      value: -19.49
-      objectReference: {fileID: 0}
-    - target: {fileID: 4100585785092599918, guid: 73f9cc04d4bd6c546b14ed77c15d7a3b,
-        type: 3}
-      propertyPath: m_Positions.Array.data[1].y
-      value: -19.49
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73f9cc04d4bd6c546b14ed77c15d7a3b, type: 3}
+--- !u!1001 &326549036
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 34199738}
+    m_Modifications:
+    - target: {fileID: 1744478025674971482, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_Name
+      value: ShatteringBrick_600x400 (68)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 48.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -22.470001
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 68
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: jointBreakForce
+      value: 500000
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: jointBreakTorque
+      value: 500000
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: createJointToGround
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 35276085a900e50439c917ba0f4fe4a0, type: 3}
 --- !u!1001 &418112443
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1252,12 +1722,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -1271,6 +1741,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
     type: 3}
   m_PrefabInstance: {fileID: 418112443}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &453935095 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+    type: 3}
+  m_PrefabInstance: {fileID: 176669663}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &515145944
 PrefabInstance:
@@ -1342,12 +1818,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -1429,6 +1905,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: jointBreakForce
+      value: 500000
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: jointBreakTorque
+      value: 500000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35276085a900e50439c917ba0f4fe4a0, type: 3}
 --- !u!4 &536153159 stripped
@@ -1507,12 +1993,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -1597,12 +2083,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -1616,6 +2102,18 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
     type: 3}
   m_PrefabInstance: {fileID: 636489723}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &655488835 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1958697652}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &672949555 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1264836241}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &690180803
 PrefabInstance:
@@ -1683,6 +2181,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: jointBreakForce
+      value: 500000
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: jointBreakTorque
+      value: 500000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35276085a900e50439c917ba0f4fe4a0, type: 3}
@@ -1762,12 +2270,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -1852,12 +2360,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -1942,12 +2450,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -2032,12 +2540,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -2122,12 +2630,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -2141,6 +2649,18 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
     type: 3}
   m_PrefabInstance: {fileID: 830631515}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &852635382 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+    type: 3}
+  m_PrefabInstance: {fileID: 321036646}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &867281215 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+    type: 3}
+  m_PrefabInstance: {fileID: 326549036}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &887223043
 PrefabInstance:
@@ -2212,12 +2732,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -2302,12 +2822,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -2392,12 +2912,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -2482,12 +3002,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -2572,12 +3092,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -2662,12 +3182,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -2752,12 +3272,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -2772,6 +3292,90 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 964586180}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &971993933
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 34199738}
+    m_Modifications:
+    - target: {fileID: 1744478025674971482, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_Name
+      value: ShatteringBrick_600x400 (67)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 48.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -26.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 67
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: jointBreakForce
+      value: 500000
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: jointBreakTorque
+      value: 500000
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: createJointToGround
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 35276085a900e50439c917ba0f4fe4a0, type: 3}
 --- !u!1001 &974456244
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2842,12 +3446,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -2932,12 +3536,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -3022,12 +3626,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -3112,12 +3716,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -3202,12 +3806,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -3292,12 +3896,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -3382,12 +3986,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -3472,12 +4076,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -3562,12 +4166,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -3652,12 +4256,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -3742,12 +4346,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -3761,6 +4365,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
     type: 3}
   m_PrefabInstance: {fileID: 1216915668}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1219812899 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+    type: 3}
+  m_PrefabInstance: {fileID: 971993933}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1220013951
 PrefabInstance:
@@ -3832,12 +4442,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -3922,12 +4532,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -4012,12 +4622,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -4102,12 +4712,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -4122,6 +4732,90 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1245541108}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1264836241
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 34199738}
+    m_Modifications:
+    - target: {fileID: 1744478025674971482, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_Name
+      value: ShatteringBrick_600x400 (64)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.9000015
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -18.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: jointBreakForce
+      value: 500000
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: jointBreakTorque
+      value: 500000
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: createJointToGround
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 35276085a900e50439c917ba0f4fe4a0, type: 3}
 --- !u!1001 &1268714682
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4192,12 +4886,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -4211,6 +4905,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
     type: 3}
   m_PrefabInstance: {fileID: 1268714682}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1367484596 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1525600845}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1383576364
 PrefabInstance:
@@ -4282,12 +4982,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -4372,12 +5072,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -4392,6 +5092,90 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1393510964}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1403961052
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 34199738}
+    m_Modifications:
+    - target: {fileID: 1744478025674971482, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_Name
+      value: ShatteringBrick_600x400 (75)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -42.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -14.469999
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: jointBreakForce
+      value: 500000
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: jointBreakTorque
+      value: 500000
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: createJointToGround
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 35276085a900e50439c917ba0f4fe4a0, type: 3}
 --- !u!1001 &1433667446
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4462,12 +5246,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -4552,12 +5336,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -4571,6 +5355,180 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
     type: 3}
   m_PrefabInstance: {fileID: 1465258215}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1525600845
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 34199738}
+    m_Modifications:
+    - target: {fileID: 1744478025674971482, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_Name
+      value: ShatteringBrick_600x400 (71)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 48.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -10.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 71
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: jointBreakForce
+      value: 500000
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: jointBreakTorque
+      value: 500000
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: createJointToGround
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 35276085a900e50439c917ba0f4fe4a0, type: 3}
+--- !u!1001 &1586695087
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 34199738}
+    m_Modifications:
+    - target: {fileID: 1744478025674971482, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_Name
+      value: ShatteringBrick_600x400 (76)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -42.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -10.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 76
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: jointBreakForce
+      value: 500000
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: jointBreakTorque
+      value: 500000
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: createJointToGround
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 35276085a900e50439c917ba0f4fe4a0, type: 3}
+--- !u!4 &1592059851 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+    type: 3}
+  m_PrefabInstance: {fileID: 260893444}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1636808921
 PrefabInstance:
@@ -4642,12 +5600,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -4732,12 +5690,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -4752,6 +5710,90 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1640191904}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1640909051
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 34199738}
+    m_Modifications:
+    - target: {fileID: 1744478025674971482, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_Name
+      value: ShatteringBrick_600x400 (65)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.9000015
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -14.469999
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: jointBreakForce
+      value: 500000
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: jointBreakTorque
+      value: 500000
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: createJointToGround
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 35276085a900e50439c917ba0f4fe4a0, type: 3}
 --- !u!1001 &1649042160
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4822,12 +5864,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -4841,6 +5883,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
     type: 3}
   m_PrefabInstance: {fileID: 1649042160}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1676881297 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1881174289}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1749071219
 PrefabInstance:
@@ -4912,12 +5960,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -5002,12 +6050,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -5092,12 +6140,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -5182,12 +6230,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -5202,6 +6250,90 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1831940073}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1881174289
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 34199738}
+    m_Modifications:
+    - target: {fileID: 1744478025674971482, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_Name
+      value: ShatteringBrick_600x400 (70)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 48.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -14.469999
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: jointBreakForce
+      value: 500000
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: jointBreakTorque
+      value: 500000
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: createJointToGround
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 35276085a900e50439c917ba0f4fe4a0, type: 3}
 --- !u!1001 &1893394251
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5272,12 +6404,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -5291,6 +6423,96 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
     type: 3}
   m_PrefabInstance: {fileID: 1893394251}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1901666819
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 34199738}
+    m_Modifications:
+    - target: {fileID: 1744478025674971482, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_Name
+      value: ShatteringBrick_600x400 (62)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.9000015
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -26.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 62
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: jointBreakForce
+      value: 500000
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: jointBreakTorque
+      value: 500000
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: createJointToGround
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 35276085a900e50439c917ba0f4fe4a0, type: 3}
+--- !u!4 &1903803568 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1640909051}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1917093629
 PrefabInstance:
@@ -5362,12 +6584,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -5382,6 +6604,90 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1917093629}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1958697652
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 34199738}
+    m_Modifications:
+    - target: {fileID: 1744478025674971482, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_Name
+      value: ShatteringBrick_600x400 (74)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -42.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -18.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 74
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: jointBreakForce
+      value: 500000
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: jointBreakTorque
+      value: 500000
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: createJointToGround
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 35276085a900e50439c917ba0f4fe4a0, type: 3}
 --- !u!1001 &1965902409
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5452,12 +6758,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -5542,12 +6848,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -5632,12 +6938,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -5652,6 +6958,90 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2018323024}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2027431088
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 34199738}
+    m_Modifications:
+    - target: {fileID: 1744478025674971482, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_Name
+      value: ShatteringBrick_600x400 (69)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 48.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -18.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 69
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1744478025674971473, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: jointBreakForce
+      value: 500000
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: jointBreakTorque
+      value: 500000
+      objectReference: {fileID: 0}
+    - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
+        type: 3}
+      propertyPath: createJointToGround
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 35276085a900e50439c917ba0f4fe4a0, type: 3}
 --- !u!1001 &2044139428
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5722,12 +7112,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -5812,12 +7202,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
@@ -5902,12 +7292,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakForce
-      value: 89999990
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: jointBreakTorque
-      value: 90000000
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
