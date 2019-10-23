@@ -24,7 +24,6 @@ public class UrlButton : MonoBehaviour
     public void OpenURL()
     {
         string name = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name;
-        print(name);
         var button = GameObject.Find(name);
         if (button != null)
         {

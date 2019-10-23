@@ -55,51 +55,6 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("Tutorial");
     }
 
-    public void OpenPanel()
-    {
-        SceneManager.LoadScene("Shop");
-    }
-    public void OpenMainMenu()
-    {
-        SceneManager.LoadScene("MainMenuScene");
-    }
-    public void OpenCampaign()
-    {
-        SceneManager.LoadScene("CampaignMap");
-    }
-    public void OpenLevel_02()
-    {
-        SceneManager.LoadScene("Level_02");
-    }
-    public void OpenLevel_03()
-    {
-        SceneManager.LoadScene("Level_03");
-    }
-    public void OpenLevel_04()
-    {
-        SceneManager.LoadScene("Level_04");
-    }
-    public void OpenLevel_05()
-    {
-        SceneManager.LoadScene("Level_05");
-    }
-    public void OpenLevel_06()
-    {
-        SceneManager.LoadScene("Level_06");
-    }
-    public void OpenLevel_07()
-    {
-        SceneManager.LoadScene("Level_07");
-    }
-    public void OpenLevel_08()
-    {
-        SceneManager.LoadScene("Level_08");
-    }
-
-    public void OpenLevel(string name)
-    {
-        SceneManager.LoadScene(name);
-    }
 
     public void UpdateSalvage()
     {
@@ -117,6 +72,7 @@ public class MainMenu : MonoBehaviour
     public void OpenPrivacyPolicy()
     {
         mainMenuPanel.SetActive(false);
+        shopPanel.SetActive(false);
         privacyPolicyPanel.SetActive(true);
     }
 
@@ -124,21 +80,25 @@ public class MainMenu : MonoBehaviour
     {
         mainMenuPanel.SetActive(true);
         campaignMapPanel.SetActive(false);
+        shopPanel.SetActive(false);
     }
     public void OpenCampaignMap()
     {
         mainMenuPanel.SetActive(false);
         campaignMapPanel.SetActive(true);
+        shopPanel.SetActive(false);
     }
     public void CloseShop()
     {
         mainMenuPanel.SetActive(true);
         shopPanel.SetActive(false);
+        campaignMapPanel.SetActive(false);
     }
     public void OpenShop()
     {
         mainMenuPanel.SetActive(false);
         shopPanel.SetActive(true);
+        campaignMapPanel.SetActive(false);
     }
 
 }

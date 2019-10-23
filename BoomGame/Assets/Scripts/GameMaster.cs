@@ -11,7 +11,6 @@ public class GameMaster : MonoBehaviour
     private AudioSource audioSource;
 
     private bool privacyPolicyAccepted;
-
     public bool PrivacyPolicyAccepted
     {
         get
