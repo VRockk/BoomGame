@@ -96,7 +96,7 @@ public class Brick : BuildingObject
             }
         }
     }
-    
+
     /// <summary>
     /// Shatters the object into smaller pieces
     /// Spawn new game object instances and sends them flying away from the force
@@ -111,7 +111,7 @@ public class Brick : BuildingObject
 
         shattered = true;
 
-        if(shatterParticle != null)
+        if (shatterParticle != null)
             Instantiate(shatterParticle, this.transform.position, this.transform.rotation);
         //TODO optimization. We need create the new objects already in start because instantiating object can be laggy and set them invisible or something like that
 
@@ -119,21 +119,24 @@ public class Brick : BuildingObject
         List<GameObject> newObjects = new List<GameObject>();
         for (int e = 0; e < pieceObjects.Length; e++)
         {
-            //only create everyother
-            if (UnityEngine.Random.value >= 0.5)
+            //only create everyother if spawning pieces
+            if (UnityEngine.Random.value >= 0.5 && pieceObjects[e].tag == "Piece")
             {
-                var newObject = Instantiate(pieceObjects[e]);
-
-                //Set the position showed by the gizmos
-                if (pieceSpawnLocations.Length >= e)
-                {
-
-                    Vector3 localPosition = (this.transform.right * pieceSpawnLocations[e].x) + (this.transform.up * pieceSpawnLocations[e].y);
-                    newObject.transform.position = this.transform.position + new Vector3(localPosition.x, localPosition.y, 0.0f);
-                    newObject.transform.localRotation = this.transform.localRotation;
-                }
-                newObjects.Add(newObject);
+                continue;
             }
+
+            var newObject = Instantiate(pieceObjects[e]);
+
+            //Set the position showed by the gizmos
+            if (pieceSpawnLocations.Length >= e)
+            {
+
+                Vector3 localPosition = (this.transform.right * pieceSpawnLocations[e].x) + (this.transform.up * pieceSpawnLocations[e].y);
+                newObject.transform.position = this.transform.position + new Vector3(localPosition.x, localPosition.y, 0.0f);
+                newObject.transform.localRotation = this.transform.localRotation;
+                //newObject.transform.localScale = this.transform.localScale;
+            }
+            newObjects.Add(newObject);
         }
 
         Destroy(this.gameObject);

@@ -14,19 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jointBreakForce: 50000
   jointBreakTorque: 50000
+  createJoints: 1
   createJointToGround: 0
   ignoredJoints: []
   materialType: 0
   attachedObjects: []
   allowDamage: 1
   pieceSpawnLocations:
-  - {x: -3, y: 0}
+  - {x: -3.333, y: 0}
   - {x: 0, y: 0}
-  - {x: -3, y: 0}
+  - {x: 3.333, y: 0}
   pieceObjects:
-  - {fileID: 6522876664913559363, guid: 4bfca3d45c294714ea38264b339875cd, type: 3}
-  - {fileID: 3426046553121016473, guid: dafef1690d5b156488f458d7074edb47, type: 3}
-  - {fileID: 3426046553121016473, guid: b725593a3a9078d458598fd855ffb4e3, type: 3}
+  - {fileID: 6522876664913559363, guid: 5b015454cd960f149b6c11b9d372fbbd, type: 3}
+  - {fileID: 6522876664913559363, guid: 1bf972071b8288742a856ec8ea998950, type: 3}
+  - {fileID: 6522876664913559363, guid: c962752445ee03f41b16c07bd3b97660, type: 3}
   hitpoints: 2
   damagedForceLimit: 10000
   shatterParticle: {fileID: 0}
@@ -44,6 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jointBreakForce: 50000
   jointBreakTorque: 50000
+  createJoints: 1
   createJointToGround: 0
   ignoredJoints: []
   materialType: 0
@@ -59,7 +61,7 @@ PrefabInstance:
     - target: {fileID: 1863442581099001726, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_Name
-      value: WoodBoard_200x900
+      value: WoodBoard_100x1000
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001717, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
@@ -85,27 +87,27 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 3249140630319401529, guid: b4be78b86414cdb41b68e802b9692c60,
+      objectReference: {fileID: 8308141738274041500, guid: bd0bb4d7bab2e7140a8e1646e177eb09,
         type: 3}
     - target: {fileID: 1863442581099001715, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 9.040001
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001715, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 2.0305202
+      value: 1.0000362
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001715, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_Size.x
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001715, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_Size.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001713, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
