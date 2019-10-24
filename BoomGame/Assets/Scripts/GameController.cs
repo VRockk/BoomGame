@@ -334,13 +334,13 @@ public class GameController : MonoBehaviour
             var bonusSalvage = bombCount * bonusSalvageForSavedBomb;
 
             //TODO check level progress from playerprefs and see if we already have gained salvage from this level.
-            //TODO Calculate bonus salvage.
+            
 
             
 
             hud.LevelFinished(levelClear, salvageValue, bonusSalvage);
             gameMaster.AddSalvage(salvageValue + bonusSalvage);
-
+            gameMaster.PassLevel();
         }
     }
 

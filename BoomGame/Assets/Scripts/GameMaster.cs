@@ -10,6 +10,11 @@ public class GameMaster : MonoBehaviour
 
     private AudioSource audioSource;
 
+    public string nextLevel = "Level2";
+
+    public int levelToUnlock = 2;
+
+
     private bool privacyPolicyAccepted;
     public bool PrivacyPolicyAccepted
     {
@@ -95,6 +100,13 @@ public class GameMaster : MonoBehaviour
     {
         //TODO Fade out/fade in
         audioSource.clip = clip;
+    }
+
+    public void PassLevel ()
+    {   if (levelToUnlock > PlayerPrefs.GetInt("LevelReached, 1"))
+        {
+            PlayerPrefs.SetInt("levelReached", levelToUnlock);
+        }
     }
 
 }
