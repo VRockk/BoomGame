@@ -10,6 +10,7 @@ public class Brick : BuildingObject
 {
     public Vector2[] pieceSpawnLocations;
     public GameObject[] pieceObjects;
+    private List<GameObject> shatterObjects;
 
     public int hitpoints = 2;
 
@@ -46,6 +47,43 @@ public class Brick : BuildingObject
     protected override void Start()
     {
         base.Start();
+        CreateShatterObjects();
+    }
+
+    private void CreateShatterObjects()
+    {
+        shatterObjects = new List<GameObject>();
+        for (int e = 0; e < pieceObjects.Length; e++)
+        {
+            //only create everyother if spawning pieces
+            if (UnityEngine.Random.value >= 0.5 && pieceObjects[e].tag == "Piece")
+            {
+                continue;
+            }
+
+            var newObject = Instantiate(pieceObjects[e]);
+
+            newObject.transform.parent = gameObject.transform;
+            //Set the position showed by the gizmos
+            if (pieceSpawnLocations.Length >= e)
+            {
+
+                Vector3 localPosition = (this.transform.right * pieceSpawnLocations[e].x) + (this.transform.up * pieceSpawnLocations[e].y);
+                newObject.transform.position = this.transform.position + new Vector3(localPosition.x, localPosition.y, 0.0f);
+                newObject.transform.localRotation = this.transform.localRotation;
+                //newObject.transform.localScale = this.transform.localScale;
+            }
+            var buildingObject = newObject.GetComponent<BuildingObject>();
+            if (buildingObject != null)
+            {
+                buildingObject.createJoints = false;
+                buildingObject.createManualJoints = false;
+                buildingObject.allowDamage = false;
+            }
+            newObject.SetActive(false);
+            shatterObjects.Add(newObject);
+        }
+
     }
 
     protected override void FixedUpdate()
@@ -92,7 +130,7 @@ public class Brick : BuildingObject
                 hitpoints--;
 
                 if (hitpoints == 0)
-                    Shatter(this.transform.position, 200, 100);
+                    Shatter(this.transform.position, 100, 50);
             }
         }
     }
@@ -113,39 +151,13 @@ public class Brick : BuildingObject
 
         if (shatterParticle != null)
             Instantiate(shatterParticle, this.transform.position, this.transform.rotation);
-        //TODO optimization. We need create the new objects already in start because instantiating object can be laggy and set them invisible or something like that
-
-        //Instantiate new objects
-        List<GameObject> newObjects = new List<GameObject>();
-        for (int e = 0; e < pieceObjects.Length; e++)
-        {
-            //only create everyother if spawning pieces
-            if (UnityEngine.Random.value >= 0.5 && pieceObjects[e].tag == "Piece")
-            {
-                continue;
-            }
-
-            var newObject = Instantiate(pieceObjects[e]);
-
-            //Set the position showed by the gizmos
-            if (pieceSpawnLocations.Length >= e)
-            {
-
-                Vector3 localPosition = (this.transform.right * pieceSpawnLocations[e].x) + (this.transform.up * pieceSpawnLocations[e].y);
-                newObject.transform.position = this.transform.position + new Vector3(localPosition.x, localPosition.y, 0.0f);
-                newObject.transform.localRotation = this.transform.localRotation;
-                //newObject.transform.localScale = this.transform.localScale;
-            }
-            newObjects.Add(newObject);
-        }
-
-        Destroy(this.gameObject);
 
         //Add explosion force to new objects
-        foreach (var newObject in newObjects)
+        foreach (var newObject in shatterObjects)
         {
+            newObject.SetActive(true);
+            newObject.transform.parent = null;
             Rigidbody2D rigidBody = newObject.GetComponent<Rigidbody2D>();
-            var brick = newObject.GetComponent<Brick>();
 
             if (rigidBody != null)
             {
@@ -153,13 +165,8 @@ public class Brick : BuildingObject
                 Vector2 force = UtilityLibrary.CalculateExplosionForce(explosionPos, newObject.transform.position, power, upwardsForce);
                 rigidBody.AddForce(force, ForceMode2D.Impulse);
             }
-            if (brick != null)
-            {
-                brick.createJoints = false;
-                brick.allowDamage = false;
-                brick.damageGateDelay = 0.05f;
-            }
         }
+        Destroy(this.gameObject);
     }
 
 }
