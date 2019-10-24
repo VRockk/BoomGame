@@ -86,7 +86,6 @@ public class GameMaster : MonoBehaviour
 
         //Bomb data
         GetBombData();
-        currentSalvage += 1000;
 
     }
 
@@ -137,6 +136,7 @@ public class GameMaster : MonoBehaviour
     {
         //TODO Fade out/fade in
         audioSource.clip = clip;
+        audioSource.Play();
     }
 
     public void PassLevel(int levelNumber)

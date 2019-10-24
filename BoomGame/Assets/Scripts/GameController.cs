@@ -95,6 +95,8 @@ public class GameController : MonoBehaviour
         {
             Instantiate(gameMasterPrefab);
         }
+
+        gameMaster.SetMusic(null);
     }
 
     private void CreateBombIcons()
@@ -343,6 +345,7 @@ public class GameController : MonoBehaviour
             
 
             hud.LevelFinished(levelClear, salvageValue, bonusSalvage);
+            print(salvageValue + bonusSalvage);
             gameMaster.AddSalvage(salvageValue + bonusSalvage);
             gameMaster.PassLevel(levelNumber + 1);
         }

@@ -48,6 +48,7 @@ public class MainMenu : MonoBehaviour
                 bombPanel.SetActive(false);
             }
         }
+        gameMaster.SetMusic(menuMusic);
     }
 
 
