@@ -17,7 +17,10 @@ public class MainMenu : MonoBehaviour
     public GameObject campaignMapPanel;
     public GameObject shopPanel;
     public GameObject bombPanel;
-
+    public GameObject slidePanel1;
+    public GameObject slidePanel2;
+    public GameObject slidePanel3;
+    public GameObject slidePanel4;
 
     void Start()
     {
@@ -136,6 +139,24 @@ public class MainMenu : MonoBehaviour
         shopPanel.SetActive(false);
         campaignMapPanel.SetActive(false);
         bombPanel.SetActive(false);
+    }
+     public void OpenSlide2()
+    {
+        slidePanel1.SetActive(false);
+        slidePanel2.SetActive(true);
+        
+    }
+    public void OpenSlide3()
+    {
+        slidePanel2.SetActive(false);
+        slidePanel3.SetActive(true);
+        
+    }
+    public void OpenSlide4()
+    {
+        slidePanel3.SetActive(false);
+        slidePanel4.SetActive(true);
+        
     }
 
 }
