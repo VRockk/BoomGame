@@ -32,8 +32,8 @@ public class Bomb : MonoBehaviour
     {
 
         //TODO Get bomb upgrade info and set radius settings
-
-        bombAreaIndicator.transform.localScale = new Vector3(damageRadius / 5, damageRadius / 5, 1);
+        var indicatorRadius = radius / 5;
+        bombAreaIndicator.transform.localScale = new Vector3(indicatorRadius, indicatorRadius, 1);
     }
 
     // Update is called once per frame
