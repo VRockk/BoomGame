@@ -39,9 +39,10 @@ public class GameController : MonoBehaviour
 
 
     private WinLines winlines;
+    
+    private int salvageValue = 100;
+    private int bonusSalvageForSavedBomb = 50;
 
-    public int salvageValue = 30;
-    public int bonusSalvageForSavedBomb = 10;
     public GameMaster gameMaster;
     private float roundDelay = 0.5f;
     private void Awake()
