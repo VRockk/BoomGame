@@ -1,6 +1,34 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3309185218455258772
+--- !u!60 &4008360785967397103
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6522876664913559363}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 6c5305bef19ddf64699d63dc7983e3c2, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.0601053, y: 1.6100001}
+    newSize: {x: 1.14, y: 1.14}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.99683875, y: 0.760395}
+      - {x: -1.0873388, y: 0.76728505}
+      - {x: 0.9926963, y: -0.87274426}
+--- !u!1001 &6404888981541909326
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,7 +38,7 @@ PrefabInstance:
     - target: {fileID: 173200965498113037, guid: ac6f03e6e3056a4429548d492d41c123,
         type: 3}
       propertyPath: m_Name
-      value: Wood_900x200_Piece_Middle
+      value: RoofChimney_Piece_07
       objectReference: {fileID: 0}
     - target: {fileID: 173200965498113037, guid: ac6f03e6e3056a4429548d492d41c123,
         type: 3}
@@ -20,13 +48,13 @@ PrefabInstance:
     - target: {fileID: 4785638828270524803, guid: ac6f03e6e3056a4429548d492d41c123,
         type: 3}
       propertyPath: m_Mass
-      value: 5
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6652297626691305361, guid: ac6f03e6e3056a4429548d492d41c123,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 409798918596981791, guid: b4be78b86414cdb41b68e802b9692c60,
+      objectReference: {fileID: 3795551745359590810, guid: eda900de528dc7b48a30d494a40e1d47,
         type: 3}
     - target: {fileID: 6032074837103792415, guid: ac6f03e6e3056a4429548d492d41c123,
         type: 3}
@@ -51,12 +79,12 @@ PrefabInstance:
     - target: {fileID: 5849968127907056663, guid: ac6f03e6e3056a4429548d492d41c123,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 3.0300002
+      value: 2.0601053
       objectReference: {fileID: 0}
     - target: {fileID: 5849968127907056663, guid: ac6f03e6e3056a4429548d492d41c123,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 2.0305202
+      value: 1.6100001
       objectReference: {fileID: 0}
     - target: {fileID: 5849968127907056663, guid: ac6f03e6e3056a4429548d492d41c123,
         type: 3}
@@ -66,17 +94,24 @@ PrefabInstance:
     - target: {fileID: 5849968127907056663, guid: ac6f03e6e3056a4429548d492d41c123,
         type: 3}
       propertyPath: m_Size.x
-      value: 3
+      value: 2.1401093
       objectReference: {fileID: 0}
     - target: {fileID: 5849968127907056663, guid: ac6f03e6e3056a4429548d492d41c123,
         type: 3}
       propertyPath: m_Size.y
-      value: 2
+      value: 2.1000001
       objectReference: {fileID: 0}
     - target: {fileID: 5849968127907056663, guid: ac6f03e6e3056a4429548d492d41c123,
         type: 3}
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: 6c5305bef19ddf64699d63dc7983e3c2, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5849968127907056663, guid: ac6f03e6e3056a4429548d492d41c123, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ac6f03e6e3056a4429548d492d41c123, type: 3}
+--- !u!1 &6522876664913559363 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 173200965498113037, guid: ac6f03e6e3056a4429548d492d41c123,
+    type: 3}
+  m_PrefabInstance: {fileID: 6404888981541909326}
+  m_PrefabAsset: {fileID: 0}

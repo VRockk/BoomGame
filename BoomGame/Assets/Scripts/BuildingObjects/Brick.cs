@@ -77,6 +77,7 @@ public class Brick : BuildingObject
             if (buildingObject != null)
             {
                 buildingObject.createJoints = false;
+                buildingObject.createManualJoints = false;
                 buildingObject.allowDamage = false;
             }
             newObject.SetActive(false);
@@ -129,7 +130,7 @@ public class Brick : BuildingObject
                 hitpoints--;
 
                 if (hitpoints == 0)
-                    Shatter(this.transform.position, 100, 0);
+                    Shatter(this.transform.position, 100, 50);
             }
         }
     }
@@ -150,7 +151,7 @@ public class Brick : BuildingObject
 
         if (shatterParticle != null)
             Instantiate(shatterParticle, this.transform.position, this.transform.rotation);
-        
+
         //Add explosion force to new objects
         foreach (var newObject in shatterObjects)
         {
