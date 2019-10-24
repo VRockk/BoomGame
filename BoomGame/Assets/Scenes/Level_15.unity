@@ -598,6 +598,11 @@ PrefabInstance:
       propertyPath: salvageValue
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 8572952852546758728, guid: 73f9cc04d4bd6c546b14ed77c15d7a3b,
+        type: 3}
+      propertyPath: nextLevelName
+      value: Level_16
+      objectReference: {fileID: 0}
     - target: {fileID: 4296697111228332408, guid: 73f9cc04d4bd6c546b14ed77c15d7a3b,
         type: 3}
       propertyPath: m_Positions.Array.data[1].z
@@ -838,6 +843,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jointBreakForce: 50000
   jointBreakTorque: 50000
+  createJoints: 1
   createJointToGround: 0
   ignoredJoints: []
   materialType: 0
