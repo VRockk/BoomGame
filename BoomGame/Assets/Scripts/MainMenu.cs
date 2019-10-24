@@ -16,7 +16,9 @@ public class MainMenu : MonoBehaviour
     public GameObject mainMenuPanel;
     public GameObject campaignMapPanel;
     public GameObject shopPanel;
-    public GameObject bombPanel;
+    public GameObject bombPanel;    
+    public GameObject bombSelectionPanel;
+
     public GameObject slidePanel1;
     public GameObject slidePanel2;
     public GameObject slidePanel3;
@@ -79,10 +81,10 @@ public class MainMenu : MonoBehaviour
         campaignMapPanel.SetActive(false);
         shopPanel.SetActive(false);
         bombPanel.SetActive(false);
+        bombSelectionPanel.SetActive(true);
 
         gameMaster.PrivacyPolicyAccepted = true;
     }
-
     public void OpenPrivacyPolicy()
     {
         mainMenuPanel.SetActive(false);
@@ -90,6 +92,7 @@ public class MainMenu : MonoBehaviour
         campaignMapPanel.SetActive(false);
         privacyPolicyPanel.SetActive(true);
         bombPanel.SetActive(false);
+        bombSelectionPanel.SetActive(true);
     }
 
     public void CloseCampaingMap()
@@ -99,6 +102,7 @@ public class MainMenu : MonoBehaviour
         privacyPolicyPanel.SetActive(false);
         shopPanel.SetActive(false);
         bombPanel.SetActive(false);
+        bombSelectionPanel.SetActive(true);
     }
     public void OpenCampaignMap()
     {
@@ -107,6 +111,7 @@ public class MainMenu : MonoBehaviour
         campaignMapPanel.SetActive(true);
         shopPanel.SetActive(false);
         bombPanel.SetActive(false);
+        bombSelectionPanel.SetActive(true);
     }
     public void CloseShop()
     {
@@ -115,6 +120,7 @@ public class MainMenu : MonoBehaviour
         shopPanel.SetActive(false);
         campaignMapPanel.SetActive(false);
         bombPanel.SetActive(false);
+        bombSelectionPanel.SetActive(true);
     }
     public void OpenShop()
     {
@@ -123,6 +129,7 @@ public class MainMenu : MonoBehaviour
         shopPanel.SetActive(true);
         campaignMapPanel.SetActive(false);
         bombPanel.SetActive(false);
+        bombSelectionPanel.SetActive(true);
     }
     public void OpenBombsPanel()
     {
@@ -134,11 +141,22 @@ public class MainMenu : MonoBehaviour
     }
     public void CloseBombsPanel()
     {
+        var upgradePanels = GameObject.FindGameObjectsWithTag("BombUpgradePanel");
+        foreach (var upgradePanel in upgradePanels)
+        {
+            upgradePanel.SetActive(false);
+        }
         mainMenuPanel.SetActive(true);
         privacyPolicyPanel.SetActive(false);
         shopPanel.SetActive(false);
         campaignMapPanel.SetActive(false);
         bombPanel.SetActive(false);
+        bombSelectionPanel.SetActive(true);
+    }
+    public void ShowBombUpgradePanel(GameObject panel)
+    {
+        bombSelectionPanel.SetActive(false);
+        panel.SetActive(true);
     }
      public void OpenSlide2()
     {

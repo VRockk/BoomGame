@@ -90,12 +90,11 @@ public class GameMaster : MonoBehaviour
             new int[4] { regularBombUpgrade1, regularBombUpgrade2, regularBombUpgrade3, regularBombUpgrade4 },
             regularBombUnlocked == 1 ? true : false);
 
-
         int acidBombUnlocked = PlayerPrefs.GetInt("AcidBombUnlocked", 1);
-        int acidBombUpgrade1 = PlayerPrefs.GetInt("RegularBombUpgrade1", 0);
-        int acidBombUpgrade2 = PlayerPrefs.GetInt("RegularBombUpgrade2", 0);
-        int acidBombUpgrade3 = PlayerPrefs.GetInt("RegularBombUpgrade3", 0);
-        int acidBombUpgrade4 = PlayerPrefs.GetInt("RegularBombUpgrade4", 0);
+        int acidBombUpgrade1 = PlayerPrefs.GetInt("AcidBombUpgrade1", 0);
+        int acidBombUpgrade2 = PlayerPrefs.GetInt("AcidBombUpgrade2", 0);
+        int acidBombUpgrade3 = PlayerPrefs.GetInt("AcidBombUpgrade3", 0);
+        int acidBombUpgrade4 = PlayerPrefs.GetInt("AcidBombUpgrade4", 0);
 
         acidBombData = new BombData(BombType.Acid,
             new int[4] { acidBombUpgrade1, acidBombUpgrade2, acidBombUpgrade3, acidBombUpgrade4 },
@@ -133,11 +132,42 @@ public class GameMaster : MonoBehaviour
         audioSource.clip = clip;
     }
 
-    public void PassLevel (int levelNumber)
-    {   if (levelNumber > PlayerPrefs.GetInt("LevelReached, 1"))
+    public void PassLevel(int levelNumber)
+    {
+        if (levelNumber > PlayerPrefs.GetInt("LevelReached, 1"))
         {
             PlayerPrefs.SetInt("levelReached", levelNumber);
         }
     }
 
+    public void SetBombUpgradeLevel(BombType bombtype, int upgradePosition, int level)
+    {
+        string levelKeyName = "";
+        if (bombtype == BombType.Regular)
+        {
+            levelKeyName = "RegularBombUpgrade";
+        }
+        else if (bombtype == BombType.Acid)
+        {
+            levelKeyName = "AcidBombUpgrade";
+        }
+
+        if (upgradePosition == 1)
+        {
+            levelKeyName += "1";
+        }
+        else if (upgradePosition == 2)
+        {
+            levelKeyName += "2";
+        }
+        else if (upgradePosition == 3)
+        {
+            levelKeyName += "3";
+        }
+        else if (upgradePosition == 4)
+        {
+            levelKeyName += "4";
+        }
+        PlayerPrefs.SetInt(levelKeyName, level);
+    }
 }

@@ -88,7 +88,6 @@ public class GameController : MonoBehaviour
         CreateBombIcons();
 
         gameMaster = FindObjectOfType<GameMaster>();
-        print(gameMaster);
         if (gameMaster == null)
             Debug.LogError("No GameMaster found");
 
