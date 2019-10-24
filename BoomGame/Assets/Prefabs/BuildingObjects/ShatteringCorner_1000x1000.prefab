@@ -41,6 +41,7 @@ MonoBehaviour:
   jointBreakForce: 200000
   jointBreakTorque: 200000
   createJoints: 0
+  createManualJoints: 0
   createJointToGround: 0
   ignoredJoints: []
   manualJointLocations:
@@ -112,6 +113,17 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1863442581099001712, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6604467534205707497, guid: bd0bb4d7bab2e7140a8e1646e177eb09,
+        type: 3}
     - target: {fileID: 1863442581099001715, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -142,12 +154,6 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -3
       objectReference: {fileID: 0}
-    - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -6604467534205707497, guid: bd0bb4d7bab2e7140a8e1646e177eb09,
-        type: 3}
     - target: {fileID: 1863442581099001713, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: pieceSpawnLocations.Array.size

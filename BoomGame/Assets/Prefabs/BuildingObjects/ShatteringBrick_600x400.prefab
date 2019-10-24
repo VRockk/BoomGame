@@ -14,8 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jointBreakForce: 200000
   jointBreakTorque: 200000
+  createJoints: 1
+  createManualJoints: 0
   createJointToGround: 0
   ignoredJoints: []
+  manualJointLocations: []
   materialType: 0
   attachedObjects: []
   allowDamage: 1
@@ -65,6 +68,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1863442581099001712, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_Sprite
@@ -96,26 +104,6 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: 6c5305bef19ddf64699d63dc7983e3c2, type: 2}
-    - target: {fileID: 2274702447112346858, guid: d58a38304fad7c74f99f67987213949d,
-        type: 3}
-      propertyPath: m_DampingRatio
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3581742140529727283, guid: d58a38304fad7c74f99f67987213949d,
-        type: 3}
-      propertyPath: m_DampingRatio
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2903137827647619805, guid: d58a38304fad7c74f99f67987213949d,
-        type: 3}
-      propertyPath: m_DampingRatio
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9128301045423774736, guid: d58a38304fad7c74f99f67987213949d,
-        type: 3}
-      propertyPath: m_DampingRatio
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001713, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: pieceSpawnLocations.Array.size
@@ -195,6 +183,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6649006982650661179, guid: 80b0e34ba46c467458b6d275d3e6fb64,
         type: 3}
+    - target: {fileID: 2274702447112346858, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_DampingRatio
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581742140529727283, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_DampingRatio
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2903137827647619805, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_DampingRatio
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9128301045423774736, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_DampingRatio
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d58a38304fad7c74f99f67987213949d, type: 3}
 --- !u!1 &1744478025674971482 stripped

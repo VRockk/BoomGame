@@ -14,6 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jointBreakForce: 500000
   jointBreakTorque: 500000
+  createJoints: 1
+  createManualJoints: 0
+  createJointToGround: 0
+  ignoredJoints: []
+  manualJointLocations: []
   materialType: 0
   attachedObjects: []
   allowDamage: 1
@@ -51,6 +56,16 @@ PrefabInstance:
     - target: {fileID: 1863442581099001717, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863442581099001712, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_Mass
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863442581099001712, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_AngularDrag
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
@@ -151,11 +166,6 @@ PrefabInstance:
         type: 3}
       propertyPath: materialType
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1863442581099001712, guid: d58a38304fad7c74f99f67987213949d,
-        type: 3}
-      propertyPath: m_Mass
-      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1863442581099001713, guid: d58a38304fad7c74f99f67987213949d, type: 3}

@@ -15,8 +15,10 @@ MonoBehaviour:
   jointBreakForce: 50000
   jointBreakTorque: 50000
   createJoints: 1
+  createManualJoints: 0
   createJointToGround: 0
   ignoredJoints: []
+  manualJointLocations: []
   materialType: 0
   attachedObjects: []
   allowDamage: 1
@@ -46,8 +48,10 @@ MonoBehaviour:
   jointBreakForce: 50000
   jointBreakTorque: 50000
   createJoints: 1
+  createManualJoints: 0
   createJointToGround: 0
   ignoredJoints: []
+  manualJointLocations: []
   materialType: 0
   attachedObjects: []
   allowDamage: 1
@@ -81,6 +85,11 @@ PrefabInstance:
     - target: {fileID: 1863442581099001717, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863442581099001712, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_AngularDrag
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
