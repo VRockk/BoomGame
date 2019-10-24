@@ -48,15 +48,14 @@ MonoBehaviour:
   maxRounds: 2
   bombs: []
   nextLevelName: Level2
+  levelNumber: 0
   bombCount: 3
   inputAllowed: 0
   roundCounter: 1
   bombUnderMouse: {fileID: 0}
-  plopSound: {fileID: 8300000, guid: f31be4814021144429f3d6e9a4b9677f, type: 3}
-  salvageValue: 30
-  bonusSalvageForSavedBomb: 10
-  gameMaster: {fileID: 4964522808880166160, guid: 2e60daa893cd9ee41977a01022aa9926,
+  gameMasterPrefab: {fileID: 4964522808880166175, guid: 2e60daa893cd9ee41977a01022aa9926,
     type: 3}
+  plopSound: {fileID: 8300000, guid: f31be4814021144429f3d6e9a4b9677f, type: 3}
 --- !u!114 &1150528175826771338
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1945,6 +1945,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 205958770547179572, guid: 7a736d4d7b3b99b43826b4277350d1ac,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4699096232034204166}
+    - target: {fileID: 205958770547179572, guid: 7a736d4d7b3b99b43826b4277350d1ac,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResetLevel
+      objectReference: {fileID: 0}
     - target: {fileID: 205958770547179574, guid: 7a736d4d7b3b99b43826b4277350d1ac,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2050,16 +2060,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 205958770547179572, guid: 7a736d4d7b3b99b43826b4277350d1ac,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 4699096232034204166}
-    - target: {fileID: 205958770547179572, guid: 7a736d4d7b3b99b43826b4277350d1ac,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ResetLevel
-      objectReference: {fileID: 0}
     - target: {fileID: 205958771125809122, guid: 7a736d4d7b3b99b43826b4277350d1ac,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -2115,6 +2115,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MainMenuButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 205958770547179572, guid: 7a736d4d7b3b99b43826b4277350d1ac,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4699096232034204166}
+    - target: {fileID: 205958770547179572, guid: 7a736d4d7b3b99b43826b4277350d1ac,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenMainMenu
       objectReference: {fileID: 0}
     - target: {fileID: 205958770547179574, guid: 7a736d4d7b3b99b43826b4277350d1ac,
         type: 3}
@@ -2221,16 +2231,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 205958770547179572, guid: 7a736d4d7b3b99b43826b4277350d1ac,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 4699096232034204166}
-    - target: {fileID: 205958770547179572, guid: 7a736d4d7b3b99b43826b4277350d1ac,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OpenMainMenu
-      objectReference: {fileID: 0}
     - target: {fileID: 205958771125809122, guid: 7a736d4d7b3b99b43826b4277350d1ac,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -2308,6 +2308,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MainMenuButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 205958770547179572, guid: 7a736d4d7b3b99b43826b4277350d1ac,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4699096232034204166}
+    - target: {fileID: 205958770547179572, guid: 7a736d4d7b3b99b43826b4277350d1ac,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenMainMenu
       objectReference: {fileID: 0}
     - target: {fileID: 205958770547179574, guid: 7a736d4d7b3b99b43826b4277350d1ac,
         type: 3}
@@ -2414,16 +2424,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 205958770547179572, guid: 7a736d4d7b3b99b43826b4277350d1ac,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 4699096232034204166}
-    - target: {fileID: 205958770547179572, guid: 7a736d4d7b3b99b43826b4277350d1ac,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OpenMainMenu
-      objectReference: {fileID: 0}
     - target: {fileID: 205958771125809122, guid: 7a736d4d7b3b99b43826b4277350d1ac,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -2508,6 +2508,26 @@ PrefabInstance:
     - target: {fileID: 205958770547179577, guid: 7a736d4d7b3b99b43826b4277350d1ac,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 205958770547179572, guid: 7a736d4d7b3b99b43826b4277350d1ac,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4699096232034204166}
+    - target: {fileID: 205958770547179572, guid: 7a736d4d7b3b99b43826b4277350d1ac,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 205958770547179572, guid: 7a736d4d7b3b99b43826b4277350d1ac,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 205958770547179572, guid: 7a736d4d7b3b99b43826b4277350d1ac,
+        type: 3}
+      propertyPath: m_Interactable
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 205958770547179574, guid: 7a736d4d7b3b99b43826b4277350d1ac,
@@ -2614,26 +2634,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 205958770547179572, guid: 7a736d4d7b3b99b43826b4277350d1ac,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 4699096232034204166}
-    - target: {fileID: 205958770547179572, guid: 7a736d4d7b3b99b43826b4277350d1ac,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: NextLevel
-      objectReference: {fileID: 0}
-    - target: {fileID: 205958770547179572, guid: 7a736d4d7b3b99b43826b4277350d1ac,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 205958770547179572, guid: 7a736d4d7b3b99b43826b4277350d1ac,
-        type: 3}
-      propertyPath: m_Interactable
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 205958771125809122, guid: 7a736d4d7b3b99b43826b4277350d1ac,
         type: 3}

@@ -80,7 +80,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 264}
-  m_SizeDelta: {x: 800, y: 100}
+  m_SizeDelta: {x: 1000, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1142736095340173203
 CanvasRenderer:
@@ -112,8 +112,8 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: 'Please accept our:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 65b289ab65c936441b73e5b02430fef9, type: 2}
-  m_sharedMaterial: {fileID: -2569161527877783642, guid: 65b289ab65c936441b73e5b02430fef9,
+  m_fontAsset: {fileID: 11400000, guid: 10873b356353be4488ef1463d6d2418a, type: 2}
+  m_sharedMaterial: {fileID: 1824276520298867680, guid: 10873b356353be4488ef1463d6d2418a,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1134,6 +1134,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: AdsOptOutButton
       objectReference: {fileID: 0}
+    - target: {fileID: 205958770547179572, guid: 7a736d4d7b3b99b43826b4277350d1ac,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 205958770547179572, guid: 7a736d4d7b3b99b43826b4277350d1ac,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 205958770547179572, guid: 7a736d4d7b3b99b43826b4277350d1ac,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 205958770547179574, guid: 7a736d4d7b3b99b43826b4277350d1ac,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1253,21 +1268,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 205958770547179572, guid: 7a736d4d7b3b99b43826b4277350d1ac,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 205958770547179572, guid: 7a736d4d7b3b99b43826b4277350d1ac,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 205958770547179572, guid: 7a736d4d7b3b99b43826b4277350d1ac,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 205958771125809122, guid: 7a736d4d7b3b99b43826b4277350d1ac,
         type: 3}
@@ -1398,6 +1398,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: AcceptPrivacyPolicyButton
       objectReference: {fileID: 0}
+    - target: {fileID: 205958770547179572, guid: 7a736d4d7b3b99b43826b4277350d1ac,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 205958770547179572, guid: 7a736d4d7b3b99b43826b4277350d1ac,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AcceptPrivacyPolicy
+      objectReference: {fileID: 0}
+    - target: {fileID: 205958770547179572, guid: 7a736d4d7b3b99b43826b4277350d1ac,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 205958770547179574, guid: 7a736d4d7b3b99b43826b4277350d1ac,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1518,21 +1533,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 205958770547179572, guid: 7a736d4d7b3b99b43826b4277350d1ac,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 205958770547179572, guid: 7a736d4d7b3b99b43826b4277350d1ac,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AcceptPrivacyPolicy
-      objectReference: {fileID: 0}
-    - target: {fileID: 205958770547179572, guid: 7a736d4d7b3b99b43826b4277350d1ac,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 205958771125809122, guid: 7a736d4d7b3b99b43826b4277350d1ac,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -1563,17 +1563,17 @@ PrefabInstance:
     - target: {fileID: 205958771125809122, guid: 7a736d4d7b3b99b43826b4277350d1ac,
         type: 3}
       propertyPath: m_fontSize
-      value: 154
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 205958771125809122, guid: 7a736d4d7b3b99b43826b4277350d1ac,
         type: 3}
       propertyPath: m_fontSizeBase
-      value: 154
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 205958771125809122, guid: 7a736d4d7b3b99b43826b4277350d1ac,
         type: 3}
       propertyPath: m_firstOverflowCharacterIndex
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 205958771125809122, guid: 7a736d4d7b3b99b43826b4277350d1ac,
         type: 3}
