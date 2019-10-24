@@ -21,6 +21,7 @@ public enum MaterialType
     Wood = 3
 }
 
+
 public class UtilityLibrary
 {
     public static Vector3 CalculateExplosionForceWithDistance(Vector3 explosionPos, Vector3 hitObjectPosition, float power, float upwardsForce)

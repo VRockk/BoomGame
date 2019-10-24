@@ -10,9 +10,11 @@ public class GameMaster : MonoBehaviour
 
     private AudioSource audioSource;
 
-    
 
-  
+    public BombData regularBombData;
+    public BombData acidBombData;
+
+
 
 
     private bool privacyPolicyAccepted;
@@ -69,6 +71,35 @@ public class GameMaster : MonoBehaviour
         //Level Progression
 
 
+
+        //Bomb data
+        GetBombData();
+
+    }
+
+    private void GetBombData()
+    {
+        //Regular bomb is always unlocked
+        int regularBombUnlocked = PlayerPrefs.GetInt("RegularBombUnlocked", 1);
+        int regularBombUpgrade1 = PlayerPrefs.GetInt("RegularBombUpgrade1", 0);
+        int regularBombUpgrade2 = PlayerPrefs.GetInt("RegularBombUpgrade2", 0);
+        int regularBombUpgrade3 = PlayerPrefs.GetInt("RegularBombUpgrade3", 0);
+        int regularBombUpgrade4 = PlayerPrefs.GetInt("RegularBombUpgrade4", 0);
+
+        regularBombData = new BombData(BombType.Regular,
+            new int[4] { regularBombUpgrade1, regularBombUpgrade2, regularBombUpgrade3, regularBombUpgrade4 },
+            regularBombUnlocked == 1 ? true : false);
+
+
+        int acidBombUnlocked = PlayerPrefs.GetInt("AcidBombUnlocked", 1);
+        int acidBombUpgrade1 = PlayerPrefs.GetInt("RegularBombUpgrade1", 0);
+        int acidBombUpgrade2 = PlayerPrefs.GetInt("RegularBombUpgrade2", 0);
+        int acidBombUpgrade3 = PlayerPrefs.GetInt("RegularBombUpgrade3", 0);
+        int acidBombUpgrade4 = PlayerPrefs.GetInt("RegularBombUpgrade4", 0);
+
+        acidBombData = new BombData(BombType.Acid,
+            new int[4] { acidBombUpgrade1, acidBombUpgrade2, acidBombUpgrade3, acidBombUpgrade4 },
+            acidBombUnlocked == 1 ? true : false);
     }
 
     // Start is called before the first frame update
