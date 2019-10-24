@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour
 
     public GameObject[] bombs;
     public string nextLevelName;
+    public int levelNumber;
 
     public int bombCount = 3;
 
@@ -340,7 +341,7 @@ public class GameController : MonoBehaviour
 
             hud.LevelFinished(levelClear, salvageValue, bonusSalvage);
             gameMaster.AddSalvage(salvageValue + bonusSalvage);
-            gameMaster.PassLevel();
+            gameMaster.PassLevel(levelNumber + 1);
         }
     }
 
