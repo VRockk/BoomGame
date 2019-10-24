@@ -23,6 +23,11 @@ public class Bomb : MonoBehaviour
 
     public GameObject explosionParticles;
 
+    private BombData bombData;
+    public BombType bombType;
+
+    private GameMaster gameMaster;
+
     protected virtual void Awake()
     {
     }
@@ -30,8 +35,26 @@ public class Bomb : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
+        gameMaster = FindObjectOfType<GameMaster>();
+        if (gameMaster == null)
+            Debug.LogError("No GameMaster found in bomb upgrade panel");
 
+        if (bombType == BombType.Regular)
+        {
+            bombData = gameMaster.regularBombData;
+        }
+        else if (bombType == BombType.Acid)
+        {
+            bombData = gameMaster.acidBombData;
+        }
         //TODO Get bomb upgrade info and set radius settings
+        var radiusUpgrade = bombData.BombUpgradeLevels[0];
+
+        if(radiusUpgrade >0)
+        {
+            radius = radius * (1 + (0.1f * radiusUpgrade));
+        }
+
         var indicatorRadius = radius / 5;
         bombAreaIndicator.transform.localScale = new Vector3(indicatorRadius, indicatorRadius, 1);
     }

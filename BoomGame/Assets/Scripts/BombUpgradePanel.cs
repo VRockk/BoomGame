@@ -11,11 +11,14 @@ public class BombUpgradePanel : MonoBehaviour
     public GameObject upgrade3;
     public GameObject upgrade4;
     public GameObject upgradePanel;
+    public GameObject bombSelectionPanel;
+    public GameObject upgradeButton;
     public BombType bombType;
 
     private GameMaster gameMaster;
     private BombData bombData;
     private GameObject selectedUpgrade;
+    private MainMenu mainMenu;
 
     public Sprite lvlUnlockedIcon;
 
@@ -28,7 +31,10 @@ public class BombUpgradePanel : MonoBehaviour
 
         SetBombUpgradeLevels();
 
+        mainMenu = GetComponentInParent<MainMenu>();
+
         upgradePanel.SetActive(false);
+
     }
 
     private void SetBombUpgradeLevels()
@@ -58,7 +64,7 @@ public class BombUpgradePanel : MonoBehaviour
         upgrade1Info.upgradePosition = 1;
         upgrade2Info.upgradePosition = 2;
         upgrade3Info.upgradePosition = 3;
-        upgrade1Info.upgradePosition = 4;
+        upgrade4Info.upgradePosition = 4;
 
 
         var upgrade1Lvl1Icon = upgrade1.transform.Find("Lvl1").gameObject.GetComponent<Image>();
@@ -146,7 +152,8 @@ public class BombUpgradePanel : MonoBehaviour
         var upgradeCost = upgradePanel.transform.Find("Cost");
         var salvageIcon = upgradePanel.transform.Find("SalvageIcon");
         var upgradeCostAmount = upgradePanel.transform.Find("CostAmount").gameObject.GetComponent<TextMeshProUGUI>();
-        var upgradeButton = upgradePanel.transform.Find("UpgradeButton").gameObject.GetComponent<Button>();
+        var button = upgradeButton.GetComponent<Button>();
+        var buttonText = upgradeButton.GetComponentInChildren<TextMeshProUGUI>();
 
         var upgradeCostValue = CalculateUpgradeCost(bombUpgradeInfo.level);
         upgradeHeader.text = bombUpgradeInfo.upgradeName;
@@ -157,17 +164,19 @@ public class BombUpgradePanel : MonoBehaviour
             upgradeCost.gameObject.SetActive(true);
             salvageIcon.gameObject.SetActive(true);
             upgradeCostAmount.gameObject.SetActive(true);
-            upgradeButton.gameObject.SetActive(true);
+            upgradeButton.SetActive(true);
 
             upgradeCostAmount.text = CalculateUpgradeCost(bombUpgradeInfo.level).ToString();
 
             if (gameMaster.currentSalvage >= upgradeCostValue)
             {
-                upgradeButton.interactable = true;
+                button.interactable = true;
+                buttonText.color = new Color(1, 1, 1, 1);
             }
             else
             {
-                upgradeButton.interactable = false;
+                button.interactable = false;
+                buttonText.color = new Color(1, 1, 1, 0.33f);
             }
 
         }
@@ -176,7 +185,7 @@ public class BombUpgradePanel : MonoBehaviour
             upgradeCost.gameObject.SetActive(false);
             salvageIcon.gameObject.SetActive(false);
             upgradeCostAmount.gameObject.SetActive(false);
-            upgradeButton.gameObject.SetActive(false);
+            upgradeButton.SetActive(false);
 
             //TODO Show "max level" text or something
         }
@@ -208,11 +217,20 @@ public class BombUpgradePanel : MonoBehaviour
 
         //bombUpgradeInfo.level++;
         //bombUpgradeInfo.upgradePosition;
-
+        bombUpgradeInfo.level++;
         gameMaster.SetBombUpgradeLevel(bombType, bombUpgradeInfo.upgradePosition, bombUpgradeInfo.level);
-
+        gameMaster.AddSalvage(-upgradeCostValue);
+        mainMenu.UpdateSalvage();
         //Updates the values
         SetBombUpgradeLevels();
         SelectUpgrade(selectedUpgrade);
+    }
+
+    public void Back()
+    {
+        selectedUpgrade = null;
+        upgradePanel.SetActive(false);
+        bombSelectionPanel.SetActive(true);
+        gameObject.SetActive(false);
     }
 }

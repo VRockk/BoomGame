@@ -6,15 +6,16 @@ using UnityEngine.UI;
 
 public class GameMaster : MonoBehaviour
 {
+    [HideInInspector]
     public int currentSalvage;
-
-    private AudioSource audioSource;
-
-
+    [HideInInspector]
     public BombData regularBombData;
+    [HideInInspector]
     public BombData acidBombData;
 
 
+
+    private AudioSource audioSource;
 
 
     private bool privacyPolicyAccepted;
@@ -37,8 +38,19 @@ public class GameMaster : MonoBehaviour
 
     void Awake()
     {
-        GetPlayerPrefValues();
-        DontDestroyOnLoad(this.gameObject);
+        //If we have a situation where we already have a GameMaster, destroy the new one.
+        GameMaster[] gameMaster = FindObjectsOfType<GameMaster>();
+        if (gameMaster.Length == 2)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+
+            //PlayerPrefs.DeleteAll();
+            GetPlayerPrefValues();
+            DontDestroyOnLoad(this.gameObject);
+        }
     }
 
     private void GetPlayerPrefValues()
@@ -74,6 +86,7 @@ public class GameMaster : MonoBehaviour
 
         //Bomb data
         GetBombData();
+        currentSalvage += 1000;
 
     }
 
@@ -104,13 +117,7 @@ public class GameMaster : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //If we have a situation where we already have a GameMaster, destroy the new one.
-        GameMaster[] gameMaster = FindObjectsOfType<GameMaster>();
-        if (gameMaster.Length == 2)
-        {
-            Destroy(this.gameObject);
-        }
-
+       
         audioSource = GetComponent<AudioSource>();
 
     }
@@ -123,7 +130,7 @@ public class GameMaster : MonoBehaviour
     public void AddSalvage(int salvageToAdd)
     {
         currentSalvage += salvageToAdd;
-        PlayerPrefs.SetInt("CurrentSalvage", currentSalvage);
+        PlayerPrefs.SetInt("CurrentSalvage", currentSalvage);        
     }
 
     public void SetMusic(AudioClip clip)
@@ -134,9 +141,9 @@ public class GameMaster : MonoBehaviour
 
     public void PassLevel(int levelNumber)
     {
-        if (levelNumber > PlayerPrefs.GetInt("LevelReached, 1"))
+        if (levelNumber > PlayerPrefs.GetInt("LevelReached", 0))
         {
-            PlayerPrefs.SetInt("levelReached", levelNumber);
+            PlayerPrefs.SetInt("LevelReached", levelNumber);
         }
     }
 
@@ -169,5 +176,7 @@ public class GameMaster : MonoBehaviour
             levelKeyName += "4";
         }
         PlayerPrefs.SetInt(levelKeyName, level);
+        GetBombData();
     }
+
 }

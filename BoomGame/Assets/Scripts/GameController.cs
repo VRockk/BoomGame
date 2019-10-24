@@ -30,6 +30,9 @@ public class GameController : MonoBehaviour
     [HideInInspector]
     public GameObject bombUnderMouse;
 
+
+    public GameObject gameMasterPrefab;
+
     private IngameHUD hud;
     private CameraHandler cameraHandler;
 
@@ -44,7 +47,7 @@ public class GameController : MonoBehaviour
     private int salvageValue = 100;
     private int bonusSalvageForSavedBomb = 50;
 
-    public GameMaster gameMaster;
+    private GameMaster gameMaster;
     private float roundDelay = 0.5f;
     private void Awake()
     {
@@ -89,8 +92,9 @@ public class GameController : MonoBehaviour
 
         gameMaster = FindObjectOfType<GameMaster>();
         if (gameMaster == null)
-            Debug.LogError("No GameMaster found");
-
+        {
+            Instantiate(gameMasterPrefab);
+        }
     }
 
     private void CreateBombIcons()
