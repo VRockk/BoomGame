@@ -66,6 +66,9 @@ public class MainMenu : MonoBehaviour
     {
         mainMenuPanel.SetActive(true);
         privacyPolicyPanel.SetActive(false);
+        campaignMapPanel.SetActive(false);
+        shopPanel.SetActive(false);
+
         gameMaster.PrivacyPolicyAccepted = true;
     }
 
@@ -73,6 +76,7 @@ public class MainMenu : MonoBehaviour
     {
         mainMenuPanel.SetActive(false);
         shopPanel.SetActive(false);
+        campaignMapPanel.SetActive(false);
         privacyPolicyPanel.SetActive(true);
     }
 
@@ -80,23 +84,27 @@ public class MainMenu : MonoBehaviour
     {
         mainMenuPanel.SetActive(true);
         campaignMapPanel.SetActive(false);
+        privacyPolicyPanel.SetActive(false);
         shopPanel.SetActive(false);
     }
     public void OpenCampaignMap()
     {
         mainMenuPanel.SetActive(false);
+        privacyPolicyPanel.SetActive(false);
         campaignMapPanel.SetActive(true);
         shopPanel.SetActive(false);
     }
     public void CloseShop()
     {
         mainMenuPanel.SetActive(true);
+        privacyPolicyPanel.SetActive(false);
         shopPanel.SetActive(false);
         campaignMapPanel.SetActive(false);
     }
     public void OpenShop()
     {
         mainMenuPanel.SetActive(false);
+        privacyPolicyPanel.SetActive(false);
         shopPanel.SetActive(true);
         campaignMapPanel.SetActive(false);
     }
