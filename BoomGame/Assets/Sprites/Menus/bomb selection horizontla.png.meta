@@ -1,7 +1,22 @@
 fileFormatVersion: 2
 guid: 8105101ada662094da7bd3ef19c24933
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -2632552220642997127
+    second: bomb selection horizontla_0
+  - first:
+      213: -1496913776102956559
+    second: bomb selection horizontla_1
+  - first:
+      213: -3765742522170067857
+    second: bomb selection horizontla_2
+  - first:
+      213: -1210184562422872605
+    second: bomb selection horizontla_3
+  - first:
+      213: -4753760460103874434
+    second: bomb selection horizontla_4
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -40,7 +55,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -70,9 +85,150 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: bomb selection horizontla_0
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 534
+        width: 308
+        height: 231
+      alignment: 9
+      pivot: {x: 0.36469337, y: 0.45589986}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b12a0f5ddb987e4bb3ae909bf8089e1
+      internalID: -2632552220642997127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomb selection horizontla_1
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 534
+        width: 319
+        height: 225
+      alignment: 9
+      pivot: {x: 0.36355275, y: 0.42179605}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26520db62d21e5d47aebeca5612ef5b6
+      internalID: -1496913776102956559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomb selection horizontla_2
+      rect:
+        serializedVersion: 2
+        x: 759
+        y: 529
+        width: 311
+        height: 185
+      alignment: 9
+      pivot: {x: 0.5878451, y: 0.43241957}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19ada02ffbbf2e24eaa517c7fd3234fa
+      internalID: -3765742522170067857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomb selection horizontla_3
+      rect:
+        serializedVersion: 2
+        x: 1081
+        y: 528
+        width: 224
+        height: 305
+      alignment: 9
+      pivot: {x: 0.41111046, y: 0.3982808}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a90a26b31ad2bcc4e92b470df4c72837
+      internalID: -1210184562422872605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bomb selection horizontla_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1987
+        height: 376
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f94e19a7b1ea514c9dbe66c2e8d69b0
+      internalID: -4753760460103874434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

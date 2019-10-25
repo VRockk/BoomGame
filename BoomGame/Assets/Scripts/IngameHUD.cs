@@ -13,22 +13,29 @@ public class IngameHUD : MonoBehaviour
 
     private GameController gameController;
 
-    private GameObject detonatePanel;
-    private GameObject roundPanel;
-    private GameObject failedPanel;
-    private GameObject levelFinishPanel;
-    private GameObject bombPanel;
-    private GameObject penta1Panel;
-    private GameObject penta2Panel;
-    private GameObject penta3Panel;
-    private GameObject bomb1Icon;
-    private GameObject detonateButton;
-    private GameObject progressBar;
+    public GameObject detonatePanel;
+    public GameObject roundPanel;
+    public GameObject levelFinishPanel;
+    public GameObject bombPanel;
+    public GameObject mainMenuButton;
+    public GameObject detonateButton;
+    public GameObject resetButton;
+    public GameObject nextLevelButton;
+    public GameObject salvagePanel;
+
+    public GameObject bombCardPrefab;
+
+    public GameObject endScreen;
+    public AudioClip menuMusic;
+    private GameMaster gameMaster;
     private CameraHandler cameraHandler;
 
     private TextMeshProUGUI bombCountText;
 
     private Canvas canvas;
+
+    private int salvageAmount = 0;
+    private int bonusSalvage = 0;
     void Awake()
     {
     }
@@ -36,12 +43,9 @@ public class IngameHUD : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        canvas = GetComponent<Canvas>();
+        gameMaster = GameObject.FindObjectOfType<GameMaster>();
         gameController = GameObject.FindObjectOfType<GameController>();
         cameraHandler = GameObject.FindObjectOfType<CameraHandler>();
-
-        if (canvas == null)
-            Debug.LogError("Canvas not found in the scene for the IngameHUD");
 
         if (gameController == null)
             Debug.LogError("GameController not found in the scene for the IngameHUD");
@@ -49,56 +53,20 @@ public class IngameHUD : MonoBehaviour
         if (cameraHandler == null)
             Debug.LogError("CameraHandler not found in the scene for the IngameHUD");
 
-        detonatePanel = GameObject.Find("DetonatePanel");
-        roundPanel = GameObject.Find("RoundPanel");
-        failedPanel = GameObject.Find("FailedPanel");
-        levelFinishPanel = GameObject.Find("LevelFinishPanel");
-        bombPanel = GameObject.Find("BombPanel");
-        penta1Panel = GameObject.Find("Penta1");
-        penta2Panel = GameObject.Find("Penta2");
-        penta3Panel = GameObject.Find("Penta3");
-        bomb1Icon = GameObject.Find("Bomb1Icon");
-        detonateButton = GameObject.Find("DetonateButton");
-        progressBar = GameObject.Find("ProgressBar");
 
-        detonatePanel.GetComponent<CanvasGroup>().alpha = 1;
-        detonatePanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        detonatePanel.SetActive(true);
 
-        roundPanel.GetComponent<CanvasGroup>().alpha = 0;
-        roundPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        roundPanel.SetActive(false);
 
-        bombPanel.GetComponent<CanvasGroup>().alpha = 1;
-        bombPanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        bombPanel.SetActive(true);
 
-        failedPanel.GetComponent<CanvasGroup>().alpha = 0;
-        failedPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        mainMenuButton.SetActive(true);
 
-        levelFinishPanel.GetComponent<CanvasGroup>().alpha = 0;
-        levelFinishPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        levelFinishPanel.SetActive(false);
 
-        penta1Panel.GetComponent<CanvasGroup>().alpha = 0;
-        penta1Panel.GetComponent<CanvasGroup>().blocksRaycasts = false;
-
-        penta2Panel.GetComponent<CanvasGroup>().alpha = 0;
-        penta2Panel.GetComponent<CanvasGroup>().blocksRaycasts = false;
-
-        penta3Panel.GetComponent<CanvasGroup>().alpha = 0;
-        penta3Panel.GetComponent<CanvasGroup>().blocksRaycasts = false;
-
-        progressBar.GetComponent<CanvasGroup>().alpha = 1;
-        progressBar.GetComponent<CanvasGroup>().blocksRaycasts = true;
-
-
-        bombCountText = GameObject.Find("Bomb1Count").GetComponent<TextMeshProUGUI>();
-        //print(bombCountText.gameObject.name);
+        bombCountText = GameObject.Find("BombCount").GetComponent<TextMeshProUGUI>();
         bombCountText.text = gameController.bombCount.ToString();
 
-
-        //ShowRoundText(2f, 1);
-
-        Bomb bomb = gameController.bomb.GetComponent<Bomb>();
-        bomb1Icon.GetComponent<Image>().sprite = bomb.inventoryIcon;
-        //bomb.inventoryIcon
     }
 
     // Update is called once per frame
@@ -108,8 +76,10 @@ public class IngameHUD : MonoBehaviour
 
     public void DetonateAllBombs()
     {
-        detonateButton.GetComponent<Image>().sprite = detonatorDown;
-        gameController.Detonation();
+        if (gameController.Detonation())
+        {
+            detonateButton.GetComponent<Image>().sprite = detonatorDown;
+        }
     }
 
     public void ResetLevel()
@@ -122,7 +92,7 @@ public class IngameHUD : MonoBehaviour
     public void NextLevel()
     {
         //To load video ads
-        AdsController.adsInstance.ShowVideoOrInterstitialAds();
+        //AdsController.adsInstance.ShowVideoOrInterstitialAds();
         //TODO: Show loading screens
         SceneManager.LoadSceneAsync(gameController.nextLevelName, LoadSceneMode.Single);
         //Application.LoadLevel();
@@ -130,94 +100,95 @@ public class IngameHUD : MonoBehaviour
 
     public void NextRound(int roundNumber, float delay)
     {
-        detonatePanel.GetComponent<CanvasGroup>().alpha = 1;
-        detonatePanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        detonatePanel.SetActive(true);
         detonateButton.GetComponent<Image>().sprite = detonatorUp;
 
-        bombPanel.GetComponent<CanvasGroup>().alpha = 1;
-        bombPanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        bombPanel.SetActive(true);
 
-        failedPanel.GetComponent<CanvasGroup>().alpha = 0;
-        failedPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
-
-        levelFinishPanel.GetComponent<CanvasGroup>().alpha = 0;
-        levelFinishPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
-
-        //TODO show "ROUND 2" text popup for a second or something like that
+        levelFinishPanel.SetActive(false);
 
         ShowRoundText(delay, roundNumber);
     }
 
-    public void LevelFinished(LevelClear levelClear)
+    public void LevelFinished(LevelClear levelClear, int salvage, int bonus)
     {
-        detonatePanel.GetComponent<CanvasGroup>().alpha = 0;
-        detonatePanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        salvageAmount = salvage;
+        bonusSalvage = bonus;
 
-        failedPanel.GetComponent<CanvasGroup>().alpha = 0;
-        failedPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
-
-        levelFinishPanel.GetComponent<CanvasGroup>().alpha = 1;
-        levelFinishPanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
-
-        bombPanel.GetComponent<CanvasGroup>().alpha = 0;
-        bombPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        detonatePanel.SetActive(false);
+        bombPanel.SetActive(false);
+        mainMenuButton.SetActive(false);
+        resetButton.SetActive(true);
+        nextLevelButton.SetActive(true);
 
 
-        if (levelClear == LevelClear.OnePentagram)
+        if (levelClear == LevelClear.Failed)
         {
-            penta1Panel.GetComponent<CanvasGroup>().alpha = 1;
-            penta1Panel.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
-
-            penta2Panel.GetComponent<CanvasGroup>().alpha = 1;
-            penta2Panel.GetComponent<Image>().color = new Color32(65, 65, 65, 255);
-
-            penta3Panel.GetComponent<CanvasGroup>().alpha = 1;
-            penta3Panel.GetComponent<Image>().color = new Color32(65, 65, 65, 255);
+            //nextLevelButton.SetActive(true);
+            nextLevelButton.GetComponent<Button>().interactable = false;
+            nextLevelButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(0.35f, 0.35f, 0.35f, 1);
         }
-        else if (levelClear == LevelClear.TwoPentagram)
-        {
-            penta1Panel.GetComponent<CanvasGroup>().alpha = 1;
-            penta1Panel.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
 
-            penta2Panel.GetComponent<CanvasGroup>().alpha = 1;
-            penta2Panel.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
-
-            penta3Panel.GetComponent<CanvasGroup>().alpha = 1;
-            penta3Panel.GetComponent<Image>().color = new Color32(65, 65, 65, 255);
-
-        }
-        else if (levelClear == LevelClear.ThreePentagram)
-        {
-            penta1Panel.GetComponent<CanvasGroup>().alpha = 1;
-            penta1Panel.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
-
-            penta2Panel.GetComponent<CanvasGroup>().alpha = 1;
-            penta2Panel.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
-
-            penta3Panel.GetComponent<CanvasGroup>().alpha = 1;
-            penta3Panel.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
-
-        }
+        ShowEndScreen(levelClear);
 
     }
 
-    public void LevelFailed()
+    private void ShowEndScreen(LevelClear levelClear)
     {
-        //TODO show "Level failed" text popup or something like that
-        detonatePanel.GetComponent<CanvasGroup>().alpha = 0;
-        detonatePanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        if (endScreen != null)
+        {
+            var endScreenClone = Instantiate(endScreen);
+            var endscreenScript = endScreenClone.GetComponent<EndScreen>();
 
-        failedPanel.GetComponent<CanvasGroup>().alpha = 1;
-        failedPanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
+            salvagePanel.SetActive(true);
 
-        levelFinishPanel.GetComponent<CanvasGroup>().alpha = 0;
-        levelFinishPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+            if (levelClear == LevelClear.Failed)
+            {
+                endscreenScript.Enable(0);
+                salvagePanel.SetActive(false);
+                //salvagePanel.GetComponent<CanvasGroup>().alpha = 0;
+                //salvagePanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+            }
+            else if (levelClear == LevelClear.OnePentagram)
+            {
+                endscreenScript.Enable(1);
+            }
+            else if (levelClear == LevelClear.TwoPentagram)
+            {
+                endscreenScript.Enable(2);
+            }
+            else if (levelClear == LevelClear.ThreePentagram)
+            {
+                endscreenScript.Enable(3);
+            }
+        }
+    }
 
-        bombPanel.GetComponent<CanvasGroup>().alpha = 0;
-        bombPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+    public void ShowFinishPanel()
+    {
+        levelFinishPanel.SetActive(true);
+        levelFinishPanel.GetComponent<CanvasGroup>().alpha = 1;
+        levelFinishPanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
 
+        if (salvagePanel.activeInHierarchy)
+        {
+            var salvageGain = GameObject.Find("SalvageGain");
+            var salvageBonusGain = GameObject.Find("SalvageBonusGain");
+            var salvageBonus = GameObject.Find("SalvageBonus");
 
-        //Invoke("ResetLevel", 2f);
+            salvageGain.SetActive(true);
+            salvageBonus.SetActive(false);
+            salvageBonusGain.SetActive(false);
+            salvageGain.GetComponent<TextMeshProUGUI>().text = salvageAmount.ToString();
+
+            if (bonusSalvage > 0)
+            {
+                salvageBonus.SetActive(true);
+                salvageBonusGain.SetActive(true);
+                salvageBonusGain.GetComponent<TextMeshProUGUI>().text = bonusSalvage.ToString();
+            }
+        }
+
     }
 
     public void UpdateBombCount(int bombCount)
@@ -227,30 +198,61 @@ public class IngameHUD : MonoBehaviour
 
     private void ShowRoundText(float hideDelay, int roundNumber)
     {
-        //var text = roundPanel.GetComponent<TextMeshProUGUI>();
+        roundPanel.SetActive(true);
+
         TextMeshProUGUI text = GameObject.Find("RoundText").GetComponent<TextMeshProUGUI>();
         text.text = "Round " + roundNumber;
 
-        roundPanel.GetComponent<CanvasGroup>().alpha = 1;
-        //roundPanel.transform.localPosition = new Vector3(0, 0 ,0);
 
-        StartCoroutine(SetCanvasGroupAlpha(hideDelay, roundPanel.GetComponent<CanvasGroup>(), 0));
+        StartCoroutine(ActivateObjectWithDelay(hideDelay, roundPanel, false));
     }
 
-    private IEnumerator SetCanvasGroupAlpha(float delay, CanvasGroup canvasGroup, float alpha)
+    private IEnumerator ActivateObjectWithDelay(float delay, GameObject panel, bool active)
     {
         yield return new WaitForSeconds(delay);
-        canvasGroup.alpha = alpha;
-        //roundPanel.transform.localPosition = new Vector3(0, -10000f, 0);
+        panel.SetActive(active);
     }
 
-
-    public void UpdateLevelProgressBar(float percent)
+    public void OpenMainMenu()
     {
-        var slider = progressBar.GetComponent<Slider>();
-        if (slider != null)
+        if(menuMusic != null)
+            gameMaster.SetMusic(menuMusic);
+        else
+            gameMaster.SetMusic(null);
+        gameMaster.SetMusic(menuMusic);
+        SceneManager.LoadScene("MainMenuScene");
+    }
+
+    public void CreateBombCard(GameObject bomb)
+    {
+        if (bomb == null)
+            return;
+
+        //Get current bomb cards and add position offset for each one
+        float leftOffset = 0;
+        var bombCards = GameObject.FindGameObjectsWithTag("BombCard");
+        foreach (var bombCard in bombCards)
         {
-            slider.value = percent; 
+            var bombCardTransform = bombCard.GetComponent<RectTransform>();
+            leftOffset += bombCardTransform.sizeDelta.x + 5f;
         }
+
+        //Create new bomb card and set sprite, size and positioning
+        var card = Instantiate(bombCardPrefab);
+        card.transform.SetParent(bombPanel.transform);
+        var cardTransform = card.GetComponent<RectTransform>();
+
+        var cardImage = card.GetComponentInChildren<Image>();
+        cardImage.sprite = bomb.GetComponent<Bomb>().inventoryIcon;
+
+        //Set sprite aspect ratio so different size icons fit correcly
+        var cardAspectRatioFitter = card.GetComponent<AspectRatioFitter>();
+        cardAspectRatioFitter.aspectRatio = cardImage.sprite.rect.width / cardImage.sprite.rect.height;
+
+        cardTransform.localPosition = new Vector3(leftOffset, 5f, 0);
+
+
+        var bombCardScript = card.GetComponent<BombCard>();
+        bombCardScript.bombPrefab = bomb;
     }
 }

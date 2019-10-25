@@ -17,7 +17,6 @@ public class AutoDestroy : MonoBehaviour
             //print(audio.gameObject.name);
             //destroy after audio clip ends
             delay = audio.clip.length + 0.1f;
-            print(audio.clip.length);
         }
         //if(animator != null)
         //{

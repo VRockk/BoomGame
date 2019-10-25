@@ -6,8 +6,7 @@ using UnityEngine.SceneManagement;
 
 
 using System.Linq;
-
-
+using System;
 
 /// <summary>
 /// Resposible for the ingame logic and input
@@ -16,12 +15,11 @@ public class GameController : MonoBehaviour
 {
     public int maxRounds = 2;
 
-    //Temporary solution for bomb spawning
-    public GameObject bomb;
+    public GameObject[] bombs;
     public string nextLevelName;
+    public int levelNumber;
 
     public int bombCount = 3;
-
 
     [HideInInspector]
     public bool inputAllowed;
@@ -32,7 +30,9 @@ public class GameController : MonoBehaviour
     [HideInInspector]
     public GameObject bombUnderMouse;
 
-    private int shatteringObjectCount;
+
+    public GameObject gameMasterPrefab;
+
     private IngameHUD hud;
     private CameraHandler cameraHandler;
 
@@ -40,17 +40,29 @@ public class GameController : MonoBehaviour
 
     private AudioSource audioSource;
     public AudioClip plopSound;
+    public AudioClip ingameMusic;
 
-    private bool betweenRounds = false;
 
+    private WinLines winlines;
+
+    private int salvageValue = 100;
+    private int bonusSalvageForSavedBomb = 25;
+
+    private GameMaster gameMaster;
+    private float roundDelay = 0.5f;
     private void Awake()
     {
+        gameMaster = FindObjectOfType<GameMaster>();
+        if (gameMaster == null)
+        {
+            gameMaster = Instantiate(gameMasterPrefab).GetComponent<GameMaster>();
+        }
     }
 
     // Start is called before the first frame update
     void Start()
     {
-
+        //Time.timeScale = 0.2f;
         hud = GameObject.FindObjectOfType<IngameHUD>();
 
         if (hud == null)
@@ -66,17 +78,36 @@ public class GameController : MonoBehaviour
         if (audioSource == null)
             Debug.LogError("AudioSource not found in the scene for the GameController");
 
+        var winlinesObj = GameObject.Find("Winlines");
+
+        if (winlinesObj == null)
+            Debug.LogError("No winlines found");
+
+        winlines = winlinesObj.GetComponent<WinLines>();
+
+        if (winlines == null)
+            Debug.LogError("No winlines found");
+
         //inputAllowed = true;
         roundCounter = 0;
         NextRound();
-        shatteringObjectCount = GameObject.FindGameObjectsWithTag("ShatteringObject").Length;
 
-        hud.UpdateBombCount(bombCount);
+        //hud.UpdateBombCount(bombCount);
 
-        InvokeRepeating("CalculateLevelClearScore", 0.1f, 0.1f);
+        CreateBombIcons();
 
+        if (ingameMusic != null)
+            gameMaster.SetMusic(ingameMusic);
+        else
+            gameMaster.SetMusic(null);
+    }
 
-
+    private void CreateBombIcons()
+    {
+        foreach (var bomb in bombs)
+        {
+            hud.CreateBombCard(bomb);
+        }
     }
 
     // Update is called once per frame
@@ -106,7 +137,7 @@ public class GameController : MonoBehaviour
                             bombUnderMouse = hit.collider.gameObject;
                             if (audioSource != null)
                             {
-                                audioSource.pitch = Random.Range(1.1f, 1.2f);
+                                audioSource.pitch = UnityEngine.Random.Range(1.1f, 1.2f);
                                 audioSource.PlayOneShot(plopSound);
                             }
                         }
@@ -143,14 +174,23 @@ public class GameController : MonoBehaviour
                 {
                     if (audioSource != null)
                     {
-                        audioSource.pitch = Random.Range(0.9f, 1.1f);
+                        audioSource.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
                         audioSource.PlayOneShot(plopSound);
                     }
+
+                    //TODO Check if bomb is under UI
+
                 }
+
+
+
+
                 //Mouse up. remove bomb from cursor
                 bombUnderMouse = null;
                 //cameraHandler.defaultCameraSize;
                 //cameraHandler.ZoomToSize(45f);
+
+                //TODO Check if bomb is under UI 
 
             }
             else
@@ -168,19 +208,20 @@ public class GameController : MonoBehaviour
                     //Create a new bomb instance when clicking on Bomb card
                     foreach (RaycastResult result in results)
                     {
-                        print(result.gameObject.name);
-                        if (result.gameObject.tag == "BombCard")
+                        var parentObject = result.gameObject.transform.parent.gameObject;
+                        //print(result.gameObject.name);
+                        if (parentObject.tag == "BombCard")
                         {
-                            bombUnderMouse = Instantiate(bomb, new Vector3(mousePos.x, mousePos.y + 5f, -1f), Quaternion.identity);
+                            var bombCardScript = parentObject.GetComponent<BombCard>();
+                            bombUnderMouse = Instantiate(bombCardScript.bombPrefab, new Vector3(mousePos.x, mousePos.y + 5f, -1f), Quaternion.identity);
                             //cameraHandler.ZoomToSize(35f, new Vector3(0, -2f, 0));
                             bombCount--;
                             hud.UpdateBombCount(bombCount);
 
                             if (audioSource != null)
                             {
-                                audioSource.pitch = Random.Range(1.1f, 1.2f);
+                                audioSource.pitch = UnityEngine.Random.Range(1.1f, 1.2f);
                                 audioSource.PlayOneShot(plopSound);
-                                print(plopSound.name);
                             }
                         }
                     }
@@ -199,21 +240,19 @@ public class GameController : MonoBehaviour
         //Check block movement once a second
         InvokeRepeating("CheckForMovement", 1f, 1f);
 
-        //TODO allow user to press for faster time scale
+        //TODO allow user to press for the faster time scale
     }
 
-    public void Detonation()
+    public bool Detonation()
     {
         //No bombs. Dont allow
         if (GameObject.FindObjectsOfType<Bomb>().Length == 0 || !inputAllowed)
-            return;
-
-
+            return false;
 
         inputAllowed = false;
 
         // zoom to default zoom level
-        //cameraHandler.ZoomToSize(45f, new Vector3(0, 2f, 0));
+        cameraHandler.ZoomToSize(45f, new Vector3(0, 0, 0));
 
         //get all bombs and detonate them
         GameObject[] bombs = GameObject.FindGameObjectsWithTag("Bomb");
@@ -223,10 +262,10 @@ public class GameController : MonoBehaviour
             if (bomb != null)
                 bomb.Detonate();
         }
-        betweenRounds = true;
 
 
         Invoke("WaitForNextRound", 2f);
+        return true;
     }
 
     /// <summary>
@@ -242,7 +281,7 @@ public class GameController : MonoBehaviour
             //Check if there is a bit of movement still
             if (body.velocity.magnitude > 0.1f)
             {
-                print(body.gameObject.name + "   " + body.velocity.magnitude);
+                //print(body.gameObject.name + "   " + body.velocity.magnitude);
                 isMovement = true;
                 break;
             }
@@ -265,14 +304,14 @@ public class GameController : MonoBehaviour
     private void NextRound()
     {
         LevelClear levelClear = CheckLevelClear();
-        print(levelClear);
+
         //print(levelClear);
-        betweenRounds = false;
+
         //Always when Failed
         if (levelClear == LevelClear.Failed)
         {
             inputAllowed = false;
-            hud.LevelFailed();
+            hud.LevelFinished(LevelClear.Failed, 0, 0);
             return;
         }
 
@@ -281,7 +320,7 @@ public class GameController : MonoBehaviour
             if (roundCounter == maxRounds)
             {
                 inputAllowed = false;
-                hud.LevelFailed();
+                hud.LevelFinished(LevelClear.Failed, 0, 0);
             }
             else
             {
@@ -290,115 +329,96 @@ public class GameController : MonoBehaviour
                 {
                     //Fail if no bombs left
                     inputAllowed = false;
-                    hud.LevelFailed();
+                    hud.LevelFinished(LevelClear.Failed, 0, 0);
                     return;
                 }
-                float roundDelay = 2f;
                 hud.NextRound(roundCounter, roundDelay);
 
-                StartCoroutine(AllowInput(true, 2));
+                StartCoroutine(AllowInput(true, roundDelay));
                 //inputAllowed = true;
             }
         }
         else
         {
-            hud.LevelFinished(levelClear);
+            var bonusSalvage = bombCount * bonusSalvageForSavedBomb;
+
+            //TODO check level progress from playerprefs and see if we already have gained salvage from this level.
+
+
+
+
+            hud.LevelFinished(levelClear, salvageValue, bonusSalvage);
+            print(salvageValue + bonusSalvage);
+            gameMaster.AddSalvage(salvageValue + bonusSalvage);
+            gameMaster.PassLevel(levelNumber + 1);
         }
     }
 
     private LevelClear CheckLevelClear()
     {
-
-        //TODO NOT working correctly ;)
-        bool buildingsDamaged = false;
+        LevelClear levelClear = LevelClear.NotCleared;
+        //bool buildingsDamaged = false;
 
         var npcBuildings = GameObject.FindObjectsOfType<NPCBuilding>();
         //Check if any buildings have been destroyed
         foreach (var building in npcBuildings)
         {
             //If any building is destroyed level is instantly failed
-            //Buildings can be damaged but you get lower score
+            //Buildings can be damaged but you get less pentagrams
             if (building.Hitpoints <= 0)
             {
                 return LevelClear.Failed;
             }
-            if (building.Hitpoints < building.maxHitpoints)
-            {
-                buildingsDamaged = true;
-            }
+            //if (building.Hitpoints < building.maxHitpoints)
+            //{
+            //    buildingsDamaged = true;
+            //}
         }
 
+        //Find the brick that has the highest position 
+        var buildingObject = FindObjectsOfType<BuildingObject>().Where(x => x.gameObject.transform.position.magnitude < 50).OrderByDescending(x => x.gameObject.transform.position.y + x.GetComponent<Collider2D>().bounds.extents.y).First();
+        float highestBrickTopPos = buildingObject.transform.position.y + buildingObject.GetComponent<Collider2D>().bounds.extents.y;
 
-        float percentageMoved = CalculatePercentageMovedObjects() * 100f;
-
-        if (percentageMoved < 90.0f)
+        if (highestBrickTopPos <= winlines.threePentaLine)
+        {
+            levelClear = LevelClear.ThreePentagram;
+        }
+        else if (highestBrickTopPos <= winlines.twoPentaLine && (roundCounter == maxRounds || bombCount == 0))
+        {
+            levelClear = LevelClear.TwoPentagram;
+        }
+        else if (highestBrickTopPos <= winlines.onePentaLine && (roundCounter == maxRounds || bombCount == 0))
+        {
+            levelClear = LevelClear.OnePentagram;
+        }
+        else
         {
             return LevelClear.NotCleared;
         }
 
-        if(percentageMoved >= 50.0f)
-        {
-            if (percentageMoved >= 75.0f)
-            {                
-                if (percentageMoved >= 90.0f)
-                {
-                    return LevelClear.ThreePentagram;
-
-                }
-                return LevelClear.TwoPentagram;
-            }
-            return LevelClear.OnePentagram;
-        }
-
-        return LevelClear.Failed;
-
-        //if (roundCounter == 1)
+        //Damaged buildings lower the pentagrams gained by one
+        //if (buildingsDamaged)
         //{
-        //    if (buildingsDamaged)
-        //    {
-        //        return LevelClear.TwoPentagram;
-        //    }
-        //    return LevelClear.ThreePentagram;
+        //    if (levelClear == LevelClear.ThreePentagram)
+        //        levelClear = LevelClear.TwoPentagram;
+        //    else if (levelClear == LevelClear.TwoPentagram)
+        //        levelClear = LevelClear.OnePentagram;
+        //    else
+        //        levelClear = LevelClear.NotCleared;
         //}
-        //else
-        //{
-        //    if (buildingsDamaged)
-        //    {
-        //        return LevelClear.OnePentagram;
-        //    }
-        //    return LevelClear.ThreePentagram;
-        //}
+
+        return levelClear;
     }
 
     private void LoadNextLevel()
     {
 
-       
+
         //TODO: Show loading screens
         SceneManager.LoadScene(nextLevelName, LoadSceneMode.Single);
-        
+
     }
 
-    private void CalculateLevelClearScore()
-    {
-        //this sucks lol.
-        //Only calculate when we are between rounds.
-        if (betweenRounds)
-        {
-            float percentageMoved = CalculatePercentageMovedObjects();
-            //print(percentageMoved);
-            hud.UpdateLevelProgressBar(percentageMoved);
-        }
-    }
-
-    private float CalculatePercentageMovedObjects()
-    {
-        float percentageMoved;
-        float stillObjects = GameObject.FindObjectsOfType<ShatteringObject>().Where(x => x.initialPosition == x.transform.position).Count();
-
-        percentageMoved = ((float)shatteringObjectCount - stillObjects) / (float)shatteringObjectCount;
-        return percentageMoved;
-    }
 
     private IEnumerator AllowInput(bool allow, float delay)
     {

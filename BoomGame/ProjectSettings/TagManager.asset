@@ -4,11 +4,14 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - ShatteringObject
   - NPCBuilding
   - Bomb
   - Piece
   - BombCard
+  - Ground
+  - BuildingObject
+  - Fire
+  - BombUpgradePanel
   layers:
   - Default
   - TransparentFX
@@ -21,9 +24,9 @@ TagManager:
   - Background
   - Building
   - Bomb
-  - 
-  - 
-  - 
+  - NPCBuilding
+  - Pieces
+  - Ground
   - 
   - 
   - 
@@ -55,6 +58,6 @@ TagManager:
   - name: Bombs
     uniqueID: 2863152821
     locked: 0
-  - name: New Layer
+  - name: UI
     uniqueID: 815570849
     locked: 0
