@@ -10,20 +10,24 @@ public class MainMenu : MonoBehaviour
 {
     public TextMeshProUGUI salvageText;
 
-    public GameMaster gameMaster;
+    private GameMaster gameMaster;
 
     public GameObject privacyPolicyPanel;
     public GameObject mainMenuPanel;
     public GameObject campaignMapPanel;
     public GameObject shopPanel;
     public GameObject bombPanel;
-    public GameObject slidePanel1;
-    public GameObject slidePanel2;
-    public GameObject slidePanel3;
-    public GameObject slidePanel4;
+    public GameObject bombSelectionPanel;
+
+    public AudioClip menuMusic;
+
 
     void Start()
     {
+        gameMaster = FindObjectOfType<GameMaster>();
+        if (gameMaster == null)
+            Debug.LogError("No GameMaster found");
+
         UpdateSalvage();
         if (privacyPolicyPanel != null)
         {
@@ -44,6 +48,7 @@ public class MainMenu : MonoBehaviour
                 bombPanel.SetActive(false);
             }
         }
+        gameMaster.SetMusic(menuMusic);
     }
 
 
@@ -61,8 +66,18 @@ public class MainMenu : MonoBehaviour
     {
         //Starts the next level available in progression
 
+        int levelReached = PlayerPrefs.GetInt("LevelReached", 1);
+        if (levelReached == 1)
+            SceneManager.LoadScene("Tutorial");
+        else
+        {
+            //Paskaa
+            if (levelReached < 10)
+                SceneManager.LoadScene("Level_0" + levelReached.ToString());
+            else
+                SceneManager.LoadScene("Level_" + levelReached.ToString());
 
-        SceneManager.LoadScene("Tutorial");
+        }
     }
 
 
@@ -79,10 +94,10 @@ public class MainMenu : MonoBehaviour
         campaignMapPanel.SetActive(false);
         shopPanel.SetActive(false);
         bombPanel.SetActive(false);
+        bombSelectionPanel.SetActive(true);
 
         gameMaster.PrivacyPolicyAccepted = true;
     }
-
     public void OpenPrivacyPolicy()
     {
         mainMenuPanel.SetActive(false);
@@ -90,6 +105,7 @@ public class MainMenu : MonoBehaviour
         campaignMapPanel.SetActive(false);
         privacyPolicyPanel.SetActive(true);
         bombPanel.SetActive(false);
+        bombSelectionPanel.SetActive(true);
     }
 
     public void CloseCampaingMap()
@@ -99,6 +115,7 @@ public class MainMenu : MonoBehaviour
         privacyPolicyPanel.SetActive(false);
         shopPanel.SetActive(false);
         bombPanel.SetActive(false);
+        bombSelectionPanel.SetActive(true);
     }
     public void OpenCampaignMap()
     {
@@ -107,6 +124,7 @@ public class MainMenu : MonoBehaviour
         campaignMapPanel.SetActive(true);
         shopPanel.SetActive(false);
         bombPanel.SetActive(false);
+        bombSelectionPanel.SetActive(true);
     }
     public void CloseShop()
     {
@@ -115,6 +133,7 @@ public class MainMenu : MonoBehaviour
         shopPanel.SetActive(false);
         campaignMapPanel.SetActive(false);
         bombPanel.SetActive(false);
+        bombSelectionPanel.SetActive(true);
     }
     public void OpenShop()
     {
@@ -123,6 +142,7 @@ public class MainMenu : MonoBehaviour
         shopPanel.SetActive(true);
         campaignMapPanel.SetActive(false);
         bombPanel.SetActive(false);
+        bombSelectionPanel.SetActive(true);
     }
     public void OpenBombsPanel()
     {
@@ -131,32 +151,36 @@ public class MainMenu : MonoBehaviour
         shopPanel.SetActive(false);
         campaignMapPanel.SetActive(false);
         bombPanel.SetActive(true);
+        bombSelectionPanel.SetActive(true);
+        var upgradePanels = GameObject.FindGameObjectsWithTag("BombUpgradePanel");
+        foreach (var upgradePanel in upgradePanels)
+        {
+            upgradePanel.SetActive(false);
+        }
     }
     public void CloseBombsPanel()
     {
+        var upgradePanels = GameObject.FindGameObjectsWithTag("BombUpgradePanel");
+        foreach (var upgradePanel in upgradePanels)
+        {
+            upgradePanel.SetActive(false);
+        }
         mainMenuPanel.SetActive(true);
         privacyPolicyPanel.SetActive(false);
         shopPanel.SetActive(false);
         campaignMapPanel.SetActive(false);
         bombPanel.SetActive(false);
+        bombSelectionPanel.SetActive(false);
     }
-     public void OpenSlide2()
+    public void ShowBombUpgradePanel(GameObject panel)
     {
-        slidePanel1.SetActive(false);
-        slidePanel2.SetActive(true);
-        
-    }
-    public void OpenSlide3()
-    {
-        slidePanel2.SetActive(false);
-        slidePanel3.SetActive(true);
-        
-    }
-    public void OpenSlide4()
-    {
-        slidePanel3.SetActive(false);
-        slidePanel4.SetActive(true);
-        
+        var upgradePanels = GameObject.FindGameObjectsWithTag("BombUpgradePanel");
+        foreach (var upgradePanel in upgradePanels)
+        {
+            upgradePanel.SetActive(false);
+        }
+        bombSelectionPanel.SetActive(false);
+        panel.SetActive(true);
     }
 
 }
