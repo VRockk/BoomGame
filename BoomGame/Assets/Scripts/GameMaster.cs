@@ -135,6 +135,8 @@ public class GameMaster : MonoBehaviour
 
     public void SetMusic(AudioClip clip)
     {
+        if(audioSource == null)
+            audioSource = GetComponent<AudioSource>();
         //TODO Fade out/fade in
         audioSource.clip = clip;
         audioSource.Play();

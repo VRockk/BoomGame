@@ -52,6 +52,11 @@ public class GameController : MonoBehaviour
     private float roundDelay = 0.5f;
     private void Awake()
     {
+        gameMaster = FindObjectOfType<GameMaster>();
+        if (gameMaster == null)
+        {
+            gameMaster = Instantiate(gameMasterPrefab).GetComponent<GameMaster>();
+        }
     }
 
     // Start is called before the first frame update
@@ -91,11 +96,6 @@ public class GameController : MonoBehaviour
 
         CreateBombIcons();
 
-        gameMaster = FindObjectOfType<GameMaster>();
-        if (gameMaster == null)
-        {
-            Instantiate(gameMasterPrefab);
-        }
         if (ingameMusic != null)
             gameMaster.SetMusic(ingameMusic);
         else
