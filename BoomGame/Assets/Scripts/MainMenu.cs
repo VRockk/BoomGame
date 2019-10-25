@@ -54,6 +54,7 @@ public class MainMenu : MonoBehaviour
     }
 
 
+
     void Update()
     {
         //Dont update text on every update tick. Instead they should only be updated when the value is changed
