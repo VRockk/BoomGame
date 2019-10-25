@@ -96,8 +96,10 @@ public class GameController : MonoBehaviour
         {
             Instantiate(gameMasterPrefab);
         }
-        //if (ingameMusic != null)
-        gameMaster.SetMusic(ingameMusic);
+        if (ingameMusic != null)
+            gameMaster.SetMusic(ingameMusic);
+        else
+            gameMaster.SetMusic(null);
     }
 
     private void CreateBombIcons()

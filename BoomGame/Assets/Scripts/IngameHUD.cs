@@ -215,6 +215,10 @@ public class IngameHUD : MonoBehaviour
 
     public void OpenMainMenu()
     {
+        if(menuMusic != null)
+            gameMaster.SetMusic(menuMusic);
+        else
+            gameMaster.SetMusic(null);
         gameMaster.SetMusic(menuMusic);
         SceneManager.LoadScene("MainMenuScene");
     }
