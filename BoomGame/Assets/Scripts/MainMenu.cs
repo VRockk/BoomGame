@@ -18,6 +18,7 @@ public class MainMenu : MonoBehaviour
     public GameObject shopPanel;
     public GameObject bombPanel;
     public GameObject bombSelectionPanel;
+    public GameObject splashScreenPanel;
 
 
 
@@ -26,6 +27,8 @@ public class MainMenu : MonoBehaviour
         gameMaster = FindObjectOfType<GameMaster>();
         if (gameMaster == null)
             Debug.LogError("No GameMaster found");
+
+        splashScreenPanel.SetActive(false);
 
         UpdateSalvage();
         if (privacyPolicyPanel != null)
