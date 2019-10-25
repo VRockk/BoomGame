@@ -26,7 +26,8 @@ public class IngameHUD : MonoBehaviour
     public GameObject bombCardPrefab;
 
     public GameObject endScreen;
-
+    public AudioClip menuMusic;
+    private GameMaster gameMaster;
     private CameraHandler cameraHandler;
 
     private TextMeshProUGUI bombCountText;
@@ -42,6 +43,7 @@ public class IngameHUD : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameMaster = GameObject.FindObjectOfType<GameMaster>();
         gameController = GameObject.FindObjectOfType<GameController>();
         cameraHandler = GameObject.FindObjectOfType<CameraHandler>();
 
@@ -213,6 +215,7 @@ public class IngameHUD : MonoBehaviour
 
     public void OpenMainMenu()
     {
+        gameMaster.SetMusic(menuMusic);
         SceneManager.LoadScene("MainMenuScene");
     }
 
