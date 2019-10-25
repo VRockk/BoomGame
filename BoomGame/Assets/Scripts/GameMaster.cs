@@ -50,6 +50,7 @@ public class GameMaster : MonoBehaviour
             //PlayerPrefs.DeleteAll();
             GetPlayerPrefValues();
             DontDestroyOnLoad(this.gameObject);
+            //AddSalvage(1500);
         }
     }
 

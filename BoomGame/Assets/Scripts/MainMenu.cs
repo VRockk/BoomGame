@@ -18,8 +18,8 @@ public class MainMenu : MonoBehaviour
     public GameObject shopPanel;
     public GameObject bombPanel;
     public GameObject bombSelectionPanel;
+    public GameObject splashScreenPanel;
 
-    public AudioClip menuMusic;
 
 
     void Start()
@@ -27,6 +27,8 @@ public class MainMenu : MonoBehaviour
         gameMaster = FindObjectOfType<GameMaster>();
         if (gameMaster == null)
             Debug.LogError("No GameMaster found");
+
+        splashScreenPanel.SetActive(true);
 
         UpdateSalvage();
         if (privacyPolicyPanel != null)
@@ -48,7 +50,6 @@ public class MainMenu : MonoBehaviour
                 bombPanel.SetActive(false);
             }
         }
-        gameMaster.SetMusic(menuMusic);
     }
 
 
