@@ -28,7 +28,7 @@ public class MainMenu : MonoBehaviour
         if (gameMaster == null)
             Debug.LogError("No GameMaster found");
 
-        splashScreenPanel.SetActive(false);
+        splashScreenPanel.SetActive(true);
 
         UpdateSalvage();
         if (privacyPolicyPanel != null)
