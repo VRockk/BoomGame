@@ -40,10 +40,11 @@ public class GameController : MonoBehaviour
 
     private AudioSource audioSource;
     public AudioClip plopSound;
+    public AudioClip ingameMusic;
 
 
     private WinLines winlines;
-    
+
     private int salvageValue = 100;
     private int bonusSalvageForSavedBomb = 50;
 
@@ -95,13 +96,13 @@ public class GameController : MonoBehaviour
         {
             Instantiate(gameMasterPrefab);
         }
-
-        gameMaster.SetMusic(null);
+        if (ingameMusic != null)
+            gameMaster.SetMusic(ingameMusic);
     }
 
     private void CreateBombIcons()
     {
-        foreach(var bomb in bombs)
+        foreach (var bomb in bombs)
         {
             hud.CreateBombCard(bomb);
         }
@@ -340,9 +341,9 @@ public class GameController : MonoBehaviour
             var bonusSalvage = bombCount * bonusSalvageForSavedBomb;
 
             //TODO check level progress from playerprefs and see if we already have gained salvage from this level.
-            
 
-            
+
+
 
             hud.LevelFinished(levelClear, salvageValue, bonusSalvage);
             print(salvageValue + bonusSalvage);

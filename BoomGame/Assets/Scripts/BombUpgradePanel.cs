@@ -69,7 +69,7 @@ public class BombUpgradePanel : MonoBehaviour
 
         var upgrade1Lvl1Icon = upgrade1.transform.Find("Lvl1").gameObject.GetComponent<Image>();
         var upgrade1Lvl2Icon = upgrade1.transform.Find("Lvl2").gameObject.GetComponent<Image>();
-        var upgrade1Lvl3Icon = upgrade1.transform.Find("Lvl2").gameObject.GetComponent<Image>();
+        var upgrade1Lvl3Icon = upgrade1.transform.Find("Lvl3").gameObject.GetComponent<Image>();
 
         if (upgrade1Lvl >= 1)
         {
@@ -87,7 +87,7 @@ public class BombUpgradePanel : MonoBehaviour
 
         var upgrade2Lvl1Icon = upgrade2.transform.Find("Lvl1").gameObject.GetComponent<Image>();
         var upgrade2Lvl2Icon = upgrade2.transform.Find("Lvl2").gameObject.GetComponent<Image>();
-        var upgrade2Lvl3Icon = upgrade2.transform.Find("Lvl2").gameObject.GetComponent<Image>();
+        var upgrade2Lvl3Icon = upgrade2.transform.Find("Lvl3").gameObject.GetComponent<Image>();
         if (upgrade2Lvl >= 1)
         {
             upgrade2Lvl1Icon.sprite = lvlUnlockedIcon;
@@ -103,7 +103,7 @@ public class BombUpgradePanel : MonoBehaviour
 
         var upgrade3Lvl1Icon = upgrade3.transform.Find("Lvl1").gameObject.GetComponent<Image>();
         var upgrade3Lvl2Icon = upgrade3.transform.Find("Lvl2").gameObject.GetComponent<Image>();
-        var upgrade3Lvl3Icon = upgrade3.transform.Find("Lvl2").gameObject.GetComponent<Image>();
+        var upgrade3Lvl3Icon = upgrade3.transform.Find("Lvl3").gameObject.GetComponent<Image>();
         if (upgrade3Lvl >= 1)
         {
             upgrade2Lvl1Icon.sprite = lvlUnlockedIcon;
@@ -120,7 +120,7 @@ public class BombUpgradePanel : MonoBehaviour
 
         var upgrade4Lvl1Icon = upgrade4.transform.Find("Lvl1").gameObject.GetComponent<Image>();
         var upgrade4Lvl2Icon = upgrade4.transform.Find("Lvl2").gameObject.GetComponent<Image>();
-        var upgrade4Lvl3Icon = upgrade4.transform.Find("Lvl2").gameObject.GetComponent<Image>();
+        var upgrade4Lvl3Icon = upgrade4.transform.Find("Lvl3").gameObject.GetComponent<Image>();
         if (upgrade4Lvl >= 1)
         {
             upgrade4Lvl1Icon.sprite = lvlUnlockedIcon;

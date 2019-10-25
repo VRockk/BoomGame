@@ -19,7 +19,6 @@ public class MainMenu : MonoBehaviour
     public GameObject bombPanel;
     public GameObject bombSelectionPanel;
 
-    public AudioClip menuMusic;
 
 
     void Start()
@@ -48,7 +47,6 @@ public class MainMenu : MonoBehaviour
                 bombPanel.SetActive(false);
             }
         }
-        gameMaster.SetMusic(menuMusic);
     }
 
 
