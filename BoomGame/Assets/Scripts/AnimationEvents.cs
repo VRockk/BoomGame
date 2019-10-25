@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AnimationEvents : MonoBehaviour
 {
@@ -35,5 +36,10 @@ public class AnimationEvents : MonoBehaviour
     {
         if (transform.parent != null)
             Destroy(transform.parent.gameObject);
+    }
+
+    public void OpenLevel(string name)
+    {
+        SceneManager.LoadScene(name);
     }
 }

@@ -46,7 +46,7 @@ public class GameController : MonoBehaviour
     private WinLines winlines;
 
     private int salvageValue = 100;
-    private int bonusSalvageForSavedBomb = 50;
+    private int bonusSalvageForSavedBomb = 25;
 
     private GameMaster gameMaster;
     private float roundDelay = 0.5f;
@@ -96,8 +96,8 @@ public class GameController : MonoBehaviour
         {
             Instantiate(gameMasterPrefab);
         }
-        if (ingameMusic != null)
-            gameMaster.SetMusic(ingameMusic);
+        //if (ingameMusic != null)
+        gameMaster.SetMusic(ingameMusic);
     }
 
     private void CreateBombIcons()

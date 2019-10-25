@@ -10,7 +10,6 @@ public class MainMenu : MonoBehaviour
 {
     public TextMeshProUGUI salvageText;
 
-    private GameMaster gameMaster;
 
     public GameObject privacyPolicyPanel;
     public GameObject mainMenuPanel;
@@ -18,17 +17,19 @@ public class MainMenu : MonoBehaviour
     public GameObject shopPanel;
     public GameObject bombPanel;
     public GameObject bombSelectionPanel;
-    public GameObject splashScreenPanel;
 
+    public GameObject gameMasterPrefab;
 
+    private GameMaster gameMaster;
 
     void Start()
     {
         gameMaster = FindObjectOfType<GameMaster>();
         if (gameMaster == null)
-            Debug.LogError("No GameMaster found");
+        {
+            gameMaster = Instantiate(gameMasterPrefab).GetComponent<GameMaster>();
+        }
 
-        splashScreenPanel.SetActive(true);
 
         UpdateSalvage();
         if (privacyPolicyPanel != null)
