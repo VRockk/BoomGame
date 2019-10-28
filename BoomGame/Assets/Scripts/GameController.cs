@@ -49,7 +49,7 @@ public class GameController : MonoBehaviour
     private int bonusSalvageForSavedBomb = 25;
 
     private GameMaster gameMaster;
-    private float roundDelay = 0.5f;
+    private float roundDelay = 1f;
     private void Awake()
     {
         gameMaster = FindObjectOfType<GameMaster>();
@@ -100,6 +100,8 @@ public class GameController : MonoBehaviour
             gameMaster.SetMusic(ingameMusic);
         else
             gameMaster.SetMusic(null);
+
+        Invoke("ProcessBuildingBlocks", 0.5f);
     }
 
     private void CreateBombIcons()
@@ -256,11 +258,15 @@ public class GameController : MonoBehaviour
 
         //get all bombs and detonate them
         GameObject[] bombs = GameObject.FindGameObjectsWithTag("Bomb");
+        float bombDelay = 0.1f;
         foreach (GameObject bombObject in bombs)
         {
             var bomb = bombObject.GetComponent<Bomb>();
             if (bomb != null)
-                bomb.Detonate();
+            {
+                bomb.Detonate(bombDelay);
+                bombDelay += 0.1f;
+            }
         }
 
 
@@ -305,7 +311,7 @@ public class GameController : MonoBehaviour
     {
         LevelClear levelClear = CheckLevelClear();
 
-        //print(levelClear);
+        print(levelClear);
 
         //Always when Failed
         if (levelClear == LevelClear.Failed)
@@ -419,10 +425,19 @@ public class GameController : MonoBehaviour
 
     }
 
-
     private IEnumerator AllowInput(bool allow, float delay)
     {
         yield return new WaitForSeconds(delay);
         inputAllowed = allow;
+    }
+
+    private void ProcessBuildingBlocks()
+    {
+        var buildingObjects = FindObjectsOfType<BuildingObject>();
+
+
+        foreach (var buildingObject in buildingObjects)
+        {
+        }
     }
 }
