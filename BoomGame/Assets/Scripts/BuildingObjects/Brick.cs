@@ -11,6 +11,7 @@ public class Brick : BuildingObject
     public Vector2[] pieceSpawnLocations;
     public GameObject[] pieceObjects;
     private List<GameObject> shatterObjects;
+    private bool deactivateDelayd = false;
 
     public int hitpoints = 2;
 
@@ -56,14 +57,14 @@ public class Brick : BuildingObject
         for (int e = 0; e < pieceObjects.Length; e++)
         {
             //only create everyother if spawning pieces
-            if (UnityEngine.Random.value >= 0.5 && pieceObjects[e].tag == "Piece")
+            if (pieceObjects[e].tag == "Rubble" && UnityEngine.Random.value >= 0.5)
             {
                 continue;
             }
-
             var newObject = Instantiate(pieceObjects[e]);
 
             newObject.transform.parent = gameObject.transform;
+
             //Set the position showed by the gizmos
             if (pieceSpawnLocations.Length >= e)
             {
@@ -71,17 +72,35 @@ public class Brick : BuildingObject
                 Vector3 localPosition = (this.transform.right * pieceSpawnLocations[e].x) + (this.transform.up * pieceSpawnLocations[e].y);
                 newObject.transform.position = this.transform.position + new Vector3(localPosition.x, localPosition.y, 0.0f);
                 newObject.transform.localRotation = this.transform.localRotation;
-                //newObject.transform.localScale = this.transform.localScale;
+                //print(this.transform.localScale);
+                newObject.transform.localScale = this.transform.localScale;
             }
+
             var buildingObject = newObject.GetComponent<BuildingObject>();
             if (buildingObject != null)
             {
-                buildingObject.createJoints = false;
-                buildingObject.createManualJoints = false;
-                buildingObject.allowDamage = false;
+                buildingObject.createJoints = true;
+                buildingObject.createManualJoints = true;
+                buildingObject.allowDamage = true;
             }
-            newObject.SetActive(false);
+
+            var brick = newObject.GetComponent<Brick>();
+            if (brick != null)
+            {
+                //Dont allow creating joints to parent objects. 
+                brick.ignoredJoints.Add(gameObject);
+                brick.CreateJoints();
+
+                brick.CreateShatterObjects();
+            }
+
             shatterObjects.Add(newObject);
+
+        }
+
+        foreach (var shatterObject in shatterObjects)
+        {
+            shatterObject.SetActive(false);
         }
 
     }
@@ -151,7 +170,6 @@ public class Brick : BuildingObject
 
         if (shatterParticle != null)
             Instantiate(shatterParticle, this.transform.position, this.transform.rotation);
-
         //Add explosion force to new objects
         foreach (var newObject in shatterObjects)
         {

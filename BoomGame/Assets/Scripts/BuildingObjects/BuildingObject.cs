@@ -24,6 +24,8 @@ public class BuildingObject : MonoBehaviour
     [HideInInspector]
     public bool allowDamage = true;
 
+    [HideInInspector]
+    public bool deactivateDelay = false;
 
     protected virtual void OnDrawGizmos()
     {
@@ -43,6 +45,10 @@ public class BuildingObject : MonoBehaviour
 
     protected virtual void Start()
     {
+        //Dont allow creating joints to parent objects. 
+        if (this.transform.parent != null)
+            ignoredJoints.Add(this.transform.parent.gameObject);
+
         CreateJoints();
     }
 
@@ -105,7 +111,7 @@ public class BuildingObject : MonoBehaviour
     /// <summary>
     /// Creates and attaches joints to objects next to this object
     /// </summary>
-    private void CreateJoints()
+    protected void CreateJoints()
     {
         if (createManualJoints)
         {
@@ -181,6 +187,7 @@ public class BuildingObject : MonoBehaviour
                 joint.autoConfigureConnectedAnchor = false;
                 joint.breakForce = jointBreakForce;
                 joint.breakTorque = jointBreakTorque;
+                joint.dampingRatio = 1f;
                 if (otherShatteringObject != null)
                 {
                     otherShatteringObject.attachedObjects.Add(name);
