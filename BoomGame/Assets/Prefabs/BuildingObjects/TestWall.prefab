@@ -30,12 +30,12 @@ PolygonCollider2D:
       - {x: 0.7412228, y: 4.155178}
       - {x: 1.2027097, y: 4.1524878}
       - {x: 1.1992692, y: 4.9577627}
-      - {x: -0.86710393, y: 4.954664}
-      - {x: -0.8772073, y: 4.1588836}
-      - {x: -0.3449107, y: 4.1654468}
-      - {x: -0.3434143, y: 3.2252798}
-      - {x: -0.86488354, y: 3.2274654}
-      - {x: -0.8758025, y: -4.928822}
+      - {x: -1.235037, y: 4.9609003}
+      - {x: -1.2314266, y: 4.1146064}
+      - {x: -0.6942102, y: 4.1113296}
+      - {x: -0.6687935, y: 3.273121}
+      - {x: -1.2486212, y: 3.252064}
+      - {x: -1.2005035, y: -4.9239025}
       - {x: 1.1628021, y: -4.9240947}
 --- !u!114 &-7108630801149371217
 MonoBehaviour:
@@ -49,8 +49,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50afc76e2b398c546b7954a7ed37f1ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jointBreakForce: 150000
-  jointBreakTorque: 150000
+  jointBreakForce: 200000
+  jointBreakTorque: 200000
   createJoints: 0
   createManualJoints: 1
   createJointToGround: 0
@@ -130,17 +130,6 @@ PrefabInstance:
       propertyPath: m_AngularDrag
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 6765577100370593117, guid: cce5597e951f254419c9554e238fedf5,
-        type: 3}
-    - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001715, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -165,6 +154,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.x
       value: 14.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 6765577100370593117, guid: cce5597e951f254419c9554e238fedf5,
+        type: 3}
+    - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001713, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}

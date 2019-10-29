@@ -25,14 +25,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 4.8996506, y: -0.9424627}
-      - {x: 4.89151, y: 0.0013181716}
-      - {x: 4.391084, y: 0.0032088757}
-      - {x: 4.3760233, y: 0.87174034}
-      - {x: -4.064751, y: 0.89305854}
-      - {x: -4.062875, y: 0.03142658}
-      - {x: -4.535703, y: 0.023899458}
-      - {x: -4.536958, y: -0.8716012}
+    - - {x: 4.9203806, y: -0.9113673}
+      - {x: 4.894965, y: 0.056598946}
+      - {x: 4.397994, y: 0.055034548}
+      - {x: 4.3898435, y: 0.93738616}
+      - {x: -4.4591484, y: 0.91400003}
+      - {x: -4.460762, y: 0.055858195}
+      - {x: -4.9268317, y: 0.057016604}
+      - {x: -4.9299517, y: -0.89448845}
 --- !u!114 &-7108630801149371217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50afc76e2b398c546b7954a7ed37f1ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jointBreakForce: 150000
-  jointBreakTorque: 150000
+  jointBreakForce: 200000
+  jointBreakTorque: 200000
   createJoints: 0
   createManualJoints: 1
   createJointToGround: 0
@@ -124,12 +124,6 @@ PrefabInstance:
       propertyPath: m_AngularDrag
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 845966657821362832, guid: cce5597e951f254419c9554e238fedf5,
-        type: 3}
     - target: {fileID: 1863442581099001715, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -155,6 +149,12 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 14.25
       objectReference: {fileID: 0}
+    - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 845966657821362832, guid: cce5597e951f254419c9554e238fedf5,
+        type: 3}
     - target: {fileID: 1863442581099001713, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: pieceSpawnLocations.Array.size
