@@ -169,15 +169,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf83264aff269ed41a55d6804215a2a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 1
+  explosionDelay: 1
   destroyRadius: 0
   radius: 10
   damageRadius: 0
   power: 0
   upwardsForce: 0
   showExplosionGizmo: 0
-  exposionScreamSounds:
-  - {fileID: 8300000, guid: 552cac100a7be65459879b947a545de1, type: 3}
+  exposionScreamSound: {fileID: 8300000, guid: b17f74e89e8f68c44893b2d5955bdbd6, type: 3}
   explosion: {fileID: 7994774777040310151, guid: 875026a1aa409fb41b64598c9c929903,
     type: 3}
   bombAreaIndicator: {fileID: 2722402532828286328}

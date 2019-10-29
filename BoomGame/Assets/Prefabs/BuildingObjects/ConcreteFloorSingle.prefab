@@ -9,15 +9,15 @@ PolygonCollider2D:
   m_GameObject: {fileID: 1744478025674971482}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 6c5305bef19ddf64699d63dc7983e3c2, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 1.03, y: 0, z: 1.23, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.540177, y: 10.03}
+    oldSize: {x: 10.01, y: 1.8}
     newSize: {x: 3.42, y: 2.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -25,18 +25,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 1.1898985, y: 3.2555442}
-      - {x: 0.73906106, y: 3.2545452}
-      - {x: 0.7412228, y: 4.155178}
-      - {x: 1.2027097, y: 4.1524878}
-      - {x: 1.1992692, y: 4.9577627}
-      - {x: -1.235037, y: 4.9609003}
-      - {x: -1.2314266, y: 4.1146064}
-      - {x: -0.6942102, y: 4.1113296}
-      - {x: -0.6687935, y: 3.273121}
-      - {x: -1.2486212, y: 3.252064}
-      - {x: -1.2005035, y: -4.9239025}
-      - {x: 1.1628021, y: -4.9240947}
+    - - {x: 4.9874077, y: -0.9034816}
+      - {x: 4.9817066, y: -0.1287118}
+      - {x: 4.4531927, y: -0.13027611}
+      - {x: 4.417443, y: 0.89795846}
+      - {x: -4.4591484, y: 0.91400003}
+      - {x: -4.441048, y: -0.10973871}
+      - {x: -4.9899163, y: -0.12040842}
+      - {x: -4.996979, y: -0.88266015}
 --- !u!114 &-7108630801149371217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49,33 +45,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50afc76e2b398c546b7954a7ed37f1ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jointBreakForce: 200000
-  jointBreakTorque: 200000
+  jointBreakForce: 300000
+  jointBreakTorque: 300000
   createJoints: 0
   createManualJoints: 1
   createJointToGround: 0
   ignoredJoints: []
   manualJointLocations:
-  - {x: -0.84, y: 3.68}
-  - {x: 0.99, y: 3.68}
-  - {x: 0.2, y: 5.34}
-  - {x: 0.2, y: -5.34}
+  - {x: -4.76, y: 0.4}
+  - {x: 4.75, y: 0.4}
   materialType: 0
   attachedObjects: []
   allowDamage: 1
   deactivateDelay: 0
+  checkedInLevelClear: 1
   pieceSpawnLocations:
-  - {x: 0, y: 3.66}
-  - {x: 0, y: 1.24}
-  - {x: 0, y: -0.98}
-  - {x: 0, y: -3.49}
+  - {x: -3.55, y: 0}
+  - {x: -1.28, y: 0}
+  - {x: 0.85, y: 0}
+  - {x: 3.35, y: 0}
   pieceObjects:
-  - {fileID: 6397904725382405405, guid: 749359345f37f5a44b17ece681a8d9e2, type: 3}
-  - {fileID: 6397904725382405405, guid: 3151a6bea527324419a98282232a64f0, type: 3}
-  - {fileID: 6397904725382405405, guid: bb2bcce5268b906419adaf0d5f5f152e, type: 3}
-  - {fileID: 6397904725382405405, guid: f4cda8863d3382a49bef587206eed59d, type: 3}
+  - {fileID: 6397904725382405405, guid: e1bbcf822f5ecbb4bab75b0e010f6d2a, type: 3}
+  - {fileID: 6397904725382405405, guid: 16d59c209cb80c3439160748287df782, type: 3}
+  - {fileID: 6397904725382405405, guid: c08a3e779a65a224ea210ee3d04609d3, type: 3}
+  - {fileID: 6397904725382405405, guid: 08d519360ffef784dbc2c99a30897726, type: 3}
   hitpoints: 2
-  damagedForceLimit: 15000
+  damagedForceLimit: 12000
   shatterParticle: {fileID: 4077663246738028735, guid: 57e2faf8fcbcaa742998edee10c41a54,
     type: 3}
 --- !u!1001 &137894847597702692
@@ -88,7 +83,7 @@ PrefabInstance:
     - target: {fileID: 1863442581099001726, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_Name
-      value: TestWall
+      value: TestFloor
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001717, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
@@ -159,13 +154,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 6765577100370593117, guid: cce5597e951f254419c9554e238fedf5,
+      objectReference: {fileID: 21300000, guid: a6c4e248f3f67274ebfeae5901f679a8,
         type: 3}
-    - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001713, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: pieceSpawnLocations.Array.size

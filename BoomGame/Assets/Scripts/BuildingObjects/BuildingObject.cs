@@ -27,6 +27,9 @@ public class BuildingObject : MonoBehaviour
     [HideInInspector]
     public bool deactivateDelay = false;
 
+    [HideInInspector]
+    public bool checkedInLevelClear = true;
+
     protected virtual void OnDrawGizmos()
     {
         foreach (var jointLocation in manualJointLocations)
@@ -187,7 +190,7 @@ public class BuildingObject : MonoBehaviour
                 joint.autoConfigureConnectedAnchor = false;
                 joint.breakForce = jointBreakForce;
                 joint.breakTorque = jointBreakTorque;
-                joint.dampingRatio = 1f;
+                joint.dampingRatio = 0f;
                 if (otherShatteringObject != null)
                 {
                     otherShatteringObject.attachedObjects.Add(name);
