@@ -14,7 +14,7 @@ public class Bomb : MonoBehaviour
     public float power = 100.0f;
     public float upwardsForce = 100.0f;
     public bool showExplosionGizmo = false;
-    public AudioClip[] exposionScreamSounds;
+    public AudioClip exposionScreamSound;
     public GameObject explosion;
 
     public GameObject bombAreaIndicator;
@@ -85,19 +85,7 @@ public class Bomb : MonoBehaviour
 
     public void Detonate(float extraDelay)
     {
-        PlayBombScreamSound();
         StartCoroutine(Explode(extraDelay));
-    }
-
-    private void PlayBombScreamSound()
-    {
-        //Get random scream sound and play it.
-        //TODO play only one scream, now we play multiple sounds if we have multiple bombs
-        if (exposionScreamSounds.Length > 0)
-        {
-            var screamSound = exposionScreamSounds[UnityEngine.Random.Range(0, exposionScreamSounds.Length)];
-            AudioSource.PlayClipAtPoint(screamSound, Camera.main.transform.position);
-        }
     }
 
     protected IEnumerator Explode(float extraDelay)

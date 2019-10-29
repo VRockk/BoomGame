@@ -50,6 +50,9 @@ public class GameController : MonoBehaviour
 
     private GameMaster gameMaster;
     private float roundDelay = 1f;
+
+    public List<AudioClip> bombScreamsToPlay;
+
     private void Awake()
     {
         gameMaster = FindObjectOfType<GameMaster>();
@@ -252,6 +255,7 @@ public class GameController : MonoBehaviour
             return false;
 
         inputAllowed = false;
+        bombScreamsToPlay = new List<AudioClip>();
 
         // zoom to default zoom level
         cameraHandler.ZoomToSize(45f, new Vector3(0, 0, 0));
@@ -266,9 +270,28 @@ public class GameController : MonoBehaviour
             {
                 bomb.Detonate(bombDelay);
                 bombDelay += 0.1f;
+                if (bomb.exposionScreamSound != null)
+                {
+                    if (!bombScreamsToPlay.Any(x => x.name == bomb.exposionScreamSound.name))
+                    {
+                        bombScreamsToPlay.Add(bomb.exposionScreamSound);
+                    }
+                }
             }
         }
+        if (audioSource != null)
+        {
+            audioSource.volume = UnityEngine.Random.Range(0.95f, 1.05f);
+            audioSource.pitch = UnityEngine.Random.Range(0.95f, 1.05f);
+        }
+        foreach (var clip in bombScreamsToPlay)
+        {
+            if (audioSource != null)
+            {
+                audioSource.PlayOneShot(clip);
+            }
 
+        }
 
         Invoke("WaitForNextRound", 2f);
         return true;
@@ -380,10 +403,11 @@ public class GameController : MonoBehaviour
             //    buildingsDamaged = true;
             //}
         }
+        var buildingObjects = FindObjectsOfType<BuildingObject>();
 
         //Find the brick that has the highest position 
-        var buildingObject = FindObjectsOfType<BuildingObject>().Where(x => x.gameObject.transform.position.magnitude < 50).OrderByDescending(x => x.gameObject.transform.position.y + x.GetComponent<Collider2D>().bounds.extents.y).First();
-        float highestBrickTopPos = buildingObject.transform.position.y + buildingObject.GetComponent<Collider2D>().bounds.extents.y;
+        var highestBuildingObject = buildingObjects.Where(x => x.checkedInLevelClear && x.gameObject.transform.position.magnitude < 50).OrderByDescending(x => x.gameObject.transform.position.y + x.GetComponent<Collider2D>().bounds.extents.y).First();
+        float highestBrickTopPos = highestBuildingObject.transform.position.y + highestBuildingObject.GetComponent<Collider2D>().bounds.extents.y;
 
         if (highestBrickTopPos <= winlines.threePentaLine)
         {

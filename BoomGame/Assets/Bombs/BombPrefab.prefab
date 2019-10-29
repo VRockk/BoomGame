@@ -49,14 +49,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionDelay: 1
   destroyRadius: 0
-  radius: 6
+  radius: 5
   damageRadius: 3
   power: 1000
   upwardsForce: 500
   showExplosionGizmo: 1
-  exposionScreamSounds:
-  - {fileID: 8300000, guid: b17f74e89e8f68c44893b2d5955bdbd6, type: 3}
-  - {fileID: 8300000, guid: 552cac100a7be65459879b947a545de1, type: 3}
+  exposionScreamSound: {fileID: 8300000, guid: 552cac100a7be65459879b947a545de1, type: 3}
   explosion: {fileID: 5654598993484723733, guid: 9f4d4f129da654d4184c0b8becb9042b,
     type: 3}
   bombAreaIndicator: {fileID: 7624047350072741971}
