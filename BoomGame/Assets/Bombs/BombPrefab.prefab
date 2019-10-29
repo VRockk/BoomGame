@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26c6dcb04d861364599e70b3a4519c05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 1
+  explosionDelay: 1
   destroyRadius: 0
   radius: 6
   damageRadius: 3
@@ -60,8 +60,7 @@ MonoBehaviour:
   explosion: {fileID: 5654598993484723733, guid: 9f4d4f129da654d4184c0b8becb9042b,
     type: 3}
   bombAreaIndicator: {fileID: 7624047350072741971}
-  inventoryIcon: {fileID: 7137309111187667727, guid: 19a5692f40e0b5945994aa7305638ce2,
-    type: 3}
+  inventoryIcon: {fileID: 21300000, guid: 7bfe0408e89d8bf4699f527ee44adc7a, type: 3}
   explosionParticles: {fileID: 0}
   bombType: 0
 --- !u!61 &5241433061714825447
