@@ -129,7 +129,7 @@ public class CameraHandler : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            DoubleClick();
+            //DoubleClick();
         }
 
         switch (Input.touchCount)
