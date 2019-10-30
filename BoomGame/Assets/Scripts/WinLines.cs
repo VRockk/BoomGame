@@ -9,16 +9,16 @@ public class WinLines : MonoBehaviour
     public float twoPentaLine = -10f;
     public float threePentaLine = -20f;
 
-    private GameObject redline;
-    private GameObject blueline;
-    private GameObject greenline;
+    public GameObject redline;
+    public GameObject blueline;
+    public GameObject greenline;
 
     // Start is called before the first frame update
     void Start()
     {
-        redline = GameObject.Find("Redline");
-        blueline = GameObject.Find("Blueline");
-        greenline = GameObject.Find("Greenline");
+        //redline = GameObject.Find("Redline");
+        //blueline = GameObject.Find("Blueline");
+        //greenline = GameObject.Find("Greenline");
 
         if (redline == null)
         {
@@ -46,9 +46,9 @@ public class WinLines : MonoBehaviour
     private void OnValidate()
     {
 
-        redline = GameObject.Find("Redline");
-        blueline = GameObject.Find("Blueline");
-        greenline = GameObject.Find("Greenline");
+        //redline = GameObject.Find("Redline");
+        //blueline = GameObject.Find("Blueline");
+        //greenline = GameObject.Find("Greenline");
 
         if(redline != null && blueline != null && greenline != null)
             SetLinePositions();
