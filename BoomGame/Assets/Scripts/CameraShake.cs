@@ -7,7 +7,7 @@ public class CameraShake : MonoBehaviour
     private Transform camTransform;
 
     // Desired duration of the shake effect
-    private float shakeDuration = 0f;
+    private float shakeDuration = 0.0f;
 
     // A measure of magnitude for the shake. Tweak based on your preference
     private float shakeMagnitude = 0.7f;
@@ -18,13 +18,26 @@ public class CameraShake : MonoBehaviour
     // The initial position of the GameObject
     private Vector3 initialPosition;
 
+    public static CameraShake cameraShakeInstance;
+
     void Awake()
     {
+        if (camTransform == null)
+        {
+            camTransform = GetComponent(typeof(Transform)) as Transform;
+        }
+
+        cameraShakeInstance = this;
     }
     // Start is called before the first frame update
     void Start()
     {
         
+    }
+
+    void OnEnable()
+    {
+        initialPosition = camTransform.localPosition;
     }
 
     // Update is called once per frame
