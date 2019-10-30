@@ -249,8 +249,8 @@ public class IngameHUD : MonoBehaviour
         var cardAspectRatioFitter = card.GetComponent<AspectRatioFitter>();
         cardAspectRatioFitter.aspectRatio = cardImage.sprite.rect.width / cardImage.sprite.rect.height;
 
-        cardTransform.localPosition = new Vector3(leftOffset, 5f, 0);
-
+        cardTransform.localPosition = new Vector3(leftOffset, 0f, 0);
+        cardTransform.localScale = new Vector3(1, 1, 1);
 
         var bombCardScript = card.GetComponent<BombCard>();
         bombCardScript.bombPrefab = bomb;
