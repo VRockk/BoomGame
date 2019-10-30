@@ -22,6 +22,17 @@ public enum MaterialType
 }
 
 
+public enum LerpMode
+{
+    Linear = 0,
+    EaseOut = 1,
+    EaseIn = 2,
+    Smoothstep = 3,
+    SuperSmoothstep = 4,
+    Exponential = 5
+}
+
+
 public class UtilityLibrary
 {
     public static Vector3 CalculateExplosionForceWithDistance(Vector3 explosionPos, Vector3 hitObjectPosition, float power, float upwardsForce)
@@ -81,7 +92,6 @@ public class UtilityLibrary
         return false;
     }
 
-
     /// <summary>
     /// Get the current mouse position
     /// </summary>
@@ -94,4 +104,64 @@ public class UtilityLibrary
         return mousePos;
     }
 
+    public static Vector3 Lerp(Vector3 start, Vector3 finish, float percentage, LerpMode lerpMode = LerpMode.Linear)
+    {
+        //Make sure percentage is in the range [0.0, 1.0]
+        percentage = Mathf.Clamp01(percentage);
+        percentage = Smoothing(percentage, lerpMode);
+        return (1 - percentage) * start + percentage * finish;
+    }
+
+    public static float Lerp(float start, float finish, float percentage, LerpMode lerpMode)
+    {
+        //Make sure percentage is in the range [0.0, 1.0]
+        percentage = Mathf.Clamp01(percentage);
+        percentage = Smoothing(percentage, lerpMode);
+
+        return (1 - percentage) * start + percentage * finish;
+    }
+
+    private static float Smoothing(float percentage, LerpMode lerpMode)
+    {
+        float val = percentage;
+
+        switch (lerpMode)
+        {
+            case LerpMode.Linear:
+                val = percentage;
+                break;
+            case LerpMode.EaseOut:
+                val = Mathf.Sin(percentage * Mathf.PI * 0.5f);
+                break;
+            case LerpMode.EaseIn:
+                val = 1f - Mathf.Cos(percentage * Mathf.PI * 0.5f);
+                break;
+            case LerpMode.Smoothstep:
+                val = percentage * percentage * (3f - 2f * percentage);
+                break;
+            case LerpMode.SuperSmoothstep:
+                val = percentage * percentage * percentage * (percentage * (6f * percentage - 15f) + 10f);
+                break;
+            case LerpMode.Exponential:
+                val = val*val;
+                break;
+        }
+        return val;
+    }
+
+    public static Vector3 CalculateCubicBezierPoint(float t, Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3)
+    {
+        float u = 1 - t;
+        float tt = t * t;
+        float uu = u * u;
+        float uuu = uu * u;
+        float ttt = tt * t;
+
+        Vector3 p = uuu * p0;
+        p += 3 * uu * t * p1;
+        p += 3 * u * tt * p2;
+        p += ttt * p3;
+
+        return p;
+    }
 }

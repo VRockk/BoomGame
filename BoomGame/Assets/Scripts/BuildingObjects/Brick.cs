@@ -179,9 +179,17 @@ public class Brick : BuildingObject
 
             if (rigidBody != null)
             {
-                //add force to spawned small pieces
-                Vector2 force = UtilityLibrary.CalculateExplosionForce(explosionPos, newObject.transform.position, power, upwardsForce);
-                rigidBody.AddForce(force, ForceMode2D.Impulse);
+                var rubble = newObject.GetComponent<Rubble>();
+                if (rubble != null)
+                {
+                    rubble.StartMoving();
+                }
+                else
+                {
+                    //add force to spawned small pieces
+                    Vector2 force = UtilityLibrary.CalculateExplosionForce(explosionPos, newObject.transform.position, power, upwardsForce);
+                    rigidBody.AddForce(force, ForceMode2D.Impulse);
+                }
             }
         }
         Destroy(this.gameObject);
