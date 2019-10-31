@@ -404,28 +404,33 @@ public class GameController : MonoBehaviour
             //}
         }
         var buildingObjects = FindObjectsOfType<BuildingObject>();
-
-        //Find the brick that has the highest position 
-        var highestBuildingObject = buildingObjects.Where(x => x.checkedInLevelClear && x.gameObject.transform.position.magnitude < 50).OrderByDescending(x => x.gameObject.transform.position.y + x.GetComponent<Collider2D>().bounds.extents.y).First();
-        float highestBrickTopPos = highestBuildingObject.transform.position.y + highestBuildingObject.GetComponent<Collider2D>().bounds.extents.y;
-
-        if (highestBrickTopPos <= winlines.threePentaLine)
+        if (buildingObjects.Length == 0)
         {
             levelClear = LevelClear.ThreePentagram;
         }
-        else if (highestBrickTopPos <= winlines.twoPentaLine && (roundCounter == maxRounds || bombCount == 0))
-        {
-            levelClear = LevelClear.TwoPentagram;
-        }
-        else if (highestBrickTopPos <= winlines.onePentaLine && (roundCounter == maxRounds || bombCount == 0))
-        {
-            levelClear = LevelClear.OnePentagram;
-        }
         else
         {
-            return LevelClear.NotCleared;
-        }
+            //Find the brick that has the highest position 
+            var highestBuildingObject = buildingObjects.Where(x => x.checkedInLevelClear && x.gameObject.transform.position.magnitude < 50).OrderByDescending(x => x.gameObject.transform.position.y + x.GetComponent<Collider2D>().bounds.extents.y).First();
+            float highestBrickTopPos = highestBuildingObject.transform.position.y + highestBuildingObject.GetComponent<Collider2D>().bounds.extents.y;
 
+            if (highestBrickTopPos <= winlines.threePentaLine)
+            {
+                levelClear = LevelClear.ThreePentagram;
+            }
+            else if (highestBrickTopPos <= winlines.twoPentaLine && (roundCounter == maxRounds || bombCount == 0))
+            {
+                levelClear = LevelClear.TwoPentagram;
+            }
+            else if (highestBrickTopPos <= winlines.onePentaLine && (roundCounter == maxRounds || bombCount == 0))
+            {
+                levelClear = LevelClear.OnePentagram;
+            }
+            else
+            {
+                return LevelClear.NotCleared;
+            }
+        }
         //Damaged buildings lower the pentagrams gained by one
         //if (buildingsDamaged)
         //{
