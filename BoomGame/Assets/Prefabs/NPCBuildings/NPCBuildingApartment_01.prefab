@@ -186,7 +186,7 @@ PrefabInstance:
     - target: {fileID: 3018758560124723047, guid: fdc706bf742a95d4ea389a7b3698a178,
         type: 3}
       propertyPath: buildingSprites.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3018758560124723047, guid: fdc706bf742a95d4ea389a7b3698a178,
         type: 3}
@@ -210,17 +210,23 @@ PrefabInstance:
         type: 3}
       propertyPath: buildingSprites.Array.data[3]
       value: 
-      objectReference: {fileID: 7789624383787891160, guid: df49bc8ff75f6ba47ac9a48e7901689e,
+      objectReference: {fileID: 3689519002822742060, guid: df49bc8ff75f6ba47ac9a48e7901689e,
         type: 3}
     - target: {fileID: 3018758560124723047, guid: fdc706bf742a95d4ea389a7b3698a178,
         type: 3}
       propertyPath: hitpoints
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3018758560124723047, guid: fdc706bf742a95d4ea389a7b3698a178,
         type: 3}
       propertyPath: damagedForceLimit
-      value: 35000
+      value: 50000
       objectReference: {fileID: 0}
+    - target: {fileID: 3018758560124723047, guid: fdc706bf742a95d4ea389a7b3698a178,
+        type: 3}
+      propertyPath: buildingSprites.Array.data[4]
+      value: 
+      objectReference: {fileID: 7789624383787891160, guid: df49bc8ff75f6ba47ac9a48e7901689e,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fdc706bf742a95d4ea389a7b3698a178, type: 3}
