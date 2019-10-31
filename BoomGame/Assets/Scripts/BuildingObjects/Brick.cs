@@ -79,8 +79,8 @@ public class Brick : BuildingObject
             var buildingObject = newObject.GetComponent<BuildingObject>();
             if (buildingObject != null)
             {
-                buildingObject.createJoints = true;
-                buildingObject.createManualJoints = true;
+                //buildingObject.createJoints = true;
+                //buildingObject.createManualJoints = true;
                 buildingObject.allowDamage = true;
             }
 

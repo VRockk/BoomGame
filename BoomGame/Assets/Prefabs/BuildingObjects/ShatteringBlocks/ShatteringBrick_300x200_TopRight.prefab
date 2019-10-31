@@ -12,12 +12,57 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShatteringBrick_300x200_TopRight
       objectReference: {fileID: 0}
-    - target: {fileID: 6649006982650661175, guid: 80b0e34ba46c467458b6d275d3e6fb64,
+    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
         type: 3}
-      propertyPath: m_Sprite
+      propertyPath: createJoints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
+        type: 3}
+      propertyPath: pieceObjects.Array.data[0]
       value: 
-      objectReference: {fileID: 6290832392800639805, guid: b4be78b86414cdb41b68e802b9692c60,
+      objectReference: {fileID: 3262556344422710767, guid: 1177573a9c25d424d9202d9e5685bd9c,
         type: 3}
+    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
+        type: 3}
+      propertyPath: pieceObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 3262556344422710767, guid: 1177573a9c25d424d9202d9e5685bd9c,
+        type: 3}
+    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
+        type: 3}
+      propertyPath: pieceObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 3262556344422710767, guid: 1177573a9c25d424d9202d9e5685bd9c,
+        type: 3}
+    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
+        type: 3}
+      propertyPath: pieceObjects.Array.data[3]
+      value: 
+      objectReference: {fileID: 3262556344422710767, guid: 1177573a9c25d424d9202d9e5685bd9c,
+        type: 3}
+    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
+        type: 3}
+      propertyPath: pieceObjects.Array.data[4]
+      value: 
+      objectReference: {fileID: 3262556344422710767, guid: 1177573a9c25d424d9202d9e5685bd9c,
+        type: 3}
+    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
+        type: 3}
+      propertyPath: pieceObjects.Array.data[5]
+      value: 
+      objectReference: {fileID: 3262556344422710767, guid: 1177573a9c25d424d9202d9e5685bd9c,
+        type: 3}
+    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
+        type: 3}
+      propertyPath: jointBreakForce
+      value: 60000
+      objectReference: {fileID: 0}
+    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
+        type: 3}
+      propertyPath: jointBreakTorque
+      value: 60000
+      objectReference: {fileID: 0}
     - target: {fileID: 6649006982650661174, guid: 80b0e34ba46c467458b6d275d3e6fb64,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -28,6 +73,12 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 2.0305202
       objectReference: {fileID: 0}
+    - target: {fileID: 6649006982650661175, guid: 80b0e34ba46c467458b6d275d3e6fb64,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 6290832392800639805, guid: b4be78b86414cdb41b68e802b9692c60,
+        type: 3}
     - target: {fileID: 6649006982650661168, guid: 80b0e34ba46c467458b6d275d3e6fb64,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -82,57 +133,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
-        type: 3}
-      propertyPath: createJoints
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
-        type: 3}
-      propertyPath: pieceObjects.Array.data[0]
-      value: 
-      objectReference: {fileID: 3262556344422710767, guid: 1177573a9c25d424d9202d9e5685bd9c,
-        type: 3}
-    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
-        type: 3}
-      propertyPath: pieceObjects.Array.data[1]
-      value: 
-      objectReference: {fileID: 3262556344422710767, guid: 1177573a9c25d424d9202d9e5685bd9c,
-        type: 3}
-    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
-        type: 3}
-      propertyPath: pieceObjects.Array.data[2]
-      value: 
-      objectReference: {fileID: 3262556344422710767, guid: 1177573a9c25d424d9202d9e5685bd9c,
-        type: 3}
-    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
-        type: 3}
-      propertyPath: pieceObjects.Array.data[3]
-      value: 
-      objectReference: {fileID: 3262556344422710767, guid: 1177573a9c25d424d9202d9e5685bd9c,
-        type: 3}
-    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
-        type: 3}
-      propertyPath: pieceObjects.Array.data[4]
-      value: 
-      objectReference: {fileID: 3262556344422710767, guid: 1177573a9c25d424d9202d9e5685bd9c,
-        type: 3}
-    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
-        type: 3}
-      propertyPath: pieceObjects.Array.data[5]
-      value: 
-      objectReference: {fileID: 3262556344422710767, guid: 1177573a9c25d424d9202d9e5685bd9c,
-        type: 3}
-    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
-        type: 3}
-      propertyPath: jointBreakForce
-      value: 60000
-      objectReference: {fileID: 0}
-    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
-        type: 3}
-      propertyPath: jointBreakTorque
-      value: 60000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80b0e34ba46c467458b6d275d3e6fb64, type: 3}
