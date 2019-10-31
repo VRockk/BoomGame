@@ -1,69 +1,28 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bomb : MonoBehaviour
+public class TNTBarrel : MonoBehaviour
 {
-    //Delay in seconds before exploding
-    public float explosionDelay = 1.0f;
 
-    public float destroyRadius = 1.0f;
-    public float radius = 1.0f;
-    public float damageRadius = 1.0f;
-    public float power = 100.0f;
-    public float upwardsForce = 100.0f;
-    public bool showExplosionGizmo = false;
-    public AudioClip exposionScreamSound;
+    public float power = 10000f;
+    public float upwardsForce = 100f;
+    public float damagedForceLimit = 7000f;
+
     public GameObject explosion;
-
-    public GameObject bombAreaIndicator;
-    public Sprite inventoryIcon;
-
 
     public GameObject explosionParticles;
 
-    private BombData bombData;
-    public BombType bombType;
+    public float radius = 6f;
+    public float damageRadius = 10f;
 
-    private GameMaster gameMaster;
-
-    protected virtual void Awake()
-    {
-    }
+    public bool showExplosionGizmo = false;
 
     // Start is called before the first frame update
-    protected virtual void Start()
-    {
-        gameMaster = FindObjectOfType<GameMaster>();
-        if (gameMaster == null)
-            Debug.LogError("No GameMaster found in bomb upgrade panel");
-
-        if (bombType == BombType.Regular)
-        {
-            bombData = gameMaster.regularBombData;
-        }
-        else if (bombType == BombType.Acid)
-        {
-            bombData = gameMaster.acidBombData;
-        }
-        //TODO Get bomb upgrade info and set radius settings
-        var radiusUpgrade = bombData.BombUpgradeLevels[0];
-
-        if (radiusUpgrade > 0)
-        {
-            radius = radius * (1 + (0.1f * radiusUpgrade));
-        }
-
-        var indicatorRadius = radius / 5;
-        bombAreaIndicator.transform.localScale = new Vector3(indicatorRadius, indicatorRadius, 1);
-    }
-
-    // Update is called once per frame
-    protected virtual void Update()
+    void Start()
     {
 
-    }
+    }    
 
     protected virtual void OnDrawGizmos()
     {
@@ -76,53 +35,64 @@ public class Bomb : MonoBehaviour
             Gizmos.color = Color.yellow;
 
             Gizmos.DrawSphere(this.transform.position, radius);
-
-            Gizmos.color = Color.red;
-
-            Gizmos.DrawSphere(this.transform.position, destroyRadius);
         }
     }
 
-    public void Detonate(float extraDelay)
+    // Update is called once per frame
+    void Update()
     {
-        StartCoroutine(Explode(extraDelay));
+
+    }
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
+    {
+        var contact = collision.GetContact(0);
+
+        if (contact.rigidbody == null)
+            return;
+
+        if (contact.rigidbody.gameObject.tag == "Rubble")
+            return;
+
+        // Force equals mass times acceleration
+        var hitForce = contact.rigidbody.mass * contact.relativeVelocity.magnitude * contact.relativeVelocity.magnitude;
+
+        //print(hitForce);
+        //print(hitForce);
+        //Check if the force is over the limit and apply damage
+        //if (contact.relativeVelocity.magnitude > damagedVelocity && Hitpoints > 0)
+        if (hitForce > damagedForceLimit)
+        {
+            Detonate(0.1f);
+        }
     }
 
-    protected IEnumerator Explode(float extraDelay)
+    public void Detonate(float delay)
     {
-        yield return new WaitForSeconds(explosionDelay + extraDelay);
+        StartCoroutine(Explode(delay));
+    }
 
+    protected IEnumerator Explode(float delay)
+    {
+        yield return new WaitForSeconds(delay);
 
         //Spawn explosion animation
         if (explosion != null)
-            Instantiate(explosion, this.transform.position, Quaternion.identity);
+        {
+            var exp = Instantiate(explosion, this.transform.position, Quaternion.identity);
+            exp.transform.localScale = new Vector3(5f, 5f, 1f);
+        }
 
         if (explosionParticles != null)
             Instantiate(explosionParticles, this.transform.position, Quaternion.identity);
 
         ExplosionEffect();
         Destroy(this.gameObject);
+
     }
+
 
     protected virtual void ExplosionEffect()
     {
-        if (destroyRadius > 0f)
-        {
-            //Destroy bricks in destroy radius
-            Collider2D[] destroyColliders = Physics2D.OverlapCircleAll(this.transform.position, destroyRadius);
-            foreach (Collider2D hit in destroyColliders)
-            {
-                var buildingObject = hit.gameObject.GetComponent<BuildingObject>();
-                if (buildingObject != null)
-                {
-                    if (buildingObject.materialType == MaterialType.Brick || buildingObject.materialType == MaterialType.Wood)
-                    {
-                        if (buildingObject.allowDamage)
-                            Destroy(hit.transform.gameObject);
-                    }
-                }
-            }
-        }
 
         if (radius > 0f)
         {
@@ -134,7 +104,6 @@ public class Bomb : MonoBehaviour
                 ExplosionForces(hit);
             }
         }
-
         if (damageRadius > 0f)
         {
             //Remove hitpoints on these
@@ -162,7 +131,7 @@ public class Bomb : MonoBehaviour
 
                             if (rb != null && hit.gameObject.tag != "Ground")
                             {
-                                Vector2 force = UtilityLibrary.CalculateExplosionForceWithDistance(this.transform.position, hit.transform.position, power / 5, upwardsForce / 5);
+                                Vector2 force = UtilityLibrary.CalculateExplosionForceWithDistance(this.transform.position, hit.transform.position, power, upwardsForce);
 
                                 rb.AddForce(force, ForceMode2D.Impulse);
                             }
@@ -175,13 +144,14 @@ public class Bomb : MonoBehaviour
 
                     if (rb != null && hit.gameObject.tag != "Ground")
                     {
-                        Vector2 force = UtilityLibrary.CalculateExplosionForceWithDistance(this.transform.position, hit.transform.position, power / 5, upwardsForce / 5);
+                        Vector2 force = UtilityLibrary.CalculateExplosionForceWithDistance(this.transform.position, hit.transform.position, power, upwardsForce);
 
                         rb.AddForce(force, ForceMode2D.Impulse);
                     }
                 }
             }
         }
+
     }
 
     private void ExplosionForces(Collider2D hit)
@@ -235,13 +205,14 @@ public class Bomb : MonoBehaviour
 
             if (rb != null && hit.gameObject.tag != "Ground")
             {
-                //print(hit.gameObject);
+                print(hit.gameObject);
                 Vector2 force = UtilityLibrary.CalculateExplosionForceWithDistance(this.transform.position, hit.transform.position, power, upwardsForce);
 
                 rb.AddForce(force, ForceMode2D.Impulse);
             }
+
             var barrel = hit.gameObject.GetComponent<TNTBarrel>();
-            if(barrel != null)
+            if (barrel != null)
             {
                 barrel.Detonate(0.1f);
             }
