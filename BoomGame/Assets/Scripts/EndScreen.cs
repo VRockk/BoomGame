@@ -6,6 +6,7 @@ public class EndScreen : MonoBehaviour
 {
     public Animator animator;
     public IngameHUD ingameHUD;
+    public int testScore = -1;
     void Awake()
     {
         animator.enabled = false;
@@ -15,7 +16,11 @@ public class EndScreen : MonoBehaviour
     void Start()
     {
         ingameHUD = FindObjectOfType<IngameHUD>();
-        print(ingameHUD);
+        //print(ingameHUD);
+        if(testScore > -1)
+        {
+            Enable(testScore);
+        }
     }
 
     // Update is called once per frame
