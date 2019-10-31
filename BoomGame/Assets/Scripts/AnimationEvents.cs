@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class AnimationEvents : MonoBehaviour
 {
     private GameMaster gameMaster;
+    private AudioSource audioSource;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -13,7 +15,7 @@ public class AnimationEvents : MonoBehaviour
         gameMaster = FindObjectOfType<GameMaster>();
         if (gameMaster == null)
             Debug.LogError("No GameMaster found");
-
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -24,7 +26,8 @@ public class AnimationEvents : MonoBehaviour
 
     public void PlaySound(AudioClip sound)
     {
-        AudioSource.PlayClipAtPoint(sound, new Vector3(0, 0, 0));
+       
+        audioSource.PlayOneShot(sound);
     }
 
     public void SetMusic(AudioClip music)

@@ -21,6 +21,9 @@ public class MainMenu : MonoBehaviour
     public GameObject gameMasterPrefab;
 
     private GameMaster gameMaster;
+    private AudioSource audioSource;
+    //public AudioClip audioClip;
+
 
     void Start()
     {
@@ -51,6 +54,7 @@ public class MainMenu : MonoBehaviour
                 bombPanel.SetActive(false);
             }
         }
+        audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -146,6 +150,7 @@ public class MainMenu : MonoBehaviour
         campaignMapPanel.SetActive(false);
         bombPanel.SetActive(false);
         bombSelectionPanel.SetActive(true);
+
     }
     public void OpenBombsPanel()
     {
@@ -184,6 +189,12 @@ public class MainMenu : MonoBehaviour
         }
         bombSelectionPanel.SetActive(false);
         panel.SetActive(true);
+    }
+
+    public void PlaySound(AudioClip sound)
+    {
+
+        audioSource.PlayOneShot(sound);
     }
 
 }
