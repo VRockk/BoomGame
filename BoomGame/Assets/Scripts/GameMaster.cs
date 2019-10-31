@@ -17,6 +17,13 @@ public class GameMaster : MonoBehaviour
 
     private AudioSource audioSource;
 
+    private AudioClip newMusicClip;
+    private float musicFadeInTime = 2f;
+    private float musicFadeOutTime = 0.5f;
+    private float musicDefaultVolume = 1f;
+    private float fadeStarted;
+    private bool fadingMusic = false;
+    private bool fadingOut = false;
 
     private bool privacyPolicyAccepted;
     public bool PrivacyPolicyAccepted
@@ -117,29 +124,74 @@ public class GameMaster : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
         audioSource = GetComponent<AudioSource>();
-
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        if (fadingMusic)
+        {
+            float timeSinceStarted = Time.time - fadeStarted;
+            if (fadingOut)
+            {
+                float percentage = timeSinceStarted / musicFadeOutTime;
+                float volume = UtilityLibrary.Lerp(musicDefaultVolume, 0, percentage, LerpMode.EaseIn);
+                audioSource.volume = volume;
+                //fade out previous music
+                if (percentage >= 1f)
+                {
+                    audioSource.Stop();
+                    audioSource.clip = newMusicClip;
+                    audioSource.Play();
+                    percentage = 0;
+                    fadingOut = false;
+                    fadeStarted = Time.time;
+                }
+            }
+            else
+            {
+                float percentage = timeSinceStarted / musicFadeInTime;
+                //fade in new music
+                float volume = UtilityLibrary.Lerp(0, musicDefaultVolume, percentage, LerpMode.EaseIn);
+                audioSource.volume = volume;
+                if (percentage >= 1f)
+                {
+                    percentage = 0;
+                    fadingOut = false;
+                    fadeStarted = Time.time;
+                    fadingMusic = false;
+                }
+
+            }
+        }
     }
 
     public void AddSalvage(int salvageToAdd)
     {
         currentSalvage += salvageToAdd;
-        PlayerPrefs.SetInt("CurrentSalvage", currentSalvage);        
+        PlayerPrefs.SetInt("CurrentSalvage", currentSalvage);
     }
 
     public void SetMusic(AudioClip clip)
     {
-        if(audioSource == null)
+        if (audioSource == null)
             audioSource = GetComponent<AudioSource>();
-        //TODO Fade out/fade in
-        audioSource.clip = clip;
-        audioSource.Play();
+        musicDefaultVolume = audioSource.volume;
+        newMusicClip = clip;
+        fadeStarted = Time.time;
+        fadingMusic = true;
+
+        //Only fade out if we have music already playing
+        if (audioSource.isPlaying)
+            fadingOut = true;
+        else
+        {
+            audioSource.clip = newMusicClip;
+            audioSource.volume = 0f;
+            audioSource.Play();
+            fadingOut = false;
+        }
     }
 
     public void PassLevel(int levelNumber)
