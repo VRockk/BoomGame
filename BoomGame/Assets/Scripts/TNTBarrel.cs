@@ -22,7 +22,7 @@ public class TNTBarrel : MonoBehaviour
     void Start()
     {
 
-    }    
+    }
 
     protected virtual void OnDrawGizmos()
     {
@@ -43,7 +43,8 @@ public class TNTBarrel : MonoBehaviour
     {
 
     }
-    protected virtual void OnCollisionEnter2D(Collision2D collision)
+
+    void OnCollisionEnter2D(Collision2D collision)
     {
         var contact = collision.GetContact(0);
 
@@ -87,13 +88,11 @@ public class TNTBarrel : MonoBehaviour
 
         ExplosionEffect();
         Destroy(this.gameObject);
-
     }
 
 
     protected virtual void ExplosionEffect()
     {
-
         if (radius > 0f)
         {
             Collider2D[] colliders = Physics2D.OverlapCircleAll(this.transform.position, radius);
@@ -101,7 +100,7 @@ public class TNTBarrel : MonoBehaviour
             //Objects inside main explosive radius. Shatter, destroy, add force
             foreach (Collider2D hit in colliders)
             {
-                ExplosionForces(hit);
+                UtilityLibrary.ExplosionForces(hit, this.transform, power, upwardsForce);
             }
         }
         if (damageRadius > 0f)
@@ -111,110 +110,7 @@ public class TNTBarrel : MonoBehaviour
 
             foreach (Collider2D hit in damageColliders)
             {
-                if (hit.gameObject.tag.Contains("BuildingObject"))
-                {
-                    var brick = hit.gameObject.GetComponent<Brick>();
-                    if (brick != null && brick.allowDamage)
-                    {
-                        //Remove hitpoints
-                        brick.hitpoints--;
-                        brick.hitpoints--;
-
-                        //No more hitpoints, shatter
-                        if (brick.hitpoints <= 0)
-                        {
-                            brick.Shatter(this.transform.position, 100, 100);
-                        }
-                        else
-                        {
-                            Rigidbody2D rb = hit.GetComponent<Rigidbody2D>();
-
-                            if (rb != null && hit.gameObject.tag != "Ground")
-                            {
-                                Vector2 force = UtilityLibrary.CalculateExplosionForceWithDistance(this.transform.position, hit.transform.position, power, upwardsForce);
-
-                                rb.AddForce(force, ForceMode2D.Impulse);
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    Rigidbody2D rb = hit.GetComponent<Rigidbody2D>();
-
-                    if (rb != null && hit.gameObject.tag != "Ground")
-                    {
-                        Vector2 force = UtilityLibrary.CalculateExplosionForceWithDistance(this.transform.position, hit.transform.position, power, upwardsForce);
-
-                        rb.AddForce(force, ForceMode2D.Impulse);
-                    }
-                }
-            }
-        }
-
-    }
-
-    private void ExplosionForces(Collider2D hit)
-    {
-        if (hit.gameObject.tag.Contains("BuildingObject"))
-        {
-            var buildingObject = hit.gameObject.GetComponent<BuildingObject>();
-            if (buildingObject != null)
-                print(hit);
-            if (buildingObject.materialType == MaterialType.Brick)
-            {
-                var brick = hit.gameObject.GetComponent<Brick>();
-                if (brick != null && brick.allowDamage)
-                    brick.Shatter(this.transform.position, power, upwardsForce);
-            }
-            else if (buildingObject.materialType == MaterialType.Wood)
-            {
-                Destroy(hit.transform.gameObject);
-            }
-            else if (buildingObject.materialType == MaterialType.Metal)
-            {
-                var metal = hit.gameObject.GetComponent<Metal>();
-                if (metal != null)
-                {
-                    metal.Bend(transform.position);
-                }
-                Rigidbody2D rb = hit.GetComponent<Rigidbody2D>();
-
-                if (rb != null)
-                {
-                    Vector2 force = UtilityLibrary.CalculateExplosionForce(this.transform.position, hit.transform.position, power, upwardsForce);
-
-                    rb.AddForce(force, ForceMode2D.Impulse);
-                }
-            }
-
-        }
-        else if (hit.gameObject.tag.Contains("NPCBuilding"))
-        {
-            var npcHouse = hit.gameObject.GetComponent<NPCBuilding>();
-
-            if (npcHouse != null)
-            {
-                //Destroy NPC buildings if they are hit by the blast
-                npcHouse.DamageBuilding(10000, false);
-            }
-        }
-        else
-        {
-            Rigidbody2D rb = hit.GetComponent<Rigidbody2D>();
-
-            if (rb != null && hit.gameObject.tag != "Ground")
-            {
-                print(hit.gameObject);
-                Vector2 force = UtilityLibrary.CalculateExplosionForceWithDistance(this.transform.position, hit.transform.position, power, upwardsForce);
-
-                rb.AddForce(force, ForceMode2D.Impulse);
-            }
-
-            var barrel = hit.gameObject.GetComponent<TNTBarrel>();
-            if (barrel != null)
-            {
-                barrel.Detonate(0.1f);
+                UtilityLibrary.ExplosionDamage(hit, this.transform, power, upwardsForce);
             }
         }
     }

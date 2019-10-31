@@ -57,7 +57,7 @@ public class Brick : BuildingObject
         for (int e = 0; e < pieceObjects.Length; e++)
         {
             //only create everyother if spawning pieces
-            if (pieceObjects[e].tag == "Rubble" && UnityEngine.Random.value >= 0.5)
+            if (pieceObjects[e].tag == "Rubble" && UnityEngine.Random.value >= 0.7)
             {
                 continue;
             }
@@ -168,9 +168,11 @@ public class Brick : BuildingObject
 
         shattered = true;
 
-        if (shatterParticle != null)
+        //Spawn particles for shattering, 50% chance
+        if (shatterParticle != null && UnityEngine.Random.value >= 0.5)
             Instantiate(shatterParticle, this.transform.position, this.transform.rotation);
-        //Add explosion force to new objects
+
+        //Active and add explosion force to shattered objects
         foreach (var newObject in shatterObjects)
         {
             newObject.SetActive(true);
@@ -187,7 +189,7 @@ public class Brick : BuildingObject
                 else
                 {
                     //add force to spawned small pieces
-                    Vector2 force = UtilityLibrary.CalculateExplosionForce(explosionPos, newObject.transform.position, power, upwardsForce);
+                    Vector2 force = UtilityLibrary.CalculateExplosionForceWithDistance(explosionPos, newObject.transform.position, power, upwardsForce);
                     rigidBody.AddForce(force, ForceMode2D.Impulse);
                 }
             }
