@@ -7,7 +7,7 @@ public class Rubble : MonoBehaviour
     /// <summary>
     /// The time taken to move from the start to finish positions
     /// </summary>
-    private float moveTime = 0.5f;
+    private float moveTime = 0.7f;
 
 
     //Whether we are currently interpolating or not
