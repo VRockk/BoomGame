@@ -21,6 +21,13 @@ public class EndScreen : MonoBehaviour
         {
             Enable(testScore);
         }
+        var camPos = Camera.main.transform.position;
+        transform.position = new Vector3(camPos.x, camPos.y, 0);
+
+
+        //Scale to correct size with different camera zoom values
+        var percentage = (Camera.main.orthographicSize - 25f) / 20f;
+        transform.localScale = UtilityLibrary.Lerp(new Vector3(4.9f, 4.9f, 1f), new Vector3(8.5f, 8.5f, 1f), percentage, LerpMode.Linear);
     }
 
     // Update is called once per frame
@@ -31,6 +38,7 @@ public class EndScreen : MonoBehaviour
     // Start is called before the first frame update
     public void Enable(int score)
     {
+        print(score);
         animator.SetInteger("Score", score);
         animator.enabled = true;
     }
@@ -38,5 +46,6 @@ public class EndScreen : MonoBehaviour
     public void ShowLevelFinishedScreen()
     {
         ingameHUD.ShowFinishPanel();
+        //Destroy(gameObject);
     }
 }
