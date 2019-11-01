@@ -18,7 +18,6 @@ public class CameraShake : MonoBehaviour
     // The initial position of the GameObject
     private Vector3 initialPosition;
 
-    public static CameraShake cameraShakeInstance;
 
     void Awake()
     {
@@ -27,7 +26,6 @@ public class CameraShake : MonoBehaviour
             camTransform = GetComponent(typeof(Transform)) as Transform;
         }
 
-        cameraShakeInstance = this;
     }
     // Start is called before the first frame update
     void Start()
