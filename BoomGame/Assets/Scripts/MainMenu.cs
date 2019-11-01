@@ -22,7 +22,7 @@ public class MainMenu : MonoBehaviour
 
     private GameMaster gameMaster;
     private AudioSource audioSource;
-    //public AudioClip audioClip;
+    public AudioClip menuMusic;
 
 
     void Start()
@@ -33,6 +33,8 @@ public class MainMenu : MonoBehaviour
             gameMaster = Instantiate(gameMasterPrefab).GetComponent<GameMaster>();
         }
 
+        if (menuMusic != null)
+            gameMaster.SetMusic(menuMusic);
 
         UpdateSalvage();
         if (privacyPolicyPanel != null)

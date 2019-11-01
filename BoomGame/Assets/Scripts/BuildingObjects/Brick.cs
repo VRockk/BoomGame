@@ -20,6 +20,10 @@ public class Brick : BuildingObject
 
     public GameObject shatterParticle;
 
+    public GameObject audioObject;
+
+    public AudioClip[] shatterSFX;
+
     private bool shattered = false;
     private float damageGateDelay = 0f;
     private const float damageDelayDefault = 0.05f;
@@ -168,9 +172,11 @@ public class Brick : BuildingObject
 
         shattered = true;
 
-        //Spawn particles for shattering, 50% chance
+        //Spawn particles for shattering
         if (shatterParticle != null && UnityEngine.Random.value >= 0.5)
             Instantiate(shatterParticle, this.transform.position, this.transform.rotation);
+
+        ShatterAudio();
 
         //Active and add explosion force to shattered objects
         foreach (var newObject in shatterObjects)
@@ -197,4 +203,19 @@ public class Brick : BuildingObject
         Destroy(this.gameObject);
     }
 
+    private void ShatterAudio()
+    {
+        //Play sound for shatter
+        if (audioObject != null && shatterSFX != null && UnityEngine.Random.value >= 0.8f)
+        {
+            //select random clip from list and play in new audio object
+            var soundClip = shatterSFX[UnityEngine.Random.Range(0, shatterSFX.Length - 1)];
+            var audioObjectInstance = Instantiate(audioObject, transform.position, transform.rotation);
+            var audioSource = audioObjectInstance.GetComponent<AudioSource>();
+            audioSource.pitch = UnityEngine.Random.Range(0.5f, 0.9f);
+            audioSource.volume = UnityEngine.Random.Range(0.2f, 0.5f);
+            audioSource.clip = soundClip;
+            audioSource.Play();
+        }
+    }
 }

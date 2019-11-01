@@ -177,20 +177,28 @@ public class GameMaster : MonoBehaviour
     {
         if (audioSource == null)
             audioSource = GetComponent<AudioSource>();
-        musicDefaultVolume = audioSource.volume;
-        newMusicClip = clip;
-        fadeStarted = Time.time;
-        fadingMusic = true;
 
-        //Only fade out if we have music already playing
-        if (audioSource.isPlaying)
-            fadingOut = true;
-        else
+        if (audioSource != null && clip != null)
         {
-            audioSource.clip = newMusicClip;
-            audioSource.volume = 0f;
-            audioSource.Play();
-            fadingOut = false;
+            //Dont set the same clip again
+            if (audioSource.clip != null && audioSource.clip.name == clip.name)
+                return;
+
+            musicDefaultVolume = audioSource.volume;
+            newMusicClip = clip;
+            fadeStarted = Time.time;
+            fadingMusic = true;
+
+            //Only fade out if we have music already playing
+            if (audioSource.isPlaying)
+                fadingOut = true;
+            else
+            {
+                audioSource.clip = newMusicClip;
+                audioSource.volume = 0f;
+                audioSource.Play();
+                fadingOut = false;
+            }
         }
     }
 
