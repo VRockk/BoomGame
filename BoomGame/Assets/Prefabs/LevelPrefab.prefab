@@ -153,7 +153,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1088292755727897018}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 100}
+  m_LocalPosition: {x: 0, y: 6, z: 100}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 4591488076353398573}
@@ -566,9 +566,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 6091981189523343855}
-  xParallax: 0.8
-  yParallax: 0.8
-  sizeParallax: 0.8
+  xParallax: 0.85
+  yParallax: 0.85
+  sizeParallax: 0.85
 --- !u!1 &1503803169589414464
 GameObject:
   m_ObjectHideFlags: 0
@@ -579,6 +579,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1503803169589414466}
   - component: {fileID: 1503803169589414469}
+  - component: {fileID: 5248926280761928907}
   m_Layer: 0
   m_Name: DustBack
   m_TagString: Untagged
@@ -594,7 +595,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1503803169589414464}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 185.5, y: 6.3, z: 40}
+  m_LocalPosition: {x: 185.5, y: 6.3, z: 55}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 7842696499095526248}
@@ -615,6 +616,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amount: {x: -0.05, y: 0}
+--- !u!114 &5248926280761928907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503803169589414464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a65558674c92df409a0428d44817571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 6091981189523343855}
+  xParallax: 0.6
+  yParallax: 0.6
+  sizeParallax: 0.6
 --- !u!1 &1503803169608941805
 GameObject:
   m_ObjectHideFlags: 0
@@ -641,7 +658,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1503803169608941805}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 100}
+  m_LocalPosition: {x: 0, y: 6, z: 100}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 8684797433164683579}
@@ -824,7 +841,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8684797433164683579
 Transform:
   m_ObjectHideFlags: 0
@@ -833,7 +850,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2215036819310132471}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1503803169608941807}
@@ -957,7 +974,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4591488076353398573
 Transform:
   m_ObjectHideFlags: 0
@@ -966,7 +983,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2725227220031219584}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3637816314317198020}
@@ -1772,9 +1789,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 6091981189523343855}
-  xParallax: 0.6
-  yParallax: 0.6
-  sizeParallax: 0.6
+  xParallax: 0.4
+  yParallax: 0.4
+  sizeParallax: 0.4
 --- !u!1 &7714842469470803111
 GameObject:
   m_ObjectHideFlags: 0
@@ -2046,9 +2063,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 6091981189523343855}
-  xParallax: 0.7
-  yParallax: 0.7
-  sizeParallax: 0.7
+  xParallax: 0.8
+  yParallax: 0.8
+  sizeParallax: 0.8
 --- !u!1 &8203094411792802861
 GameObject:
   m_ObjectHideFlags: 0

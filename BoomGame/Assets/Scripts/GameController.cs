@@ -51,6 +51,7 @@ public class GameController : MonoBehaviour
     private GameMaster gameMaster;
     private float roundDelay = 1f;
 
+    [HideInInspector]
     public List<AudioClip> bombScreamsToPlay;
 
     private void Awake()
@@ -258,7 +259,7 @@ public class GameController : MonoBehaviour
         bombScreamsToPlay = new List<AudioClip>();
 
         // zoom to default zoom level
-        cameraHandler.ZoomToSize(45f, new Vector3(0, 0, 0));
+        cameraHandler.ZoomToSize(cameraHandler.defaultCameraSize, cameraHandler.cameraDefaultPos);
 
         //get all bombs and detonate them
         GameObject[] bombs = GameObject.FindGameObjectsWithTag("Bomb");
