@@ -14,6 +14,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
         type: 3}
+      propertyPath: shatterSFX.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
+        type: 3}
       propertyPath: pieceObjects.Array.data[0]
       value: 
       objectReference: {fileID: 2542678690165135598, guid: ab14e2efe7aa8954e9ea66a8e150a2b5,
@@ -123,6 +128,17 @@ PrefabInstance:
       propertyPath: createManualJoints
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
+        type: 3}
+      propertyPath: audioObject
+      value: 
+      objectReference: {fileID: 8861113935494233493, guid: f47a1ab8e18b41443ada68a44c6005f6,
+        type: 3}
+    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
+        type: 3}
+      propertyPath: shatterSFX.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 13dffe3d1f9a9a04d9417d9c441a294a, type: 3}
     - target: {fileID: 6649006982650661174, guid: 80b0e34ba46c467458b6d275d3e6fb64,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y

@@ -22,6 +22,8 @@ MonoBehaviour:
   materialType: 0
   attachedObjects: []
   allowDamage: 1
+  deactivateDelay: 0
+  checkedInLevelClear: 1
   pieceSpawnLocations:
   - {x: -3.333, y: 0}
   - {x: 0, y: 0}
@@ -33,6 +35,11 @@ MonoBehaviour:
   hitpoints: 2
   damagedForceLimit: 10000
   shatterParticle: {fileID: 0}
+  audioObject: {fileID: 8861113935494233493, guid: f47a1ab8e18b41443ada68a44c6005f6,
+    type: 3}
+  shatterSFX:
+  - {fileID: 8300000, guid: 877e9aa5b6bc65a4cab4f948f6cc85b3, type: 3}
+  - {fileID: 8300000, guid: 31f860278f58bfe4d803b92f85cd2946, type: 3}
 --- !u!114 &-1111979131129888693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55,6 +62,8 @@ MonoBehaviour:
   materialType: 0
   attachedObjects: []
   allowDamage: 1
+  deactivateDelay: 0
+  checkedInLevelClear: 1
 --- !u!1001 &137894847597702692
 PrefabInstance:
   m_ObjectHideFlags: 0
