@@ -9,7 +9,7 @@ public class CameraHandler : MonoBehaviour
     private static readonly float zoomSpeedMouse = 10f;
 
     private float[] boundsXClosest = new float[] { -35f, 35f };
-    private float[] boundsYClosest = new float[] { -10f, 15f };
+    private float[] boundsYClosest = new float[] { -15f, 15f };
     private float[] camSizeBounds = new float[] { 25f, 45f };
     public float defaultCameraSize = 45f;
     public float minCameraSize = 25f;
@@ -26,7 +26,8 @@ public class CameraHandler : MonoBehaviour
 
     private bool allowCameraMovement = true;
 
-    private Vector3 cameraDefaultPos;
+    [HideInInspector]
+    public Vector3 cameraDefaultPos;
 
     //double click auto zoom
     private int clicked = 0;

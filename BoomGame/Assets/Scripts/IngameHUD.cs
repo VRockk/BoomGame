@@ -122,6 +122,8 @@ public class IngameHUD : MonoBehaviour
         nextLevelButton.SetActive(true);
 
 
+
+
         if (levelClear == LevelClear.Failed)
         {
             //nextLevelButton.SetActive(true);
