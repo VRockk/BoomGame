@@ -70,7 +70,7 @@ MonoBehaviour:
   - {fileID: 6397904725382405405, guid: c08a3e779a65a224ea210ee3d04609d3, type: 3}
   - {fileID: 6397904725382405405, guid: 08d519360ffef784dbc2c99a30897726, type: 3}
   hitpoints: 2
-  damagedForceLimit: 12000
+  damagedForceLimit: 30000
   shatterParticle: {fileID: 4077663246738028735, guid: 57e2faf8fcbcaa742998edee10c41a54,
     type: 3}
   audioObject: {fileID: 8861113935494233493, guid: f47a1ab8e18b41443ada68a44c6005f6,
@@ -130,12 +130,6 @@ PrefabInstance:
       propertyPath: m_AngularDrag
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: a6c4e248f3f67274ebfeae5901f679a8,
-        type: 3}
     - target: {fileID: 1863442581099001715, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -161,6 +155,12 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 14.25
       objectReference: {fileID: 0}
+    - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a6c4e248f3f67274ebfeae5901f679a8,
+        type: 3}
     - target: {fileID: 1863442581099001713, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: pieceSpawnLocations.Array.size
