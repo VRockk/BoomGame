@@ -136,7 +136,7 @@ public class GameMaster : MonoBehaviour
             if (fadingOut)
             {
                 float percentage = timeSinceStarted / musicFadeOutTime;
-                float volume = UtilityLibrary.Lerp(musicDefaultVolume, 0, percentage, LerpMode.EaseIn);
+                float volume = UtilityLibrary.Lerp(musicDefaultVolume, 0f, percentage, LerpMode.EaseIn);
                 audioSource.volume = volume;
                 //fade out previous music
                 if (percentage >= 1f)
@@ -153,7 +153,7 @@ public class GameMaster : MonoBehaviour
             {
                 float percentage = timeSinceStarted / musicFadeInTime;
                 //fade in new music
-                float volume = UtilityLibrary.Lerp(0, musicDefaultVolume, percentage, LerpMode.EaseIn);
+                float volume = UtilityLibrary.Lerp(0f, musicDefaultVolume, percentage, LerpMode.EaseIn);
                 audioSource.volume = volume;
                 if (percentage >= 1f)
                 {

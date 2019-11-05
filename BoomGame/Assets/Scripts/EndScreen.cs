@@ -38,7 +38,7 @@ public class EndScreen : MonoBehaviour
     // Start is called before the first frame update
     public void Enable(int score)
     {
-        print(score);
+        //print(score);
         animator.SetInteger("Score", score);
         animator.enabled = true;
     }

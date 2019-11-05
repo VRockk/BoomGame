@@ -105,6 +105,7 @@ public class CameraHandler : MonoBehaviour
 
     void HandleMouse()
     {
+        //print(Input.mousePosition);
         // On mouse down, capture it's position.
         // Otherwise, if the mouse is still down, pan the camera.
         //TODO Check that no bomb on cursor
