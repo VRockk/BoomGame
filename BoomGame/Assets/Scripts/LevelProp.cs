@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomBackgroundPiece : MonoBehaviour
+public class LevelProp : MonoBehaviour
 {
     [SerializeField]
-    private int hitpoints = 2;
+    private int hitpoints = 1;
     public int Hitpoints
     {
         get => hitpoints;
@@ -19,12 +19,12 @@ public class RoomBackgroundPiece : MonoBehaviour
     }
 
     [Tooltip("The force when the object is damaged if hit. Lower == Easier to destroy/shatter")]
-    public float damagedForceLimit = 30000.0f;
+    public float damagedForceLimit = 10000.0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(DestroyPart(2f));
+        //StartCoroutine(DestroyPart(2f));
     }
 
     // Update is called once per frame
@@ -33,11 +33,6 @@ public class RoomBackgroundPiece : MonoBehaviour
 
     }
 
-    private IEnumerator DestroyPart(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        Destroy(gameObject);
-    }
 
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -49,6 +44,10 @@ public class RoomBackgroundPiece : MonoBehaviour
 
         if (contact.rigidbody == null)
             return;
+
+        //Destroy if hits ground
+        if(contact.rigidbody.gameObject.tag == "Ground")
+            Destroy(gameObject);
 
         // Force equals mass times acceleration
         var hitForce = contact.rigidbody.mass * contact.relativeVelocity.magnitude * contact.relativeVelocity.magnitude;
