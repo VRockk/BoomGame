@@ -171,23 +171,29 @@ public class UtilityLibrary : MonoBehaviour
         if (hit.gameObject.tag.Contains("BuildingObject"))
         {
             var buildingObject = hit.gameObject.GetComponent<BuildingObject>();
-            if (buildingObject.materialType == MaterialType.Brick)
+            if (buildingObject != null)
             {
-                var brick = hit.gameObject.GetComponent<Brick>();
-                if (brick != null && brick.allowDamage)
-                    brick.Shatter(transform.position, power, upwardsForce);
-            }
-            else if (buildingObject.materialType == MaterialType.Wood)
-            {
-                Destroy(hit.transform.gameObject);
-            }
-            else if (buildingObject.materialType == MaterialType.Metal)
-            {
-                var metal = hit.gameObject.GetComponent<Metal>();
-                if (metal != null)
+                if (buildingObject.materialType == MaterialType.Brick)
                 {
-                    metal.Bend(transform.position);
+                    var brick = hit.gameObject.GetComponent<Brick>();
+                    if (brick != null && brick.allowDamage)
+                        brick.Shatter(transform.position, power, upwardsForce);
                 }
+                else if (buildingObject.materialType == MaterialType.Wood)
+                {
+                    Destroy(hit.transform.gameObject);
+                }
+                else if (buildingObject.materialType == MaterialType.Metal)
+                {
+                    var metal = hit.gameObject.GetComponent<Metal>();
+                    if (metal != null)
+                    {
+                        metal.Bend(transform.position);
+                    }
+                }
+            }
+            if (hit.gameObject != null)
+            {
                 Rigidbody2D rb = hit.GetComponent<Rigidbody2D>();
 
                 if (rb != null)
@@ -197,7 +203,6 @@ public class UtilityLibrary : MonoBehaviour
                     rb.AddForce(force, ForceMode2D.Impulse);
                 }
             }
-
         }
         else if (hit.gameObject.tag.Contains("NPCBuilding"))
         {
