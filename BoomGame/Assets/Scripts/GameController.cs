@@ -404,15 +404,15 @@ public class GameController : MonoBehaviour
             //    buildingsDamaged = true;
             //}
         }
-        var buildingObjects = FindObjectsOfType<BuildingObject>();
-        if (buildingObjects.Length == 0)
+        var buildingObjects = FindObjectsOfType<BuildingObject>().Where(x => x.checkedInLevelClear && x.gameObject.transform.position.magnitude < 50);
+        if (buildingObjects.Count() == 0)
         {
             levelClear = LevelClear.ThreePentagram;
         }
         else
         {
             //Find the brick that has the highest position 
-            var highestBuildingObject = buildingObjects.Where(x => x.checkedInLevelClear && x.gameObject.transform.position.magnitude < 50).OrderByDescending(x => x.gameObject.transform.position.y + x.GetComponent<Collider2D>().bounds.extents.y).First();
+            var highestBuildingObject = buildingObjects.OrderByDescending(x => x.gameObject.transform.position.y + x.GetComponent<Collider2D>().bounds.extents.y).First();
             float highestBrickTopPos = highestBuildingObject.transform.position.y + highestBuildingObject.GetComponent<Collider2D>().bounds.extents.y;
 
             if (highestBrickTopPos <= winlines.threePentaLine)
