@@ -404,7 +404,7 @@ public class GameController : MonoBehaviour
             //    buildingsDamaged = true;
             //}
         }
-        var buildingObjects = FindObjectsOfType<BuildingObject>().Where(x => x.checkedInLevelClear && x.gameObject.transform.position.magnitude < 50);
+        var buildingObjects = FindObjectsOfType<BuildingObject>().Where(x => x.checkedInLevelClear && x.gameObject.transform.position.magnitude < 100);
         if (buildingObjects.Count() == 0)
         {
             levelClear = LevelClear.ThreePentagram;
