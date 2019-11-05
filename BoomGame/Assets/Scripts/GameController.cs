@@ -105,7 +105,7 @@ public class GameController : MonoBehaviour
         else
             gameMaster.SetMusic(null);
 
-        Invoke("ProcessBuildingBlocks", 0.5f);
+        InvokeRepeating("CheckScorelines", 1f, 1f);
     }
 
     private void CreateBombIcons()
@@ -344,44 +344,56 @@ public class GameController : MonoBehaviour
             hud.LevelFinished(LevelClear.Failed, 0, 0);
             return;
         }
-
-        if (levelClear == LevelClear.NotCleared)
+        else if (levelClear == LevelClear.NotCleared)
         {
-            if (roundCounter == maxRounds)
+            if (roundCounter == maxRounds || bombCount == 0)
             {
+                //Fail if no bombs left or rounds left
                 inputAllowed = false;
                 hud.LevelFinished(LevelClear.Failed, 0, 0);
+                return;
             }
             else
             {
                 roundCounter++;
-                if (roundCounter == maxRounds && bombCount == 0)
-                {
-                    //Fail if no bombs left
-                    inputAllowed = false;
-                    hud.LevelFinished(LevelClear.Failed, 0, 0);
-                    return;
-                }
                 hud.NextRound(roundCounter, roundDelay);
-
                 StartCoroutine(AllowInput(true, roundDelay));
-                //inputAllowed = true;
+            }
+        }
+        else if (levelClear == LevelClear.OnePentagram || levelClear == LevelClear.TwoPentagram)
+        {
+            if (roundCounter == maxRounds || bombCount == 0)
+            {
+                //if out of rounds or bombs we finish level even with one or two pentas
+                FinishLevel(levelClear);
+            }
+            else
+            {
+                roundCounter++;
+                hud.NextRound(roundCounter, roundDelay);
+                StartCoroutine(AllowInput(true, roundDelay));
             }
         }
         else
         {
-            var bonusSalvage = bombCount * bonusSalvageForSavedBomb;
-
-            //TODO check level progress from playerprefs and see if we already have gained salvage from this level.
-
-
-
-
-            hud.LevelFinished(levelClear, salvageValue, bonusSalvage);
-            print(salvageValue + bonusSalvage);
-            gameMaster.AddSalvage(salvageValue + bonusSalvage);
-            gameMaster.PassLevel(levelNumber + 1);
+            //three pentas always finish right away
+            FinishLevel(levelClear);
         }
+    }
+
+    private void FinishLevel(LevelClear levelClear)
+    {
+        var bonusSalvage = bombCount * bonusSalvageForSavedBomb;
+
+        //TODO check level progress from playerprefs and see if we already have gained salvage from this level.
+
+
+
+
+        hud.LevelFinished(levelClear, salvageValue, bonusSalvage);
+        print(salvageValue + bonusSalvage);
+        gameMaster.AddSalvage(salvageValue + bonusSalvage);
+        gameMaster.PassLevel(levelNumber + 1);
     }
 
     private LevelClear CheckLevelClear()
@@ -415,21 +427,21 @@ public class GameController : MonoBehaviour
             var highestBuildingObject = buildingObjects.OrderByDescending(x => x.gameObject.transform.position.y + x.GetComponent<Collider2D>().bounds.extents.y).First();
             float highestBrickTopPos = highestBuildingObject.transform.position.y + highestBuildingObject.GetComponent<Collider2D>().bounds.extents.y;
 
-            if (highestBrickTopPos <= winlines.threePentaLine)
+            if (highestBrickTopPos <= winlines.threePentaHeight)
             {
                 levelClear = LevelClear.ThreePentagram;
             }
-            else if (highestBrickTopPos <= winlines.twoPentaLine && (roundCounter == maxRounds || bombCount == 0))
+            else if (highestBrickTopPos <= winlines.twoPentaHeight)
             {
                 levelClear = LevelClear.TwoPentagram;
             }
-            else if (highestBrickTopPos <= winlines.onePentaLine && (roundCounter == maxRounds || bombCount == 0))
+            else if (highestBrickTopPos <= winlines.onePentaHeight)
             {
                 levelClear = LevelClear.OnePentagram;
             }
             else
             {
-                return LevelClear.NotCleared;
+                levelClear = LevelClear.NotCleared;
             }
         }
         //Damaged buildings lower the pentagrams gained by one
@@ -461,13 +473,9 @@ public class GameController : MonoBehaviour
         inputAllowed = allow;
     }
 
-    private void ProcessBuildingBlocks()
+    private void CheckScorelines()
     {
-        var buildingObjects = FindObjectsOfType<BuildingObject>();
-
-
-        foreach (var buildingObject in buildingObjects)
-        {
-        }
+        winlines.UpdateLines(CheckLevelClear());
     }
+
 }
