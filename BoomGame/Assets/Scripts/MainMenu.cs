@@ -17,6 +17,7 @@ public class MainMenu : MonoBehaviour
     public GameObject shopPanel;
     public GameObject bombPanel;
     public GameObject bombSelectionPanel;
+    public GameObject optionPanel;
 
     public GameObject gameMasterPrefab;
 
@@ -193,6 +194,26 @@ public class MainMenu : MonoBehaviour
         panel.SetActive(true);
     }
 
+
+    public void OpenOptionPanel()
+    {
+        mainMenuPanel.SetActive(false);
+        privacyPolicyPanel.SetActive(false);
+        optionPanel.SetActive(true);
+        campaignMapPanel.SetActive(false);
+        bombPanel.SetActive(false);
+        bombSelectionPanel.SetActive(true);
+    }
+
+    public void CloseOptionPanel()
+    {
+        mainMenuPanel.SetActive(true);
+        privacyPolicyPanel.SetActive(false);
+        optionPanel.SetActive(false);
+        campaignMapPanel.SetActive(false);
+        bombPanel.SetActive(false);
+        bombSelectionPanel.SetActive(true);
+    }
     public void PlaySound(AudioClip sound)
     {
 
