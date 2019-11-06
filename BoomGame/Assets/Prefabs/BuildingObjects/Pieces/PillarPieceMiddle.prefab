@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 414980848280537675}
   - component: {fileID: 414980848280537672}
   - component: {fileID: 414980848280537673}
+  - component: {fileID: 6006223073374387135}
   m_Layer: 0
   m_Name: PillarPieceMiddle
   m_TagString: BuildingObject
@@ -148,3 +149,50 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &6006223073374387135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414980848280537678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50afc76e2b398c546b7954a7ed37f1ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jointBreakForce: 50000
+  jointBreakTorque: 50000
+  createJoints: 1
+  createManualJoints: 0
+  createJointToGround: 0
+  ignoredJoints: []
+  manualJointLocations: []
+  materialType: 0
+  attachedObjects: []
+  allowDamage: 1
+  deactivateDelay: 0
+  checkedInLevelClear: 1
+  pieceSpawnLocations:
+  - {x: 0.66, y: 0.66}
+  - {x: 0, y: 0.66}
+  - {x: -0.66, y: 0.66}
+  - {x: 0.66, y: -0.66}
+  - {x: 0, y: -0.66}
+  - {x: -0.66, y: -0.66}
+  pieceObjects:
+  - {fileID: 2542678690165135598, guid: ab14e2efe7aa8954e9ea66a8e150a2b5, type: 3}
+  - {fileID: 2542678690165135598, guid: ab14e2efe7aa8954e9ea66a8e150a2b5, type: 3}
+  - {fileID: 2542678690165135598, guid: ab14e2efe7aa8954e9ea66a8e150a2b5, type: 3}
+  - {fileID: 2542678690165135598, guid: ab14e2efe7aa8954e9ea66a8e150a2b5, type: 3}
+  - {fileID: 2542678690165135598, guid: ab14e2efe7aa8954e9ea66a8e150a2b5, type: 3}
+  - {fileID: 2542678690165135598, guid: ab14e2efe7aa8954e9ea66a8e150a2b5, type: 3}
+  hitpoints: 2
+  damagedForceLimit: 10000
+  shatterParticle: {fileID: 4077663246738028735, guid: 57e2faf8fcbcaa742998edee10c41a54,
+    type: 3}
+  audioObject: {fileID: 8861113935494233493, guid: f47a1ab8e18b41443ada68a44c6005f6,
+    type: 3}
+  shatterSFX:
+  - {fileID: 8300000, guid: 79aaec8060cd9324c9b01b55a1cb6f1a, type: 3}
+  - {fileID: 8300000, guid: 13dffe3d1f9a9a04d9417d9c441a294a, type: 3}
