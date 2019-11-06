@@ -17,7 +17,6 @@ public class GameController : MonoBehaviour
 
     public GameObject[] bombs;
     public string nextLevelName;
-    public int levelNumber;
 
     public int bombCount = 3;
 
@@ -53,6 +52,8 @@ public class GameController : MonoBehaviour
 
     [HideInInspector]
     public List<AudioClip> bombScreamsToPlay;
+
+    private int levelScore = 0;
 
     private void Awake()
     {
@@ -383,17 +384,56 @@ public class GameController : MonoBehaviour
 
     private void FinishLevel(LevelClear levelClear)
     {
-        var bonusSalvage = bombCount * bonusSalvageForSavedBomb;
+        var levelName = SceneManager.GetActiveScene().name;
+        var pentagrams = PlayerPrefs.GetInt(levelName + "Pentagrams", 0);
+        var savedBombs = PlayerPrefs.GetInt(levelName + "SavedBombs", 0);
+        var score = PlayerPrefs.GetInt(levelName + "Score", 0);
 
-        //TODO check level progress from playerprefs and see if we already have gained salvage from this level.
+
+        //PlayerPentagrams and PlayerScore are the values of all gained the pentagrams and score from all maps the player has cleared
+        var playerPentagrams = PlayerPrefs.GetInt("PlayerPentagrams", 0);
+        var playerScore = PlayerPrefs.GetInt("PlayerScore", 0);
 
 
+        //Check if new clear is better than previous runs and save to player prefs
+        //remove the previous clear value from playerpenta
+        playerPentagrams -= pentagrams;
+        if (levelClear == LevelClear.OnePentagram && pentagrams < 1)
+        {
+            pentagrams = 1;
+        }
+        else if (levelClear == LevelClear.TwoPentagram && pentagrams < 2)
+        {
+            pentagrams = 2;
+        }
+        else if (levelClear == LevelClear.ThreePentagram && pentagrams < 3)
+        {
+            pentagrams = 3;
+        }
+        //add the new value to playerpenta and save to playerprefs
+        playerPentagrams += pentagrams;
+        PlayerPrefs.SetInt("PlayerPentagrams", playerPentagrams);
+        PlayerPrefs.SetInt(levelName + "Pentagrams", pentagrams);
 
+
+        //check if we saved more bombs than on previous runs
+        if (savedBombs < bombCount)
+            PlayerPrefs.SetInt(levelName + "SavedBombs", bombCount);
+
+        //If the new score is higher than previously, save the new score to player prefs
+        if (score < levelScore)
+        {
+            // Reduce the old level score from the player score and add the new score back
+            playerScore = playerScore - score + levelScore;
+            PlayerPrefs.SetInt(levelName + "Score", levelScore);
+            PlayerPrefs.SetInt("PlayerScore", playerScore);
+        }
+
+        var bonusSalvage = (bombCount - savedBombs) * bonusSalvageForSavedBomb;
 
         hud.LevelFinished(levelClear, salvageValue, bonusSalvage);
-        print(salvageValue + bonusSalvage);
+        //print(salvageValue + bonusSalvage);
         gameMaster.AddSalvage(salvageValue + bonusSalvage);
-        gameMaster.PassLevel(levelNumber + 1);
     }
 
     private LevelClear CheckLevelClear()

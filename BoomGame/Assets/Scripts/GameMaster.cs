@@ -202,14 +202,6 @@ public class GameMaster : MonoBehaviour
         }
     }
 
-    public void PassLevel(int levelNumber)
-    {
-        if (levelNumber > PlayerPrefs.GetInt("LevelReached", 0))
-        {
-            PlayerPrefs.SetInt("LevelReached", levelNumber);
-        }
-    }
-
     public void SetBombUpgradeLevel(BombType bombtype, int upgradePosition, int level)
     {
         string levelKeyName = "";

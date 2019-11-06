@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScrollParallaxing : MonoBehaviour
 {
-    public Camera camera;
+    public Camera mainCamera;
     private float referenceSize = 45;
 
     public float xParallax = 0.2f;
@@ -15,16 +15,16 @@ public class ScrollParallaxing : MonoBehaviour
     private Vector3 defaultPosition;
     private void Start()
     {
-        if (camera == null)
-            camera = Camera.main;
-        referenceSize = camera.orthographicSize;
+        if (mainCamera == null)
+            mainCamera = Camera.main;
+        referenceSize = mainCamera.orthographicSize;
         defaultScale = transform.localScale;
         defaultPosition = transform.localPosition;
 
     }
     void LateUpdate()
     {
-        float sizeRatio = (camera.orthographicSize / referenceSize);
+        float sizeRatio = (mainCamera.orthographicSize / referenceSize);
         float newSize = (sizeRatio - 1) * sizeParallax + 1;
 
         Vector3 tempScale = transform.localScale;
@@ -34,8 +34,8 @@ public class ScrollParallaxing : MonoBehaviour
 
         Vector3 tempPos = transform.localPosition;
 
-        tempPos.x = (camera.transform.position.x * (1 - newSize + newSize * xParallax)) + (defaultPosition.x * xParallax);
-        tempPos.y = (camera.transform.position.y * (1 - newSize + newSize * yParallax)) + (defaultPosition.y * xParallax);
+        tempPos.x = (mainCamera.transform.position.x * (1 - newSize + newSize * xParallax)) + (defaultPosition.x * xParallax);
+        tempPos.y = (mainCamera.transform.position.y * (1 - newSize + newSize * yParallax)) + (defaultPosition.y * xParallax);
 
         transform.localPosition = tempPos;
     }
