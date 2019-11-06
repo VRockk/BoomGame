@@ -32,7 +32,7 @@ public class Brick : BuildingObject
     {
         base.OnDrawGizmos();
         //Draw indicators on piece spawn locations
-        if (pieceSpawnLocations.Length > 0)
+        if (pieceSpawnLocations != null && pieceSpawnLocations.Length > 0)
         {
             foreach (var pieceLocation in pieceSpawnLocations)
             {
