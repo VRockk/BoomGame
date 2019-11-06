@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3197494756222834711}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.586, y: -0.025, z: 0}
+  m_LocalPosition: {x: 15.586, y: -0.025, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7415987301487930371}
@@ -208,7 +208,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8153772712911210264}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -15.574, y: -0.025, z: 0}
+  m_LocalPosition: {x: -15.574, y: -0.025, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6666538417385093138}
@@ -272,14 +272,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8153772712911210270}
     m_Modifications:
-    - target: {fileID: 131920, guid: 253f47516e40d534993b0af37fd3454e, type: 3}
-      propertyPath: m_Name
-      value: P_ScorelineFire
-      objectReference: {fileID: 0}
-    - target: {fileID: 131920, guid: 253f47516e40d534993b0af37fd3454e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 421400, guid: 253f47516e40d534993b0af37fd3454e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -322,6 +314,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 421400, guid: 253f47516e40d534993b0af37fd3454e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 131920, guid: 253f47516e40d534993b0af37fd3454e, type: 3}
+      propertyPath: m_Name
+      value: P_ScorelineFire
+      objectReference: {fileID: 0}
+    - target: {fileID: 131920, guid: 253f47516e40d534993b0af37fd3454e, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 455188, guid: 253f47516e40d534993b0af37fd3454e, type: 3}
@@ -373,14 +373,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2936746551389086996}
     m_Modifications:
-    - target: {fileID: 131920, guid: 253f47516e40d534993b0af37fd3454e, type: 3}
-      propertyPath: m_Name
-      value: P_ScorelineFire
-      objectReference: {fileID: 0}
-    - target: {fileID: 131920, guid: 253f47516e40d534993b0af37fd3454e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 421400, guid: 253f47516e40d534993b0af37fd3454e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -423,6 +415,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 421400, guid: 253f47516e40d534993b0af37fd3454e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 131920, guid: 253f47516e40d534993b0af37fd3454e, type: 3}
+      propertyPath: m_Name
+      value: P_ScorelineFire
+      objectReference: {fileID: 0}
+    - target: {fileID: 131920, guid: 253f47516e40d534993b0af37fd3454e, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 455188, guid: 253f47516e40d534993b0af37fd3454e, type: 3}
