@@ -26,6 +26,19 @@ public class Scoreline : MonoBehaviour
         {
             spriteLeft = leftHot.GetComponent<SpriteRenderer>();
             spriteRight = rightHot.GetComponent<SpriteRenderer>();
+
+        }
+        if (leftFlame != null && rightFlame != null)
+        {
+            leftFlame.SetActive(true);
+            rightFlame.SetActive(true);
+            var particles = FindObjectsOfType<ParticleSystem>();
+            foreach (var particle in particles)
+            {
+                particle.Stop();
+            }
+            leftFlame.SetActive(false);
+            rightFlame.SetActive(false);
         }
     }
 
@@ -36,7 +49,7 @@ public class Scoreline : MonoBehaviour
         {
             float timeSinceStarted = Time.time - lerpingStarted;
             float percentage = timeSinceStarted / lerpTime;
-            float alpha = UtilityLibrary.Lerp(0f, 1f, percentage, LerpMode.EaseIn);
+            float alpha = UtilityLibrary.Lerp(isHot ? 0f : 1f, isHot ? 1f : 0f, percentage, LerpMode.EaseIn);
 
             if (spriteLeft != null && spriteRight != null)
             {
@@ -54,6 +67,7 @@ public class Scoreline : MonoBehaviour
 
     public void SetLineHot(bool isHot)
     {
+        print(this.gameObject.name + " " + isHot);
         if (this.isHot != isHot)
         {
             if (spriteLeft != null && spriteRight != null)
