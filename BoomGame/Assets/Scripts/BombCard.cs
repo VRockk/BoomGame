@@ -5,7 +5,9 @@ using UnityEngine;
 public class BombCard : MonoBehaviour
 {
 
+    [HideInInspector]
     public GameObject bombPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
