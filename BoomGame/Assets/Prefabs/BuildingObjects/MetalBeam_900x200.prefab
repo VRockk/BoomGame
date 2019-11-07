@@ -15,13 +15,17 @@ MonoBehaviour:
   jointBreakForce: 500000
   jointBreakTorque: 500000
   createJoints: 1
-  createManualJoints: 0
+  createManualJoints: 1
   createJointToGround: 0
   ignoredJoints: []
-  manualJointLocations: []
+  manualJointLocations:
+  - {x: 0, y: 5.04}
+  - {x: 0, y: -4.93}
   materialType: 0
   attachedObjects: []
   allowDamage: 1
+  deactivateDelay: 0
+  checkedInLevelClear: 1
   bendLeftSprite: {fileID: -2151823001335124872, guid: b4be78b86414cdb41b68e802b9692c60,
     type: 3}
   bendRightSprite: {fileID: 618557542491236705, guid: b4be78b86414cdb41b68e802b9692c60,

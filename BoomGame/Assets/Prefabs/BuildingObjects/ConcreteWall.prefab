@@ -145,10 +145,16 @@ MonoBehaviour:
   jointBreakForce: 50000
   jointBreakTorque: 50000
   createJoints: 1
-  createManualJoints: 0
+  createManualJoints: 1
   createJointToGround: 0
   ignoredJoints: []
-  manualJointLocations: []
+  manualJointLocations:
+  - {x: 0, y: 5.42}
+  - {x: 0, y: -5.38}
+  - {x: -1.64, y: -4.17}
+  - {x: 1.74, y: -4.12}
+  - {x: 1.92, y: 4.33}
+  - {x: -1.93, y: 4.36}
   materialType: 0
   attachedObjects: []
   allowDamage: 1
