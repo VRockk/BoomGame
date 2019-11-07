@@ -33,9 +33,10 @@ public class ScrollParallaxing : MonoBehaviour
         transform.localScale = tempScale;
 
         Vector3 tempPos = transform.localPosition;
-
-        tempPos.x = (mainCamera.transform.position.x * (1 - newSize + newSize * xParallax)) + (defaultPosition.x * xParallax);
-        tempPos.y = (mainCamera.transform.position.y * (1 - newSize + newSize * yParallax)) + (defaultPosition.y * xParallax);
+        var xRatio = (1 - newSize + newSize * xParallax);
+        var yRatio = (1 - newSize + newSize * yParallax);
+        tempPos.x = (mainCamera.transform.position.x * xRatio);
+        tempPos.y = (mainCamera.transform.position.y * yRatio);
 
         transform.localPosition = tempPos;
     }
