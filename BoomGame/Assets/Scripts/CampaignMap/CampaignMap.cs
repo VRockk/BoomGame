@@ -10,8 +10,27 @@ public class CampaignMap : MonoBehaviour
     public GameObject chapterPanel;
     private bool inputAllowed = true;
 
+    private static readonly float panSpeed = 40f;
+
+    private static readonly float[] BoundsX = new float[] { -4f, 85f };
+    private static readonly float[] BoundsY = new float[] { -25f, 4f };
+    public float defaultCameraSize = 45f;
+
+    private Camera cam;
+    private Vector3 lastPanPosition;
+    private int panFingerId; // Touch mode only
+    [HideInInspector]
+    public Vector3 cameraDefaultPos;
+
     void Start()
     {
+        cam = Camera.main;
+
+        //cam.transform.position = cam.transform.position + cam.transform.parent.transform.position;
+        //remove camera from any prefab
+        gameObject.transform.parent = null;
+        cameraDefaultPos = cam.transform.position;
+        cam.orthographicSize = defaultCameraSize;
     }
 
     private void Update()
@@ -45,10 +64,71 @@ public class CampaignMap : MonoBehaviour
                     if (!wasHit)
                     {
                         HideChapterInfo();
-
                     }
                 }
+                if (Input.touchSupported && Application.platform != RuntimePlatform.WebGLPlayer)
+                {
+                    HandleTouch();
+                }
+                else
+                {
+                    HandleMouse();
+                }
             }
+        }
+    }
+
+    void HandleMouse()
+    {
+        //print(Input.mousePosition);
+        // On mouse down, capture it's position.
+        // Otherwise, if the mouse is still down, pan the camera.
+        //TODO Check that no bomb on cursor
+        if (Input.GetMouseButtonDown(0))
+        {
+            lastPanPosition = Input.mousePosition;
+
+            //DoubleClick();
+
+        }
+        else if (Input.GetMouseButton(0))
+        {
+            PanCamera(Input.mousePosition);
+        }
+
+    }
+
+    void HandleTouch()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            //DoubleClick();
+        }
+
+        switch (Input.touchCount)
+        {
+            case 1: // Panning
+
+                // If the touch began, capture its position and its finger ID.
+                // Otherwise, if the finger ID of the touch doesn't match, skip it.
+                Touch touch = Input.GetTouch(0);
+                if (touch.phase == TouchPhase.Began)
+                {
+                    lastPanPosition = touch.position;
+                    panFingerId = touch.fingerId;
+                }
+                else if (touch.fingerId == panFingerId && touch.phase == TouchPhase.Moved)
+                {
+                    PanCamera(touch.position);
+                }
+                break;
+
+            case 2: // Zooming
+
+                break;
+
+            default:
+                break;
         }
     }
 
@@ -74,6 +154,7 @@ public class CampaignMap : MonoBehaviour
 
         }
     }
+
     private void HideChapterInfo()
     {
         //set all chapters not selected
@@ -93,5 +174,23 @@ public class CampaignMap : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenuScene");
     }
-}
 
+    void PanCamera(Vector3 newPanPosition)
+    {
+        // Determine how much to move the camera
+        Vector3 offset = cam.ScreenToViewportPoint(lastPanPosition - newPanPosition);
+        Vector3 move = new Vector3(offset.x * panSpeed, offset.y * panSpeed, 0);
+
+        // Perform the movement
+        cam.transform.Translate(move, Space.World);
+
+        // Ensure the camera remains within bounds.
+        Vector3 pos = cam.transform.position;
+        pos.x = Mathf.Clamp(cam.transform.position.x, BoundsX[0], BoundsX[1]);
+        pos.y = Mathf.Clamp(cam.transform.position.y, BoundsY[0], BoundsY[1]);
+        cam.transform.position = pos;
+
+        // Cache the position
+        lastPanPosition = newPanPosition;
+    }
+}
