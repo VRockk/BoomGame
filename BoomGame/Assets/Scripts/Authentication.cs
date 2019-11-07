@@ -4,12 +4,13 @@ using UnityEngine;
 using UnityEngine.SocialPlatforms;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Authentication : MonoBehaviour
 {
     [SerializeField] private Button loginButton;
     [SerializeField] private Button playButton;
-    [SerializeField] private Text statusText;
+    [SerializeField] private TextMeshProUGUI statusText;
     [SerializeField] private RawImage userImage;
     private bool mWaitingForAuth = false;
 
