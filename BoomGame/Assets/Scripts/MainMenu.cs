@@ -76,20 +76,25 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        //Starts the next level available in progression
+        SceneManager.LoadScene("CampaignMap");
 
-        int levelReached = PlayerPrefs.GetInt("LevelReached", 1);
-        if (levelReached == 1)
-            SceneManager.LoadScene("Tutorial");
-        else
-        {
-            //Paskaa
-            if (levelReached < 10)
-                SceneManager.LoadScene("Level_0" + levelReached.ToString());
-            else
-                SceneManager.LoadScene("Level_" + levelReached.ToString());
 
-        }
+
+
+        ////Starts the next level available in progression
+
+        //int levelReached = PlayerPrefs.GetInt("LevelReached", 1);
+        //if (levelReached == 1)
+        //    SceneManager.LoadScene("Tutorial");
+        //else
+        //{
+        //    //Paskaa
+        //    if (levelReached < 10)
+        //        SceneManager.LoadScene("Level_0" + levelReached.ToString());
+        //    else
+        //        SceneManager.LoadScene("Level_" + levelReached.ToString());
+
+        //}
     }
 
 
