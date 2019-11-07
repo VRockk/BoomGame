@@ -67,7 +67,6 @@ public class Scoreline : MonoBehaviour
 
     public void SetLineHot(bool isHot)
     {
-        print(this.gameObject.name + " " + isHot);
         if (this.isHot != isHot)
         {
             if (spriteLeft != null && spriteRight != null)

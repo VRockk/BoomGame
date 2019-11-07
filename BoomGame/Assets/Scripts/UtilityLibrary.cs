@@ -71,10 +71,10 @@ public class UtilityLibrary : MonoBehaviour
         return force;
     }
 
-    public static bool IsMouseOverUI()
+    public static bool IsPositionOverUI(Vector2 position)
     {
         var eventData = new PointerEventData(EventSystem.current);
-        eventData.position = Input.mousePosition;
+        eventData.position = position;
         var results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventData, results);
         return results.Count > 0;

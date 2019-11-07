@@ -193,9 +193,16 @@ public class IngameHUD : MonoBehaviour
 
     }
 
-    public void UpdateBombCount(int bombCount)
+    public IEnumerator UpdateBombCount(int bombCount)
     {
+        var animator = bombCountText.GetComponent<Animator>();
+        if(animator != null)
+        {
+            animator.SetBool("NewValue", true);
+        }
         bombCountText.text = bombCount.ToString();
+        yield return new WaitForSeconds(0.1f);
+        animator.SetBool("NewValue", false);
     }
 
     private void ShowRoundText(float hideDelay, int roundNumber)
@@ -236,15 +243,15 @@ public class IngameHUD : MonoBehaviour
         foreach (var bombCard in bombCards)
         {
             var bombCardTransform = bombCard.GetComponent<RectTransform>();
-            leftOffset += bombCardTransform.sizeDelta.x + 5f;
+            leftOffset += bombCardTransform.sizeDelta.x;
         }
 
         //Create new bomb card and set sprite, size and positioning
         var card = Instantiate(bombCardPrefab);
         card.transform.SetParent(bombPanel.transform);
         var cardTransform = card.GetComponent<RectTransform>();
-
-        var cardImage = card.GetComponentInChildren<Image>();
+        var icon = card.transform.Find("BombCardIcon");
+        var cardImage = icon.GetComponent<Image>();
         cardImage.sprite = bomb.GetComponent<Bomb>().inventoryIcon;
 
         //Set sprite aspect ratio so different size icons fit correcly
