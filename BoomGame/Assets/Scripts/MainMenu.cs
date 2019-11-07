@@ -17,6 +17,7 @@ public class MainMenu : MonoBehaviour
     public GameObject shopPanel;
     public GameObject bombPanel;
     public GameObject bombSelectionPanel;
+    public GameObject gameServicesPanel;
 
     public GameObject gameMasterPrefab;
 
@@ -46,9 +47,11 @@ public class MainMenu : MonoBehaviour
                 campaignMapPanel.SetActive(false);
                 shopPanel.SetActive(false);
                 bombPanel.SetActive(false);
+                gameServicesPanel.SetActive(false);
             }
             else
             {
+                gameServicesPanel.SetActive(true);   
                 mainMenuPanel.SetActive(true);
                 privacyPolicyPanel.SetActive(false);
                 campaignMapPanel.SetActive(false);
@@ -98,6 +101,7 @@ public class MainMenu : MonoBehaviour
 
     public void AcceptPrivacyPolicy()
     {
+        gameServicesPanel.SetActive(true);
         mainMenuPanel.SetActive(true);
         privacyPolicyPanel.SetActive(false);
         campaignMapPanel.SetActive(false);
@@ -181,6 +185,16 @@ public class MainMenu : MonoBehaviour
         campaignMapPanel.SetActive(false);
         bombPanel.SetActive(false);
         bombSelectionPanel.SetActive(false);
+    }
+    public void CloseGameServices()
+    {
+        mainMenuPanel.SetActive(true);
+        privacyPolicyPanel.SetActive(false);
+        shopPanel.SetActive(false);
+        campaignMapPanel.SetActive(false);
+        bombPanel.SetActive(false);
+        bombSelectionPanel.SetActive(true);
+        gameServicesPanel.SetActive(false);
     }
     public void ShowBombUpgradePanel(GameObject panel)
     {
