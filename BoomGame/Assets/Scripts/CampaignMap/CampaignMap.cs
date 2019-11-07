@@ -22,6 +22,7 @@ public class CampaignMap : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown(0))
                 {
+                    bool wasHit = false;
                     //is chapter clicked
                     Vector3 mousePos = UtilityLibrary.GetCurrentMousePosition();
 
@@ -37,8 +38,14 @@ public class CampaignMap : MonoBehaviour
                             if (chapter != null)
                             {
                                 ShowChapterInfo(chapter);
+                                wasHit = true;
                             }
                         }
+                    }
+                    if (!wasHit)
+                    {
+                        HideChapterInfo();
+
                     }
                 }
             }
@@ -67,9 +74,24 @@ public class CampaignMap : MonoBehaviour
 
         }
     }
+    private void HideChapterInfo()
+    {
+        //set all chapters not selected
+        foreach (var chap in this.transform.GetComponentsInChildren<Chapter>())
+        {
+            chap.SetSelected(false);
+        }
+
+        //hide chapter info panel
+        if (chapterPanel != null)
+        {
+            chapterPanel.SetActive(false);
+        }
+    }
 
     public void BackToMenu()
     {
         SceneManager.LoadScene("MainMenuScene");
     }
 }
+
