@@ -122,23 +122,23 @@ public class GameController : MonoBehaviour
     {
         if (inputAllowed)
         {
+            Vector3 mousePos = UtilityLibrary.GetCurrentMousePosition();
+
+
             //Checking if mouse is over the UI.
             if (!UtilityLibrary.IsMouseOverUI())
             {
                 //Left click
                 if (Input.GetMouseButtonDown(0))
                 {
-                    //print(UtilityLibrary.IsMouseOverUI());
-
-                    Vector3 mousePos = UtilityLibrary.GetCurrentMousePosition();
-
                     // Check if clicking on a bomb and "attach" it to cursor
                     Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -10f));
                     RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
 
+
                     if (hit.collider != null)
                     {
-                        print(hit.collider.gameObject.name);
+                        //print(hit.collider.gameObject.name);
                         if (hit.collider.gameObject.tag == "Bomb")
                         {
                             bombUnderMouse = hit.collider.gameObject;
@@ -153,26 +153,12 @@ public class GameController : MonoBehaviour
             }
             if (Input.GetMouseButton(0))
             {
-                Vector3 mousePos = UtilityLibrary.GetCurrentMousePosition();
 
                 //Move bomb if its attached to cursor
                 if (bombUnderMouse != null)
                 {
-                    ////Snap bomb position to shattering objects
-                    //Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -10f));
-                    //RaycastHit2D[] hits = Physics2D.GetRayIntersectionAll(ray, Mathf.Infinity);
-                    //foreach (var hit in hits)
-                    //{
-                    //    print(hit.collider.gameObject.name);
-
-                    //    if (hit.collider.gameObject.tag == "ShatteringObject")
-                    //    {
-                    //        mousePos = new Vector3(hit.collider.gameObject.transform.position.x, hit.collider.gameObject.transform.position.y, 0f);
-                    //    }
-                    //}
-
-                    //Set new position for bomb. Add +1 to y axis so the bomb is over your finger
-                    bombUnderMouse.transform.position = new Vector3(mousePos.x, mousePos.y + 5f, -1f);
+                    //Set new position for bomb. Add + to y axis so the bomb is not under player finger
+                    bombUnderMouse.transform.position = new Vector3(mousePos.x, mousePos.y + 3f, -1f);
                 }
             }
             if (Input.GetMouseButtonUp(0))
@@ -186,6 +172,8 @@ public class GameController : MonoBehaviour
                     }
 
                     //TODO Check if bomb is under UI
+                    if (UtilityLibrary.IsMouseOverUI())
+                        print("mouse over UI");
 
                 }
 
@@ -194,10 +182,6 @@ public class GameController : MonoBehaviour
 
                 //Mouse up. remove bomb from cursor
                 bombUnderMouse = null;
-                //cameraHandler.defaultCameraSize;
-                //cameraHandler.ZoomToSize(45f);
-
-                //TODO Check if bomb is under UI 
 
             }
             else
@@ -205,8 +189,6 @@ public class GameController : MonoBehaviour
                 //mouse over UI
                 if (Input.GetMouseButtonDown(0) && bombCount > 0)
                 {
-                    Vector3 mousePos = UtilityLibrary.GetCurrentMousePosition();
-
                     PointerEventData pointerData = new PointerEventData(EventSystem.current);
                     pointerData.position = Input.mousePosition;
                     List<RaycastResult> results = new List<RaycastResult>();
@@ -220,7 +202,7 @@ public class GameController : MonoBehaviour
                         if (parentObject.tag == "BombCard")
                         {
                             var bombCardScript = parentObject.GetComponent<BombCard>();
-                            bombUnderMouse = Instantiate(bombCardScript.bombPrefab, new Vector3(mousePos.x, mousePos.y + 5f, -1f), Quaternion.identity);
+                            bombUnderMouse = Instantiate(bombCardScript.bombPrefab, new Vector3(mousePos.x, mousePos.y + 3f, -1f), Quaternion.identity);
                             //cameraHandler.ZoomToSize(35f, new Vector3(0, -2f, 0));
                             bombCount--;
                             hud.UpdateBombCount(bombCount);
