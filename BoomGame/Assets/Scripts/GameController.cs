@@ -97,7 +97,6 @@ public class GameController : MonoBehaviour
         roundCounter = 0;
         NextRound();
 
-        //hud.UpdateBombCount(bombCount);
 
         CreateBombIcons();
 
@@ -126,7 +125,7 @@ public class GameController : MonoBehaviour
 
 
             //Checking if mouse is over the UI.
-            if (!UtilityLibrary.IsMouseOverUI())
+            if (!UtilityLibrary.IsPositionOverUI(Input.mousePosition))
             {
                 //Left click
                 if (Input.GetMouseButtonDown(0))
@@ -171,9 +170,14 @@ public class GameController : MonoBehaviour
                         audioSource.PlayOneShot(plopSound);
                     }
 
-                    //TODO Check if bomb is under UI
-                    if (UtilityLibrary.IsMouseOverUI())
-                        print("mouse over UI");
+                    if (UtilityLibrary.IsPositionOverUI(Camera.main.WorldToScreenPoint(bombUnderMouse.transform.position)))
+                    {
+                        //if we are over UI destroy the bomb and add back to bomb count
+                        Destroy(bombUnderMouse);
+                        bombCount++;
+                        StartCoroutine(hud.UpdateBombCount(bombCount));
+
+                    }
 
                 }
 
@@ -197,20 +201,22 @@ public class GameController : MonoBehaviour
                     //Create a new bomb instance when clicking on Bomb card
                     foreach (RaycastResult result in results)
                     {
-                        var parentObject = result.gameObject.transform.parent.gameObject;
                         //print(result.gameObject.name);
-                        if (parentObject.tag == "BombCard")
+                        if (result.gameObject.tag == "BombCard")
                         {
-                            var bombCardScript = parentObject.GetComponent<BombCard>();
-                            bombUnderMouse = Instantiate(bombCardScript.bombPrefab, new Vector3(mousePos.x, mousePos.y + 3f, -1f), Quaternion.identity);
-                            //cameraHandler.ZoomToSize(35f, new Vector3(0, -2f, 0));
-                            bombCount--;
-                            hud.UpdateBombCount(bombCount);
-
-                            if (audioSource != null)
+                            var bombCardScript = result.gameObject.GetComponent<BombCard>();
+                            if (bombCardScript != null)
                             {
-                                audioSource.pitch = UnityEngine.Random.Range(1.1f, 1.2f);
-                                audioSource.PlayOneShot(plopSound);
+                                bombUnderMouse = Instantiate(bombCardScript.bombPrefab, new Vector3(mousePos.x, mousePos.y + 3f, -1f), Quaternion.identity);
+                                //cameraHandler.ZoomToSize(35f, new Vector3(0, -2f, 0));
+                                bombCount--;
+                                StartCoroutine(hud.UpdateBombCount(bombCount));
+
+                                if (audioSource != null)
+                                {
+                                    audioSource.pitch = UnityEngine.Random.Range(1.1f, 1.2f);
+                                    audioSource.PlayOneShot(plopSound);
+                                }
                             }
                         }
                     }

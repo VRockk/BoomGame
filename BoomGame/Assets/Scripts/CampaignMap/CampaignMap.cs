@@ -37,7 +37,7 @@ public class CampaignMap : MonoBehaviour
     {
         if (inputAllowed)
         {
-            if (!UtilityLibrary.IsMouseOverUI())
+            if (!UtilityLibrary.IsPositionOverUI(Input.mousePosition))
             {
                 if (Input.GetMouseButtonDown(0))
                 {
