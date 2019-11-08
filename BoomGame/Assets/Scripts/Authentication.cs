@@ -22,7 +22,7 @@ public class Authentication : MonoBehaviour
         // Select the Google Play Games platform as our social platform implementation
         GooglePlayGames.PlayGamesPlatform.Activate();
 
-        playButton.interactable = false;
+        //playButton.interactable = false;
         if (!Social.localUser.authenticated)
         {
             loginButton.GetComponentInChildren<Text>().text = "Sign in";
