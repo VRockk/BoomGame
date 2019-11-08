@@ -24,6 +24,7 @@ public class MainMenu : MonoBehaviour
     private GameMaster gameMaster;
     private AudioSource audioSource;
     public AudioClip menuMusic;
+    private bool rumbleToggleFlag = true;
 
 
     void Start()
@@ -216,8 +217,26 @@ public class MainMenu : MonoBehaviour
     }
     public void PlaySound(AudioClip sound)
     {
-
-        audioSource.PlayOneShot(sound);
+        if(rumbleToggleFlag == true)
+        {
+          audioSource.PlayOneShot(sound);
+        }
+       
     }
 
+
+    public void OnChangeRumble()
+    {
+        Toggle rumbleToggle = (Toggle)FindObjectOfType(typeof(Toggle));
+        if(rumbleToggle.isOn)
+        {
+            rumbleToggleFlag = true;
+            Debug.Log("switch is on");
+        }
+        else
+        {
+            rumbleToggleFlag = false;
+            Debug.Log("switch is off");
+        }
+    }
 }
