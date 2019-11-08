@@ -23,7 +23,6 @@ public class MainMenu : MonoBehaviour
 
     private GameMaster gameMaster;
     private AudioSource audioSource;
-    public AudioClip menuMusic;
 
 
     void Start()
@@ -34,8 +33,7 @@ public class MainMenu : MonoBehaviour
             gameMaster = Instantiate(gameMasterPrefab).GetComponent<GameMaster>();
         }
 
-        if (menuMusic != null)
-            gameMaster.SetMusic(menuMusic);
+        gameServicesPanel.SetActive(false);
 
         UpdateSalvage();
         if (privacyPolicyPanel != null)
@@ -47,11 +45,11 @@ public class MainMenu : MonoBehaviour
                 campaignMapPanel.SetActive(false);
                 shopPanel.SetActive(false);
                 bombPanel.SetActive(false);
-                gameServicesPanel.SetActive(false);
+                //gameServicesPanel.SetActive(false);
             }
             else
             {
-                gameServicesPanel.SetActive(true);   
+                //gameServicesPanel.SetActive(true);   
                 mainMenuPanel.SetActive(true);
                 privacyPolicyPanel.SetActive(false);
                 campaignMapPanel.SetActive(false);
@@ -106,7 +104,7 @@ public class MainMenu : MonoBehaviour
 
     public void AcceptPrivacyPolicy()
     {
-        gameServicesPanel.SetActive(true);
+        //gameServicesPanel.SetActive(true);
         mainMenuPanel.SetActive(true);
         privacyPolicyPanel.SetActive(false);
         campaignMapPanel.SetActive(false);
@@ -199,7 +197,7 @@ public class MainMenu : MonoBehaviour
         campaignMapPanel.SetActive(false);
         bombPanel.SetActive(false);
         bombSelectionPanel.SetActive(true);
-        gameServicesPanel.SetActive(false);
+        //gameServicesPanel.SetActive(false);
     }
     public void ShowBombUpgradePanel(GameObject panel)
     {
