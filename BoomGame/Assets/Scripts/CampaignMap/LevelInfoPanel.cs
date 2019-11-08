@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LevelInfoPanel : MonoBehaviour
@@ -11,11 +10,10 @@ public class LevelInfoPanel : MonoBehaviour
     public GameObject penta2Icon;
     public GameObject penta3Icon;
     public GameObject score;
+
     public GameObject number;
 
-    private Level level;
-
-    private int count;
+    private string levelName;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +35,7 @@ public class LevelInfoPanel : MonoBehaviour
         var scoreText = score.GetComponent<TextMeshProUGUI>();
         var numberText = number.GetComponent<TextMeshProUGUI>();
 
-        this.level = level;
+        levelName = level.scene.name;
         //set pentagram colors depending on the clear level
         if (level.pentagrams == 0)
         {
@@ -66,14 +64,14 @@ public class LevelInfoPanel : MonoBehaviour
 
         scoreText.text = level.score.ToString();
         numberText.text = count.ToString();
-        this.count = count;
     }
 
 
     public void OpenLevel()
     {
         //TODO show "loading" screen.
-        SceneManager.LoadScene(level.scene.name);
+        var chapter = this.transform.parent.gameObject.GetComponent<ChapterPanel>();
+        chapter.OpenLevel(levelName);
 
     }
 }

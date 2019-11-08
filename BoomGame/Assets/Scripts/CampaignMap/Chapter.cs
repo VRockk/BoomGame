@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 
 
@@ -30,14 +29,13 @@ public class Chapter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         //Get saved values for each level
         foreach (var level in levels)
         {
             var levelScript = level.GetComponent<Level>();
             if (levelScript != null)
             {
-                levelScript.GetSavedValues();
+                levelScript.SetSavedValues();
 
                 //If any level has zero pentagrams it means the chapter is not fully cleared
                 if (levelScript.pentagrams == 0)
