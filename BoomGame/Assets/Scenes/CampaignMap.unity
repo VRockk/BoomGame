@@ -135,12 +135,12 @@ PrefabInstance:
     - target: {fileID: 5626117355871531924, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.4799993
+      value: -7.73
       objectReference: {fileID: 0}
     - target: {fileID: 5626117355871531924, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.5099993
+      value: 6.9
       objectReference: {fileID: 0}
     - target: {fileID: 5626117355871531924, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
@@ -175,12 +175,12 @@ PrefabInstance:
     - target: {fileID: 5626117355871531924, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.87912077
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5626117355871531924, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.87912077
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5626117355871531924, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
@@ -195,7 +195,7 @@ PrefabInstance:
     - target: {fileID: 5626117355871531927, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
       propertyPath: pentaLimit
-      value: 24
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5626117355871531927, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
@@ -227,6 +227,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 626880397853769, guid: 486cfe915ee18b44fb130f08bc6e9c1a,
         type: 3}
+    - target: {fileID: 5626117355871531927, guid: 5305b0c8be0fd884ab0971a28a316f57,
+        type: 3}
+      propertyPath: chapterName
+      value: Projects
+      objectReference: {fileID: 0}
     - target: {fileID: 6378374482858241674, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
       propertyPath: m_WasSpriteAssigned
@@ -340,6 +345,8 @@ MonoBehaviour:
   chapterPanel: {fileID: 366319961}
   defaultCameraSize: 45
   cameraDefaultPos: {x: 0, y: 0, z: 0}
+  gameMasterPrefab: {fileID: 4964522808880166175, guid: 2e60daa893cd9ee41977a01022aa9926,
+    type: 3}
 --- !u!1001 &355915286
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -716,12 +723,12 @@ PrefabInstance:
     - target: {fileID: 5626117355871531924, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.83
+      value: -3.25
       objectReference: {fileID: 0}
     - target: {fileID: 5626117355871531924, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.41
+      value: 2.58
       objectReference: {fileID: 0}
     - target: {fileID: 5626117355871531924, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
@@ -756,12 +763,12 @@ PrefabInstance:
     - target: {fileID: 5626117355871531924, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.8791208
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5626117355871531924, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.8791208
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5626117355871531927, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
@@ -771,7 +778,7 @@ PrefabInstance:
     - target: {fileID: 5626117355871531927, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
       propertyPath: pentaLimit
-      value: 36
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5626117355871531927, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
@@ -803,6 +810,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 626880397853769, guid: 12a8d659933f2a340ada71b9e1243cd1,
         type: 3}
+    - target: {fileID: 5626117355871531927, guid: 5305b0c8be0fd884ab0971a28a316f57,
+        type: 3}
+      propertyPath: chapterName
+      value: Mt. Doom
+      objectReference: {fileID: 0}
     - target: {fileID: 6378374482858241674, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
       propertyPath: m_WasSpriteAssigned
@@ -877,12 +889,12 @@ PrefabInstance:
     - target: {fileID: 5626117355871531924, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.8791208
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5626117355871531924, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.8791208
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5626117355871531927, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
@@ -892,12 +904,12 @@ PrefabInstance:
     - target: {fileID: 5626117355871531927, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
       propertyPath: pentaLimit
-      value: 12
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5626117355871531927, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
       propertyPath: chapterName
-      value: Yololand
+      value: Castle Land
       objectReference: {fileID: 0}
     - target: {fileID: 5626117355871531927, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
@@ -991,12 +1003,12 @@ PrefabInstance:
     - target: {fileID: 5626117355871531924, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.8791208
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5626117355871531924, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.8791208
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5626117355871531927, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
@@ -1038,6 +1050,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 626880397853769, guid: 35572f4a2e755314bac291a5bd8381db,
         type: 3}
+    - target: {fileID: 5626117355871531927, guid: 5305b0c8be0fd884ab0971a28a316f57,
+        type: 3}
+      propertyPath: chapterName
+      value: Lava Lake
+      objectReference: {fileID: 0}
     - target: {fileID: 6378374482858241674, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
       propertyPath: m_WasSpriteAssigned

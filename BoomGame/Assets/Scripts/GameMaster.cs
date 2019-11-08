@@ -12,7 +12,8 @@ public class GameMaster : MonoBehaviour
     public BombData regularBombData;
     [HideInInspector]
     public BombData acidBombData;
-
+    [HideInInspector]
+    public List<Level> currentChapterLevels;
 
 
     private AudioSource audioSource;
@@ -24,6 +25,7 @@ public class GameMaster : MonoBehaviour
     private float fadeStarted;
     private bool fadingMusic = false;
     private bool fadingOut = false;
+
 
     private bool privacyPolicyAccepted;
     public bool PrivacyPolicyAccepted

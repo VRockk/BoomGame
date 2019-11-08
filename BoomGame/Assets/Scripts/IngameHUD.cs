@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -20,6 +21,7 @@ public class IngameHUD : MonoBehaviour
     public GameObject mainMenuButton;
     public GameObject detonateButton;
     public GameObject resetButton;
+    public GameObject campaignMapButton;
     public GameObject nextLevelButton;
     public GameObject salvagePanel;
 
@@ -91,10 +93,22 @@ public class IngameHUD : MonoBehaviour
 
     public void NextLevel()
     {
+        var nextLevel = gameMaster.currentChapterLevels.SkipWhile(x => x.scene.name != SceneManager.GetActiveScene().name).Skip(1).First();
+        if (nextLevel == null)
+            return;
         //To load video ads
         //AdsController.adsInstance.ShowVideoOrInterstitialAds();
         //TODO: Show loading screens
-        SceneManager.LoadSceneAsync(gameController.nextLevelName, LoadSceneMode.Single);
+        SceneManager.LoadSceneAsync(nextLevel.scene.name, LoadSceneMode.Single);
+        //Application.LoadLevel();
+    }
+
+    public void CampaignMap()
+    {
+        //To load video ads
+        //AdsController.adsInstance.ShowVideoOrInterstitialAds();
+        //TODO: Show loading screens
+        SceneManager.LoadSceneAsync("CampaignMap", LoadSceneMode.Single);
         //Application.LoadLevel();
     }
 
@@ -119,17 +133,34 @@ public class IngameHUD : MonoBehaviour
         bombPanel.SetActive(false);
         mainMenuButton.SetActive(false);
         resetButton.SetActive(true);
-        nextLevelButton.SetActive(true);
 
-
-
-
-        if (levelClear == LevelClear.Failed)
+        if (gameMaster.currentChapterLevels != null)
         {
-            //nextLevelButton.SetActive(true);
-            nextLevelButton.GetComponent<Button>().interactable = false;
-            nextLevelButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(0.35f, 0.35f, 0.35f, 1);
+            //If last level in chapter, show back to map button instead
+            if (gameMaster.currentChapterLevels.Last().scene.name == SceneManager.GetActiveScene().name)
+            {
+                nextLevelButton.SetActive(false);
+                campaignMapButton.SetActive(true);
+                if (levelClear == LevelClear.Failed)
+                {
+                    //nextLevelButton.SetActive(true);
+                    campaignMapButton.GetComponent<Button>().interactable = false;
+                    campaignMapButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(0.35f, 0.35f, 0.35f, 1);
+                }
+            }
+            else
+            {
+                nextLevelButton.SetActive(true);
+                campaignMapButton.SetActive(false);
+                if (levelClear == LevelClear.Failed)
+                {
+                    //nextLevelButton.SetActive(true);
+                    nextLevelButton.GetComponent<Button>().interactable = false;
+                    nextLevelButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(0.35f, 0.35f, 0.35f, 1);
+                }
+            }
         }
+
 
         ShowEndScreen(levelClear);
 
@@ -196,7 +227,7 @@ public class IngameHUD : MonoBehaviour
     public IEnumerator UpdateBombCount(int bombCount)
     {
         var animator = bombCountText.GetComponent<Animator>();
-        if(animator != null)
+        if (animator != null)
         {
             animator.SetBool("NewValue", true);
         }
@@ -224,7 +255,7 @@ public class IngameHUD : MonoBehaviour
 
     public void OpenMainMenu()
     {
-        if(menuMusic != null)
+        if (menuMusic != null)
             gameMaster.SetMusic(menuMusic);
         else
             gameMaster.SetMusic(null);

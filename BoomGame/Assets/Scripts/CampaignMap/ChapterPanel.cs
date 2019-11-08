@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class ChapterPanel : MonoBehaviour
 {
     public GameObject chapterName;
     public GameObject levelInfoPanelPrefab;
+    private List<Level> levels;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +31,7 @@ public class ChapterPanel : MonoBehaviour
             //remove old panels
             Destroy(levelPanel.gameObject);
         }
-
+        levels = new List<Level>();
         int count = 0;
         //Create new info panel for each level and set position. Then set the level infor inside Level Sc´ript
         foreach (var level in chapter.levels)
@@ -56,6 +58,7 @@ public class ChapterPanel : MonoBehaviour
             var levelScript = level.GetComponent<Level>();
             count++;
             levelInfoPanelScript.SetLevelInfo(levelScript, count);
+            levels.Add(levelScript);
         }
 
         var chapterNameText = chapterName.GetComponent<TextMeshProUGUI>();
@@ -63,5 +66,13 @@ public class ChapterPanel : MonoBehaviour
         {
             chapterNameText.text = chapter.chapterName;
         }
+    }
+
+    public void OpenLevel(string name)
+    {
+        var gameMaster = FindObjectOfType<GameMaster>();
+        gameMaster.currentChapterLevels = levels;
+        SceneManager.LoadScene(name);
+
     }
 }
