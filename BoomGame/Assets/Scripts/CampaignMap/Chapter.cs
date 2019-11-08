@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 
@@ -16,13 +17,15 @@ public class Chapter : MonoBehaviour
     public Sprite clearedIcon;
     public Sprite unclearedIcon;
     public Sprite selectedIcon;
-    public Sprite lockedIcon;
+    public GameObject lockInfo;
+    public GameObject pentaRequirement;
 
     [HideInInspector]
     public bool locked = true;
 
     public SpriteRenderer iconRenderer;
     private bool allLevelsCleared = true;
+    private int playerPentagrams;
 
     // Start is called before the first frame update
     void Start()
@@ -41,9 +44,7 @@ public class Chapter : MonoBehaviour
                     allLevelsCleared = false;
             }
         }
-
-
-        var playerPentagrams = PlayerPrefs.GetInt("PlayerPentagrams", 0);
+        playerPentagrams = PlayerPrefs.GetInt("PlayerPentagrams", 0);
 
         //Player needs to have more or equal amount of pentagrams to have this chapter open
         if (playerPentagrams >= pentaLimit)
@@ -54,19 +55,33 @@ public class Chapter : MonoBehaviour
         {
             locked = true;
         }
+        SetStatus();
+    }
 
+    private void SetStatus()
+    {
         if (iconRenderer != null)
         {
-            if (locked)
-                iconRenderer.sprite = lockedIcon;
+            if (allLevelsCleared)
+                iconRenderer.sprite = clearedIcon;
             else
+                iconRenderer.sprite = unclearedIcon;
+        }
+
+        if (locked)
+        {
+            if (lockInfo != null)
             {
-                if (allLevelsCleared)
-                    iconRenderer.sprite = clearedIcon;
-                else
-                    iconRenderer.sprite = unclearedIcon;
+                lockInfo.SetActive(true);
+                if (pentaRequirement != null)
+                {
+                    var lockText = pentaRequirement.GetComponent<TextMeshPro>();
+                    lockText.text = (pentaLimit - playerPentagrams).ToString();
+                }
             }
         }
+        else
+            lockInfo.SetActive(false);
     }
 
     // Update is called once per frame
@@ -78,25 +93,6 @@ public class Chapter : MonoBehaviour
 
     public void SetSelected(bool selected)
     {
-        iconRenderer = GetComponent<SpriteRenderer>();
-        if (iconRenderer != null)
-        {
-            if (locked)
-                iconRenderer.sprite = lockedIcon;
-            else
-            {
-                if (selected)
-                {
-                    iconRenderer.sprite = selectedIcon;
-                }
-                else
-                {
-                    if (allLevelsCleared)
-                        iconRenderer.sprite = clearedIcon;
-                    else
-                        iconRenderer.sprite = unclearedIcon;
-                }
-            }
-        }
+        SetStatus();
     }
 }

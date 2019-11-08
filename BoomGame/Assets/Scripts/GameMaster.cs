@@ -54,7 +54,9 @@ public class GameMaster : MonoBehaviour
         else
         {
 
-            //PlayerPrefs.DeleteAll();
+#if UNITY_EDITOR
+            PlayerPrefs.DeleteAll();
+#endif
             GetPlayerPrefValues();
             DontDestroyOnLoad(this.gameObject);
             //AddSalvage(1500);

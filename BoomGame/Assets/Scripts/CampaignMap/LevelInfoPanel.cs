@@ -15,6 +15,8 @@ public class LevelInfoPanel : MonoBehaviour
 
     private Level level;
 
+    private int count;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,6 +66,7 @@ public class LevelInfoPanel : MonoBehaviour
 
         scoreText.text = level.score.ToString();
         numberText.text = count.ToString();
+        this.count = count;
     }
 
 
