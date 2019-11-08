@@ -13,6 +13,8 @@ public class Authentication : MonoBehaviour
     [SerializeField] private TextMeshProUGUI statusText;
     [SerializeField] private RawImage userImage;
     private bool mWaitingForAuth = false;
+    private GameMaster gameMaster;
+    private MainMenu mainMenu;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +47,8 @@ public class Authentication : MonoBehaviour
                     playButton.interactable = true;
                     StartCoroutine("LoadImage");
                     loginButton.GetComponentInChildren<Text>().text = "Sign out";
+                    gameMaster.SignIn = true;
+                    mainMenu.gameServicesPanel.SetActive(false);
                 }
                 else
                 {
@@ -60,6 +64,7 @@ public class Authentication : MonoBehaviour
             userImage.texture = null;
             loginButton.GetComponentInChildren<Text>().text = "Sign in";
         }
+        
     }
 
     public void OnPlayButtonClick()
