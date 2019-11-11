@@ -112,7 +112,7 @@ public class Bomb : MonoBehaviour
         ExplosionEffect();
 
         if (camShake != null)
-            camShake.Shake(1.0f, 0.7f, 1.0f);
+            camShake.Shake(0.5f, 0.5f, 1f);
 
         if (phoVibration != null)
             phoVibration.Vibrate();
