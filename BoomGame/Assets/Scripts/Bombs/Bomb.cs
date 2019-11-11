@@ -44,7 +44,7 @@ public class Bomb : MonoBehaviour
         camShake = Camera.main.GetComponent<CameraShake>();
 
         phoVibration = Camera.main.GetComponent<PhoneVibration>();
-       
+
         if (gameMaster == null)
             Debug.LogError("No GameMaster found in bomb upgrade panel");
 
@@ -110,8 +110,13 @@ public class Bomb : MonoBehaviour
             Instantiate(explosionParticles, this.transform.position, Quaternion.identity);
 
         ExplosionEffect();
-        camShake.Shake(1.0f, 0.7f, 1.0f);
-        phoVibration.Vibrate();
+
+        if (camShake != null)
+            camShake.Shake(1.0f, 0.7f, 1.0f);
+
+        if (phoVibration != null)
+            phoVibration.Vibrate();
+
         Destroy(this.gameObject);
     }
 
