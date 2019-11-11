@@ -36,7 +36,7 @@ public class Authentication : MonoBehaviour
         {
             // Authenticate
             mWaitingForAuth = true;
-            statusText.text = "Authenticating...";            
+            statusText.text = "Authenticating...";
 
             Social.localUser.Authenticate((bool success) =>
             {
@@ -60,19 +60,19 @@ public class Authentication : MonoBehaviour
         {
             statusText.text = "";
             ((GooglePlayGames.PlayGamesPlatform)Social.Active).SignOut();
-            playButton.interactable = false;  
+            playButton.interactable = false;
             userImage.texture = null;
             loginButton.GetComponentInChildren<Text>().text = "Sign in";
         }
-        
+
     }
 
     public void OnPlayButtonClick()
     {
-            SceneManager.LoadScene("MainMenuScene");
+        SceneManager.LoadScene("MainMenuScene");
     }
 
-        private IEnumerator LoadImage()
+    private IEnumerator LoadImage()
     {
         while (Social.localUser.image == null)
         {

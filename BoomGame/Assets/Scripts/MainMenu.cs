@@ -26,6 +26,11 @@ public class MainMenu : MonoBehaviour
     public AudioClip menuMusic;
     private bool rumbleToggleFlag = true;
 
+    [SerializeField] private Button loginButton;
+    [SerializeField] private TextMeshProUGUI statusText;
+    private bool mWaitingForAuth = false;
+    
+
 
     void Start()
     {
@@ -58,8 +63,70 @@ public class MainMenu : MonoBehaviour
                 shopPanel.SetActive(false);
                 bombPanel.SetActive(false);
             }
+
+        if (gameServicesPanel != null)
+            {
+                if (!gameMaster.SignIn)
+                {
+                    mainMenuPanel.SetActive(true);
+                    privacyPolicyPanel.SetActive(false);
+                    campaignMapPanel.SetActive(false);
+                    shopPanel.SetActive(false);
+                    bombPanel.SetActive(false);
+                    gameServicesPanel.SetActive(true);
+
+                }
+                else
+                {
+                    mainMenuPanel.SetActive(true);
+                    privacyPolicyPanel.SetActive(false);
+                    campaignMapPanel.SetActive(false);
+                    shopPanel.SetActive(false);
+                    bombPanel.SetActive(false);
+                    gameServicesPanel.SetActive(false);
+
+
+                }
+            }
+
+            if (gameMaster.SignIn = PlayerPrefs.HasKey("SignIn"))
+            {
+                if (!Social.localUser.authenticated)
+                {
+                    // Authenticate
+                    mWaitingForAuth = true;
+                    statusText.text = "Authenticating...";
+
+                    Social.localUser.Authenticate((bool success) =>
+                    {
+                        mWaitingForAuth = false;
+                        if (success)
+                        {
+                            statusText.text = "Welcome " + Social.localUser.userName;
+                            StartCoroutine("LoadImage");
+                            loginButton.GetComponentInChildren<TMP_Text>().text = "Sign out";
+                            //gameServicesPanel.SetActive(false);
+                            //gameMaster.SignIn = true;
+                        }
+                        else
+                        {
+                            statusText.text = "Authentication failed.";
+                        }
+                    });
+
+                }
+            }
         }
         audioSource = GetComponent<AudioSource>();
+
+        // Select the Google Play Games platform as our social platform implementation
+        GooglePlayGames.PlayGamesPlatform.Activate();
+
+        //playButton.interactable = false;
+        if (!Social.localUser.authenticated)
+        {
+            loginButton.GetComponentInChildren<TMP_Text>().text = "Sign in";
+        }
     }
 
 
@@ -178,6 +245,40 @@ public class MainMenu : MonoBehaviour
         campaignMapPanel.SetActive(false);
         bombPanel.SetActive(false);
         bombSelectionPanel.SetActive(false);
+    }
+
+    public void OnLoginButtonClick()
+    {
+        if (!Social.localUser.authenticated)
+        {
+            // Authenticate
+            mWaitingForAuth = true;
+            statusText.text = "Authenticating...";
+
+            Social.localUser.Authenticate((bool success) =>
+            {
+                mWaitingForAuth = false;
+                if (success)
+                {
+                    statusText.text = "Welcome " + Social.localUser.userName;
+                    StartCoroutine("LoadImage");
+                    loginButton.GetComponentInChildren<TMP_Text>().text = "Sign out";
+                    gameServicesPanel.SetActive(false);
+                    gameMaster.SignIn = true;
+                }
+                else
+                {
+                    statusText.text = "Authentication failed.";
+                }
+            });
+        }
+        else
+        {
+            statusText.text = "";
+            ((GooglePlayGames.PlayGamesPlatform)Social.Active).SignOut();
+            loginButton.GetComponentInChildren<TMP_Text>().text = "Sign in";
+        }
+
     }
     public void CloseGameServices()
     {
