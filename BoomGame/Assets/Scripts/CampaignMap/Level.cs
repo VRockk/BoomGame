@@ -2,21 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Level : MonoBehaviour
+public class Level
 {
-    public Object scene;
-
-    [HideInInspector]
+    public string name;
     public int pentagrams = 0;
-    [HideInInspector]
     public int savedBombs = 0;
-    [HideInInspector]
     public int score = 0;
 
-    public void SetSavedValues()
+    public Level(string name)
     {
-        pentagrams = PlayerPrefs.GetInt(scene.name + "Pentagrams", 0);
-        savedBombs = PlayerPrefs.GetInt(scene.name + "SavedBombs", 0);
-        score = PlayerPrefs.GetInt(scene.name + "Score", 0);
+        this.name = name;
+        pentagrams = PlayerPrefs.GetInt(name + "Pentagrams", 0);
+        savedBombs = PlayerPrefs.GetInt(name + "SavedBombs", 0);
+        score = PlayerPrefs.GetInt(name + "Score", 0);
     }
 }

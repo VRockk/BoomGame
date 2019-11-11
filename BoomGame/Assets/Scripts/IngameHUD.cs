@@ -19,8 +19,9 @@ public class IngameHUD : MonoBehaviour
     public GameObject levelFinishPanel;
     public GameObject bombPanel;
     public GameObject mainMenuButton;
+    public GameObject resetButton1;
     public GameObject detonateButton;
-    public GameObject resetButton;
+    public GameObject resetButton2;
     public GameObject campaignMapButton;
     public GameObject nextLevelButton;
     public GameObject salvagePanel;
@@ -64,6 +65,8 @@ public class IngameHUD : MonoBehaviour
 
         mainMenuButton.SetActive(true);
 
+        resetButton1.SetActive(true);
+
         levelFinishPanel.SetActive(false);
 
         bombCountText = GameObject.Find("BombCount").GetComponent<TextMeshProUGUI>();
@@ -93,13 +96,13 @@ public class IngameHUD : MonoBehaviour
 
     public void NextLevel()
     {
-        var nextLevel = gameMaster.currentChapterLevels.SkipWhile(x => x.scene.name != SceneManager.GetActiveScene().name).Skip(1).First();
+        var nextLevel = gameMaster.currentChapterLevels.SkipWhile(x => x.name != SceneManager.GetActiveScene().name).Skip(1).First();
         if (nextLevel == null)
             return;
         //To load video ads
         //AdsController.adsInstance.ShowVideoOrInterstitialAds();
         //TODO: Show loading screens
-        SceneManager.LoadSceneAsync(nextLevel.scene.name, LoadSceneMode.Single);
+        SceneManager.LoadSceneAsync(nextLevel.name, LoadSceneMode.Single);
         //Application.LoadLevel();
     }
 
@@ -132,12 +135,14 @@ public class IngameHUD : MonoBehaviour
         detonatePanel.SetActive(false);
         bombPanel.SetActive(false);
         mainMenuButton.SetActive(false);
-        resetButton.SetActive(true);
+
+        resetButton1.SetActive(false);
+        resetButton2.SetActive(true);
 
         if (gameMaster.currentChapterLevels != null)
         {
             //If last level in chapter, show back to map button instead
-            if (gameMaster.currentChapterLevels.Last().scene.name == SceneManager.GetActiveScene().name)
+            if (gameMaster.currentChapterLevels.Last().name == SceneManager.GetActiveScene().name)
             {
                 nextLevelButton.SetActive(false);
                 campaignMapButton.SetActive(true);

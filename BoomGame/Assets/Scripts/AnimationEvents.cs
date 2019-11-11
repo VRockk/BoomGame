@@ -1,10 +1,12 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class AnimationEvents : MonoBehaviour
 {
+    public bool clickToSkip = false;
     private GameMaster gameMaster;
     private AudioSource audioSource;
     
@@ -21,6 +23,22 @@ public class AnimationEvents : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (clickToSkip)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                var animator = GetComponent<Animator>();
+                if(animator != null)
+                {
+                    //print("Skip anim");
+                    animator.SetFloat("AnimSpeed", 2f);
+
+
+
+                    clickToSkip = false;
+                }
+            }
+        }
 
     }
 
