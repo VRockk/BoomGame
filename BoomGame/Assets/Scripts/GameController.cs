@@ -16,7 +16,6 @@ public class GameController : MonoBehaviour
     public int maxRounds = 2;
 
     public GameObject[] bombs;
-    public string nextLevelName;
 
     public int bombCount = 3;
 
@@ -372,13 +371,14 @@ public class GameController : MonoBehaviour
 
     private void FinishLevel(LevelClear levelClear)
     {
+        //Get the previous saved values for this level
         var levelName = SceneManager.GetActiveScene().name;
         var pentagrams = PlayerPrefs.GetInt(levelName + "Pentagrams", 0);
         var savedBombs = PlayerPrefs.GetInt(levelName + "SavedBombs", 0);
         var score = PlayerPrefs.GetInt(levelName + "Score", 0);
 
 
-        //PlayerPentagrams and PlayerScore are the values of all gained the pentagrams and score from all maps the player has cleared
+        //PlayerPentagrams and PlayerScore are the values of all gained pentagrams and score from all maps the player has cleared
         var playerPentagrams = PlayerPrefs.GetInt("PlayerPentagrams", 0);
         var playerScore = PlayerPrefs.GetInt("PlayerScore", 0);
 
@@ -485,16 +485,7 @@ public class GameController : MonoBehaviour
 
         return levelClear;
     }
-
-    private void LoadNextLevel()
-    {
-
-
-        //TODO: Show loading screens
-        SceneManager.LoadScene(nextLevelName, LoadSceneMode.Single);
-
-    }
-
+    
     private IEnumerator AllowInput(bool allow, float delay)
     {
         yield return new WaitForSeconds(delay);

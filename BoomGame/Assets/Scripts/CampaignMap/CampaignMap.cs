@@ -22,8 +22,16 @@ public class CampaignMap : MonoBehaviour
     [HideInInspector]
     public Vector3 cameraDefaultPos;
 
+    public GameObject gameMasterPrefab;
+    private GameMaster gameMaster;
+
     void Start()
     {
+        gameMaster = FindObjectOfType<GameMaster>();
+        if (gameMaster == null)
+        {
+            gameMaster = Instantiate(gameMasterPrefab).GetComponent<GameMaster>();
+        }
         cam = Camera.main;
 
         //cam.transform.position = cam.transform.position + cam.transform.parent.transform.position;
@@ -193,4 +201,5 @@ public class CampaignMap : MonoBehaviour
         // Cache the position
         lastPanPosition = newPanPosition;
     }
+
 }
