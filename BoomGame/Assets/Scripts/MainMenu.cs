@@ -17,7 +17,7 @@ public class MainMenu : MonoBehaviour
     public GameObject shopPanel;
     public GameObject bombPanel;
     public GameObject bombSelectionPanel;
-    public GameObject optionPanel;    
+    public GameObject optionPanel;
     public GameObject gameServicesPanel;
     public GameObject gameMasterPrefab;
 
@@ -66,34 +66,22 @@ public class MainMenu : MonoBehaviour
 
     void Update()
     {
-        //Dont update text on every update tick. Instead they should only be updated when the value is changed
-        //salvageText.text = "" + GameMaster.currentSalvage;
-
 
     }
-
-
 
     public void PlayGame()
     {
         SceneManager.LoadScene("CampaignMap");
 
 
+        //int tutorial = PlayerPrefs.GetInt("Tutorial", 0);
 
-
-        ////Starts the next level available in progression
-
-        //int levelReached = PlayerPrefs.GetInt("LevelReached", 1);
-        //if (levelReached == 1)
-        //    SceneManager.LoadScene("Tutorial");
+        //if (tutorial == 1)
+        //    SceneManager.LoadScene("CampaignMap");
         //else
         //{
-        //    //Paskaa
-        //    if (levelReached < 10)
-        //        SceneManager.LoadScene("Level_0" + levelReached.ToString());
-        //    else
-        //        SceneManager.LoadScene("Level_" + levelReached.ToString());
-
+        //    PlayerPrefs.SetInt("Tutorial", 1);
+        //    SceneManager.LoadScene("TutorialLevel");
         //}
     }
 
@@ -234,18 +222,18 @@ public class MainMenu : MonoBehaviour
     }
     public void PlaySound(AudioClip sound)
     {
-        if(rumbleToggleFlag == true)
+        if (rumbleToggleFlag == true)
         {
-          audioSource.PlayOneShot(sound);
+            audioSource.PlayOneShot(sound);
         }
-       
+
     }
 
 
     public void OnChangeRumble()
     {
         Toggle rumbleToggle = (Toggle)FindObjectOfType(typeof(Toggle));
-        if(rumbleToggle.isOn)
+        if (rumbleToggle.isOn)
         {
             rumbleToggleFlag = true;
             Debug.Log("switch is on");

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -111,8 +112,10 @@ public class Bomb : MonoBehaviour
 
         ExplosionEffect();
 
+        //For some weird reason this doesnt work after another level is loaded!??!?
+
         if (camShake != null)
-            camShake.Shake(0.5f, 0.5f, 1f);
+            camShake.Shake(0.5f, 3f, 50, 50, true);
 
         if (phoVibration != null)
             phoVibration.Vibrate();

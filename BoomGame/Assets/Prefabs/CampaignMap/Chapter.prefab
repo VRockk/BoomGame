@@ -334,7 +334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chapterName: Chapter Name
   pentaLimit: 0
-  levels: []
+  levelNames: []
   clearedIcon: {fileID: -8890510750406895154, guid: 7a4642d7140859f47920c7bf86ae4325,
     type: 3}
   unclearedIcon: {fileID: -1806698700789873819, guid: 7a4642d7140859f47920c7bf86ae4325,
@@ -343,8 +343,8 @@ MonoBehaviour:
     type: 3}
   lockInfo: {fileID: 8648265829000318560}
   pentaRequirement: {fileID: 1633744948735860047}
-  locked: 1
   iconRenderer: {fileID: 6378374482858241674}
+  locked: 1
 --- !u!212 &6378374482858241674
 SpriteRenderer:
   m_ObjectHideFlags: 0

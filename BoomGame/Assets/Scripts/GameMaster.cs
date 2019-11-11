@@ -92,9 +92,6 @@ public class GameMaster : MonoBehaviour
             PlayerPrefs.SetInt("CurrentSalvage", 0);
         }
 
-        //Level Progression
-
-
 
         //Bomb data
         GetBombData();

@@ -35,7 +35,7 @@ public class LevelInfoPanel : MonoBehaviour
         var scoreText = score.GetComponent<TextMeshProUGUI>();
         var numberText = number.GetComponent<TextMeshProUGUI>();
 
-        levelName = level.scene.name;
+        levelName = level.name;
         //set pentagram colors depending on the clear level
         if (level.pentagrams == 0)
         {
@@ -70,7 +70,7 @@ public class LevelInfoPanel : MonoBehaviour
     public void OpenLevel()
     {
         //TODO show "loading" screen.
-        var chapter = this.transform.parent.gameObject.GetComponent<ChapterPanel>();
+        var chapter = this.transform.parent.parent.parent.gameObject.GetComponent<ChapterPanel>();
         chapter.OpenLevel(levelName);
 
     }
