@@ -52,11 +52,11 @@ public class MainMenu : MonoBehaviour
                 campaignMapPanel.SetActive(false);
                 shopPanel.SetActive(false);
                 bombPanel.SetActive(false);
-                //gameServicesPanel.SetActive(false);
+                gameServicesPanel.SetActive(false);
             }
             else
             {
-                //gameServicesPanel.SetActive(true);   
+                gameServicesPanel.SetActive(true);   
                 mainMenuPanel.SetActive(true);
                 privacyPolicyPanel.SetActive(false);
                 campaignMapPanel.SetActive(false);
@@ -89,7 +89,7 @@ public class MainMenu : MonoBehaviour
                 }
             }
 
-            if (gameMaster.SignIn = PlayerPrefs.HasKey("SignIn"))
+            if (gameMaster.SignIn == true)
             {
                 if (!Social.localUser.authenticated)
                 {
@@ -105,8 +105,8 @@ public class MainMenu : MonoBehaviour
                             statusText.text = "Welcome " + Social.localUser.userName;
                             StartCoroutine("LoadImage");
                             loginButton.GetComponentInChildren<TMP_Text>().text = "Sign out";
-                            //gameServicesPanel.SetActive(false);
-                            //gameMaster.SignIn = true;
+                            gameServicesPanel.SetActive(false);
+                            gameMaster.SignIn = true;
                         }
                         else
                         {
@@ -288,7 +288,7 @@ public class MainMenu : MonoBehaviour
         campaignMapPanel.SetActive(false);
         bombPanel.SetActive(false);
         bombSelectionPanel.SetActive(true);
-        //gameServicesPanel.SetActive(false);
+        gameServicesPanel.SetActive(false);
     }
     public void ShowBombUpgradePanel(GameObject panel)
     {
