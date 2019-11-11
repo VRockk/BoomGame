@@ -28,6 +28,10 @@ public class Bomb : MonoBehaviour
 
     private GameMaster gameMaster;
 
+    private CameraShake camShake;
+
+    private PhoneVibration phoVibration;
+
     protected virtual void Awake()
     {
     }
@@ -36,6 +40,11 @@ public class Bomb : MonoBehaviour
     protected virtual void Start()
     {
         gameMaster = FindObjectOfType<GameMaster>();
+
+        camShake = Camera.main.GetComponent<CameraShake>();
+
+        phoVibration = Camera.main.GetComponent<PhoneVibration>();
+       
         if (gameMaster == null)
             Debug.LogError("No GameMaster found in bomb upgrade panel");
 
@@ -101,6 +110,8 @@ public class Bomb : MonoBehaviour
             Instantiate(explosionParticles, this.transform.position, Quaternion.identity);
 
         ExplosionEffect();
+        camShake.Shake(1.0f, 0.7f, 1.0f);
+        phoVibration.Vibrate();
         Destroy(this.gameObject);
     }
 
