@@ -115,7 +115,7 @@ public class Bomb : MonoBehaviour
         //For some weird reason this doesnt work after another level is loaded!??!?
 
         if (camShake != null)
-            camShake.Shake(0.5f, 3f, 50, 50, true);
+            camShake.Shake(0.5f, 1f, 60, 30, true);
 
         if (phoVibration != null)
             phoVibration.Vibrate();

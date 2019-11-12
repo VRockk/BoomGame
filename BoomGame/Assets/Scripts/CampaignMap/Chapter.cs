@@ -18,10 +18,11 @@ public class Chapter : MonoBehaviour
     public Sprite selectedIcon;
     public GameObject lockInfo;
     public GameObject pentaRequirement;
+    public GameObject previousChapter;
     public SpriteRenderer iconRenderer;
 
     [HideInInspector]
-    public bool locked = true;
+    public bool locked = false;
 
     [HideInInspector]
     public List<Level> chapterLevels;
@@ -29,8 +30,7 @@ public class Chapter : MonoBehaviour
     private bool allLevelsCleared = true;
     private int playerPentagrams;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         chapterLevels = new List<Level>();
         //Get saved values for each level
@@ -43,17 +43,34 @@ public class Chapter : MonoBehaviour
 
             chapterLevels.Add(chapterLevel);
         }
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        locked = false;
         playerPentagrams = PlayerPrefs.GetInt("PlayerPentagrams", 0);
 
-        //Player needs to have more or equal amount of pentagrams to have this chapter open
-        if (playerPentagrams >= pentaLimit)
+        //All levels in previous chapter needs to be cleared for this to be open
+        if (previousChapter != null)
         {
-            locked = false;
+            var prevChapterScript = previousChapter.GetComponent<Chapter>();
+            foreach (var level in prevChapterScript.chapterLevels)
+            {
+                if (level.pentagrams == 0)
+                {
+                    locked = true;
+                    break;
+                }
+            }
         }
-        else
+
+        //Player needs to have more or equal amount of pentagrams to have this chapter open
+        if (playerPentagrams < pentaLimit)
         {
             locked = true;
         }
+
         SetStatus();
     }
 

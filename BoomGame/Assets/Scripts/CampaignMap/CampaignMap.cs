@@ -12,7 +12,7 @@ public class CampaignMap : MonoBehaviour
 
     private static readonly float panSpeed = 40f;
 
-    private static readonly float[] BoundsX = new float[] { -4f, 85f };
+    private static readonly float[] BoundsX = new float[] { -4f, 70f };
     private static readonly float[] BoundsY = new float[] { -25f, 4f };
     public float defaultCameraSize = 45f;
 
