@@ -15,10 +15,10 @@ PolygonCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 1.03, y: 0, z: 1.23, w: 0}
+    border: {x: 1.1605036, y: 0, z: 1.170508, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.01, y: 1.8}
-    newSize: {x: 3.42, y: 2.28}
+    oldSize: {x: 10.054363, y: 1.79}
+    newSize: {x: 10.054363, y: 1.79}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -26,12 +26,12 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 4.9874077, y: -0.9034816}
-      - {x: 4.9817066, y: -0.1287118}
-      - {x: 4.4531927, y: -0.13027611}
-      - {x: 4.417443, y: 0.89795846}
-      - {x: -4.4591484, y: 0.91400003}
-      - {x: -4.441048, y: -0.10973871}
-      - {x: -4.9899163, y: -0.12040842}
+      - {x: 4.976319, y: 0.027526826}
+      - {x: 4.41548, y: 0.025962621}
+      - {x: 4.4012804, y: 0.86024576}
+      - {x: -4.399885, y: 0.86551213}
+      - {x: -4.3863893, y: 0.018411301}
+      - {x: -5.0060787, y: 0.0035048947}
       - {x: -4.996979, y: -0.88266015}
 --- !u!114 &-7108630801149371217
 MonoBehaviour:
@@ -121,22 +121,22 @@ PrefabInstance:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1863442581099001712, guid: d58a38304fad7c74f99f67987213949d,
-        type: 3}
-      propertyPath: m_Mass
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1863442581099001712, guid: d58a38304fad7c74f99f67987213949d,
-        type: 3}
-      propertyPath: m_AngularDrag
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: a6c4e248f3f67274ebfeae5901f679a8,
+      objectReference: {fileID: 8670749210371160377, guid: 27d58a0ac416c2b428060b1432437151,
         type: 3}
+    - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 10.054363
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.79
+      objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001715, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -161,6 +161,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.x
       value: 14.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863442581099001712, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863442581099001712, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001713, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}

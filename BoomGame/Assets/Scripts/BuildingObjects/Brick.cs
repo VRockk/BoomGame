@@ -75,7 +75,7 @@ public class Brick : BuildingObject
             if (pieceSpawnLocations.Length >= e)
             {
 
-                Vector3 localPosition = (this.transform.right * pieceSpawnLocations[e].x) + (this.transform.up * pieceSpawnLocations[e].y);
+                Vector3 localPosition = (this.transform.right * pieceSpawnLocations[e].x * this.transform.localScale.x) + (this.transform.up * pieceSpawnLocations[e].y * this.transform.localScale.y);
                 newObject.transform.position = this.transform.position + new Vector3(localPosition.x, localPosition.y, 0.0f);
                 newObject.transform.localRotation = this.transform.localRotation;
                 //print(this.transform.localScale);
@@ -185,6 +185,7 @@ public class Brick : BuildingObject
         {
             newObject.SetActive(true);
             newObject.transform.parent = null;
+            newObject.transform.localScale = this.transform.localScale;
             Rigidbody2D rigidBody = newObject.GetComponent<Rigidbody2D>();
 
             if (rigidBody != null)
