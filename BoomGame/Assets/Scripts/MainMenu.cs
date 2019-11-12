@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
 
+
 public class MainMenu : MonoBehaviour
 {
     public TextMeshProUGUI salvageText;
@@ -29,7 +30,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Button loginButton;
     [SerializeField] private TextMeshProUGUI statusText;
     private bool mWaitingForAuth = false;
-    
+
 
 
     void Start()
@@ -52,68 +53,37 @@ public class MainMenu : MonoBehaviour
                 campaignMapPanel.SetActive(false);
                 shopPanel.SetActive(false);
                 bombPanel.SetActive(false);
-                gameServicesPanel.SetActive(false);
             }
             else
             {
-                gameServicesPanel.SetActive(true);   
                 mainMenuPanel.SetActive(true);
                 privacyPolicyPanel.SetActive(false);
                 campaignMapPanel.SetActive(false);
                 shopPanel.SetActive(false);
                 bombPanel.SetActive(false);
+
             }
 
-        if (gameServicesPanel != null)
-            {
-                if (!gameMaster.SignIn)
-                {
-                    mainMenuPanel.SetActive(true);
-                    privacyPolicyPanel.SetActive(false);
-                    campaignMapPanel.SetActive(false);
-                    shopPanel.SetActive(false);
-                    bombPanel.SetActive(false);
-                    gameServicesPanel.SetActive(true);
 
-                }
-                else
+            if (gameMaster.signIn == true)
+            {
+                if (gameServicesPanel != null)
                 {
-                    mainMenuPanel.SetActive(true);
-                    privacyPolicyPanel.SetActive(false);
-                    campaignMapPanel.SetActive(false);
-                    shopPanel.SetActive(false);
-                    bombPanel.SetActive(false);
                     gameServicesPanel.SetActive(false);
-
-
                 }
-            }
-
-            if (gameMaster.SignIn == true)
-            {
                 if (!Social.localUser.authenticated)
                 {
-                    // Authenticate
-                    mWaitingForAuth = true;
-                    statusText.text = "Authenticating...";
-
                     Social.localUser.Authenticate((bool success) =>
                     {
-                        mWaitingForAuth = false;
-                        if (success)
-                        {
-                            statusText.text = "Welcome " + Social.localUser.userName;
-                            StartCoroutine("LoadImage");
-                            loginButton.GetComponentInChildren<TMP_Text>().text = "Sign out";
-                            gameServicesPanel.SetActive(false);
-                            gameMaster.SignIn = true;
-                        }
-                        else
-                        {
-                            statusText.text = "Authentication failed.";
-                        }
-                    });
 
+                    });
+                }
+            }
+            else
+            {
+                if (gameServicesPanel != null)
+                {
+                    gameServicesPanel.SetActive(true);
                 }
             }
         }
@@ -161,7 +131,7 @@ public class MainMenu : MonoBehaviour
 
     public void AcceptPrivacyPolicy()
     {
-        //gameServicesPanel.SetActive(true);
+        gameServicesPanel.SetActive(true);
         mainMenuPanel.SetActive(true);
         privacyPolicyPanel.SetActive(false);
         campaignMapPanel.SetActive(false);
@@ -179,6 +149,7 @@ public class MainMenu : MonoBehaviour
         privacyPolicyPanel.SetActive(true);
         bombPanel.SetActive(false);
         bombSelectionPanel.SetActive(true);
+        gameServicesPanel.SetActive(false);
     }
 
     public void CloseCampaingMap()

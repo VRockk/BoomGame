@@ -45,7 +45,7 @@ public class GameMaster : MonoBehaviour
         }
     }
 
-    private bool signIn;
+    public bool signIn;
 
     public bool SignIn
     {
@@ -126,7 +126,7 @@ public class GameMaster : MonoBehaviour
         }
         else
         {
-            SignIn = false;
+            signIn = false;
         }
 
     }
