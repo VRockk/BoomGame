@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
 
+
 public class MainMenu : MonoBehaviour
 {
     public TextMeshProUGUI salvageText;
@@ -17,7 +18,7 @@ public class MainMenu : MonoBehaviour
     public GameObject shopPanel;
     public GameObject bombPanel;
     public GameObject bombSelectionPanel;
-    public GameObject optionPanel;    
+    public GameObject optionPanel;
     public GameObject gameServicesPanel;
     public GameObject gameMasterPrefab;
 
@@ -25,6 +26,11 @@ public class MainMenu : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip menuMusic;
     private bool rumbleToggleFlag = true;
+
+    [SerializeField] private Button loginButton;
+    [SerializeField] private TextMeshProUGUI statusText;
+    private bool mWaitingForAuth = false;
+
 
 
     void Start()
@@ -47,53 +53,72 @@ public class MainMenu : MonoBehaviour
                 campaignMapPanel.SetActive(false);
                 shopPanel.SetActive(false);
                 bombPanel.SetActive(false);
-                //gameServicesPanel.SetActive(false);
             }
             else
             {
-                //gameServicesPanel.SetActive(true);   
                 mainMenuPanel.SetActive(true);
                 privacyPolicyPanel.SetActive(false);
                 campaignMapPanel.SetActive(false);
                 shopPanel.SetActive(false);
                 bombPanel.SetActive(false);
+
+            }
+
+
+            if (gameMaster.signIn == true)
+            {
+                if (gameServicesPanel != null)
+                {
+                    gameServicesPanel.SetActive(false);
+                }
+                if (!Social.localUser.authenticated)
+                {
+                    Social.localUser.Authenticate((bool success) =>
+                    {
+
+                    });
+                }
+            }
+            else
+            {
+                if (gameServicesPanel != null)
+                {
+                    gameServicesPanel.SetActive(true);
+                }
             }
         }
         audioSource = GetComponent<AudioSource>();
+
+        // Select the Google Play Games platform as our social platform implementation
+        GooglePlayGames.PlayGamesPlatform.Activate();
+
+        //playButton.interactable = false;
+        if (!Social.localUser.authenticated)
+        {
+            loginButton.GetComponentInChildren<TMP_Text>().text = "Sign in";
+        }
     }
 
 
 
     void Update()
     {
-        //Dont update text on every update tick. Instead they should only be updated when the value is changed
-        //salvageText.text = "" + GameMaster.currentSalvage;
-
 
     }
-
-
 
     public void PlayGame()
     {
         SceneManager.LoadScene("CampaignMap");
 
 
+        //int tutorial = PlayerPrefs.GetInt("Tutorial", 0);
 
-
-        ////Starts the next level available in progression
-
-        //int levelReached = PlayerPrefs.GetInt("LevelReached", 1);
-        //if (levelReached == 1)
-        //    SceneManager.LoadScene("Tutorial");
+        //if (tutorial == 1)
+        //    SceneManager.LoadScene("CampaignMap");
         //else
         //{
-        //    //Paskaa
-        //    if (levelReached < 10)
-        //        SceneManager.LoadScene("Level_0" + levelReached.ToString());
-        //    else
-        //        SceneManager.LoadScene("Level_" + levelReached.ToString());
-
+        //    PlayerPrefs.SetInt("Tutorial", 1);
+        //    SceneManager.LoadScene("TutorialLevel");
         //}
     }
 
@@ -106,7 +131,7 @@ public class MainMenu : MonoBehaviour
 
     public void AcceptPrivacyPolicy()
     {
-        //gameServicesPanel.SetActive(true);
+        gameServicesPanel.SetActive(true);
         mainMenuPanel.SetActive(true);
         privacyPolicyPanel.SetActive(false);
         campaignMapPanel.SetActive(false);
@@ -124,6 +149,7 @@ public class MainMenu : MonoBehaviour
         privacyPolicyPanel.SetActive(true);
         bombPanel.SetActive(false);
         bombSelectionPanel.SetActive(true);
+        gameServicesPanel.SetActive(false);
     }
 
     public void CloseCampaingMap()
@@ -191,6 +217,40 @@ public class MainMenu : MonoBehaviour
         bombPanel.SetActive(false);
         bombSelectionPanel.SetActive(false);
     }
+
+    public void OnLoginButtonClick()
+    {
+        if (!Social.localUser.authenticated)
+        {
+            // Authenticate
+            mWaitingForAuth = true;
+            statusText.text = "Authenticating...";
+
+            Social.localUser.Authenticate((bool success) =>
+            {
+                mWaitingForAuth = false;
+                if (success)
+                {
+                    statusText.text = "Welcome " + Social.localUser.userName;
+                    StartCoroutine("LoadImage");
+                    loginButton.GetComponentInChildren<TMP_Text>().text = "Sign out";
+                    gameServicesPanel.SetActive(false);
+                    gameMaster.SignIn = true;
+                }
+                else
+                {
+                    statusText.text = "Authentication failed.";
+                }
+            });
+        }
+        else
+        {
+            statusText.text = "";
+            ((GooglePlayGames.PlayGamesPlatform)Social.Active).SignOut();
+            loginButton.GetComponentInChildren<TMP_Text>().text = "Sign in";
+        }
+
+    }
     public void CloseGameServices()
     {
         mainMenuPanel.SetActive(true);
@@ -199,7 +259,7 @@ public class MainMenu : MonoBehaviour
         campaignMapPanel.SetActive(false);
         bombPanel.SetActive(false);
         bombSelectionPanel.SetActive(true);
-        //gameServicesPanel.SetActive(false);
+        gameServicesPanel.SetActive(false);
     }
     public void ShowBombUpgradePanel(GameObject panel)
     {
@@ -234,18 +294,18 @@ public class MainMenu : MonoBehaviour
     }
     public void PlaySound(AudioClip sound)
     {
-        if(rumbleToggleFlag == true)
+        if (rumbleToggleFlag == true)
         {
-          audioSource.PlayOneShot(sound);
+            audioSource.PlayOneShot(sound);
         }
-       
+
     }
 
 
     public void OnChangeRumble()
     {
         Toggle rumbleToggle = (Toggle)FindObjectOfType(typeof(Toggle));
-        if(rumbleToggle.isOn)
+        if (rumbleToggle.isOn)
         {
             rumbleToggleFlag = true;
             Debug.Log("switch is on");

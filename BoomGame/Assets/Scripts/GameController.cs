@@ -31,6 +31,8 @@ public class GameController : MonoBehaviour
 
     public GameObject gameMasterPrefab;
 
+    public GameObject ingameHUD;
+
     private IngameHUD hud;
     private CameraHandler cameraHandler;
 
@@ -66,8 +68,12 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Time.timeScale = 0.2f;
-        hud = GameObject.FindObjectOfType<IngameHUD>();
+        if (ingameHUD != null)
+        {
+            ingameHUD.SetActive(true);
+            //Time.timeScale = 0.2f;
+            hud = ingameHUD.GetComponent<IngameHUD>();
+        }
 
         if (hud == null)
             Debug.LogError("IngameHUD not found in the scene for the GameController");

@@ -11,36 +11,37 @@ public class Chapter : MonoBehaviour
     //How many pentagrams needs to be gained to open chapter
     public int pentaLimit = 0;
 
-    public List<GameObject> levels;
+    public List<string> levelNames;
 
     public Sprite clearedIcon;
     public Sprite unclearedIcon;
     public Sprite selectedIcon;
     public GameObject lockInfo;
     public GameObject pentaRequirement;
+    public SpriteRenderer iconRenderer;
 
     [HideInInspector]
     public bool locked = true;
 
-    public SpriteRenderer iconRenderer;
+    [HideInInspector]
+    public List<Level> chapterLevels;
+
     private bool allLevelsCleared = true;
     private int playerPentagrams;
 
     // Start is called before the first frame update
     void Start()
     {
+        chapterLevels = new List<Level>();
         //Get saved values for each level
-        foreach (var level in levels)
+        foreach (var levelName in levelNames)
         {
-            var levelScript = level.GetComponent<Level>();
-            if (levelScript != null)
-            {
-                levelScript.SetSavedValues();
+            Level chapterLevel = new Level(levelName);
+            //If any level has zero pentagrams it means the chapter is not fully cleared
+            if (chapterLevel.pentagrams == 0)
+                allLevelsCleared = false;
 
-                //If any level has zero pentagrams it means the chapter is not fully cleared
-                if (levelScript.pentagrams == 0)
-                    allLevelsCleared = false;
-            }
+            chapterLevels.Add(chapterLevel);
         }
         playerPentagrams = PlayerPrefs.GetInt("PlayerPentagrams", 0);
 

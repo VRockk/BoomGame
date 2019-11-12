@@ -8,7 +8,9 @@ public class ChapterPanel : MonoBehaviour
 {
     public GameObject chapterName;
     public GameObject levelInfoPanelPrefab;
-    private List<Level> levels;
+    public GameObject levelPanel;
+
+    private Chapter chapter;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,46 +25,32 @@ public class ChapterPanel : MonoBehaviour
 
     public void CreateLevelInfoPanels(Chapter chapter)
     {
-        if (chapter == null || chapter.levels == null)
+        if (chapter == null || chapter.levelNames == null || chapter.levelNames.Count == 0 || levelPanel == null)
             return;
 
-        foreach(var levelPanel in this.transform.GetComponentsInChildren<LevelInfoPanel>())
+        this.chapter = chapter;
+        foreach (var levelInfoPanel in levelPanel.transform.GetComponentsInChildren<LevelInfoPanel>())
         {
             //remove old panels
-            Destroy(levelPanel.gameObject);
+            Destroy(levelInfoPanel.gameObject);
         }
-        levels = new List<Level>();
+
         int count = 0;
         //Create new info panel for each level and set position. Then set the level infor inside Level Sc´ript
-        foreach (var level in chapter.levels)
+        foreach (var level in chapter.chapterLevels)
         {
             var levelInfoPanel = Instantiate(levelInfoPanelPrefab);
             var transform = levelInfoPanel.GetComponent<RectTransform>();
-            transform.SetParent(this.transform);
-            //transform.position = new Vector3(transform.position.x, , 0f);
-            transform.SetLeft(25f);
-            transform.SetRight(25f);
-
-            transform.sizeDelta = new Vector2(transform.sizeDelta.x, 150f);
-            Vector3 pos = transform.anchoredPosition;
-            pos.y = -50f + (count * -175f);
-            transform.anchoredPosition = pos;
-
-            //transform.offsetMin = new Vector2(0f, -50f + (count * -175f));
-            //transform.offsetMax = new Vector2(0f, -50f + (count * -175f));
-            //transform.localPosition = new Vector3(0f, , 0);
+            transform.SetParent(levelPanel.transform);
             transform.localScale = new Vector3(1, 1, 1);
 
-
             var levelInfoPanelScript = levelInfoPanel.GetComponent<LevelInfoPanel>();
-            var levelScript = level.GetComponent<Level>();
             count++;
-            levelInfoPanelScript.SetLevelInfo(levelScript, count);
-            levels.Add(levelScript);
+            levelInfoPanelScript.SetLevelInfo(level, count);
         }
 
         var chapterNameText = chapterName.GetComponent<TextMeshProUGUI>();
-        if(chapterNameText != null)
+        if (chapterNameText != null)
         {
             chapterNameText.text = chapter.chapterName;
         }
@@ -71,8 +59,8 @@ public class ChapterPanel : MonoBehaviour
     public void OpenLevel(string name)
     {
         var gameMaster = FindObjectOfType<GameMaster>();
-        gameMaster.currentChapterLevels = levels;
+        //gameMaster.currentChapterLevels = new List<Level>();
+        gameMaster.currentChapterLevels = this.chapter.chapterLevels;
         SceneManager.LoadScene(name);
-
     }
 }

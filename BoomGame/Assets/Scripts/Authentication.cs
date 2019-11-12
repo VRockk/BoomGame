@@ -13,6 +13,8 @@ public class Authentication : MonoBehaviour
     [SerializeField] private TextMeshProUGUI statusText;
     [SerializeField] private RawImage userImage;
     private bool mWaitingForAuth = false;
+    private GameMaster gameMaster;
+    private MainMenu mainMenu;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +22,7 @@ public class Authentication : MonoBehaviour
         // Select the Google Play Games platform as our social platform implementation
         GooglePlayGames.PlayGamesPlatform.Activate();
 
-        playButton.interactable = false;
+        //playButton.interactable = false;
         if (!Social.localUser.authenticated)
         {
             loginButton.GetComponentInChildren<Text>().text = "Sign in";
@@ -34,7 +36,7 @@ public class Authentication : MonoBehaviour
         {
             // Authenticate
             mWaitingForAuth = true;
-            statusText.text = "Authenticating...";            
+            statusText.text = "Authenticating...";
 
             Social.localUser.Authenticate((bool success) =>
             {
@@ -45,6 +47,8 @@ public class Authentication : MonoBehaviour
                     playButton.interactable = true;
                     StartCoroutine("LoadImage");
                     loginButton.GetComponentInChildren<Text>().text = "Sign out";
+                    gameMaster.SignIn = true;
+                    mainMenu.gameServicesPanel.SetActive(false);
                 }
                 else
                 {
@@ -56,18 +60,19 @@ public class Authentication : MonoBehaviour
         {
             statusText.text = "";
             ((GooglePlayGames.PlayGamesPlatform)Social.Active).SignOut();
-            playButton.interactable = false;  
+            playButton.interactable = false;
             userImage.texture = null;
             loginButton.GetComponentInChildren<Text>().text = "Sign in";
         }
+
     }
 
     public void OnPlayButtonClick()
     {
-            SceneManager.LoadScene("MainMenuScene");
+        SceneManager.LoadScene("MainMenuScene");
     }
 
-        private IEnumerator LoadImage()
+    private IEnumerator LoadImage()
     {
         while (Social.localUser.image == null)
         {

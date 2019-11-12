@@ -1,30 +1,12 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraShake : MonoBehaviour
 {
-    private Transform camTransform;
-
-    // Desired duration of the shake effect
-    private float shakeDuration = 0.0f;
-
-    // A measure of magnitude for the shake. Tweak based on your preference
-    private float shakeMagnitude = 0.7f;
-
-    // A measure of how quickly the shake effect should evaporate
-    private float dampingSpeed = 1.0f;
-
-    // The initial position of the GameObject
-    private Vector3 initialPosition;
-
-
     void Awake()
     {
-        if (camTransform == null)
-        {
-            camTransform = GetComponent(typeof(Transform)) as Transform;
-        }
 
     }
     // Start is called before the first frame update
@@ -33,32 +15,14 @@ public class CameraShake : MonoBehaviour
         
     }
 
-    void OnEnable()
-    {
-        initialPosition = camTransform.localPosition;
-    }
 
     // Update is called once per frame
     void Update()
     {
-        if (shakeDuration > 0)
-        {
-            transform.localPosition = initialPosition + Random.insideUnitSphere * shakeMagnitude;
-
-            shakeDuration -= Time.deltaTime * dampingSpeed;
-        }
-        else
-        {
-            shakeDuration = 0f;
-            transform.localPosition = initialPosition;
-        }
     }
 
-    public void Shake(float duration, float magnitude, float damping)
+    public void Shake(float duration, float strength, int vibrato, float randomness, bool fadeOut)
     {
-        camTransform = Camera.main.transform;
-        shakeDuration = duration;
-        shakeMagnitude = magnitude;
-        dampingSpeed = damping;
+        Camera.main.DOShakePosition(duration, strength, vibrato, randomness, fadeOut);
     }
 }
