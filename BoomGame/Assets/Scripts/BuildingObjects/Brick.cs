@@ -27,6 +27,8 @@ public class Brick : BuildingObject
     private bool shattered = false;
     private float damageGateDelay = 0f;
     private const float damageDelayDefault = 0.05f;
+    public int scoreValue;
+    
 
     protected override void OnDrawGizmos()
     {
@@ -200,7 +202,9 @@ public class Brick : BuildingObject
                 }
             }
         }
+        
         Destroy(this.gameObject);
+        Score.scoreValue += scoreValue;
     }
 
     private void ShatterAudio()
