@@ -31,7 +31,8 @@ public class CameraShake : MonoBehaviour
     private IEnumerator SetCamPos(float delay)
     {
         yield return new WaitForSeconds(delay);
-        Camera.main.transform.localPosition = new Vector3(0,0, -50f);
+        var cameraHandler = FindObjectOfType<CameraHandler>();
+        Camera.main.transform.localPosition = cameraHandler.cameraDefaultPos;
 
     }
 }

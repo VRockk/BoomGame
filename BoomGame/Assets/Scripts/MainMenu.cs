@@ -14,7 +14,6 @@ public class MainMenu : MonoBehaviour
 
     public GameObject privacyPolicyPanel;
     public GameObject mainMenuPanel;
-    public GameObject campaignMapPanel;
     public GameObject shopPanel;
     public GameObject bombPanel;
     public GameObject bombSelectionPanel;
@@ -50,7 +49,6 @@ public class MainMenu : MonoBehaviour
             {
                 mainMenuPanel.SetActive(false);
                 privacyPolicyPanel.SetActive(true);
-                campaignMapPanel.SetActive(false);
                 shopPanel.SetActive(false);
                 bombPanel.SetActive(false);
             }
@@ -58,7 +56,6 @@ public class MainMenu : MonoBehaviour
             {
                 mainMenuPanel.SetActive(true);
                 privacyPolicyPanel.SetActive(false);
-                campaignMapPanel.SetActive(false);
                 shopPanel.SetActive(false);
                 bombPanel.SetActive(false);
 
@@ -134,7 +131,6 @@ public class MainMenu : MonoBehaviour
         gameServicesPanel.SetActive(true);
         mainMenuPanel.SetActive(true);
         privacyPolicyPanel.SetActive(false);
-        campaignMapPanel.SetActive(false);
         shopPanel.SetActive(false);
         bombPanel.SetActive(false);
         bombSelectionPanel.SetActive(true);
@@ -145,7 +141,6 @@ public class MainMenu : MonoBehaviour
     {
         mainMenuPanel.SetActive(false);
         shopPanel.SetActive(false);
-        campaignMapPanel.SetActive(false);
         privacyPolicyPanel.SetActive(true);
         bombPanel.SetActive(false);
         bombSelectionPanel.SetActive(true);
@@ -155,7 +150,6 @@ public class MainMenu : MonoBehaviour
     public void CloseCampaingMap()
     {
         mainMenuPanel.SetActive(true);
-        campaignMapPanel.SetActive(false);
         privacyPolicyPanel.SetActive(false);
         shopPanel.SetActive(false);
         bombPanel.SetActive(false);
@@ -165,7 +159,6 @@ public class MainMenu : MonoBehaviour
     {
         mainMenuPanel.SetActive(false);
         privacyPolicyPanel.SetActive(false);
-        campaignMapPanel.SetActive(true);
         shopPanel.SetActive(false);
         bombPanel.SetActive(false);
         bombSelectionPanel.SetActive(true);
@@ -175,7 +168,6 @@ public class MainMenu : MonoBehaviour
         mainMenuPanel.SetActive(true);
         privacyPolicyPanel.SetActive(false);
         shopPanel.SetActive(false);
-        campaignMapPanel.SetActive(false);
         bombPanel.SetActive(false);
         bombSelectionPanel.SetActive(true);
     }
@@ -184,7 +176,6 @@ public class MainMenu : MonoBehaviour
         mainMenuPanel.SetActive(false);
         privacyPolicyPanel.SetActive(false);
         shopPanel.SetActive(true);
-        campaignMapPanel.SetActive(false);
         bombPanel.SetActive(false);
         bombSelectionPanel.SetActive(true);
 
@@ -194,7 +185,6 @@ public class MainMenu : MonoBehaviour
         //mainMenuPanel.SetActive(false);
         privacyPolicyPanel.SetActive(false);
         shopPanel.SetActive(false);
-        campaignMapPanel.SetActive(false);
         bombPanel.SetActive(true);
         bombSelectionPanel.SetActive(true);
         var upgradePanels = GameObject.FindGameObjectsWithTag("BombUpgradePanel");
@@ -213,7 +203,6 @@ public class MainMenu : MonoBehaviour
         mainMenuPanel.SetActive(true);
         privacyPolicyPanel.SetActive(false);
         shopPanel.SetActive(false);
-        campaignMapPanel.SetActive(false);
         bombPanel.SetActive(false);
         bombSelectionPanel.SetActive(false);
     }
@@ -256,7 +245,6 @@ public class MainMenu : MonoBehaviour
         mainMenuPanel.SetActive(true);
         privacyPolicyPanel.SetActive(false);
         shopPanel.SetActive(false);
-        campaignMapPanel.SetActive(false);
         bombPanel.SetActive(false);
         bombSelectionPanel.SetActive(true);
         gameServicesPanel.SetActive(false);
@@ -278,7 +266,6 @@ public class MainMenu : MonoBehaviour
         mainMenuPanel.SetActive(false);
         privacyPolicyPanel.SetActive(false);
         optionPanel.SetActive(true);
-        campaignMapPanel.SetActive(false);
         bombPanel.SetActive(false);
         bombSelectionPanel.SetActive(true);
     }
@@ -288,7 +275,6 @@ public class MainMenu : MonoBehaviour
         mainMenuPanel.SetActive(true);
         privacyPolicyPanel.SetActive(false);
         optionPanel.SetActive(false);
-        campaignMapPanel.SetActive(false);
         bombPanel.SetActive(false);
         bombSelectionPanel.SetActive(true);
     }

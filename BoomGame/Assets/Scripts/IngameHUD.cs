@@ -39,7 +39,6 @@ public class IngameHUD : MonoBehaviour
     private Canvas canvas;
 
     private int salvageAmount = 0;
-    private int bonusSalvage = 0;
     void Awake()
     {
     }
@@ -152,10 +151,9 @@ public class IngameHUD : MonoBehaviour
         ShowRoundText(delay, roundNumber);
     }
 
-    public void LevelFinished(LevelClear levelClear, int salvage, int bonus)
+    public void LevelFinished(LevelClear levelClear, int salvage)
     {
         salvageAmount = salvage;
-        bonusSalvage = bonus;
 
         detonatePanel.SetActive(false);
         bombPanel.SetActive(false);
@@ -236,20 +234,10 @@ public class IngameHUD : MonoBehaviour
         if (salvagePanel.activeInHierarchy)
         {
             var salvageGain = GameObject.Find("SalvageGain");
-            var salvageBonusGain = GameObject.Find("SalvageBonusGain");
-            var salvageBonus = GameObject.Find("SalvageBonus");
 
             salvageGain.SetActive(true);
-            salvageBonus.SetActive(false);
-            salvageBonusGain.SetActive(false);
             salvageGain.GetComponent<TextMeshProUGUI>().text = salvageAmount.ToString();
 
-            if (bonusSalvage > 0)
-            {
-                salvageBonus.SetActive(true);
-                salvageBonusGain.SetActive(true);
-                salvageBonusGain.GetComponent<TextMeshProUGUI>().text = bonusSalvage.ToString();
-            }
         }
 
     }
