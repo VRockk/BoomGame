@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7503000431151705921}
   - component: {fileID: 7503000431151705934}
   - component: {fileID: 7503000431151705935}
-  - component: {fileID: 3099222138936572264}
+  - component: {fileID: 1121593417517127942}
   m_Layer: 0
   m_Name: GlassWall
   m_TagString: BuildingObject
@@ -163,7 +163,7 @@ MonoBehaviour:
   shatterParticle: {fileID: 0}
   audioObject: {fileID: 0}
   shatterSFX: []
---- !u!114 &3099222138936572264
+--- !u!114 &1121593417517127942
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,14 +181,65 @@ MonoBehaviour:
   createManualJoints: 0
   createJointToGround: 0
   ignoredJoints: []
-  manualJointLocations: []
+  manualJointLocations:
+  - {x: 0.61, y: 3.64}
+  - {x: 0, y: 5.4}
+  - {x: 0, y: -5.4}
   materialType: 0
   attachedObjects: []
   allowDamage: 1
   deactivateDelay: 0
   checkedInLevelClear: 1
-  pieceSpawnLocations: []
-  pieceObjects: []
+  pieceSpawnLocations:
+  - {x: -0.33, y: 4.4}
+  - {x: 0.42, y: 4.4}
+  - {x: -0.33, y: 3.6}
+  - {x: 0.42, y: 3.6}
+  - {x: -0.33, y: 2.8}
+  - {x: 0.42, y: 2.8}
+  - {x: -0.33, y: 2}
+  - {x: 0.42, y: 2}
+  - {x: 0.42, y: 1.2}
+  - {x: -0.33, y: 1.2}
+  - {x: 0.42, y: 0.4}
+  - {x: -0.33, y: 0.4}
+  - {x: 0.42, y: -0.4}
+  - {x: -0.33, y: -0.4}
+  - {x: -0.33, y: -1.2}
+  - {x: 0.42, y: -1.2}
+  - {x: -0.33, y: -2}
+  - {x: 0.42, y: -2}
+  - {x: -0.33, y: -2.8}
+  - {x: 0.42, y: -2.8}
+  - {x: -0.33, y: -3.6}
+  - {x: 0.42, y: -3.6}
+  - {x: -0.33, y: -4.4}
+  - {x: 0.42, y: -4.4}
+  pieceObjects:
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
   hitpoints: 2
   damagedForceLimit: 10000
   shatterParticle: {fileID: 0}

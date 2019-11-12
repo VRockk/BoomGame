@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3925606645666125677}
   - component: {fileID: 3925606645666125676}
   - component: {fileID: 3925606645666125683}
-  - component: {fileID: -2254277875245835873}
+  - component: {fileID: 3458076876701264340}
   m_Layer: 0
   m_Name: GlassWallMiddle
   m_TagString: BuildingObject
@@ -143,7 +143,7 @@ PolygonCollider2D:
       - {x: 0.7938347, y: 3.2029114}
       - {x: 0.29405785, y: 3.202156}
       - {x: 0.30327797, y: 4.1640778}
---- !u!114 &-2254277875245835873
+--- !u!114 &3458076876701264340
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,7 +163,6 @@ MonoBehaviour:
   ignoredJoints: []
   manualJointLocations:
   - {x: 0.61, y: 3.64}
-  - {x: -0.61, y: 3.64}
   - {x: 0, y: 5.4}
   - {x: 0, y: -5.4}
   materialType: 0
@@ -171,10 +170,58 @@ MonoBehaviour:
   allowDamage: 1
   deactivateDelay: 0
   checkedInLevelClear: 1
-  pieceSpawnLocations: []
-  pieceObjects: []
+  pieceSpawnLocations:
+  - {x: -0.33, y: 4.4}
+  - {x: 0.42, y: 4.4}
+  - {x: -0.33, y: 3.6}
+  - {x: 0.42, y: 3.6}
+  - {x: -0.33, y: 2.8}
+  - {x: 0.42, y: 2.8}
+  - {x: -0.33, y: 2}
+  - {x: 0.42, y: 2}
+  - {x: 0.42, y: 1.2}
+  - {x: -0.33, y: 1.2}
+  - {x: 0.42, y: 0.4}
+  - {x: -0.33, y: 0.4}
+  - {x: 0.42, y: -0.4}
+  - {x: -0.33, y: -0.4}
+  - {x: -0.33, y: -1.2}
+  - {x: 0.42, y: -1.2}
+  - {x: -0.33, y: -2}
+  - {x: 0.42, y: -2}
+  - {x: -0.33, y: -2.8}
+  - {x: 0.42, y: -2.8}
+  - {x: -0.33, y: -3.6}
+  - {x: 0.42, y: -3.6}
+  - {x: -0.33, y: -4.4}
+  - {x: 0.42, y: -4.4}
+  pieceObjects:
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
   hitpoints: 1
-  damagedForceLimit: 6000
+  damagedForceLimit: 10000
   shatterParticle: {fileID: 0}
   audioObject: {fileID: 0}
   shatterSFX: []

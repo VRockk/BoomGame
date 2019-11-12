@@ -133,7 +133,7 @@ MonoBehaviour:
   jointBreakForce: 50000
   jointBreakTorque: 50000
   createJoints: 1
-  createManualJoints: 0
+  createManualJoints: 1
   createJointToGround: 0
   ignoredJoints: []
   manualJointLocations: []
@@ -197,8 +197,56 @@ MonoBehaviour:
   allowDamage: 1
   deactivateDelay: 0
   checkedInLevelClear: 1
-  pieceSpawnLocations: []
-  pieceObjects: []
+  pieceSpawnLocations:
+  - {x: -0.33, y: 4.4}
+  - {x: 0.42, y: 4.4}
+  - {x: -0.33, y: 3.6}
+  - {x: 0.42, y: 3.6}
+  - {x: -0.33, y: 2.8}
+  - {x: 0.42, y: 2.8}
+  - {x: -0.33, y: 2}
+  - {x: 0.42, y: 2}
+  - {x: 0.42, y: 1.2}
+  - {x: -0.33, y: 1.2}
+  - {x: 0.42, y: 0.4}
+  - {x: -0.33, y: 0.4}
+  - {x: 0.42, y: -0.4}
+  - {x: -0.33, y: -0.4}
+  - {x: -0.33, y: -1.2}
+  - {x: 0.42, y: -1.2}
+  - {x: -0.33, y: -2}
+  - {x: 0.42, y: -2}
+  - {x: -0.33, y: -2.8}
+  - {x: 0.42, y: -2.8}
+  - {x: -0.33, y: -3.6}
+  - {x: 0.42, y: -3.6}
+  - {x: -0.33, y: -4.4}
+  - {x: 0.42, y: -4.4}
+  pieceObjects:
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
   hitpoints: 2
   damagedForceLimit: 10000
   shatterParticle: {fileID: 0}

@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2420416988470521841}
   - component: {fileID: 2420416988470521843}
   - component: {fileID: 2420416988470521842}
-  - component: {fileID: 5264694020479423898}
   m_Layer: 0
   m_Name: GlassWallLeft
   m_TagString: BuildingObject
@@ -124,16 +123,67 @@ MonoBehaviour:
   createManualJoints: 0
   createJointToGround: 0
   ignoredJoints: []
-  manualJointLocations: []
+  manualJointLocations:
+  - {x: 0.61, y: 3.64}
+  - {x: 0, y: 5.4}
+  - {x: 0, y: -5.4}
   materialType: 0
   attachedObjects: []
   allowDamage: 1
   deactivateDelay: 0
   checkedInLevelClear: 1
-  pieceSpawnLocations: []
-  pieceObjects: []
+  pieceSpawnLocations:
+  - {x: -0.33, y: 4.4}
+  - {x: 0.42, y: 4.4}
+  - {x: -0.33, y: 3.6}
+  - {x: 0.42, y: 3.6}
+  - {x: -0.33, y: 2.8}
+  - {x: 0.42, y: 2.8}
+  - {x: -0.33, y: 2}
+  - {x: 0.42, y: 2}
+  - {x: 0.42, y: 1.2}
+  - {x: -0.33, y: 1.2}
+  - {x: 0.42, y: 0.4}
+  - {x: -0.33, y: 0.4}
+  - {x: 0.42, y: -0.4}
+  - {x: -0.33, y: -0.4}
+  - {x: -0.33, y: -1.2}
+  - {x: 0.42, y: -1.2}
+  - {x: -0.33, y: -2}
+  - {x: 0.42, y: -2}
+  - {x: -0.33, y: -2.8}
+  - {x: 0.42, y: -2.8}
+  - {x: -0.33, y: -3.6}
+  - {x: 0.42, y: -3.6}
+  - {x: -0.33, y: -4.4}
+  - {x: 0.42, y: -4.4}
+  pieceObjects:
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
+  - {fileID: 8546890470479307831, guid: 6ef54480c5980364fb9beb43c9a0f016, type: 3}
   hitpoints: 1
-  damagedForceLimit: 6000
+  damagedForceLimit: 10000
   shatterParticle: {fileID: 0}
   audioObject: {fileID: 0}
   shatterSFX: []
@@ -171,37 +221,3 @@ PolygonCollider2D:
       - {x: 0.80200005, y: -5.0090027}
       - {x: 0.805, y: 3.215}
       - {x: 0.28693008, y: 3.2125092}
---- !u!114 &5264694020479423898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2420416988470521844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50afc76e2b398c546b7954a7ed37f1ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jointBreakForce: 50000
-  jointBreakTorque: 50000
-  createJoints: 1
-  createManualJoints: 0
-  createJointToGround: 0
-  ignoredJoints: []
-  manualJointLocations:
-  - {x: 0, y: 5.4}
-  - {x: 0.64, y: 3.64}
-  - {x: 0, y: -5.4}
-  materialType: 0
-  attachedObjects: []
-  allowDamage: 1
-  deactivateDelay: 0
-  checkedInLevelClear: 1
-  pieceSpawnLocations: []
-  pieceObjects: []
-  hitpoints: 2
-  damagedForceLimit: 10000
-  shatterParticle: {fileID: 0}
-  audioObject: {fileID: 0}
-  shatterSFX: []
