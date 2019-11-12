@@ -3084,11 +3084,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameController
       objectReference: {fileID: 0}
-    - target: {fileID: 7072808867729113272, guid: 7275690b5ceda334e927d6cae6580ad2,
-        type: 3}
-      propertyPath: ingameHUD
-      value: 
-      objectReference: {fileID: 2034622223728188331}
     - target: {fileID: 7072808867729113275, guid: 7275690b5ceda334e927d6cae6580ad2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3144,6 +3139,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7072808867729113272, guid: 7275690b5ceda334e927d6cae6580ad2,
+        type: 3}
+      propertyPath: ingameHUD
+      value: 
+      objectReference: {fileID: 2034622223728188331}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7275690b5ceda334e927d6cae6580ad2, type: 3}
 --- !u!4 &8572952852546758731 stripped
@@ -3627,7 +3627,7 @@ PrefabInstance:
     - target: {fileID: 7100608830386038689, guid: 97019ba74e81d7547a0d08637a4a34a5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4097272024697027725, guid: 97019ba74e81d7547a0d08637a4a34a5,
         type: 3}
@@ -3757,12 +3757,12 @@ PrefabInstance:
     - target: {fileID: 2488293657388217406, guid: 97019ba74e81d7547a0d08637a4a34a5,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 271.25827
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4044286818732830258, guid: 97019ba74e81d7547a0d08637a4a34a5,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 174.82518
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 900521090406786768, guid: 97019ba74e81d7547a0d08637a4a34a5,
         type: 3}

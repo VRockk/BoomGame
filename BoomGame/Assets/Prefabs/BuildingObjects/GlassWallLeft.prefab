@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5264694020479423898}
   m_Layer: 0
   m_Name: GlassWallLeft
-  m_TagString: Untagged
+  m_TagString: BuildingObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,7 +101,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 5
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 6c5305bef19ddf64699d63dc7983e3c2, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -146,7 +146,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 2420416988470521844}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 6c5305bef19ddf64699d63dc7983e3c2, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -189,7 +189,10 @@ MonoBehaviour:
   createManualJoints: 0
   createJointToGround: 0
   ignoredJoints: []
-  manualJointLocations: []
+  manualJointLocations:
+  - {x: 0, y: 5.4}
+  - {x: 0.64, y: 3.64}
+  - {x: 0, y: -5.4}
   materialType: 0
   attachedObjects: []
   allowDamage: 1

@@ -13,10 +13,9 @@ GameObject:
   - component: {fileID: 2875603534583728713}
   - component: {fileID: 2875603534583728712}
   - component: {fileID: 2875603534583728715}
-  - component: {fileID: -3053347463502922416}
   m_Layer: 0
   m_Name: GlassFloor
-  m_TagString: Untagged
+  m_TagString: BuildingObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,7 +100,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 5
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 6c5305bef19ddf64699d63dc7983e3c2, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -115,7 +114,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 2875603534583728756}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 6c5305bef19ddf64699d63dc7983e3c2, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -159,7 +158,9 @@ MonoBehaviour:
   createManualJoints: 0
   createJointToGround: 0
   ignoredJoints: []
-  manualJointLocations: []
+  manualJointLocations:
+  - {x: 4.7, y: 0.34}
+  - {x: -4.66, y: 0.35}
   materialType: 0
   attachedObjects: []
   allowDamage: 1
@@ -169,37 +170,6 @@ MonoBehaviour:
   pieceObjects: []
   hitpoints: 1
   damagedForceLimit: 6000
-  shatterParticle: {fileID: 0}
-  audioObject: {fileID: 0}
-  shatterSFX: []
---- !u!114 &-3053347463502922416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2875603534583728756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50afc76e2b398c546b7954a7ed37f1ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jointBreakForce: 50000
-  jointBreakTorque: 50000
-  createJoints: 1
-  createManualJoints: 0
-  createJointToGround: 0
-  ignoredJoints: []
-  manualJointLocations: []
-  materialType: 0
-  attachedObjects: []
-  allowDamage: 1
-  deactivateDelay: 0
-  checkedInLevelClear: 1
-  pieceSpawnLocations: []
-  pieceObjects: []
-  hitpoints: 2
-  damagedForceLimit: 10000
   shatterParticle: {fileID: 0}
   audioObject: {fileID: 0}
   shatterSFX: []
