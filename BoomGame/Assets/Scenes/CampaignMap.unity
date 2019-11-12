@@ -130,7 +130,7 @@ PrefabInstance:
     - target: {fileID: 5626117355871531925, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
       propertyPath: m_Name
-      value: Chapter3
+      value: Chapter2
       objectReference: {fileID: 0}
     - target: {fileID: 5626117355871531924, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
@@ -170,7 +170,7 @@ PrefabInstance:
     - target: {fileID: 5626117355871531924, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5626117355871531924, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
@@ -262,6 +262,11 @@ PrefabInstance:
       propertyPath: levelNames.Array.data[3]
       value: Level_09
       objectReference: {fileID: 0}
+    - target: {fileID: 5626117355871531927, guid: 5305b0c8be0fd884ab0971a28a316f57,
+        type: 3}
+      propertyPath: previousChapter
+      value: 
+      objectReference: {fileID: 1802290496}
     - target: {fileID: 6378374482858241674, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
       propertyPath: m_WasSpriteAssigned
@@ -354,8 +359,8 @@ Transform:
   m_LocalScale: {x: 6.5, y: 6.5, z: 1}
   m_Children:
   - {fileID: 783029179}
-  - {fileID: 1901415999}
   - {fileID: 207505806}
+  - {fileID: 1901415999}
   - {fileID: 1383224291}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -1154,6 +1159,11 @@ PrefabInstance:
       propertyPath: m_Value
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4281172150582598509, guid: a5dcf8ddcab4b1745b16b5f11990a41d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5dcf8ddcab4b1745b16b5f11990a41d, type: 3}
 --- !u!1 &365667178
@@ -1227,6 +1237,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3882256474439251628, guid: a5dcf8ddcab4b1745b16b5f11990a41d,
     type: 3}
   m_PrefabInstance: {fileID: 355915286}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &690759289 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5626117355871531925, guid: 5305b0c8be0fd884ab0971a28a316f57,
+    type: 3}
+  m_PrefabInstance: {fileID: 1935738169}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &783029179 stripped
 Transform:
@@ -1325,7 +1341,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1303812343}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e188ee899633d0b49870a5ae38b7359d, type: 3}
   m_Name: 
@@ -1475,6 +1491,11 @@ PrefabInstance:
       propertyPath: levelNames.Array.data[3]
       value: Level_19
       objectReference: {fileID: 0}
+    - target: {fileID: 5626117355871531927, guid: 5305b0c8be0fd884ab0971a28a316f57,
+        type: 3}
+      propertyPath: previousChapter
+      value: 
+      objectReference: {fileID: 690759289}
     - target: {fileID: 6378374482858241674, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
       propertyPath: m_WasSpriteAssigned
@@ -1487,6 +1508,18 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5626117355871531924, guid: 5305b0c8be0fd884ab0971a28a316f57,
     type: 3}
   m_PrefabInstance: {fileID: 1383224290}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1751185532 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5626117355871531925, guid: 5305b0c8be0fd884ab0971a28a316f57,
+    type: 3}
+  m_PrefabInstance: {fileID: 207505805}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1802290496 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5626117355871531925, guid: 5305b0c8be0fd884ab0971a28a316f57,
+    type: 3}
+  m_PrefabInstance: {fileID: 5626117355801141985}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1901415999 stripped
 Transform:
@@ -1504,7 +1537,7 @@ PrefabInstance:
     - target: {fileID: 5626117355871531925, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
       propertyPath: m_Name
-      value: Chapter2
+      value: Chapter3
       objectReference: {fileID: 0}
     - target: {fileID: 5626117355871531924, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
@@ -1544,7 +1577,7 @@ PrefabInstance:
     - target: {fileID: 5626117355871531924, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5626117355871531924, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
@@ -1631,6 +1664,11 @@ PrefabInstance:
       propertyPath: levelNames.Array.data[4]
       value: Level_15
       objectReference: {fileID: 0}
+    - target: {fileID: 5626117355871531927, guid: 5305b0c8be0fd884ab0971a28a316f57,
+        type: 3}
+      propertyPath: previousChapter
+      value: 
+      objectReference: {fileID: 1751185532}
     - target: {fileID: 6378374482858241674, guid: 5305b0c8be0fd884ab0971a28a316f57,
         type: 3}
       propertyPath: m_WasSpriteAssigned

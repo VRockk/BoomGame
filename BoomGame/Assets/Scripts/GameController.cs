@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 
 using System.Linq;
 using System;
+using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
 
 /// <summary>
 /// Resposible for the ingame logic and input
@@ -56,6 +59,8 @@ public class GameController : MonoBehaviour
 
     private int levelScore = 0;
 
+    private bool allowTimescale = false;
+    private TweenerCore<float, float, FloatOptions> timeScaleTween;
     private void Awake()
     {
         gameMaster = FindObjectOfType<GameMaster>();
@@ -125,6 +130,16 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (allowTimescale)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                allowTimescale = false;
+                //timeScaleTween = DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 10f, 5f).SetUpdate(true);
+
+            }
+
+        }
         if (inputAllowed)
         {
             Vector3 mousePos = UtilityLibrary.GetCurrentMousePosition();
@@ -312,15 +327,22 @@ public class GameController : MonoBehaviour
             }
         }
 
-        if (movementCheckCount == 5)
+        if (movementCheckCount == 4)
         {
-            Time.timeScale = 2;
+            //speed up the game
+            allowTimescale = true;
+            timeScaleTween = DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 10f, 5f).SetUpdate(true);
+
         }
 
-        //If no movement, stop checking and start next round/next level if finished
-        if (!isMovement || movementCheckCount > 15)
+        //If no movement, stop checking and start next round/next level if finished and set timescale back to 1
+        if (!isMovement || movementCheckCount > 60)
         {
-            Time.timeScale = 1;
+            allowTimescale = false;
+            if (timeScaleTween != null)
+                timeScaleTween.Kill();
+            Time.timeScale = 1f;
+            //DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 1, 0.1f).SetUpdate(true);
             CancelInvoke("CheckForMovement");
             NextRound();
         }
@@ -336,7 +358,7 @@ public class GameController : MonoBehaviour
         if (levelClear == LevelClear.Failed)
         {
             inputAllowed = false;
-            hud.LevelFinished(LevelClear.Failed, 0, 0);
+            hud.LevelFinished(LevelClear.Failed, 0);
             return;
         }
         else if (levelClear == LevelClear.NotCleared)
@@ -345,7 +367,7 @@ public class GameController : MonoBehaviour
             {
                 //Fail if no bombs left or rounds left
                 inputAllowed = false;
-                hud.LevelFinished(LevelClear.Failed, 0, 0);
+                hud.LevelFinished(LevelClear.Failed, 0);
                 return;
             }
             else
@@ -378,6 +400,7 @@ public class GameController : MonoBehaviour
 
     private void FinishLevel(LevelClear levelClear)
     {
+
         //Get the previous saved values for this level
         var levelName = SceneManager.GetActiveScene().name;
         var pentagrams = PlayerPrefs.GetInt(levelName + "Pentagrams", 0);
@@ -424,11 +447,10 @@ public class GameController : MonoBehaviour
             PlayerPrefs.SetInt("PlayerScore", playerScore);
         }
 
-        var bonusSalvage = (bombCount - savedBombs) * bonusSalvageForSavedBomb;
+        //var bonusSalvage = (bombCount - savedBombs) * bonusSalvageForSavedBomb;
 
-        hud.LevelFinished(levelClear, salvageValue, bonusSalvage);
-        //print(salvageValue + bonusSalvage);
-        gameMaster.AddSalvage(salvageValue + bonusSalvage);
+        hud.LevelFinished(levelClear, salvageValue);
+        gameMaster.AddSalvage(salvageValue);
     }
 
     private LevelClear CheckLevelClear()
@@ -492,7 +514,7 @@ public class GameController : MonoBehaviour
 
         return levelClear;
     }
-    
+
     private IEnumerator AllowInput(bool allow, float delay)
     {
         yield return new WaitForSeconds(delay);

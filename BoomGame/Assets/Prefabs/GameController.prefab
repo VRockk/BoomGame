@@ -48,16 +48,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxRounds: 2
   bombs: []
-  nextLevelName: Level2
-  levelNumber: 0
   bombCount: 3
   inputAllowed: 0
   roundCounter: 1
   bombUnderMouse: {fileID: 0}
   gameMasterPrefab: {fileID: 4964522808880166175, guid: 2e60daa893cd9ee41977a01022aa9926,
     type: 3}
+  ingameHUD: {fileID: 0}
   plopSound: {fileID: 8300000, guid: f31be4814021144429f3d6e9a4b9677f, type: 3}
   ingameMusic: {fileID: 8300000, guid: 501c3d85950112e43882f6754e907330, type: 3}
+  bombScreamsToPlay: []
 --- !u!114 &1150528175826771338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7072808867729113274}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e188ee899633d0b49870a5ae38b7359d, type: 3}
   m_Name: 

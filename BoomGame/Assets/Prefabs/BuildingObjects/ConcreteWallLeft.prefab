@@ -17,8 +17,8 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.5501947, y: 10.07}
-    newSize: {x: 3.42, y: 2.28}
+    oldSize: {x: 2.6711593, y: 10.16}
+    newSize: {x: 2.6711593, y: 10.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
   - {x: 0, y: -0.98}
   - {x: 0, y: -3.49}
   pieceObjects:
-  - {fileID: 6397904725382405405, guid: 749359345f37f5a44b17ece681a8d9e2, type: 3}
+  - {fileID: 6397904725382405405, guid: 00b73d10787ae164b96cb2d34e6b5215, type: 3}
   - {fileID: 6397904725382405405, guid: 3151a6bea527324419a98282232a64f0, type: 3}
   - {fileID: 6397904725382405405, guid: bb2bcce5268b906419adaf0d5f5f152e, type: 3}
   - {fileID: 6397904725382405405, guid: f4cda8863d3382a49bef587206eed59d, type: 3}
@@ -124,25 +124,30 @@ PrefabInstance:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1863442581099001712, guid: d58a38304fad7c74f99f67987213949d,
-        type: 3}
-      propertyPath: m_Mass
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1863442581099001712, guid: d58a38304fad7c74f99f67987213949d,
-        type: 3}
-      propertyPath: m_AngularDrag
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 7705069170085870428, guid: 5c5cd454a4ab7d840a4d20f70584bf03,
+      objectReference: {fileID: -3739195283210183808, guid: 27d58a0ac416c2b428060b1432437151,
         type: 3}
     - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 2.6711593
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 10.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_FlipX
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001715, guid: d58a38304fad7c74f99f67987213949d,
@@ -169,6 +174,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.x
       value: 14.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863442581099001712, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863442581099001712, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001713, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}

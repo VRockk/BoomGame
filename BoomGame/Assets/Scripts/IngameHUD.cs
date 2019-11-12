@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class IngameHUD : MonoBehaviour
 {
@@ -38,7 +39,6 @@ public class IngameHUD : MonoBehaviour
     private Canvas canvas;
 
     private int salvageAmount = 0;
-    private int bonusSalvage = 0;
     void Awake()
     {
     }
@@ -59,7 +59,7 @@ public class IngameHUD : MonoBehaviour
 
         detonatePanel.SetActive(true);
 
-        roundPanel.SetActive(false);
+        roundPanel.SetActive(true);
 
         bombPanel.SetActive(true);
 
@@ -74,6 +74,11 @@ public class IngameHUD : MonoBehaviour
         bombCountText = GameObject.Find("BombCount").GetComponent<TextMeshProUGUI>();
         bombCountText.text = gameController.bombCount.ToString();
 
+        detonatePanel.GetComponent<RectTransform>().DOAnchorPosX(230f, 0.0f, true).SetEase(Ease.InBack).SetUpdate(true);
+        resetButton1.GetComponent<RectTransform>().DOAnchorPosX(230f, 0.0f, true).SetEase(Ease.InBack).SetUpdate(true);
+        mainMenuButton.GetComponent<RectTransform>().DOAnchorPosX(-230f, 0.0f, true).SetEase(Ease.InBack).SetUpdate(true);
+        bombPanel.GetComponent<RectTransform>().DOAnchorPosX(-500f, 0.0f, true).SetEase(Ease.InBack).SetUpdate(true);
+
     }
 
     // Update is called once per frame
@@ -83,10 +88,31 @@ public class IngameHUD : MonoBehaviour
 
     public void DetonateAllBombs()
     {
+        StartCoroutine(HideSlidingHUD());
         if (gameController.Detonation())
         {
             detonateButton.GetComponent<Image>().sprite = detonatorDown;
         }
+
+    }
+
+    private IEnumerator HideSlidingHUD()
+    {
+        
+        yield return new WaitForSeconds(0.5f);
+        detonatePanel.GetComponent<RectTransform>().DOAnchorPosX(230f, Random.Range(0.45f, 0.65f), false).SetEase(Ease.InBack).SetUpdate(true);
+        resetButton1.GetComponent<RectTransform>().DOAnchorPosX(230f, Random.Range(0.45f, 0.65f), false).SetEase(Ease.InBack).SetUpdate(true);
+        mainMenuButton.GetComponent<RectTransform>().DOAnchorPosX(-230f, Random.Range(0.45f, 0.65f), false).SetEase(Ease.InBack).SetUpdate(true);
+        bombPanel.GetComponent<RectTransform>().DOAnchorPosX(-500f, Random.Range(0.45f, 0.65f), false).SetEase(Ease.InBack).SetUpdate(true);
+    }
+
+    private IEnumerator ShowSlidingHUD()
+    {
+        yield return new WaitForSeconds(1f);
+        resetButton1.GetComponent<RectTransform>().DOAnchorPosX(-20f, Random.Range(0.45f, 0.65f), false).SetEase(Ease.OutBack).SetUpdate(true);
+        mainMenuButton.GetComponent<RectTransform>().DOAnchorPosX(20f, Random.Range(0.45f, 0.65f), false).SetEase(Ease.OutBack).SetUpdate(true);
+        detonatePanel.GetComponent<RectTransform>().DOAnchorPosX(0f, Random.Range(0.45f, 0.65f), false).SetEase(Ease.OutBack).SetUpdate(true);
+        bombPanel.GetComponent<RectTransform>().DOAnchorPosX(0f, Random.Range(0.45f, 0.65f), false).SetEase(Ease.OutBack).SetUpdate(true);
     }
 
     public void ResetLevel()
@@ -119,20 +145,15 @@ public class IngameHUD : MonoBehaviour
 
     public void NextRound(int roundNumber, float delay)
     {
-        detonatePanel.SetActive(true);
+        StartCoroutine(ShowSlidingHUD());
         detonateButton.GetComponent<Image>().sprite = detonatorUp;
-
-        bombPanel.SetActive(true);
-
         levelFinishPanel.SetActive(false);
-
         ShowRoundText(delay, roundNumber);
     }
 
-    public void LevelFinished(LevelClear levelClear, int salvage, int bonus)
+    public void LevelFinished(LevelClear levelClear, int salvage)
     {
         salvageAmount = salvage;
-        bonusSalvage = bonus;
 
         detonatePanel.SetActive(false);
         bombPanel.SetActive(false);
@@ -213,20 +234,10 @@ public class IngameHUD : MonoBehaviour
         if (salvagePanel.activeInHierarchy)
         {
             var salvageGain = GameObject.Find("SalvageGain");
-            var salvageBonusGain = GameObject.Find("SalvageBonusGain");
-            var salvageBonus = GameObject.Find("SalvageBonus");
 
             salvageGain.SetActive(true);
-            salvageBonus.SetActive(false);
-            salvageBonusGain.SetActive(false);
             salvageGain.GetComponent<TextMeshProUGUI>().text = salvageAmount.ToString();
 
-            if (bonusSalvage > 0)
-            {
-                salvageBonus.SetActive(true);
-                salvageBonusGain.SetActive(true);
-                salvageBonusGain.GetComponent<TextMeshProUGUI>().text = bonusSalvage.ToString();
-            }
         }
 
     }

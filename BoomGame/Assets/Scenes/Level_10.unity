@@ -205,7 +205,7 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: damagedForceLimit
-      value: 9000
+      value: 3000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35276085a900e50439c917ba0f4fe4a0, type: 3}
@@ -226,16 +226,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ShatteringBrick_300x200 (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
-        type: 3}
-      propertyPath: hitpoints
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
-        type: 3}
-      propertyPath: damagedForceLimit
-      value: 9000
       objectReference: {fileID: 0}
     - target: {fileID: 6649006982650661168, guid: 80b0e34ba46c467458b6d275d3e6fb64,
         type: 3}
@@ -301,6 +291,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 0.3333335
+      objectReference: {fileID: 0}
+    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
+        type: 3}
+      propertyPath: hitpoints
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
+        type: 3}
+      propertyPath: damagedForceLimit
+      value: 2000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80b0e34ba46c467458b6d275d3e6fb64, type: 3}
@@ -382,16 +382,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShatteringBrick_300x200
       objectReference: {fileID: 0}
-    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
-        type: 3}
-      propertyPath: hitpoints
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
-        type: 3}
-      propertyPath: damagedForceLimit
-      value: 2000
-      objectReference: {fileID: 0}
     - target: {fileID: 6649006982650661168, guid: 80b0e34ba46c467458b6d275d3e6fb64,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -456,6 +446,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 0.3333335
+      objectReference: {fileID: 0}
+    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
+        type: 3}
+      propertyPath: hitpoints
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
+        type: 3}
+      propertyPath: damagedForceLimit
+      value: 2000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80b0e34ba46c467458b6d275d3e6fb64, type: 3}
@@ -546,11 +546,6 @@ PrefabInstance:
         type: 3}
       propertyPath: createJoints
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -7108630801149371217, guid: a5d6d4580a8c53349aed705f5183a462,
-        type: 3}
-      propertyPath: damagedForceLimit
-      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5d6d4580a8c53349aed705f5183a462, type: 3}
@@ -645,7 +640,7 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: damagedForceLimit
-      value: 9000
+      value: 3000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35276085a900e50439c917ba0f4fe4a0, type: 3}
@@ -819,7 +814,7 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: damagedForceLimit
-      value: 9000
+      value: 2000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35276085a900e50439c917ba0f4fe4a0, type: 3}
@@ -914,7 +909,7 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: damagedForceLimit
-      value: 9000
+      value: 2000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35276085a900e50439c917ba0f4fe4a0, type: 3}
@@ -1004,12 +999,12 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: hitpoints
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: damagedForceLimit
-      value: 2000
+      value: 10000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35276085a900e50439c917ba0f4fe4a0, type: 3}
@@ -1104,7 +1099,7 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: damagedForceLimit
-      value: 9000
+      value: 3000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35276085a900e50439c917ba0f4fe4a0, type: 3}
@@ -1199,7 +1194,7 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: damagedForceLimit
-      value: 9000
+      value: 2000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35276085a900e50439c917ba0f4fe4a0, type: 3}
@@ -1360,11 +1355,6 @@ PrefabInstance:
       propertyPath: createJoints
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: -7108630801149371217, guid: 57786b15c0c034d4b937e794d76ecdd5,
-        type: 3}
-      propertyPath: damagedForceLimit
-      value: 1000
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57786b15c0c034d4b937e794d76ecdd5, type: 3}
 --- !u!4 &758279174 stripped
@@ -1458,7 +1448,7 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: damagedForceLimit
-      value: 9000
+      value: 2000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35276085a900e50439c917ba0f4fe4a0, type: 3}
@@ -1553,7 +1543,7 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: damagedForceLimit
-      value: 9000
+      value: 3000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35276085a900e50439c917ba0f4fe4a0, type: 3}
@@ -1688,6 +1678,11 @@ PrefabInstance:
       propertyPath: m_Positions.Array.data[1].z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2215036819310132471, guid: 73f9cc04d4bd6c546b14ed77c15d7a3b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1503803168660335380, guid: 73f9cc04d4bd6c546b14ed77c15d7a3b,
         type: 3}
       propertyPath: m_IsActive
@@ -1790,7 +1785,7 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: damagedForceLimit
-      value: 9000
+      value: 2000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35276085a900e50439c917ba0f4fe4a0, type: 3}
@@ -1885,7 +1880,7 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: damagedForceLimit
-      value: 9000
+      value: 2000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35276085a900e50439c917ba0f4fe4a0, type: 3}
@@ -1980,7 +1975,7 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: damagedForceLimit
-      value: 9000
+      value: 2000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35276085a900e50439c917ba0f4fe4a0, type: 3}
@@ -2075,7 +2070,7 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: damagedForceLimit
-      value: 9000
+      value: 2000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35276085a900e50439c917ba0f4fe4a0, type: 3}
@@ -2260,7 +2255,7 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: damagedForceLimit
-      value: 9000
+      value: 2000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35276085a900e50439c917ba0f4fe4a0, type: 3}
@@ -2445,7 +2440,7 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: damagedForceLimit
-      value: 9000
+      value: 3000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35276085a900e50439c917ba0f4fe4a0, type: 3}
@@ -2630,7 +2625,7 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: damagedForceLimit
-      value: 9000
+      value: 2000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35276085a900e50439c917ba0f4fe4a0, type: 3}
@@ -2725,7 +2720,7 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: damagedForceLimit
-      value: 9000
+      value: 3000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35276085a900e50439c917ba0f4fe4a0, type: 3}
@@ -2820,7 +2815,7 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: damagedForceLimit
-      value: 9000
+      value: 3000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35276085a900e50439c917ba0f4fe4a0, type: 3}
@@ -2911,11 +2906,6 @@ PrefabInstance:
         type: 3}
       propertyPath: createJoints
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -7108630801149371217, guid: 57786b15c0c034d4b937e794d76ecdd5,
-        type: 3}
-      propertyPath: damagedForceLimit
-      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57786b15c0c034d4b937e794d76ecdd5, type: 3}
@@ -3010,7 +3000,7 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: damagedForceLimit
-      value: 9000
+      value: 3000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35276085a900e50439c917ba0f4fe4a0, type: 3}
@@ -3031,16 +3021,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ShatteringBrick_300x200 (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
-        type: 3}
-      propertyPath: hitpoints
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
-        type: 3}
-      propertyPath: damagedForceLimit
-      value: 9000
       objectReference: {fileID: 0}
     - target: {fileID: 6649006982650661168, guid: 80b0e34ba46c467458b6d275d3e6fb64,
         type: 3}
@@ -3106,6 +3086,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 0.3333335
+      objectReference: {fileID: 0}
+    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
+        type: 3}
+      propertyPath: hitpoints
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
+        type: 3}
+      propertyPath: damagedForceLimit
+      value: 2000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80b0e34ba46c467458b6d275d3e6fb64, type: 3}
@@ -3200,7 +3190,7 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: damagedForceLimit
-      value: 9000
+      value: 2000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35276085a900e50439c917ba0f4fe4a0, type: 3}
@@ -3295,7 +3285,7 @@ PrefabInstance:
     - target: {fileID: -7108630801149371217, guid: 35276085a900e50439c917ba0f4fe4a0,
         type: 3}
       propertyPath: damagedForceLimit
-      value: 9000
+      value: 2000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35276085a900e50439c917ba0f4fe4a0, type: 3}

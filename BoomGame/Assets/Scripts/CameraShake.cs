@@ -24,5 +24,15 @@ public class CameraShake : MonoBehaviour
     public void Shake(float duration, float strength, int vibrato, float randomness, bool fadeOut)
     {
         Camera.main.DOShakePosition(duration, strength, vibrato, randomness, fadeOut);
+
+        StartCoroutine(SetCamPos(duration + 0.05f));
+    }
+
+    private IEnumerator SetCamPos(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        var cameraHandler = FindObjectOfType<CameraHandler>();
+        Camera.main.transform.localPosition = cameraHandler.cameraDefaultPos;
+
     }
 }
