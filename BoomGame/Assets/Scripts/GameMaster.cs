@@ -45,6 +45,24 @@ public class GameMaster : MonoBehaviour
         }
     }
 
+    public bool signIn;
+
+    public bool SignIn
+    {
+        get
+        {
+            return signIn;
+        }
+        set
+        {
+            if (value)
+                PlayerPrefs.SetInt("SignIn", 1);
+            else
+                PlayerPrefs.SetInt("SignIn", 0);
+            signIn = value;
+        }
+    }
+
     void Awake()
     {
         //If we have a situation where we already have a GameMaster, destroy the new one.
@@ -95,6 +113,21 @@ public class GameMaster : MonoBehaviour
 
         //Bomb data
         GetBombData();
+
+        //Sign In
+        if (PlayerPrefs.HasKey("SignIn"))
+        {
+            int signed = PlayerPrefs.GetInt("SignIn");
+            if (signed == 1)
+                signIn = true;
+            else
+                signIn = false;
+
+        }
+        else
+        {
+            signIn = false;
+        }
 
     }
 
