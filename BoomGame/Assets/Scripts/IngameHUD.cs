@@ -25,7 +25,7 @@ public class IngameHUD : MonoBehaviour
     public GameObject campaignMapButton;
     public GameObject nextLevelButton;
     public GameObject salvagePanel;
-
+    public GameObject ScorePanel;
     public GameObject bombCardPrefab;
 
     public GameObject endScreen;
@@ -68,6 +68,8 @@ public class IngameHUD : MonoBehaviour
         resetButton1.SetActive(true);
 
         levelFinishPanel.SetActive(false);
+
+        ScorePanel.SetActive(true);
 
         bombCountText = GameObject.Find("BombCount").GetComponent<TextMeshProUGUI>();
         bombCountText.text = gameController.bombCount.ToString();

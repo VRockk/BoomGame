@@ -68,6 +68,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Score.scoreValue = 0;
         if (ingameHUD != null)
         {
             ingameHUD.SetActive(true);
@@ -381,7 +382,7 @@ public class GameController : MonoBehaviour
         var levelName = SceneManager.GetActiveScene().name;
         var pentagrams = PlayerPrefs.GetInt(levelName + "Pentagrams", 0);
         var savedBombs = PlayerPrefs.GetInt(levelName + "SavedBombs", 0);
-        var score = PlayerPrefs.GetInt(levelName + "Score", 0);
+        var score = PlayerPrefs.GetInt(levelName + Score.scoreValue, 0);
 
 
         //PlayerPentagrams and PlayerScore are the values of all gained pentagrams and score from all maps the player has cleared
@@ -415,11 +416,11 @@ public class GameController : MonoBehaviour
             PlayerPrefs.SetInt(levelName + "SavedBombs", bombCount);
 
         //If the new score is higher than previously, save the new score to player prefs
-        if (score < levelScore)
+        if (score < Score.scoreValue)
         {
             // Reduce the old level score from the player score and add the new score back
-            playerScore = playerScore - score + levelScore;
-            PlayerPrefs.SetInt(levelName + "Score", levelScore);
+            playerScore = playerScore - score + Score.scoreValue;
+            PlayerPrefs.SetInt(levelName + "Score", Score.scoreValue);
             PlayerPrefs.SetInt("PlayerScore", playerScore);
         }
 
