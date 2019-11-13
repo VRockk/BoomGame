@@ -11,7 +11,8 @@ public class AutoSpawner : MonoBehaviour
     {
         if(objectToSpawn != null)
         {
-            Instantiate(objectToSpawn, this.transform);
+            var newObject = Instantiate(objectToSpawn, this.transform);
+            newObject.transform.parent = null;
         }
     }
 

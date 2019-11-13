@@ -14,7 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jointBreakForce: 100000
   jointBreakTorque: 100000
+  createJoints: 1
+  createManualJoints: 0
+  createJointToGround: 0
+  ignoredJoints: []
+  manualJointLocations: []
+  materialType: 0
   attachedObjects: []
+  allowDamage: 1
+  deactivateDelay: 0
+  checkedInLevelClear: 1
   pieceSpawnLocations:
   - {x: -1, y: 0.5}
   - {x: 0, y: 0.5}
@@ -31,7 +40,11 @@ MonoBehaviour:
   - {fileID: 3262556344422710767, guid: d1feb762b2ebe5c43bc119d7ed6b747e, type: 3}
   hitpoints: 2
   damagedForceLimit: 10000
-  allowDamage: 1
+  shatterParticle: {fileID: 4077663246738028735, guid: 57e2faf8fcbcaa742998edee10c41a54,
+    type: 3}
+  audioObject: {fileID: 0}
+  shatterSFX: []
+  scoreValue: 0
 --- !u!1001 &5015395596815711813
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -103,6 +116,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mass
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863442581099001712, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863442581099001712, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}

@@ -45,6 +45,16 @@ public class NPCBuilding : MonoBehaviour
         if (contact.rigidbody == null)
             return;
 
+        if (contact.rigidbody.gameObject.tag == "Rubble")
+            return;
+
+        var buildingObject = contact.rigidbody.gameObject.GetComponent<BuildingObject>();
+        if (buildingObject != null)
+        {
+            //If the bricks hit the npc buildings stop checking them in clear. prevents issues where bricks get stuck on top of npc buildings.
+            buildingObject.checkedInLevelClear = false;
+        }
+
         // Force equals mass times acceleration
         var hitForce = contact.rigidbody.mass * contact.relativeVelocity.magnitude * contact.relativeVelocity.magnitude;
 

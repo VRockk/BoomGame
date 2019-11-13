@@ -7,16 +7,40 @@ public class BuildingObject : MonoBehaviour
 {
     public float jointBreakForce = 50000f;
     public float jointBreakTorque = 50000f;
-    protected bool createJoints = true;
+    public bool createJoints = true;
+    public bool createManualJoints = false;
+    public bool createJointToGround = false;
 
+    public List<GameObject> ignoredJoints = new List<GameObject>();
+
+    public List<Vector2> manualJointLocations = new List<Vector2>();
+
+    [HideInInspector]
+    public MaterialType materialType = MaterialType.None;
 
     [HideInInspector]
     public List<string> attachedObjects = new List<string>();
 
+    [HideInInspector]
+    public bool allowDamage = true;
 
+    [HideInInspector]
+    public bool deactivateDelay = false;
+
+    [HideInInspector]
+    public bool checkedInLevelClear = true;
 
     protected virtual void OnDrawGizmos()
     {
+        foreach (var jointLocation in manualJointLocations)
+        {
+
+            Gizmos.color = Color.green;
+            Vector3 localPosition = (this.transform.right * jointLocation.x * this.transform.localScale.x) + (this.transform.up * jointLocation.y * this.transform.localScale.y);
+            //Vector3 localPosition = new Vector3(jointLocation.x, jointLocation.y, 0f);
+            Gizmos.DrawSphere(this.transform.position + localPosition, 0.2f);
+
+        }
     }
     protected virtual void Awake()
     {
@@ -24,6 +48,10 @@ public class BuildingObject : MonoBehaviour
 
     protected virtual void Start()
     {
+        //Dont allow creating joints to parent objects. 
+        if (this.transform.parent != null)
+            ignoredJoints.Add(this.transform.parent.gameObject);
+
         CreateJoints();
     }
 
@@ -58,15 +86,23 @@ public class BuildingObject : MonoBehaviour
 
         //Do raycast to check if there are objects next to this one
         RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), traceDirection, distance);
+        Debug.DrawRay(transform.position, traceDirection * distance, Color.red, 5f);
 
         value = hit;
 
         if (hit)
         {
-            if (hit.collider.gameObject.GetComponent<Rigidbody2D>() != null)
+            if (!ignoredJoints.Contains(hit.collider.gameObject))
             {
-                //print(hit.collider.gameObject.name);
-                hitObject = hit.collider.gameObject;
+                if (hit.collider.gameObject.GetComponent<Rigidbody2D>() != null)
+                {
+                    //print(hit.collider.gameObject.name);
+                    hitObject = hit.collider.gameObject;
+                }
+                else if (createJointToGround && hit.collider.gameObject.tag == "Ground")
+                {
+                    hitObject = hit.collider.gameObject;
+                }
             }
         }
 
@@ -78,8 +114,26 @@ public class BuildingObject : MonoBehaviour
     /// <summary>
     /// Creates and attaches joints to objects next to this object
     /// </summary>
-    private void CreateJoints()
+    protected void CreateJoints()
     {
+        if (createManualJoints)
+        {
+            foreach (var jointLocation in manualJointLocations)
+            {
+                Vector3 position = this.transform.position + (this.transform.right * jointLocation.x * this.transform.localScale.x) + (this.transform.up * jointLocation.y * this.transform.localScale.y);
+                Vector3 traceDirection = Vector3.Normalize(position - this.transform.position);
+                //traceDirection = traceDirection);
+                var traceDistance = Vector3.Distance(this.transform.position, position);
+
+                GameObject otherObject;
+                if (SurroundsCheck(traceDirection, traceDistance, out otherObject))
+                {
+                    CreateNewJoint(otherObject);
+                }
+
+            }
+        }
+
         if (!createJoints)
             return;
 
@@ -114,7 +168,7 @@ public class BuildingObject : MonoBehaviour
             //Check left
             if (SurroundsCheck(-Vector2.right, distanceSides + 0.1f, out leftObject))
             {
-               CreateNewJoint(leftObject);
+                CreateNewJoint(leftObject);
             }
         }
     }
@@ -126,16 +180,21 @@ public class BuildingObject : MonoBehaviour
             var otherShatteringObject = otherObject.GetComponent<BuildingObject>();
 
             //if these objects are not already connected add a joint
-            if (otherShatteringObject != null && !otherShatteringObject.attachedObjects.Contains(this.gameObject.name))
+            if (!ignoredJoints.Contains(otherObject) &&
+                (createJointToGround && otherObject.tag == "Ground") || (otherShatteringObject != null && !otherShatteringObject.ignoredJoints.Contains(gameObject) && !otherShatteringObject.attachedObjects.Contains(this.gameObject.name)))
             {
                 var joint = gameObject.AddComponent<FixedJoint2D>();
                 attachedObjects.Add(otherObject.name);
-                otherShatteringObject.attachedObjects.Add(name);
                 joint.connectedBody = otherObject.GetComponent<Rigidbody2D>();
                 joint.enableCollision = true;
                 joint.autoConfigureConnectedAnchor = false;
                 joint.breakForce = jointBreakForce;
                 joint.breakTorque = jointBreakTorque;
+                joint.dampingRatio = 0f;
+                if (otherShatteringObject != null)
+                {
+                    otherShatteringObject.attachedObjects.Add(name);
+                }
             }
         }
     }

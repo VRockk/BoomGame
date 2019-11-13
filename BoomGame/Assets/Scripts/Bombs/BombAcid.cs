@@ -49,6 +49,14 @@ public class BombAcid : Bomb
                         metal.Melt();
                     }
                 }
+                Rigidbody2D rb = hit.GetComponent<Rigidbody2D>();
+
+                if (rb != null && hit.gameObject.tag != "Ground")
+                {
+                    Vector2 force = UtilityLibrary.CalculateExplosionForceWithDistance(transform.position, hit.transform.position, power, upwardsForce);
+
+                    rb.AddForce(force, ForceMode2D.Impulse);
+                }
             }
         }
 
