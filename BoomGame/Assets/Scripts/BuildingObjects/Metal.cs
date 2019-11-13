@@ -15,6 +15,8 @@ public class Metal : BuildingObject
     private bool melting = false;
     private float meltSpeed = 0.5f;
 
+    public int scoreValue;
+
     protected override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
@@ -93,6 +95,7 @@ public class Metal : BuildingObject
             spriteRenderer.color = new Color(0, 1, 0, 1);
         }
         melting = true;
+        Score.scoreValue += scoreValue;
         //Destroy(gameObject);
     }
 
