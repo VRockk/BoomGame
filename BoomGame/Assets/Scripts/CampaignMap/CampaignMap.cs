@@ -142,7 +142,7 @@ public class CampaignMap : MonoBehaviour
 
     private void ShowChapterInfo(Chapter chapter)
     {
-        if (!chapter.locked)
+        if (chapter.enoughPentagrams && chapter.previousLevelsCleared)
         {
             //set all chapters not selected
             foreach (var chap in this.transform.GetComponentsInChildren<Chapter>())

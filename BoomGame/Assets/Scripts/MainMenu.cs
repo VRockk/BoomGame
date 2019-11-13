@@ -80,7 +80,7 @@ public class MainMenu : MonoBehaviour
             {
                 if (gameServicesPanel != null)
                 {
-                    gameServicesPanel.SetActive(true);
+                    gameServicesPanel.SetActive(false);
                 }
             }
         }
@@ -128,7 +128,6 @@ public class MainMenu : MonoBehaviour
 
     public void AcceptPrivacyPolicy()
     {
-        gameServicesPanel.SetActive(true);
         mainMenuPanel.SetActive(true);
         privacyPolicyPanel.SetActive(false);
         shopPanel.SetActive(false);
@@ -144,7 +143,6 @@ public class MainMenu : MonoBehaviour
         privacyPolicyPanel.SetActive(true);
         bombPanel.SetActive(false);
         bombSelectionPanel.SetActive(true);
-        gameServicesPanel.SetActive(false);
     }
 
     public void CloseCampaingMap()
