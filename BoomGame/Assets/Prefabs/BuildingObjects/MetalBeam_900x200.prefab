@@ -30,6 +30,7 @@ MonoBehaviour:
     type: 3}
   bendRightSprite: {fileID: 618557542491236705, guid: b4be78b86414cdb41b68e802b9692c60,
     type: 3}
+  scoreValue: 10
 --- !u!1001 &137894847597702692
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70,19 +71,8 @@ PrefabInstance:
     - target: {fileID: 1863442581099001712, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_AngularDrag
-      value: 0.1
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1863442581099001712, guid: d58a38304fad7c74f99f67987213949d,
-        type: 3}
-      propertyPath: m_LinearDrag
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -5650569683068494043, guid: b4be78b86414cdb41b68e802b9692c60,
-        type: 3}
     - target: {fileID: 1863442581099001715, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -103,6 +93,12 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -5650569683068494043, guid: b4be78b86414cdb41b68e802b9692c60,
+        type: 3}
     - target: {fileID: 1863442581099001713, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: pieceSpawnLocations.Array.size
