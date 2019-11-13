@@ -155,6 +155,7 @@ public class IngameHUD : MonoBehaviour
     {
         salvageAmount = salvage;
 
+        StartCoroutine(HideSlidingHUD());
         detonatePanel.SetActive(false);
         bombPanel.SetActive(false);
         mainMenuButton.SetActive(false);
@@ -173,7 +174,7 @@ public class IngameHUD : MonoBehaviour
                 {
                     //nextLevelButton.SetActive(true);
                     campaignMapButton.GetComponent<Button>().interactable = false;
-                    campaignMapButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(0.35f, 0.35f, 0.35f, 1);
+                    campaignMapButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(1f, 1f, 1f, 0.2f);
                 }
             }
             else
@@ -184,7 +185,7 @@ public class IngameHUD : MonoBehaviour
                 {
                     //nextLevelButton.SetActive(true);
                     nextLevelButton.GetComponent<Button>().interactable = false;
-                    nextLevelButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(0.35f, 0.35f, 0.35f, 1);
+                    nextLevelButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(1f, 1f, 1f, 0.2f);
                 }
             }
         }
@@ -227,6 +228,8 @@ public class IngameHUD : MonoBehaviour
 
     public void ShowFinishPanel()
     {
+        //var rectTransform = levelFinishPanel.GetComponent<RectTransform>();
+        //rectTransform.
         levelFinishPanel.SetActive(true);
         levelFinishPanel.GetComponent<CanvasGroup>().alpha = 1;
         levelFinishPanel.GetComponent<CanvasGroup>().blocksRaycasts = true;

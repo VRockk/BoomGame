@@ -13,31 +13,30 @@ public class Chapter : MonoBehaviour
 
     public List<string> levelNames;
 
-    public Sprite clearedIcon;
+    public SpriteRenderer chapterIconRenderer;
     public GameObject requirement;
     public GameObject requirementText;
-    public SpriteRenderer iconRenderer;
+    public GameObject previousChapter;
+    public GameObject selectedIcon;
 
     [HideInInspector]
-    public bool locked = false;
+    public bool enoughPentagrams = false;
 
     [HideInInspector]
     public List<Level> chapterLevels;
 
-    private bool allLevelsCleared = true;
+    [HideInInspector]
+    public bool previousLevelsCleared = true;
     private int playerPentagrams;
 
     private void Awake()
     {
         chapterLevels = new List<Level>();
-        //Get saved values for each level
+
+        //Create Level objects
         foreach (var levelName in levelNames)
         {
             Level chapterLevel = new Level(levelName);
-            //If any level has zero pentagrams it means the chapter is not fully cleared
-            if (chapterLevel.pentagrams == 0)
-                allLevelsCleared = false;
-
             chapterLevels.Add(chapterLevel);
         }
     }
@@ -45,56 +44,60 @@ public class Chapter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        locked = false;
+        enoughPentagrams = false;
         playerPentagrams = PlayerPrefs.GetInt("PlayerPentagrams", 0);
 
         //All levels in previous chapter needs to be cleared for this to be open
-        //if (previousChapter != null)
-        //{
-        //    var prevChapterScript = previousChapter.GetComponent<Chapter>();
-        //    foreach (var level in prevChapterScript.chapterLevels)
-        //    {
-        //        if (level.pentagrams == 0)
-        //        {
-        //            locked = true;
-        //            break;
-        //        }
-        //    }
-        //}
+        if (previousChapter != null)
+        {
+            var prevChapterScript = previousChapter.GetComponent<Chapter>();
+            foreach (var level in prevChapterScript.chapterLevels)
+            {
+                if (level.pentagrams == 0)
+                {
+                    previousLevelsCleared = false;
+                    break;
+                }
+            }
+        }
+
 
         //Player needs to have more or equal amount of pentagrams to have this chapter open
-        if (playerPentagrams < pentaLimit)
-        {
-            locked = true;
-        }
+        enoughPentagrams = playerPentagrams >= pentaLimit;
+
 
         SetStatus();
     }
 
     private void SetStatus()
     {
-        //if (iconRenderer != null)
-        //{
-        //    if (allLevelsCleared)
-        //        iconRenderer.sprite = clearedIcon;
-        //    else
-        //        iconRenderer.sprite = unclearedIcon;
-        //}
+        if (chapterIconRenderer != null)
+        {
+            if (previousLevelsCleared && enoughPentagrams)
+            {
+                chapterIconRenderer.color = new Color(1, 1, 1, 1);
+            }
+            else
+            {
+                chapterIconRenderer.color = new Color(0.33f, 0.33f, 0.33f, 1);
+            }
 
-        //if (locked)
-        //{
-        //    if (lockInfo != null)
-        //    {
-        //        lockInfo.SetActive(true);
-        //        if (pentaRequirement != null)
-        //        {
-        //            var lockText = pentaRequirement.GetComponent<TextMeshPro>();
-        //            lockText.text = (pentaLimit - playerPentagrams).ToString();
-        //        }
-        //    }
-        //}
-        //else
-        //    lockInfo.SetActive(false);
+            if (!enoughPentagrams && requirement != null)
+            {
+                int neededPentas = pentaLimit - playerPentagrams;
+                if (neededPentas > 0)
+                {
+                    requirement.SetActive(true);
+                    if (requirementText != null)
+                    {
+                        var lockText = requirementText.GetComponent<TextMeshPro>();
+                        lockText.text = (pentaLimit - playerPentagrams).ToString();
+                    }
+                }
+            }
+            else
+                requirement.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -106,6 +109,7 @@ public class Chapter : MonoBehaviour
 
     public void SetSelected(bool selected)
     {
-        SetStatus();
+        //if (selectedIcon != null)
+        //    selectedIcon.SetActive(selected);
     }
 }
