@@ -221,7 +221,7 @@ public class UtilityLibrary : MonoBehaviour
             if (rb != null && hit.gameObject.tag != "Ground")
             {
                 //print(hit.gameObject);
-                Vector2 force = UtilityLibrary.CalculateExplosionForceWithDistance(transform.position, hit.transform.position, power, upwardsForce);
+                Vector2 force = UtilityLibrary.CalculateExplosionForceWithDistance(transform.position, hit.transform.position, power / 10, upwardsForce / 10);
 
                 rb.AddForce(force, ForceMode2D.Impulse);
             }
@@ -273,7 +273,7 @@ public class UtilityLibrary : MonoBehaviour
 
             if (rb != null && hit.gameObject.tag != "Ground")
             {
-                Vector2 force = UtilityLibrary.CalculateExplosionForceWithDistance(transform.position, hit.transform.position, power, upwardsForce);
+                Vector2 force = UtilityLibrary.CalculateExplosionForceWithDistance(transform.position, hit.transform.position, power / 2f, upwardsForce / 2f);
 
                 rb.AddForce(force, ForceMode2D.Impulse);
             }

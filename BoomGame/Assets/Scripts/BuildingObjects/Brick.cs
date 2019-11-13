@@ -28,7 +28,7 @@ public class Brick : BuildingObject
     private float damageGateDelay = 0f;
     private const float damageDelayDefault = 0.05f;
     public int scoreValue;
-    
+
 
     protected override void OnDrawGizmos()
     {
@@ -190,20 +190,20 @@ public class Brick : BuildingObject
 
             if (rigidBody != null)
             {
-                var rubble = newObject.GetComponent<Rubble>();
-                if (rubble != null)
-                {
-                    rubble.StartMoving();
-                }
-                else
-                {
-                    //add force to spawned small pieces
-                    Vector2 force = UtilityLibrary.CalculateExplosionForceWithDistance(explosionPos, newObject.transform.position, power, upwardsForce);
-                    rigidBody.AddForce(force, ForceMode2D.Impulse);
-                }
+
+                //var rubble = newObject.GetComponent<Rubble>();
+                //if (rubble != null)
+                //{
+                //    //rubble.StartMoving();
+                //}
+                //else
+                //{
+                //    Vector2 force = UtilityLibrary.CalculateExplosionForceWithDistance(explosionPos, newObject.transform.position, power, upwardsForce);
+                //    rigidBody.AddForce(force, ForceMode2D.Impulse);
+                //}
             }
         }
-        
+
         Destroy(this.gameObject);
         Score.scoreValue += scoreValue;
     }

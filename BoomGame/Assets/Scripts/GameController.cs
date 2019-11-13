@@ -316,7 +316,7 @@ public class GameController : MonoBehaviour
         movementCheckCount++;
         bool isMovement = false;
         var rigidBodies = GameObject.FindObjectsOfType<Rigidbody2D>();
-        foreach (var body in rigidBodies)
+        foreach (var body in rigidBodies.Where(x => x.tag == "BuildingObject"))
         {
             //Check if there is a bit of movement still
             if (body.velocity.magnitude > 0.1f)

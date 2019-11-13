@@ -7,7 +7,7 @@ public class Rubble : MonoBehaviour
     /// <summary>
     /// The time taken to move from the start to finish positions
     /// </summary>
-    private float moveTime = 0.7f;
+    private float moveTime = 0.5f;
 
 
     //Whether we are currently interpolating or not
@@ -44,7 +44,7 @@ public class Rubble : MonoBehaviour
 
         //Move the rubble in random 
         startPosition = transform.position;
-        endPosition = transform.position + new Vector3(UnityEngine.Random.Range(-3f, 3f), -transform.position.y - Random.Range(35f, 40f), Random.Range(0, 1f) > 0.2f ? 20f : -20f);
+        endPosition = transform.position + new Vector3(UnityEngine.Random.Range(-5f, 5f), -transform.position.y - Random.Range(35f, 40f), Random.Range(0, 1f) > 0.2f ? 20f : -20f);
         Vector3 position33 = UtilityLibrary.Lerp(startPosition, endPosition, 0.33f, LerpMode.EaseOut);
         Vector3 position66 = UtilityLibrary.Lerp(startPosition, endPosition, 0.33f, LerpMode.EaseOut);
         p1 = startPosition + new Vector3(position33.x, startPosition.y + 20f, position33.z);
@@ -52,7 +52,7 @@ public class Rubble : MonoBehaviour
         startScale = transform.localScale;
         if (endPosition.z > 0f)
         {
-            endScale = new Vector3(0.1f, 0.1f, 1f);
+            endScale = new Vector3(0.5f, 0.5f, 5f);
         }
         else
         {

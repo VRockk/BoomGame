@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 2192001007552588292}
   - component: {fileID: 1384580667977806654}
   - component: {fileID: -5183574420325141998}
-  m_Layer: 0
-  m_Name: GlassPiece
+  m_Layer: 12
+  m_Name: GlassRubble
   m_TagString: Rubble
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,8 +69,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1080482803
-  m_SortingLayer: 2
+  m_SortingLayerID: 1395147817
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 4055381043080466094, guid: 93079a11ea0e65741b00a14cbebb9e03,
     type: 3}
@@ -91,9 +91,9 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8546890470479307831}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 6c5305bef19ddf64699d63dc7983e3c2, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -118,15 +118,15 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8546890470479307831}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 15
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 5
+  m_LinearDrag: 0.2
+  m_AngularDrag: 0.2
   m_GravityScale: 5
-  m_Material: {fileID: 6200000, guid: 6c5305bef19ddf64699d63dc7983e3c2, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0

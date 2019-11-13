@@ -77,6 +77,7 @@ MonoBehaviour:
   shatterSFX:
   - {fileID: 8300000, guid: 877e9aa5b6bc65a4cab4f948f6cc85b3, type: 3}
   - {fileID: 8300000, guid: 31f860278f58bfe4d803b92f85cd2946, type: 3}
+  scoreValue: 0
 --- !u!1001 &137894847597702692
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -127,7 +128,12 @@ PrefabInstance:
     - target: {fileID: 1863442581099001712, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_AngularDrag
-      value: 0
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863442581099001712, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
