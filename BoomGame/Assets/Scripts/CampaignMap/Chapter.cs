@@ -14,11 +14,8 @@ public class Chapter : MonoBehaviour
     public List<string> levelNames;
 
     public Sprite clearedIcon;
-    public Sprite unclearedIcon;
-    public Sprite selectedIcon;
-    public GameObject lockInfo;
-    public GameObject pentaRequirement;
-    public GameObject previousChapter;
+    public GameObject requirement;
+    public GameObject requirementText;
     public SpriteRenderer iconRenderer;
 
     [HideInInspector]
@@ -52,18 +49,18 @@ public class Chapter : MonoBehaviour
         playerPentagrams = PlayerPrefs.GetInt("PlayerPentagrams", 0);
 
         //All levels in previous chapter needs to be cleared for this to be open
-        if (previousChapter != null)
-        {
-            var prevChapterScript = previousChapter.GetComponent<Chapter>();
-            foreach (var level in prevChapterScript.chapterLevels)
-            {
-                if (level.pentagrams == 0)
-                {
-                    locked = true;
-                    break;
-                }
-            }
-        }
+        //if (previousChapter != null)
+        //{
+        //    var prevChapterScript = previousChapter.GetComponent<Chapter>();
+        //    foreach (var level in prevChapterScript.chapterLevels)
+        //    {
+        //        if (level.pentagrams == 0)
+        //        {
+        //            locked = true;
+        //            break;
+        //        }
+        //    }
+        //}
 
         //Player needs to have more or equal amount of pentagrams to have this chapter open
         if (playerPentagrams < pentaLimit)
@@ -76,28 +73,28 @@ public class Chapter : MonoBehaviour
 
     private void SetStatus()
     {
-        if (iconRenderer != null)
-        {
-            if (allLevelsCleared)
-                iconRenderer.sprite = clearedIcon;
-            else
-                iconRenderer.sprite = unclearedIcon;
-        }
+        //if (iconRenderer != null)
+        //{
+        //    if (allLevelsCleared)
+        //        iconRenderer.sprite = clearedIcon;
+        //    else
+        //        iconRenderer.sprite = unclearedIcon;
+        //}
 
-        if (locked)
-        {
-            if (lockInfo != null)
-            {
-                lockInfo.SetActive(true);
-                if (pentaRequirement != null)
-                {
-                    var lockText = pentaRequirement.GetComponent<TextMeshPro>();
-                    lockText.text = (pentaLimit - playerPentagrams).ToString();
-                }
-            }
-        }
-        else
-            lockInfo.SetActive(false);
+        //if (locked)
+        //{
+        //    if (lockInfo != null)
+        //    {
+        //        lockInfo.SetActive(true);
+        //        if (pentaRequirement != null)
+        //        {
+        //            var lockText = pentaRequirement.GetComponent<TextMeshPro>();
+        //            lockText.text = (pentaLimit - playerPentagrams).ToString();
+        //        }
+        //    }
+        //}
+        //else
+        //    lockInfo.SetActive(false);
     }
 
     // Update is called once per frame
