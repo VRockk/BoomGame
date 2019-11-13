@@ -73,7 +73,7 @@ public class Metal : BuildingObject
         {
             Destroy(joint);
         }
-        foreach(var attachedObjectName in attachedObjects)
+        foreach (var attachedObjectName in attachedObjects)
         {
             var attachedObject = GameObject.Find(attachedObjectName);
             if (attachedObject != null)
@@ -81,16 +81,19 @@ public class Metal : BuildingObject
                 joints = attachedObject.GetComponents<FixedJoint2D>();
                 foreach (var joint in joints)
                 {
-                    if (joint.connectedBody.gameObject.name == name)
+                    if (joint.connectedBody != null && joint.connectedBody.gameObject != null)
                     {
-                        Destroy(joint);
+                        if (joint.connectedBody.gameObject.name == name)
+                        {
+                            Destroy(joint);
+                        }
                     }
                 }
             }
         }
 
         var spriteRenderer = GetComponent<SpriteRenderer>();
-        if(spriteRenderer != null)
+        if (spriteRenderer != null)
         {
             spriteRenderer.color = new Color(0, 1, 0, 1);
         }
