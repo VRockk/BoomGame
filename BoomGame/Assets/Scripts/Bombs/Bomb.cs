@@ -164,6 +164,25 @@ public class Bomb : MonoBehaviour
                 UtilityLibrary.ExplosionDamage(hit, this.transform, power, upwardsForce);
             }
         }
+
+        if (radius > 0f)
+        {
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(this.transform.position, radius*1.5f);
+
+            //Objects inside main explosive radius. Shatter, destroy, add force
+            foreach (Collider2D hit in colliders)
+            {
+                Rigidbody2D rb = hit.GetComponent<Rigidbody2D>();
+
+                if (rb != null)
+                {
+                    Vector2 force = UtilityLibrary.CalculateExplosionForceWithDistance(transform.position, hit.transform.position, power/1, upwardsForce/1);
+
+                    rb.AddForce(force, ForceMode2D.Impulse);
+                }
+            }
+        }
+
     }
 
 }

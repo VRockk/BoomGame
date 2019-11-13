@@ -191,6 +191,8 @@ public class Brick : BuildingObject
             if (rigidBody != null)
             {
 
+                //    Vector2 force = UtilityLibrary.CalculateExplosionForceWithDistance(explosionPos, newObject.transform.position, power, upwardsForce);
+                //    rigidBody.AddForce(force, ForceMode2D.Impulse);
                 //var rubble = newObject.GetComponent<Rubble>();
                 //if (rubble != null)
                 //{
@@ -198,8 +200,6 @@ public class Brick : BuildingObject
                 //}
                 //else
                 //{
-                //    Vector2 force = UtilityLibrary.CalculateExplosionForceWithDistance(explosionPos, newObject.transform.position, power, upwardsForce);
-                //    rigidBody.AddForce(force, ForceMode2D.Impulse);
                 //}
             }
         }
