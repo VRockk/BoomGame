@@ -13,11 +13,17 @@ public class Chapter : MonoBehaviour
 
     public List<string> levelNames;
 
-    public SpriteRenderer chapterIconRenderer;
+    public List<GameObject> levelIcons;
+
+    public GameObject chapterIcon;
     public GameObject requirement;
     public GameObject requirementText;
     public GameObject previousChapter;
     public GameObject selectedIcon;
+
+    public Sprite levelBronzeSprite;
+    public Sprite levelSilverSprite;
+    public Sprite levelGoldSprite;
 
     [HideInInspector]
     public bool enoughPentagrams = false;
@@ -34,10 +40,39 @@ public class Chapter : MonoBehaviour
         chapterLevels = new List<Level>();
 
         //Create Level objects
-        foreach (var levelName in levelNames)
+        for (int i = 0; i < levelNames.Count; i++)
         {
-            Level chapterLevel = new Level(levelName);
+            Level chapterLevel = new Level(levelNames[i]);
             chapterLevels.Add(chapterLevel);
+            if (levelIcons.Count - 1 >= i)
+            {
+                var levelIcon = levelIcons[i];
+                if (levelIcon != null)
+                {
+                    var spriteRenderer = levelIcon.GetComponent<SpriteRenderer>();
+                    if (spriteRenderer != null)
+                    {
+                        spriteRenderer.color = new Color(1f, 1f, 1f, 1f);
+                        if (chapterLevel.pentagrams == 0)
+                        {
+                            levelIcon.SetActive(false);
+                            spriteRenderer.color = new Color(0.5f, 0.5f, 0.5f, 1f);
+                        }
+                        if (chapterLevel.pentagrams == 1)
+                        {
+                            spriteRenderer.sprite = levelBronzeSprite;
+                        }
+                        if (chapterLevel.pentagrams == 2)
+                        {
+                            spriteRenderer.sprite = levelSilverSprite;
+                        }
+                        if (chapterLevel.pentagrams == 3)
+                        {
+                            spriteRenderer.sprite = levelGoldSprite;
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -71,15 +106,16 @@ public class Chapter : MonoBehaviour
 
     private void SetStatus()
     {
-        if (chapterIconRenderer != null)
+        if (chapterIcon != null)
         {
+            var spriteRenderer = chapterIcon.GetComponent<SpriteRenderer>();
             if (previousLevelsCleared && enoughPentagrams)
             {
-                chapterIconRenderer.color = new Color(1, 1, 1, 1);
+                spriteRenderer.color = new Color(1, 1, 1, 1);
             }
             else
             {
-                chapterIconRenderer.color = new Color(0.33f, 0.33f, 0.33f, 1);
+                spriteRenderer.color = new Color(0.33f, 0.33f, 0.33f, 1);
             }
 
             if (!enoughPentagrams && requirement != null)
@@ -109,6 +145,13 @@ public class Chapter : MonoBehaviour
 
     public void SetSelected(bool selected)
     {
+        if (chapterIcon != null)
+        {
+            if(selected)
+                chapterIcon.transform.localScale = new Vector3(1.25f, 1.25f, 1f);
+            else
+                chapterIcon.transform.localScale = new Vector3(1f, 1f, 1f);
+        }
         //if (selectedIcon != null)
         //    selectedIcon.SetActive(selected);
     }

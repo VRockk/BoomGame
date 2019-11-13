@@ -105,8 +105,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1486234901270990050}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.32, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children:
   - {fileID: 6776424580278264309}
   m_Father: {fileID: 5626117355871531924}
@@ -161,7 +161,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &5626117355871531925
+--- !u!1 &1926952446861138846
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,62 +169,36 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5626117355871531924}
-  - component: {fileID: 5626117355871531927}
-  - component: {fileID: 6378374482858241674}
-  - component: {fileID: 5949663854736531697}
+  - component: {fileID: 7058097242506835613}
+  - component: {fileID: 51228071594136533}
   m_Layer: 0
-  m_Name: Chapter
-  m_TagString: Chapter
+  m_Name: Icon
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5626117355871531924
+--- !u!4 &7058097242506835613
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5626117355871531925}
+  m_GameObject: {fileID: 1926952446861138846}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.1}
-  m_LocalScale: {x: 1, y: 1, z: 4}
-  m_Children:
-  - {fileID: 954405676708093483}
-  - {fileID: 2881169954046707191}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5626117355871531924}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5626117355871531927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5626117355871531925}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 098bba60ab941a34daf5c1d599d60440, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chapterName: Chapter Name
-  pentaLimit: 0
-  levelNames: []
-  chapterIconRenderer: {fileID: 6378374482858241674}
-  requirement: {fileID: 1486234901270990050}
-  requirementText: {fileID: 8850139671321535942}
-  previousChapter: {fileID: 0}
-  selectedIcon: {fileID: 1276352706444586939}
-  enoughPentagrams: 0
-  previousLevelsCleared: 1
---- !u!212 &6378374482858241674
+--- !u!212 &51228071594136533
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5626117355871531925}
+  m_GameObject: {fileID: 1926952446861138846}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -267,6 +241,67 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &5626117355871531925
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5626117355871531924}
+  - component: {fileID: 5626117355871531927}
+  - component: {fileID: 5949663854736531697}
+  m_Layer: 0
+  m_Name: Chapter
+  m_TagString: Chapter
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5626117355871531924
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5626117355871531925}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.1}
+  m_LocalScale: {x: 1, y: 1, z: 4}
+  m_Children:
+  - {fileID: 954405676708093483}
+  - {fileID: 2881169954046707191}
+  - {fileID: 7058097242506835613}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5626117355871531927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5626117355871531925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 098bba60ab941a34daf5c1d599d60440, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chapterName: Chapter Name
+  pentaLimit: 0
+  levelNames: []
+  levelIcons: []
+  chapterIcon: {fileID: 1926952446861138846}
+  requirement: {fileID: 1486234901270990050}
+  requirementText: {fileID: 8850139671321535942}
+  previousChapter: {fileID: 0}
+  selectedIcon: {fileID: 1276352706444586939}
+  levelBronzeSprite: {fileID: 21300000, guid: bc613ea3e00a7c24d86577589f3a5c84, type: 3}
+  levelSilverSprite: {fileID: 21300000, guid: 0447197b887fe7842a1c07e68d5c9b30, type: 3}
+  levelGoldSprite: {fileID: 21300000, guid: 5b33ec35715cc9f4dbeb055dad2fba19, type: 3}
+  enoughPentagrams: 0
+  previousLevelsCleared: 1
 --- !u!61 &5949663854736531697
 BoxCollider2D:
   m_ObjectHideFlags: 0
