@@ -55,8 +55,8 @@ public class Chapter : MonoBehaviour
                         spriteRenderer.color = new Color(1f, 1f, 1f, 1f);
                         if (chapterLevel.pentagrams == 0)
                         {
-                            levelIcon.SetActive(false);
-                            spriteRenderer.color = new Color(0.5f, 0.5f, 0.5f, 1f);
+                            //levelIcon.SetActive(false);
+                            spriteRenderer.color = new Color(0.33f, 0.33f, 0.33f, 1f);
                         }
                         if (chapterLevel.pentagrams == 1)
                         {
