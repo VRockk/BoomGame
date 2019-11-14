@@ -10,7 +10,7 @@ public class Metal : BuildingObject
 {
     public Sprite bendLeftSprite;
     public Sprite bendRightSprite;
-
+    public bool meltVertical = false;
 
     private bool melting = false;
     private float meltSpeed = 0.5f;
@@ -43,11 +43,21 @@ public class Metal : BuildingObject
         base.Update();
         if (melting)
         {
-            var yScale = transform.localScale.y - (Time.deltaTime * meltSpeed);
-            //var xScale = transform.localScale.x + (Time.deltaTime * meltSpeed);
-            transform.localScale = new Vector3(transform.localScale.x, yScale, transform.localScale.z);
+            float scale = 1f;
+            if (meltVertical)
+            {
+                scale = transform.localScale.y - (Time.deltaTime * meltSpeed);
+                //var xScale = transform.localScale.x + (Time.deltaTime * meltSpeed);
+                transform.localScale = new Vector3(transform.localScale.x, scale, transform.localScale.z);
+            }
+            else
+            {
+                scale = transform.localScale.x - (Time.deltaTime * meltSpeed);
+                //var xScale = transform.localScale.x + (Time.deltaTime * meltSpeed);
+                transform.localScale = new Vector3(scale, transform.localScale.y, transform.localScale.z);
 
-            if (yScale <= 0.0f)
+            }
+            if (scale <= 0.0f)
             {
                 melting = false;
                 Destroy(gameObject);
@@ -95,7 +105,7 @@ public class Metal : BuildingObject
         var spriteRenderer = GetComponent<SpriteRenderer>();
         if (spriteRenderer != null)
         {
-            spriteRenderer.color = new Color(0, 1, 0, 1);
+            spriteRenderer.color = new Color(0.3f, 1, 0.3f, 1);
         }
         melting = true;
         Score.scoreValue += scoreValue;

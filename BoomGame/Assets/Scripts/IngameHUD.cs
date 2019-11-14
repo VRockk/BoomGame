@@ -98,7 +98,6 @@ public class IngameHUD : MonoBehaviour
 
     private IEnumerator HideSlidingHUD()
     {
-
         yield return new WaitForSeconds(0.5f);
         detonatePanel.GetComponent<RectTransform>().DOAnchorPosX(230f, Random.Range(0.45f, 0.65f), false).SetEase(Ease.InBack).SetUpdate(true);
         resetButton1.GetComponent<RectTransform>().DOAnchorPosX(230f, Random.Range(0.45f, 0.65f), false).SetEase(Ease.InBack).SetUpdate(true);
@@ -138,6 +137,11 @@ public class IngameHUD : MonoBehaviour
 
     public void CampaignMap()
     {
+        if (menuMusic != null)
+            gameMaster.SetMusic(menuMusic);
+        else
+            gameMaster.SetMusic(null);
+        gameMaster.SetMusic(menuMusic);
         //To load video ads
         //AdsController.adsInstance.ShowVideoOrInterstitialAds();
         //TODO: Show loading screens

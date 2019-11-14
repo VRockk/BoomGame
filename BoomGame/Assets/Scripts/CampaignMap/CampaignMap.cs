@@ -4,16 +4,17 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class CampaignMap : MonoBehaviour
 {
     public GameObject chapterPanel;
     private bool inputAllowed = true;
 
-    private static readonly float panSpeed = 40f;
+    private static readonly float panSpeed = 70f;
 
-    private static readonly float[] BoundsX = new float[] { -4f, 70f };
-    private static readonly float[] BoundsY = new float[] { -25f, 4f };
+    private static readonly float[] BoundsX = new float[] { -9f, 70f };
+    private static readonly float[] BoundsY = new float[] { -25f, 8f };
     public float defaultCameraSize = 45f;
 
     private Camera cam;
@@ -155,7 +156,7 @@ public class CampaignMap : MonoBehaviour
             //show chapter info panel
             if (chapterPanel != null)
             {
-                chapterPanel.SetActive(true);
+                chapterPanel.GetComponent<RectTransform>().DOAnchorPosX(-50f, Random.Range(0.35f, 0.45f), false).SetEase(Ease.OutBack).SetUpdate(true);
                 var chapterPanelScript = chapterPanel.GetComponent<ChapterPanel>();
                 chapterPanelScript.CreateLevelInfoPanels(chapter);
             }
@@ -174,7 +175,8 @@ public class CampaignMap : MonoBehaviour
         //hide chapter info panel
         if (chapterPanel != null)
         {
-            chapterPanel.SetActive(false);
+            chapterPanel.GetComponent<RectTransform>().DOAnchorPosX(800f, Random.Range(0.35f, 0.45f), false).SetEase(Ease.InBack).SetUpdate(true);
+            //chapterPanel.SetActive(false);
         }
     }
 

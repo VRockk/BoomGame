@@ -51,7 +51,6 @@ public class BuildingObject : MonoBehaviour
         //Dont allow creating joints to parent objects. 
         if (this.transform.parent != null)
             ignoredJoints.Add(this.transform.parent.gameObject);
-
         CreateJoints();
     }
 

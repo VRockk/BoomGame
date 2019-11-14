@@ -177,8 +177,8 @@ public class GameController : MonoBehaviour
                 //Move bomb if its attached to cursor
                 if (bombUnderMouse != null)
                 {
-                    //Set new position for bomb. Add + to y axis so the bomb is not under player finger
-                    bombUnderMouse.transform.position = new Vector3(mousePos.x, mousePos.y + 3f, -1f);
+                    //Set new position for bomb.
+                    bombUnderMouse.transform.position = new Vector3(mousePos.x, mousePos.y, -1f);
                 }
             }
             if (Input.GetMouseButtonUp(0))
@@ -228,7 +228,7 @@ public class GameController : MonoBehaviour
                             var bombCardScript = result.gameObject.GetComponent<BombCard>();
                             if (bombCardScript != null)
                             {
-                                bombUnderMouse = Instantiate(bombCardScript.bombPrefab, new Vector3(mousePos.x, mousePos.y + 3f, -1f), Quaternion.identity);
+                                bombUnderMouse = Instantiate(bombCardScript.bombPrefab, new Vector3(mousePos.x, mousePos.y, -1f), Quaternion.identity);
                                 //cameraHandler.ZoomToSize(35f, new Vector3(0, -2f, 0));
                                 bombCount--;
                                 StartCoroutine(hud.UpdateBombCount(bombCount));

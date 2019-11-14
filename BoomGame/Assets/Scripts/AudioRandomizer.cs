@@ -16,7 +16,7 @@ public class AudioRandomizer : MonoBehaviour
 
         var audio = GetComponent<AudioSource>();
 
-        if(audio != null)
+        if( audio != null)
         {
             audio.pitch = Random.Range(minPitch, maxPitch);
             audio.volume = Random.Range(minVolume, maxVolume);
