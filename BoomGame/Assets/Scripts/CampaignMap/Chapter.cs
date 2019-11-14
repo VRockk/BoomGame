@@ -37,6 +37,7 @@ public class Chapter : MonoBehaviour
 
     private void Awake()
     {
+
         chapterLevels = new List<Level>();
 
         //Create Level objects
@@ -52,10 +53,10 @@ public class Chapter : MonoBehaviour
                     var spriteRenderer = levelIcon.GetComponent<SpriteRenderer>();
                     if (spriteRenderer != null)
                     {
+                        // Set the map level icons depending on how many pentagrams that level has
                         spriteRenderer.color = new Color(1f, 1f, 1f, 1f);
                         if (chapterLevel.pentagrams == 0)
                         {
-                            //levelIcon.SetActive(false);
                             spriteRenderer.color = new Color(0.33f, 0.33f, 0.33f, 1f);
                         }
                         if (chapterLevel.pentagrams == 1)
@@ -74,6 +75,7 @@ public class Chapter : MonoBehaviour
                 }
             }
         }
+
     }
 
     // Start is called before the first frame update
@@ -82,7 +84,7 @@ public class Chapter : MonoBehaviour
         enoughPentagrams = false;
         playerPentagrams = PlayerPrefs.GetInt("PlayerPentagrams", 0);
 
-        //All levels in previous chapter needs to be cleared for this to be open
+        //All levels in previous chapter needs to be cleared for this chapter to be open available
         if (previousChapter != null)
         {
             var prevChapterScript = previousChapter.GetComponent<Chapter>();
@@ -96,10 +98,20 @@ public class Chapter : MonoBehaviour
             }
         }
 
-
-        //Player needs to have more or equal amount of pentagrams to have this chapter open
+        //AND player needs to have more or equal amount of pentagrams to have this chapter open
         enoughPentagrams = playerPentagrams >= pentaLimit;
 
+        if (!enoughPentagrams && !previousLevelsCleared)
+        {
+            if (levelIcons != null)
+            {
+                //hide the level icons if this chapter is not open yet
+                foreach (var icon in levelIcons)
+                {
+                    icon.SetActive(false);
+                }
+            }
+        }
 
         SetStatus();
     }
@@ -147,12 +159,10 @@ public class Chapter : MonoBehaviour
     {
         if (chapterIcon != null)
         {
-            if(selected)
+            if (selected)
                 chapterIcon.transform.localScale = new Vector3(1.25f, 1.25f, 1f);
             else
                 chapterIcon.transform.localScale = new Vector3(1f, 1f, 1f);
         }
-        //if (selectedIcon != null)
-        //    selectedIcon.SetActive(selected);
     }
 }

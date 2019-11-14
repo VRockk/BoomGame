@@ -39,21 +39,21 @@ public class LevelInfoPanel : MonoBehaviour
         //set pentagram colors depending on the clear level
         if (level.pentagrams == 0)
         {
-            penta1.color = new Color(0.1f, 0.1f, 0.1f, 1);
-            penta2.color = new Color(0.1f, 0.1f, 0.1f, 1);
-            penta3.color = new Color(0.1f, 0.1f, 0.1f, 1);
+            penta1.color = new Color(0.1f, 0.1f, 0.1f, 0.05f);
+            penta2.color = new Color(0.1f, 0.1f, 0.1f, 0.05f);
+            penta3.color = new Color(0.1f, 0.1f, 0.1f, 0.05f);
         }
         else if (level.pentagrams == 1)
         {
             penta1.color = new Color(1f, 1f, 1f, 1);
-            penta2.color = new Color(0.1f, 0.1f, 0.1f, 1);
-            penta3.color = new Color(0.1f, 0.1f, 0.1f, 1);
+            penta2.color = new Color(0.1f, 0.1f, 0.1f, 0.05f);
+            penta3.color = new Color(0.1f, 0.1f, 0.1f, 0.05f);
         }
         else if (level.pentagrams == 2)
         {
             penta1.color = new Color(1f, 1f, 1f, 1);
             penta2.color = new Color(1f, 1f, 1f, 1);
-            penta3.color = new Color(0.1f, 0.1f, 0.1f, 1);
+            penta3.color = new Color(0.1f, 0.1f, 0.1f, 0.05f);
         }
         else if (level.pentagrams == 3)
         {
@@ -62,7 +62,11 @@ public class LevelInfoPanel : MonoBehaviour
             penta3.color = new Color(1f, 1f, 1f, 1);
         }
 
-        scoreText.text = level.score.ToString();
+        if (level.score == 0)
+            scoreText.text = "-";
+        else
+            scoreText.text = level.score.ToString();
+
         numberText.text = count.ToString();
     }
 

@@ -105,7 +105,7 @@ public class Metal : BuildingObject
         var spriteRenderer = GetComponent<SpriteRenderer>();
         if (spriteRenderer != null)
         {
-            spriteRenderer.color = new Color(0, 1, 0, 1);
+            spriteRenderer.color = new Color(0.3f, 1, 0.3f, 1);
         }
         melting = true;
         Score.scoreValue += scoreValue;
