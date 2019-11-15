@@ -359,7 +359,7 @@ public class GameController : MonoBehaviour
         if (levelClear == LevelClear.Failed)
         {
             inputAllowed = false;
-            hud.LevelFinished(LevelClear.Failed, 0);
+            hud.LevelFinished(LevelClear.Failed, 0, levelScore);
             return;
         }
         else if (levelClear == LevelClear.NotCleared)
@@ -368,7 +368,7 @@ public class GameController : MonoBehaviour
             {
                 //Fail if no bombs left or rounds left
                 inputAllowed = false;
-                hud.LevelFinished(LevelClear.Failed, 0);
+                hud.LevelFinished(LevelClear.Failed, 0, levelScore);
                 return;
             }
             else
@@ -450,7 +450,7 @@ public class GameController : MonoBehaviour
 
         //var bonusSalvage = (bombCount - savedBombs) * bonusSalvageForSavedBomb;
 
-        hud.LevelFinished(levelClear, salvageValue);
+        hud.LevelFinished(levelClear, salvageValue, levelScore);
         gameMaster.AddSalvage(salvageValue);
     }
 

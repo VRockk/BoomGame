@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class EndScreen : MonoBehaviour
@@ -7,6 +8,10 @@ public class EndScreen : MonoBehaviour
     public Animator animator;
     public IngameHUD ingameHUD;
     public int testScore = -1;
+
+    public GameObject scoreText;
+
+
     void Awake()
     {
         animator.enabled = false;
@@ -19,7 +24,7 @@ public class EndScreen : MonoBehaviour
         //print(ingameHUD);
         if(testScore > -1)
         {
-            Enable(testScore);
+            Enable(testScore, 100);
         }
         var camPos = Camera.main.transform.position;
         transform.position = new Vector3(camPos.x, camPos.y, 0);
@@ -36,11 +41,17 @@ public class EndScreen : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    public void Enable(int score)
+    public void Enable(int pentagrams, int score)
     {
         //print(score);
-        animator.SetInteger("Score", score);
+        animator.SetInteger("Score", pentagrams);
         animator.enabled = true;
+
+        if(scoreText != null)
+        {
+            var scoreTextComp = scoreText.GetComponent<TextMeshProUGUI>();
+            scoreTextComp.text = score.ToString();
+        }
     }
 
     public void ShowLevelFinishedScreen()
