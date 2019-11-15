@@ -46,7 +46,7 @@ public class GameController : MonoBehaviour
     public AudioClip ingameMusic;
 
 
-    private WinLines winlines;
+    //private WinLines winlines;
 
     private int salvageValue = 100;
     private int bonusSalvageForSavedBomb = 25;
@@ -95,15 +95,15 @@ public class GameController : MonoBehaviour
         if (audioSource == null)
             Debug.LogError("AudioSource not found in the scene for the GameController");
 
-        var winlinesObj = GameObject.Find("Winlines");
+        //var winlinesObj = GameObject.Find("Winlines");
 
-        if (winlinesObj == null)
-            Debug.LogError("No winlines found");
+        //if (winlinesObj == null)
+        //    Debug.LogError("No winlines found");
 
-        winlines = winlinesObj.GetComponent<WinLines>();
+        //winlines = winlinesObj.GetComponent<WinLines>();
 
-        if (winlines == null)
-            Debug.LogError("No winlines found");
+        //if (winlines == null)
+        //    Debug.LogError("No winlines found");
 
         //inputAllowed = true;
         roundCounter = 0;
@@ -117,7 +117,7 @@ public class GameController : MonoBehaviour
         else
             gameMaster.SetMusic(null);
 
-        InvokeRepeating("CheckScorelines", 1f, 1f);
+        //InvokeRepeating("CheckScorelines", 1f, 1f);
     }
 
     private void CreateBombIcons()
@@ -332,7 +332,7 @@ public class GameController : MonoBehaviour
         {
             //speed up the game
             allowTimescale = true;
-            timeScaleTween = DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 10f, 5f).SetUpdate(true);
+            timeScaleTween = DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 10f, 10f).SetUpdate(true);
 
         }
 
@@ -469,50 +469,54 @@ public class GameController : MonoBehaviour
             {
                 return LevelClear.Failed;
             }
-            //if (building.Hitpoints < building.maxHitpoints)
-            //{
-            //    buildingsDamaged = true;
-            //}
         }
-        var buildingObjects = FindObjectsOfType<BuildingObject>().Where(x => x.checkedInLevelClear && x.gameObject.transform.position.magnitude < 100);
-        if (buildingObjects.Count() == 0)
+        float clearPercentage = levelScore / maxScore * 100;
+        print(clearPercentage);
+        if (clearPercentage > 70f)
         {
             levelClear = LevelClear.ThreePentagram;
         }
+        else if (clearPercentage > 50f)
+        {
+            levelClear = LevelClear.TwoPentagram;
+        }
+        else if (clearPercentage > 30f)
+        {
+            levelClear = LevelClear.OnePentagram;
+        }
         else
         {
-            //Find the brick that has the highest position 
-            var highestBuildingObject = buildingObjects.OrderByDescending(x => x.gameObject.transform.position.y + x.GetComponent<Collider2D>().bounds.extents.y).First();
-            float highestBrickTopPos = highestBuildingObject.transform.position.y + highestBuildingObject.GetComponent<Collider2D>().bounds.extents.y;
-
-            if (highestBrickTopPos <= winlines.threePentaHeight)
-            {
-                levelClear = LevelClear.ThreePentagram;
-            }
-            else if (highestBrickTopPos <= winlines.twoPentaHeight)
-            {
-                levelClear = LevelClear.TwoPentagram;
-            }
-            else if (highestBrickTopPos <= winlines.onePentaHeight)
-            {
-                levelClear = LevelClear.OnePentagram;
-            }
-            else
-            {
-                levelClear = LevelClear.NotCleared;
-            }
+            levelClear = LevelClear.NotCleared;
         }
-        //Damaged buildings lower the pentagrams gained by one
-        //if (buildingsDamaged)
-        //{
-        //    if (levelClear == LevelClear.ThreePentagram)
-        //        levelClear = LevelClear.TwoPentagram;
-        //    else if (levelClear == LevelClear.TwoPentagram)
-        //        levelClear = LevelClear.OnePentagram;
-        //    else
-        //        levelClear = LevelClear.NotCleared;
-        //}
 
+        //var buildingObjects = FindObjectsOfType<BuildingObject>().Where(x => x.checkedInLevelClear && x.gameObject.transform.position.magnitude < 100);
+        //if (buildingObjects.Count() == 0)
+        //{
+        //    levelClear = LevelClear.ThreePentagram;
+        //}
+        //else
+        //{
+        //    //Find the brick that has the highest position 
+        //    var highestBuildingObject = buildingObjects.OrderByDescending(x => x.gameObject.transform.position.y + x.GetComponent<Collider2D>().bounds.extents.y).First();
+        //    float highestBrickTopPos = highestBuildingObject.transform.position.y + highestBuildingObject.GetComponent<Collider2D>().bounds.extents.y;
+
+        //    if (highestBrickTopPos <= winlines.threePentaHeight)
+        //    {
+        //        levelClear = LevelClear.ThreePentagram;
+        //    }
+        //    else if (highestBrickTopPos <= winlines.twoPentaHeight)
+        //    {
+        //        levelClear = LevelClear.TwoPentagram;
+        //    }
+        //    else if (highestBrickTopPos <= winlines.onePentaHeight)
+        //    {
+        //        levelClear = LevelClear.OnePentagram;
+        //    }
+        //    else
+        //    {
+        //        levelClear = LevelClear.NotCleared;
+        //    }
+        //}
         return levelClear;
     }
 
@@ -522,9 +526,9 @@ public class GameController : MonoBehaviour
         inputAllowed = allow;
     }
 
-    private void CheckScorelines()
-    {
-        winlines.UpdateLines(CheckLevelClear());
-    }
+    //private void CheckScorelines()
+    //{
+    //    winlines.UpdateLines(CheckLevelClear());
+    //}
 
 }
