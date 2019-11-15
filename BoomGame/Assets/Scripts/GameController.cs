@@ -58,6 +58,7 @@ public class GameController : MonoBehaviour
     public List<AudioClip> bombScreamsToPlay;
 
     private int levelScore = 0;
+    public int maxScore;
 
     private bool allowTimescale = false;
     private TweenerCore<float, float, FloatOptions> timeScaleTween;

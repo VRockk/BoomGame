@@ -15,7 +15,7 @@ public class Metal : BuildingObject
     private bool melting = false;
     private float meltSpeed = 0.5f;
 
-    public int scoreValue;
+   
 
     protected override void OnDrawGizmos()
     {
