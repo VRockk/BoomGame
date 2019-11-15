@@ -5,11 +5,13 @@ using UnityEngine;
 
 public class BuildingObject : MonoBehaviour
 {
+    public int scoreValue;
     public float jointBreakForce = 50000f;
     public float jointBreakTorque = 50000f;
     public bool createJoints = true;
     public bool createManualJoints = false;
     public bool createJointToGround = false;
+    private bool scoreAdded = false;
 
     public List<GameObject> ignoredJoints = new List<GameObject>();
 
@@ -29,6 +31,9 @@ public class BuildingObject : MonoBehaviour
 
     [HideInInspector]
     public bool checkedInLevelClear = true;
+
+    
+
 
     protected virtual void OnDrawGizmos()
     {
@@ -52,6 +57,19 @@ public class BuildingObject : MonoBehaviour
         if (this.transform.parent != null)
             ignoredJoints.Add(this.transform.parent.gameObject);
         CreateJoints();
+        AddMaxScore();
+
+    }
+
+    public void AddMaxScore()
+    {
+        if (scoreAdded == false)
+        {
+            GameObject gameController = GameObject.Find("GameController");
+            GameController gameControllerScript = gameController.GetComponent<GameController>();
+            gameControllerScript.maxScore += scoreValue;
+            scoreAdded = true;
+        }
     }
 
     protected virtual void FixedUpdate()

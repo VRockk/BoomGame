@@ -27,7 +27,7 @@ public class Brick : BuildingObject
     private bool shattered = false;
     private float damageGateDelay = 0f;
     private const float damageDelayDefault = 0.05f;
-    public int scoreValue;
+    
 
 
     protected override void OnDrawGizmos()
@@ -85,6 +85,7 @@ public class Brick : BuildingObject
             var buildingObject = newObject.GetComponent<BuildingObject>();
             if (buildingObject != null)
             {
+                buildingObject.AddMaxScore();
                 //buildingObject.createJoints = true;
                 //buildingObject.createManualJoints = true;
                 buildingObject.allowDamage = true;
