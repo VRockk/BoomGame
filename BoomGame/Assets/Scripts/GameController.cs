@@ -377,7 +377,7 @@ public class GameController : MonoBehaviour
                 StartCoroutine(AllowInput(true, roundDelay));
             }
         }
-        else if (levelClear == LevelClear.OnePentagram || levelClear == LevelClear.TwoPentagram)
+        else
         {
             if (roundCounter == maxRounds || bombCount == 0)
             {
@@ -390,11 +390,6 @@ public class GameController : MonoBehaviour
                 hud.NextRound(roundCounter, roundDelay);
                 StartCoroutine(AllowInput(true, roundDelay));
             }
-        }
-        else
-        {
-            //three pentas always finish right away
-            FinishLevel(levelClear);
         }
     }
 
@@ -474,7 +469,7 @@ public class GameController : MonoBehaviour
                 return LevelClear.Failed;
             }
         }
-        float clearPercentage = levelScore / maxScore * 100;
+        float clearPercentage = (float)levelScore / (float)maxScore * 100;
         print(clearPercentage);
         if (clearPercentage > 70f)
         {
