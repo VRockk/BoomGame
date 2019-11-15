@@ -15,19 +15,19 @@ public class MainMenu : MonoBehaviour
     public GameObject privacyPolicyPanel;
     public GameObject mainMenuPanel;
     public GameObject shopPanel;
-    public GameObject bombPanel;
+    public GameObject workshopPanel;
     public GameObject bombSelectionPanel;
     public GameObject optionPanel;
-    public GameObject gameServicesPanel;
     public GameObject gameMasterPrefab;
+    public GameObject gameServicesPanel;
+    public GameObject bombSalvage;
 
     private GameMaster gameMaster;
-    private AudioSource audioSource;
+    public AudioSource audioSource;
+    [HideInInspector]
     public AudioClip menuMusic;
     private bool rumbleToggleFlag = true;
 
-    [SerializeField] private Button loginButton;
-    [SerializeField] private TextMeshProUGUI statusText;
     private bool mWaitingForAuth = false;
 
 
@@ -50,15 +50,12 @@ public class MainMenu : MonoBehaviour
                 mainMenuPanel.SetActive(false);
                 privacyPolicyPanel.SetActive(true);
                 shopPanel.SetActive(false);
-                bombPanel.SetActive(false);
             }
             else
             {
                 mainMenuPanel.SetActive(true);
                 privacyPolicyPanel.SetActive(false);
                 shopPanel.SetActive(false);
-                bombPanel.SetActive(false);
-
             }
 
 
@@ -84,16 +81,9 @@ public class MainMenu : MonoBehaviour
                 }
             }
         }
-        audioSource = GetComponent<AudioSource>();
 
         // Select the Google Play Games platform as our social platform implementation
         GooglePlayGames.PlayGamesPlatform.Activate();
-
-        //playButton.interactable = false;
-        if (!Social.localUser.authenticated)
-        {
-            loginButton.GetComponentInChildren<TMP_Text>().text = "Sign in";
-        }
     }
 
 
@@ -106,17 +96,6 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         SceneManager.LoadScene("CampaignMap");
-
-
-        //int tutorial = PlayerPrefs.GetInt("Tutorial", 0);
-
-        //if (tutorial == 1)
-        //    SceneManager.LoadScene("CampaignMap");
-        //else
-        //{
-        //    PlayerPrefs.SetInt("Tutorial", 1);
-        //    SceneManager.LoadScene("TutorialLevel");
-        //}
     }
 
 
@@ -131,59 +110,45 @@ public class MainMenu : MonoBehaviour
         mainMenuPanel.SetActive(true);
         privacyPolicyPanel.SetActive(false);
         shopPanel.SetActive(false);
-        bombPanel.SetActive(false);
-        bombSelectionPanel.SetActive(true);
-
+        bombSalvage.SetActive(true);
         gameMaster.PrivacyPolicyAccepted = true;
     }
-    public void OpenPrivacyPolicy()
-    {
-        mainMenuPanel.SetActive(false);
-        shopPanel.SetActive(false);
-        privacyPolicyPanel.SetActive(true);
-        bombPanel.SetActive(false);
-        bombSelectionPanel.SetActive(true);
-    }
 
-    public void CloseCampaingMap()
-    {
-        mainMenuPanel.SetActive(true);
-        privacyPolicyPanel.SetActive(false);
-        shopPanel.SetActive(false);
-        bombPanel.SetActive(false);
-        bombSelectionPanel.SetActive(true);
-    }
-    public void OpenCampaignMap()
-    {
-        mainMenuPanel.SetActive(false);
-        privacyPolicyPanel.SetActive(false);
-        shopPanel.SetActive(false);
-        bombPanel.SetActive(false);
-        bombSelectionPanel.SetActive(true);
-    }
     public void CloseShop()
     {
         mainMenuPanel.SetActive(true);
         privacyPolicyPanel.SetActive(false);
         shopPanel.SetActive(false);
-        bombPanel.SetActive(false);
-        bombSelectionPanel.SetActive(true);
     }
+
     public void OpenShop()
     {
         mainMenuPanel.SetActive(false);
         privacyPolicyPanel.SetActive(false);
         shopPanel.SetActive(true);
-        bombPanel.SetActive(false);
-        bombSelectionPanel.SetActive(true);
 
     }
+
+    public void CloseWorkshop()
+    {
+        mainMenuPanel.SetActive(true);
+        privacyPolicyPanel.SetActive(false);
+        workshopPanel.SetActive(false);
+    }
+
+    public void OpenWorkshop()
+    {
+        mainMenuPanel.SetActive(false);
+        privacyPolicyPanel.SetActive(false);
+        workshopPanel.SetActive(true);
+
+    }
+
     public void OpenBombsPanel()
     {
         //mainMenuPanel.SetActive(false);
         privacyPolicyPanel.SetActive(false);
         shopPanel.SetActive(false);
-        bombPanel.SetActive(true);
         bombSelectionPanel.SetActive(true);
         var upgradePanels = GameObject.FindGameObjectsWithTag("BombUpgradePanel");
         foreach (var upgradePanel in upgradePanels)
@@ -201,7 +166,6 @@ public class MainMenu : MonoBehaviour
         mainMenuPanel.SetActive(true);
         privacyPolicyPanel.SetActive(false);
         shopPanel.SetActive(false);
-        bombPanel.SetActive(false);
         bombSelectionPanel.SetActive(false);
     }
 
@@ -211,40 +175,38 @@ public class MainMenu : MonoBehaviour
         {
             // Authenticate
             mWaitingForAuth = true;
-            statusText.text = "Authenticating...";
+            //statusText.text = "Authenticating...";
 
             Social.localUser.Authenticate((bool success) =>
             {
                 mWaitingForAuth = false;
                 if (success)
                 {
-                    statusText.text = "Welcome " + Social.localUser.userName;
-                    StartCoroutine("LoadImage");
-                    loginButton.GetComponentInChildren<TMP_Text>().text = "Sign out";
+                    //statusText.text = "Welcome " + Social.localUser.userName;
+                    //StartCoroutine("LoadImage");
+                    //loginButton.GetComponentInChildren<TMP_Text>().text = "Sign out";
                     gameServicesPanel.SetActive(false);
                     gameMaster.SignIn = true;
                 }
                 else
                 {
-                    statusText.text = "Authentication failed.";
+                    //statusText.text = "Authentication failed.";
                 }
             });
         }
         else
         {
-            statusText.text = "";
-            ((GooglePlayGames.PlayGamesPlatform)Social.Active).SignOut();
-            loginButton.GetComponentInChildren<TMP_Text>().text = "Sign in";
+            //statusText.text = "";
+            //((GooglePlayGames.PlayGamesPlatform)Social.Active).SignOut();
+            //loginButton.GetComponentInChildren<TMP_Text>().text = "Sign in";
         }
 
     }
     public void CloseGameServices()
     {
-        mainMenuPanel.SetActive(true);
-        privacyPolicyPanel.SetActive(false);
-        shopPanel.SetActive(false);
-        bombPanel.SetActive(false);
-        bombSelectionPanel.SetActive(true);
+        //mainMenuPanel.SetActive(true);
+        //privacyPolicyPanel.SetActive(false);
+        //shopPanel.SetActive(false);
         gameServicesPanel.SetActive(false);
     }
     public void ShowBombUpgradePanel(GameObject panel)
@@ -254,35 +216,24 @@ public class MainMenu : MonoBehaviour
         {
             upgradePanel.SetActive(false);
         }
-        bombSelectionPanel.SetActive(false);
         panel.SetActive(true);
     }
 
 
     public void OpenOptionPanel()
     {
-        mainMenuPanel.SetActive(false);
-        privacyPolicyPanel.SetActive(false);
         optionPanel.SetActive(true);
-        bombPanel.SetActive(false);
-        bombSelectionPanel.SetActive(true);
     }
 
     public void CloseOptionPanel()
     {
-        mainMenuPanel.SetActive(true);
-        privacyPolicyPanel.SetActive(false);
         optionPanel.SetActive(false);
-        bombPanel.SetActive(false);
-        bombSelectionPanel.SetActive(true);
     }
+
     public void PlaySound(AudioClip sound)
     {
-        if (rumbleToggleFlag == true)
-        {
+        if (sound != null)
             audioSource.PlayOneShot(sound);
-        }
-
     }
 
 
