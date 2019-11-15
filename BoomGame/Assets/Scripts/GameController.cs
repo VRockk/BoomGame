@@ -57,9 +57,8 @@ public class GameController : MonoBehaviour
     [HideInInspector]
     public List<AudioClip> bombScreamsToPlay;
 
-    private int levelScore = 0;
     public int maxScore;
-
+    private int levelScore;
     private bool allowTimescale = false;
     private TweenerCore<float, float, FloatOptions> timeScaleTween;
     private void Awake()
@@ -74,7 +73,8 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Score.scoreValue = 0;
+        levelScore = 0;
+
         if (ingameHUD != null)
         {
             ingameHUD.SetActive(true);
@@ -84,7 +84,6 @@ public class GameController : MonoBehaviour
 
         if (hud == null)
             Debug.LogError("IngameHUD not found in the scene for the GameController");
-
         cameraHandler = GameObject.FindObjectOfType<CameraHandler>();
 
         if (cameraHandler == null)
@@ -406,7 +405,7 @@ public class GameController : MonoBehaviour
         var levelName = SceneManager.GetActiveScene().name;
         var pentagrams = PlayerPrefs.GetInt(levelName + "Pentagrams", 0);
         var savedBombs = PlayerPrefs.GetInt(levelName + "SavedBombs", 0);
-        var score = PlayerPrefs.GetInt(levelName + Score.scoreValue, 0);
+        var score = PlayerPrefs.GetInt(levelName + levelScore, 0);
 
 
         //PlayerPentagrams and PlayerScore are the values of all gained pentagrams and score from all maps the player has cleared
@@ -440,11 +439,11 @@ public class GameController : MonoBehaviour
             PlayerPrefs.SetInt(levelName + "SavedBombs", bombCount);
 
         //If the new score is higher than previously, save the new score to player prefs
-        if (score < Score.scoreValue)
+        if (score < levelScore)
         {
             // Reduce the old level score from the player score and add the new score back
-            playerScore = playerScore - score + Score.scoreValue;
-            PlayerPrefs.SetInt(levelName + "Score", Score.scoreValue);
+            playerScore = playerScore - score + levelScore;
+            PlayerPrefs.SetInt(levelName + "Score", levelScore);
             PlayerPrefs.SetInt("PlayerScore", playerScore);
         }
 
@@ -454,6 +453,11 @@ public class GameController : MonoBehaviour
         gameMaster.AddSalvage(salvageValue);
     }
 
+    public void AddToScore(int score)
+    {
+        levelScore += score;
+        hud.UpdateScore(levelScore);
+    }
     private LevelClear CheckLevelClear()
     {
         LevelClear levelClear = LevelClear.NotCleared;
