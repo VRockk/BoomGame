@@ -157,7 +157,7 @@ public class IngameHUD : MonoBehaviour
         ShowRoundText(delay, roundNumber);
     }
 
-    public void LevelFinished(LevelClear levelClear, int salvage)
+    public void LevelFinished(LevelClear levelClear, int salvage, int score)
     {
         salvageAmount = salvage;
 
@@ -197,11 +197,11 @@ public class IngameHUD : MonoBehaviour
         }
 
 
-        ShowEndScreen(levelClear);
+        ShowEndScreen(levelClear, score);
 
     }
 
-    private void ShowEndScreen(LevelClear levelClear)
+    private void ShowEndScreen(LevelClear levelClear, int levelScore)
     {
         if (endScreen != null)
         {
@@ -212,22 +212,22 @@ public class IngameHUD : MonoBehaviour
 
             if (levelClear == LevelClear.Failed)
             {
-                endscreenScript.Enable(0);
+                endscreenScript.Enable(0, levelScore);
                 salvagePanel.SetActive(false);
                 //salvagePanel.GetComponent<CanvasGroup>().alpha = 0;
                 //salvagePanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
             }
             else if (levelClear == LevelClear.OnePentagram)
             {
-                endscreenScript.Enable(1);
+                endscreenScript.Enable(1, levelScore);
             }
             else if (levelClear == LevelClear.TwoPentagram)
             {
-                endscreenScript.Enable(2);
+                endscreenScript.Enable(2, levelScore);
             }
             else if (levelClear == LevelClear.ThreePentagram)
             {
-                endscreenScript.Enable(3);
+                endscreenScript.Enable(3, levelScore);
             }
         }
     }
