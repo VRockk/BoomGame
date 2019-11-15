@@ -108,7 +108,7 @@ public class Metal : BuildingObject
             spriteRenderer.color = new Color(0.3f, 1, 0.3f, 1);
         }
         melting = true;
-        Score.scoreValue += scoreValue;
+        gameController.AddToScore(scoreValue);
         //Destroy(gameObject);
     }
 

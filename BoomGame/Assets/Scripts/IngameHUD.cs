@@ -28,6 +28,8 @@ public class IngameHUD : MonoBehaviour
     public GameObject salvagePanel;
     public GameObject ScorePanel;
     public GameObject bombCardPrefab;
+    public GameObject ProgressPanel;
+    public Slider slider;
 
     public GameObject endScreen;
     public AudioClip menuMusic;
@@ -39,6 +41,9 @@ public class IngameHUD : MonoBehaviour
     private Canvas canvas;
 
     private int salvageAmount = 0;
+
+    
+
     void Awake()
     {
     }
@@ -56,6 +61,7 @@ public class IngameHUD : MonoBehaviour
         if (cameraHandler == null)
             Debug.LogError("CameraHandler not found in the scene for the IngameHUD");
 
+        UpdateScore(0);
 
         detonatePanel.SetActive(true);
 
@@ -70,6 +76,8 @@ public class IngameHUD : MonoBehaviour
         levelFinishPanel.SetActive(false);
 
         ScorePanel.SetActive(true);
+
+        
 
         bombCountText = GameObject.Find("BombCount").GetComponent<TextMeshProUGUI>();
         bombCountText.text = gameController.bombCount.ToString();
@@ -157,6 +165,16 @@ public class IngameHUD : MonoBehaviour
         ShowRoundText(delay, roundNumber);
     }
 
+public void UpdateScore(int score)
+    {
+        TextMeshProUGUI scoreText = ScorePanel.GetComponentInChildren(typeof(TextMeshProUGUI)) as TextMeshProUGUI;
+
+        scoreText.text = score.ToString();
+
+        slider.value = (float)score / (float)gameController.maxScore;
+
+
+    } 
     public void LevelFinished(LevelClear levelClear, int salvage, int score)
     {
         salvageAmount = salvage;

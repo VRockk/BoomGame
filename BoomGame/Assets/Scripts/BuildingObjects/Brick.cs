@@ -86,6 +86,7 @@ public class Brick : BuildingObject
             if (buildingObject != null)
             {
                 buildingObject.AddMaxScore();
+                buildingObject.gameController = GameObject.FindObjectOfType<GameController>();
                 //buildingObject.createJoints = true;
                 //buildingObject.createManualJoints = true;
                 buildingObject.allowDamage = true;
@@ -206,7 +207,7 @@ public class Brick : BuildingObject
         }
 
         Destroy(this.gameObject);
-        Score.scoreValue += scoreValue;
+        gameController.AddToScore(scoreValue);
     }
 
     private void ShatterAudio()

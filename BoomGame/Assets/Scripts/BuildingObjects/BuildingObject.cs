@@ -13,6 +13,10 @@ public class BuildingObject : MonoBehaviour
     public bool createJointToGround = false;
     private bool scoreAdded = false;
 
+
+    [HideInInspector]
+    public GameController gameController;
+
     public List<GameObject> ignoredJoints = new List<GameObject>();
 
     public List<Vector2> manualJointLocations = new List<Vector2>();
@@ -58,6 +62,7 @@ public class BuildingObject : MonoBehaviour
             ignoredJoints.Add(this.transform.parent.gameObject);
         CreateJoints();
         AddMaxScore();
+        gameController = GameObject.FindObjectOfType<GameController>();
 
     }
 
