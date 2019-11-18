@@ -26,6 +26,8 @@ public class CampaignMap : MonoBehaviour
     public GameObject gameMasterPrefab;
     private GameMaster gameMaster;
 
+    private bool chapterPanelVisible = false;
+
     void Start()
     {
         gameMaster = FindObjectOfType<GameMaster>();
@@ -156,7 +158,9 @@ public class CampaignMap : MonoBehaviour
             //show chapter info panel
             if (chapterPanel != null)
             {
-                chapterPanel.GetComponent<RectTransform>().DOAnchorPosX(-50f, Random.Range(0.35f, 0.45f), false).SetEase(Ease.OutBack).SetUpdate(true);
+                if (!chapterPanelVisible)
+                    chapterPanel.GetComponent<RectTransform>().DOAnchorPosX(-50f, Random.Range(0.35f, 0.45f), false).SetEase(Ease.OutBack).SetUpdate(true);
+                chapterPanelVisible = true;
                 var chapterPanelScript = chapterPanel.GetComponent<ChapterPanel>();
                 chapterPanelScript.CreateLevelInfoPanels(chapter);
             }
@@ -175,7 +179,9 @@ public class CampaignMap : MonoBehaviour
         //hide chapter info panel
         if (chapterPanel != null)
         {
-            chapterPanel.GetComponent<RectTransform>().DOAnchorPosX(800f, Random.Range(0.35f, 0.45f), false).SetEase(Ease.InBack).SetUpdate(true);
+            if(chapterPanelVisible)
+                chapterPanel.GetComponent<RectTransform>().DOAnchorPosX(800f, Random.Range(0.35f, 0.45f), false).SetEase(Ease.InBack).SetUpdate(true);
+            chapterPanelVisible = false;
             //chapterPanel.SetActive(false);
         }
     }
