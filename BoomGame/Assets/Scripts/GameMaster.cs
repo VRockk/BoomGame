@@ -75,7 +75,7 @@ public class GameMaster : MonoBehaviour
         {
 
 #if UNITY_EDITOR
-            //PlayerPrefs.DeleteAll();
+            PlayerPrefs.DeleteAll();
 #endif
             GetPlayerPrefValues();
             DontDestroyOnLoad(this.gameObject);

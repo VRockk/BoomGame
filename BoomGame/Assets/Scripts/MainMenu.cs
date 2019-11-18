@@ -10,6 +10,7 @@ using UnityEngine.EventSystems;
 public class MainMenu : MonoBehaviour
 {
     public TextMeshProUGUI salvageText;
+    public TextMeshProUGUI statusText;
 
 
     public GameObject privacyPolicyPanel;
@@ -34,6 +35,9 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
+        // Select the Google Play Games platform as our social platform implementation
+        GooglePlayGames.PlayGamesPlatform.Activate();
+
         gameMaster = FindObjectOfType<GameMaster>();
         if (gameMaster == null)
         {
@@ -77,13 +81,12 @@ public class MainMenu : MonoBehaviour
             {
                 if (gameServicesPanel != null)
                 {
-                    gameServicesPanel.SetActive(false);
+                    gameServicesPanel.SetActive(true);
                 }
             }
         }
 
-        // Select the Google Play Games platform as our social platform implementation
-        GooglePlayGames.PlayGamesPlatform.Activate();
+       
     }
 
 
@@ -107,6 +110,7 @@ public class MainMenu : MonoBehaviour
 
     public void AcceptPrivacyPolicy()
     {
+        gameServicesPanel.SetActive(true);
         mainMenuPanel.SetActive(true);
         privacyPolicyPanel.SetActive(false);
         shopPanel.SetActive(false);
@@ -175,7 +179,8 @@ public class MainMenu : MonoBehaviour
         {
             // Authenticate
             mWaitingForAuth = true;
-            //statusText.text = "Authenticating...";
+            statusText.GetComponentInChildren<TMP_Text>().text = "Authenticating...";
+            
 
             Social.localUser.Authenticate((bool success) =>
             {
