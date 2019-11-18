@@ -70,6 +70,16 @@ public class CampaignMap : MonoBehaviour
                                 ShowChapterInfo(chapter);
                                 wasHit = true;
                             }
+                            else
+                            {
+                                chapter = hit.collider.transform.parent.gameObject.GetComponent<Chapter>();
+
+                                if (chapter != null)
+                                {
+                                    ShowChapterInfo(chapter);
+                                    wasHit = true;
+                                }
+                            }
                         }
                     }
                     if (!wasHit)
