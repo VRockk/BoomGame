@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class NotificationManager : MonoBehaviour
 {
+    public int time;
+    public string title;
+    public string text;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -27,9 +31,9 @@ public class NotificationManager : MonoBehaviour
     public void SendNotification()
     {
         var notification = new AndroidNotification();
-        notification.Title = "Boom";
-        notification.Text = "Happy Christmas!";
-        notification.FireTime = System.DateTime.Now.AddSeconds(5);
+        notification.Title = title;
+        notification.Text = text;
+        notification.FireTime = System.DateTime.Now.AddSeconds(time);
 
         AndroidNotificationCenter.SendNotification(notification, "channel_id");
 
