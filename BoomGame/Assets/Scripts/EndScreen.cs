@@ -9,7 +9,7 @@ public class EndScreen : MonoBehaviour
     public IngameHUD ingameHUD;
     public int testScore = -1;
 
-    public GameObject scoreText;
+    public TextMeshPro scoreText;
 
 
     void Awake()
@@ -49,8 +49,7 @@ public class EndScreen : MonoBehaviour
 
         if(scoreText != null)
         {
-            var scoreTextComp = scoreText.GetComponent<TextMeshProUGUI>();
-            scoreTextComp.text = score.ToString();
+            scoreText.text = score.ToString();
         }
     }
 

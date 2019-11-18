@@ -10,7 +10,6 @@ using UnityEngine.EventSystems;
 public class MainMenu : MonoBehaviour
 {
     public TextMeshProUGUI salvageText;
-    public TextMeshProUGUI statusText;
 
 
     public GameObject privacyPolicyPanel;
@@ -22,6 +21,8 @@ public class MainMenu : MonoBehaviour
     public GameObject gameMasterPrefab;
     public GameObject gameServicesPanel;
     public GameObject bombSalvage;
+    public Button loginButton;
+    public TextMeshProUGUI loginText;
 
     private GameMaster gameMaster;
     public AudioSource audioSource;
@@ -179,31 +180,28 @@ public class MainMenu : MonoBehaviour
         {
             // Authenticate
             mWaitingForAuth = true;
-            statusText.GetComponentInChildren<TMP_Text>().text = "Authenticating...";
-            
-
+            loginText.text = "Authenticating...";
+            loginButton.interactable = false;
+            var buttonText = loginButton.gameObject.GetComponentInChildren<TextMeshProUGUI>();
+            if (buttonText != null)
+                buttonText.color = new Color(1f, 1f, 1f, 0.2f);
             Social.localUser.Authenticate((bool success) =>
             {
                 mWaitingForAuth = false;
                 if (success)
                 {
-                    //statusText.text = "Welcome " + Social.localUser.userName;
-                    //StartCoroutine("LoadImage");
-                    //loginButton.GetComponentInChildren<TMP_Text>().text = "Sign out";
                     gameServicesPanel.SetActive(false);
                     gameMaster.SignIn = true;
                 }
                 else
                 {
-                    //statusText.text = "Authentication failed.";
+                    loginText.text = "Authentication failed.";
                 }
             });
         }
         else
         {
-            //statusText.text = "";
-            //((GooglePlayGames.PlayGamesPlatform)Social.Active).SignOut();
-            //loginButton.GetComponentInChildren<TMP_Text>().text = "Sign in";
+            gameServicesPanel.SetActive(false);
         }
 
     }
