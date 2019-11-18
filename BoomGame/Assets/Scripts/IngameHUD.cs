@@ -26,9 +26,9 @@ public class IngameHUD : MonoBehaviour
     public GameObject campaignMapButton;
     public GameObject nextLevelButton;
     public GameObject salvagePanel;
-    public GameObject ScorePanel;
+    public GameObject scorePanel;
     public GameObject bombCardPrefab;
-    public GameObject ProgressPanel;
+    public GameObject progressPanel;
     public Slider slider;
 
     public GameObject endScreen;
@@ -42,7 +42,7 @@ public class IngameHUD : MonoBehaviour
 
     private int salvageAmount = 0;
 
-    
+
 
     void Awake()
     {
@@ -75,9 +75,9 @@ public class IngameHUD : MonoBehaviour
 
         levelFinishPanel.SetActive(false);
 
-        ScorePanel.SetActive(true);
+        scorePanel.SetActive(true);
 
-        
+
 
         bombCountText = GameObject.Find("BombCount").GetComponent<TextMeshProUGUI>();
         bombCountText.text = gameController.bombCount.ToString();
@@ -165,16 +165,16 @@ public class IngameHUD : MonoBehaviour
         ShowRoundText(delay, roundNumber);
     }
 
-public void UpdateScore(int score)
+    public void UpdateScore(int score)
     {
-        TextMeshProUGUI scoreText = ScorePanel.GetComponentInChildren(typeof(TextMeshProUGUI)) as TextMeshProUGUI;
+        TextMeshProUGUI scoreText = scorePanel.GetComponentInChildren(typeof(TextMeshProUGUI)) as TextMeshProUGUI;
 
         scoreText.text = score.ToString();
 
         slider.value = (float)score / (float)gameController.maxScore;
 
 
-    } 
+    }
     public void LevelFinished(LevelClear levelClear, int salvage, int score)
     {
         salvageAmount = salvage;

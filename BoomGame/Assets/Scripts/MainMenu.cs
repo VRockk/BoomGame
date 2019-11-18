@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
-
+using DG.Tweening;
 
 public class MainMenu : MonoBehaviour
 {
@@ -87,7 +87,7 @@ public class MainMenu : MonoBehaviour
             }
         }
 
-       
+
     }
 
 
@@ -190,12 +190,18 @@ public class MainMenu : MonoBehaviour
                 mWaitingForAuth = false;
                 if (success)
                 {
+                    loginText.text = "Authentication succesful";
+                    //var canvasGroup = gameServicesPanel.GetComponent<CanvasGroup>();
+                    //if (canvasGroup != null)
+                    //    canvasGroup.DOFade(0f, 1f);
+                    //else
                     gameServicesPanel.SetActive(false);
                     gameMaster.SignIn = true;
                 }
                 else
                 {
-                    loginText.text = "Authentication failed.";
+                    loginText.text = "Authentication failed";
+
                 }
             });
         }

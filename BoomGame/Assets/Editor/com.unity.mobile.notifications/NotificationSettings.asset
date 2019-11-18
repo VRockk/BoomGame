@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0863bf92b4fcc45b0b9267325249bf0f, type: 3}
   m_Name: NotificationSettings
   m_EditorClassIdentifier: 
-  toolbarInt: 0
+  toolbarInt: 1
   iOSNotificationEditorSettingsValues:
     keys:
     - UnityNotificationRequestAuthorizationOnAppLaunch
@@ -22,12 +22,14 @@ MonoBehaviour:
     - UnityRemoteNotificationForegroundPresentationOptions
     - UnityUseAPSReleaseEnvironment
     - UnityUseLocationNotificationTrigger
+    - UnityAPSReleaseEnvironment
     values:
     - True
     - 7
     - False
     - False
     - -1
+    - False
     - False
     - False
   AndroidNotificationEditorSettingsValues:
@@ -39,4 +41,7 @@ MonoBehaviour:
     - False
     - False
     - com.unity3d.player.UnityPlayerActivity
-  TrackedResourceAssets: []
+  TrackedResourceAssets:
+  - Id: icon_large
+    Type: 1
+    Asset: {fileID: 2800000, guid: 2f7103cb5b296c944925ba5370fc939b, type: 3}

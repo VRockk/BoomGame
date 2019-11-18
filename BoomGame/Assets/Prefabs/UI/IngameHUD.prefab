@@ -2369,10 +2369,10 @@ MonoBehaviour:
   campaignMapButton: {fileID: 3797933134773210118}
   nextLevelButton: {fileID: 8646985393333290964}
   salvagePanel: {fileID: 3514356736817248785}
-  ScorePanel: {fileID: 4586227058084665785}
+  scorePanel: {fileID: 4586227058084665785}
   bombCardPrefab: {fileID: 714836944193147813, guid: 0dcf17deb61aa374394b54b3b80c3b25,
     type: 3}
-  ProgressPanel: {fileID: 7859500233861148261}
+  progressPanel: {fileID: 7859500233861148261}
   slider: {fileID: 7066827981159739851}
   endScreen: {fileID: 1270492325405864691, guid: 1b35fc97e4f3a91429a85f896c5b5eaa,
     type: 3}
@@ -3329,11 +3329,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5726798768968995607}
     m_Modifications:
-    - target: {fileID: 8169929115190361520, guid: cb8230d462ec005418e2405bf0af7f01,
-        type: 3}
-      propertyPath: m_Name
-      value: BombCount
-      objectReference: {fileID: 0}
     - target: {fileID: 4635233329272705758, guid: cb8230d462ec005418e2405bf0af7f01,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3368,6 +3363,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8169929115190361520, guid: cb8230d462ec005418e2405bf0af7f01,
+        type: 3}
+      propertyPath: m_Name
+      value: BombCount
       objectReference: {fileID: 0}
     - target: {fileID: 5553317842802212892, guid: cb8230d462ec005418e2405bf0af7f01,
         type: 3}
