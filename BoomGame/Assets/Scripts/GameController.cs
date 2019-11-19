@@ -16,11 +16,16 @@ using DG.Tweening.Plugins.Options;
 /// </summary>
 public class GameController : MonoBehaviour
 {
+
     public int maxRounds = 2;
 
     public GameObject[] bombs;
 
     public int bombCount = 3;
+
+    public int onePentaScore = 25;
+    public int twoPentaScore = 50;
+    public int threePentaScore = 75;
 
     [HideInInspector]
     public bool inputAllowed;
@@ -469,17 +474,17 @@ public class GameController : MonoBehaviour
                 return LevelClear.Failed;
             }
         }
-        float clearPercentage = (float)levelScore / (float)maxScore * 100;
-        print(clearPercentage);
-        if (clearPercentage > 70f)
+        float clearPercentage = ((float)levelScore / (float)maxScore) * 100;
+        //print(clearPercentage);
+        if (clearPercentage > threePentaScore)
         {
             levelClear = LevelClear.ThreePentagram;
         }
-        else if (clearPercentage > 50f)
+        else if (clearPercentage > twoPentaScore)
         {
             levelClear = LevelClear.TwoPentagram;
         }
-        else if (clearPercentage > 30f)
+        else if (clearPercentage > onePentaScore)
         {
             levelClear = LevelClear.OnePentagram;
         }
