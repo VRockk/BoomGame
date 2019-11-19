@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Bomb : MonoBehaviour
@@ -24,7 +25,6 @@ public class Bomb : MonoBehaviour
 
     public GameObject explosionParticles;
 
-    private BombData bombData;
     public BombType bombType;
 
     private GameMaster gameMaster;
@@ -49,21 +49,11 @@ public class Bomb : MonoBehaviour
         if (gameMaster == null)
             Debug.LogError("No GameMaster found in bomb upgrade panel");
 
-        if (bombType == BombType.Regular)
-        {
-            bombData = gameMaster.regularBombData;
-        }
-        else if (bombType == BombType.Acid)
-        {
-            bombData = gameMaster.acidBombData;
-        }
-        //TODO Get bomb upgrade info and set radius settings
-        var radiusUpgrade = bombData.BombUpgradeLevels[0];
+        var bombData = gameMaster.bombData.First(x => x.BombType == bombType);
 
-        if (radiusUpgrade > 0)
-        {
-            radius = radius * (1 + (0.1f * radiusUpgrade));
-        }
+        //Calculate bomb radius from the bomb upgrade level
+        radius = radius * (1 + (0.05f * ((float)bombData.Level -1 )));
+        damageRadius = damageRadius * (1 + (0.05f * ((float)bombData.Level -1 )));
 
         var indicatorRadius = radius / 5;
         bombAreaIndicator.transform.localScale = new Vector3(indicatorRadius, indicatorRadius, 1);

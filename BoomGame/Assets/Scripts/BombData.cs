@@ -5,23 +5,34 @@ using UnityEngine;
 public enum BombType
 {
     Regular = 0,
-    Acid = 1
+    Acid = 1,
+    Screamer = 2,
+    HolyWater = 3,
+    Fire = 4,
+    Mega = 5,
+    Void = 6
 }
 public class BombData
 {
-    private int[] bombUpgradeLevels = new int[4];
+    private int level;
     private BombType bombType;
-    private bool bombUnlocked;
+    private bool locked;
+    private string name;
+    private string spritePath;
 
-    public BombType BombType { get => bombType; set => bombType = value; }
-    public int[] BombUpgradeLevels { get => bombUpgradeLevels; set => bombUpgradeLevels = value; }
-    public bool BombUnlocked { get => bombUnlocked; set => bombUnlocked = value; }
 
-    public BombData(BombType bombType, int[] bombUpgradeLevels, bool bombUnlocked )
+    public BombData(BombType bombType, int level, bool locked, string name, string spritePath)
     {
         this.bombType = bombType;
-        this.bombUpgradeLevels = bombUpgradeLevels;
-        this.bombUnlocked = bombUnlocked;
+        this.level = level;
+        this.locked = locked;
+        this.name = name;
+        this.spritePath = spritePath;
     }
 
+    public int Level { get => level; set => level = value; }
+    public BombType BombType { get => bombType; }
+    public bool Locked { get => locked; set => locked = value; }
+    public string Name { get => name; }
+    public string SpritePath { get => spritePath;}
 }

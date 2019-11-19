@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using DG.Tweening;
 
 
 public class Chapter : MonoBehaviour
@@ -160,9 +161,13 @@ public class Chapter : MonoBehaviour
         if (chapterIcon != null)
         {
             if (selected)
-                chapterIcon.transform.localScale = new Vector3(1.25f, 1.25f, 1f);
+            {
+                //chapterIcon.transform.localScale = new Vector3(1.25f, 1.25f, 1f);
+                chapterIcon.transform.DOScale(new Vector3(1.35f, 1.35f, 1f), 0.3f);
+            }
             else
-                chapterIcon.transform.localScale = new Vector3(1f, 1f, 1f);
+                //chapterIcon.transform.localScale = new Vector3(1f, 1f, 1f);
+                chapterIcon.transform.DOScale(new Vector3(1, 1, 1), 0.3f);
         }
     }
 }

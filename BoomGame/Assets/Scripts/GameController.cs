@@ -53,8 +53,7 @@ public class GameController : MonoBehaviour
 
     //private WinLines winlines;
 
-    private int salvageValue = 100;
-    private int bonusSalvageForSavedBomb = 25;
+    public int salvageValue = 100;
 
     private GameMaster gameMaster;
     private float roundDelay = 1f;

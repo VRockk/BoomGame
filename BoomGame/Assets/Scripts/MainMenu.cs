@@ -30,7 +30,6 @@ public class MainMenu : MonoBehaviour
     public AudioClip menuMusic;
     private bool rumbleToggleFlag = true;
 
-    private bool mWaitingForAuth = false;
 
 
 
@@ -63,26 +62,29 @@ public class MainMenu : MonoBehaviour
                 shopPanel.SetActive(false);
             }
 
-
-            if (gameMaster.signIn == true)
+            if (!gameMaster.loginShowed)
             {
-                if (gameServicesPanel != null)
+                if (gameMaster.SignIn == true)
                 {
-                    gameServicesPanel.SetActive(false);
-                }
-                if (!Social.localUser.authenticated)
-                {
-                    Social.localUser.Authenticate((bool success) =>
+                    if (gameServicesPanel != null)
                     {
+                        gameServicesPanel.SetActive(false);
+                    }
+                    if (!Social.localUser.authenticated)
+                    {
+                        Social.localUser.Authenticate((bool success) =>
+                        {
 
-                    });
+                        });
+                    }
                 }
-            }
-            else
-            {
-                if (gameServicesPanel != null)
+                else
                 {
-                    gameServicesPanel.SetActive(true);
+                    if (gameServicesPanel != null)
+                    {
+                        gameMaster.loginShowed = true;
+                        gameServicesPanel.SetActive(true);
+                    }
                 }
             }
         }
@@ -179,7 +181,6 @@ public class MainMenu : MonoBehaviour
         if (!Social.localUser.authenticated)
         {
             // Authenticate
-            mWaitingForAuth = true;
             loginText.text = "Authenticating...";
             loginButton.interactable = false;
             var buttonText = loginButton.gameObject.GetComponentInChildren<TextMeshProUGUI>();
@@ -187,7 +188,6 @@ public class MainMenu : MonoBehaviour
                 buttonText.color = new Color(1f, 1f, 1f, 0.2f);
             Social.localUser.Authenticate((bool success) =>
             {
-                mWaitingForAuth = false;
                 if (success)
                 {
                     loginText.text = "Authentication succesful";

@@ -48,6 +48,7 @@ public class IngameHUD : MonoBehaviour
 
     private int salvageAmount = 0;
 
+    private bool hudVisible;
 
 
     void Awake()
@@ -102,9 +103,9 @@ public class IngameHUD : MonoBehaviour
 
     public void DetonateAllBombs()
     {
-        StartCoroutine(HideSlidingHUD());
         if (gameController.Detonation())
         {
+            StartCoroutine(HideSlidingHUD());
             detonateButton.GetComponent<Image>().sprite = detonatorDown;
         }
 
@@ -339,7 +340,7 @@ public class IngameHUD : MonoBehaviour
             return;
 
         //Get current bomb cards and add position offset for each one
-        float leftOffset = 0;
+        float leftOffset = -40f;
         var bombCards = GameObject.FindGameObjectsWithTag("BombCard");
         foreach (var bombCard in bombCards)
         {
@@ -359,8 +360,8 @@ public class IngameHUD : MonoBehaviour
         var cardAspectRatioFitter = card.GetComponent<AspectRatioFitter>();
         cardAspectRatioFitter.aspectRatio = cardImage.sprite.rect.width / cardImage.sprite.rect.height;
 
-        cardTransform.localPosition = new Vector3(leftOffset, 0f, 0);
-        cardTransform.localScale = new Vector3(1, 1, 1);
+        cardTransform.localPosition = new Vector3(leftOffset, -40f, 0);
+        cardTransform.localScale = new Vector3(1.5f, 1.5f, 1f);
 
         var bombCardScript = card.GetComponent<BombCard>();
         bombCardScript.bombPrefab = bomb;
