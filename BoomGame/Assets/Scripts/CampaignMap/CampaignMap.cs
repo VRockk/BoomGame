@@ -56,7 +56,6 @@ public class CampaignMap : MonoBehaviour
                     //is chapter clicked
                     Vector3 mousePos = UtilityLibrary.GetCurrentMousePosition();
 
-                    // Check if clicking on a bomb and "attach" it to cursor
                     Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -10f));
                     RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
 

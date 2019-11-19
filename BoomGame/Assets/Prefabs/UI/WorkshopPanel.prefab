@@ -576,6 +576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7ffa0fe9e52d0242a88bf80ae8b942b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upgradePanel: {fileID: 6813729928420800455}
 --- !u!114 &4166395015852579910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -603,7 +604,7 @@ GameObject:
   - component: {fileID: 8942815316186785749}
   m_Layer: 5
   m_Name: UpgradePanel
-  m_TagString: Untagged
+  m_TagString: Upgrades
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -624,8 +625,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -334.7, y: 0}
-  m_SizeDelta: {x: 700, y: 900}
+  m_AnchoredPosition: {x: 0, y: -1100}
+  m_SizeDelta: {x: 664, y: 1000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5036483611130887772
 CanvasRenderer:
@@ -784,7 +785,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 207133080083495819}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 163947880630097283}
+        m_MethodName: ShowUpgadePanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1001 &5657738362771420136
@@ -797,7 +809,7 @@ PrefabInstance:
     - target: {fileID: 205958770547179577, guid: 7a736d4d7b3b99b43826b4277350d1ac,
         type: 3}
       propertyPath: m_Name
-      value: MenuButton
+      value: BackButton
       objectReference: {fileID: 0}
     - target: {fileID: 205958770547179574, guid: 7a736d4d7b3b99b43826b4277350d1ac,
         type: 3}
