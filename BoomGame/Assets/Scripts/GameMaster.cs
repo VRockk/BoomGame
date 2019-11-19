@@ -9,10 +9,6 @@ public class GameMaster : MonoBehaviour
     [HideInInspector]
     public int currentSalvage;
     [HideInInspector]
-    public BombData regularBombData;
-    [HideInInspector]
-    public BombData acidBombData;
-    [HideInInspector]
     public List<Level> currentChapterLevels;
 
 
@@ -26,6 +22,8 @@ public class GameMaster : MonoBehaviour
     private bool fadingMusic = false;
     private bool fadingOut = false;
 
+    [HideInInspector]
+    public List<BombData> bombData;
 
     private bool privacyPolicyAccepted;
     public bool PrivacyPolicyAccepted
@@ -45,7 +43,9 @@ public class GameMaster : MonoBehaviour
         }
     }
 
-    public bool signIn;
+    private bool signIn;
+    [HideInInspector]
+    public bool loginShowed = false;
 
     public bool SignIn
     {
@@ -80,6 +80,8 @@ public class GameMaster : MonoBehaviour
             GetPlayerPrefValues();
             DontDestroyOnLoad(this.gameObject);
             //AddSalvage(1500);
+
+
         }
     }
 
@@ -110,7 +112,7 @@ public class GameMaster : MonoBehaviour
             PlayerPrefs.SetInt("CurrentSalvage", 0);
         }
 
-
+        //currentSalvage = 100000;
         //Bomb data
         GetBombData();
 
@@ -122,37 +124,12 @@ public class GameMaster : MonoBehaviour
                 signIn = true;
             else
                 signIn = false;
-
         }
         else
         {
             signIn = false;
         }
 
-    }
-
-    private void GetBombData()
-    {
-        //Regular bomb is always unlocked
-        int regularBombUnlocked = PlayerPrefs.GetInt("RegularBombUnlocked", 1);
-        int regularBombUpgrade1 = PlayerPrefs.GetInt("RegularBombUpgrade1", 0);
-        int regularBombUpgrade2 = PlayerPrefs.GetInt("RegularBombUpgrade2", 0);
-        int regularBombUpgrade3 = PlayerPrefs.GetInt("RegularBombUpgrade3", 0);
-        int regularBombUpgrade4 = PlayerPrefs.GetInt("RegularBombUpgrade4", 0);
-
-        regularBombData = new BombData(BombType.Regular,
-            new int[4] { regularBombUpgrade1, regularBombUpgrade2, regularBombUpgrade3, regularBombUpgrade4 },
-            regularBombUnlocked == 1 ? true : false);
-
-        int acidBombUnlocked = PlayerPrefs.GetInt("AcidBombUnlocked", 1);
-        int acidBombUpgrade1 = PlayerPrefs.GetInt("AcidBombUpgrade1", 0);
-        int acidBombUpgrade2 = PlayerPrefs.GetInt("AcidBombUpgrade2", 0);
-        int acidBombUpgrade3 = PlayerPrefs.GetInt("AcidBombUpgrade3", 0);
-        int acidBombUpgrade4 = PlayerPrefs.GetInt("AcidBombUpgrade4", 0);
-
-        acidBombData = new BombData(BombType.Acid,
-            new int[4] { acidBombUpgrade1, acidBombUpgrade2, acidBombUpgrade3, acidBombUpgrade4 },
-            acidBombUnlocked == 1 ? true : false);
     }
 
     // Start is called before the first frame update
@@ -164,6 +141,7 @@ public class GameMaster : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        //TODO use DOTween for music fading
         if (fadingMusic)
         {
             float timeSinceStarted = Time.time - fadeStarted;
@@ -196,7 +174,6 @@ public class GameMaster : MonoBehaviour
                     fadeStarted = Time.time;
                     fadingMusic = false;
                 }
-
             }
         }
     }
@@ -236,36 +213,17 @@ public class GameMaster : MonoBehaviour
         }
     }
 
-    public void SetBombUpgradeLevel(BombType bombtype, int upgradePosition, int level)
+    private void GetBombData()
     {
-        string levelKeyName = "";
-        if (bombtype == BombType.Regular)
-        {
-            levelKeyName = "RegularBombUpgrade";
-        }
-        else if (bombtype == BombType.Acid)
-        {
-            levelKeyName = "AcidBombUpgrade";
-        }
+        bombData = new List<BombData>();
 
-        if (upgradePosition == 1)
-        {
-            levelKeyName += "1";
-        }
-        else if (upgradePosition == 2)
-        {
-            levelKeyName += "2";
-        }
-        else if (upgradePosition == 3)
-        {
-            levelKeyName += "3";
-        }
-        else if (upgradePosition == 4)
-        {
-            levelKeyName += "4";
-        }
-        PlayerPrefs.SetInt(levelKeyName, level);
-        GetBombData();
+        //initialize all bomb types with saved level data
+        bombData.Add(new BombData(BombType.Regular, PlayerPrefs.GetInt(BombType.Regular.ToString() + "Level", 1), false, "Normal Bomb", "normal"));
+        bombData.Add(new BombData(BombType.Acid, PlayerPrefs.GetInt(BombType.Acid.ToString() + "Level", 1), false, "Acid Bomb", "acid"));
+        bombData.Add(new BombData(BombType.Screamer, PlayerPrefs.GetInt(BombType.Screamer.ToString() + "Level", 1), true, "Screamer Bomb", "screamer"));
+        bombData.Add(new BombData(BombType.HolyWater, PlayerPrefs.GetInt(BombType.HolyWater.ToString() + "Level", 1), true, "Holy Water Bomb", "holy"));
+        bombData.Add(new BombData(BombType.Fire, PlayerPrefs.GetInt(BombType.Fire.ToString() + "Level", 1), true, "Fire Bomb", "fire"));
+        bombData.Add(new BombData(BombType.Mega, PlayerPrefs.GetInt(BombType.Mega.ToString() + "Level", 1), true, "Mega Bomb", "mega"));
+        bombData.Add(new BombData(BombType.Void, PlayerPrefs.GetInt(BombType.Void.ToString() + "Level", 1), true, "Void Bomb", "void"));
     }
-
 }
