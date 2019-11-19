@@ -6,7 +6,7 @@ public class PhoneVibration : MonoBehaviour
 {
     public void Vibrate()
     {
-            Handheld.Vibrate();
+        Handheld.Vibrate();
     }
 
 }

@@ -230,7 +230,7 @@ public class UtilityLibrary : MonoBehaviour
             {
                 barrel.Detonate(0.1f);
             }
-            var prop = hit.gameObject.GetComponent<BuildingProp>();
+            var prop = hit.gameObject.GetComponent<LevelProp>();
             if (prop != null)
             {
                 Destroy(prop.gameObject);
