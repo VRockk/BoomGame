@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3860723377973133867}
   - component: {fileID: 3860723377973133862}
   - component: {fileID: 3860723377973133861}
+  - component: {fileID: 5738802283784476454}
   m_Layer: 0
   m_Name: WoodLeft
   m_TagString: BuildingObject
@@ -68,9 +69,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1395147817
+  m_SortingLayer: 1
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7071541557941813734, guid: 99a8514d1f86f3d438caef767944d689,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -95,10 +96,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 75
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -137,3 +138,51 @@ PolygonCollider2D:
       - {x: -1.055, y: -4.96}
       - {x: 1.055, y: -4.96}
       - {x: 1.055, y: 4.96}
+--- !u!114 &5738802283784476454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3860723377973133866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50afc76e2b398c546b7954a7ed37f1ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreValue: 10
+  jointBreakForce: 300000
+  jointBreakTorque: 300000
+  createJoints: 0
+  createManualJoints: 1
+  createJointToGround: 0
+  gameController: {fileID: 0}
+  ignoredJoints: []
+  manualJointLocations:
+  - {x: -0.84, y: 3.68}
+  - {x: 0, y: -5.34}
+  - {x: 0, y: 5.34}
+  materialType: 0
+  attachedObjects: []
+  allowDamage: 1
+  deactivateDelay: 0
+  checkedInLevelClear: 1
+  pieceSpawnLocations:
+  - {x: 0, y: 3.66}
+  - {x: 0, y: 1.24}
+  - {x: 0, y: -0.98}
+  - {x: 0, y: -3.49}
+  pieceObjects:
+  - {fileID: 314573678814520523, guid: 781f7c639035c9a4a8573df6bbc3199b, type: 3}
+  - {fileID: 5863156690393497168, guid: 28898a0f3cd039149ac80fa4b65a8da6, type: 3}
+  - {fileID: 3233359757888738237, guid: 06e3d27517f583047b2718f9a931593f, type: 3}
+  - {fileID: 3241920828311820937, guid: 8b8f2ae376e1f464ba5a04c9a0f64f9f, type: 3}
+  hitpoints: 2
+  damagedForceLimit: 30000
+  shatterParticle: {fileID: 4077663246738028735, guid: 57e2faf8fcbcaa742998edee10c41a54,
+    type: 3}
+  audioObject: {fileID: 8861113935494233493, guid: f47a1ab8e18b41443ada68a44c6005f6,
+    type: 3}
+  shatterSFX:
+  - {fileID: 8300000, guid: 79aaec8060cd9324c9b01b55a1cb6f1a, type: 3}
+  - {fileID: 8300000, guid: 13dffe3d1f9a9a04d9417d9c441a294a, type: 3}
