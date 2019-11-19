@@ -28,8 +28,14 @@ public class IngameHUD : MonoBehaviour
     public GameObject salvagePanel;
     public GameObject scorePanel;
     public GameObject bombCardPrefab;
-    public GameObject progressPanel;
-    public Slider slider;
+    //public GameObject progressPanel;
+    public GameObject progressingPanel;
+    //public Slider slider;
+    public Image OnePentagram;
+    public Image Bar1;
+    public Image TwoPentagrams;
+    public Image Bar2;
+    public Image ThreePentagrams;
 
     public GameObject endScreen;
     public AudioClip menuMusic;
@@ -171,10 +177,29 @@ public class IngameHUD : MonoBehaviour
 
         scoreText.text = score.ToString();
 
-        slider.value = (float)score / (float)gameController.maxScore;
+        float scorePer = (float)score / (float)gameController.maxScore;
+
+        OnePentagram.fillAmount  = (scorePer) / (0.25f);
+
+        Bar1.fillAmount = (scorePer - 0.25f) / (0.4f - 0.25f);
+
+        TwoPentagrams.fillAmount = (scorePer - 0.4f) / (0.5f - 0.4f);
+
+        Bar2.fillAmount = (scorePer - 0.5f) / (0.65f - 0.5f);
+
+        ThreePentagrams.fillAmount = (scorePer - 0.65f) / (0.7f - 0.65f);
+            
+
+
+
+
+
 
 
     }
+
+    
+
     public void LevelFinished(LevelClear levelClear, int salvage, int score)
     {
         salvageAmount = salvage;
