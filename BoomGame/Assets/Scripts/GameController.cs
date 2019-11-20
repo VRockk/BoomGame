@@ -326,7 +326,7 @@ public class GameController : MonoBehaviour
             if (body != null)
             {
                 //Check if there is a bit of movement still
-                if (body.velocity.magnitude > 0.1f)
+                if (body.velocity.magnitude > 0.2f)
                 {
                     //print(body.gameObject.name + "   " + body.velocity.magnitude);
                     isMovement = true;
