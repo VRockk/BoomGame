@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2842383855889767643}
   - component: {fileID: 2842383855889767640}
   - component: {fileID: 2842383855889767641}
-  - component: {fileID: 2329042619395979171}
   m_Layer: 0
   m_Name: Trapdoor
   m_TagString: Untagged
@@ -113,7 +112,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2842383855889767636}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 685828ebb1f3c98429201ddd64f4b493, type: 3}
   m_Name: 
@@ -210,36 +209,3 @@ PolygonCollider2D:
       - {x: 1.0048821, y: -2.2272363}
       - {x: 0.9926751, y: -2.2394433}
       - {x: 0.9926751, y: -2.2516503}
---- !u!114 &2329042619395979171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2842383855889767636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50afc76e2b398c546b7954a7ed37f1ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreValue: 0
-  jointBreakForce: 0
-  jointBreakTorque: 0
-  createJoints: 0
-  createManualJoints: 0
-  createJointToGround: 0
-  gameController: {fileID: 0}
-  ignoredJoints: []
-  manualJointLocations: []
-  materialType: 0
-  attachedObjects: []
-  allowDamage: 1
-  deactivateDelay: 0
-  checkedInLevelClear: 1
-  pieceSpawnLocations: []
-  pieceObjects: []
-  hitpoints: 1
-  damagedForceLimit: 100
-  shatterParticle: {fileID: 0}
-  audioObject: {fileID: 0}
-  shatterSFX: []
