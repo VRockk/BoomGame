@@ -36,6 +36,7 @@ public class ChapterPanel : MonoBehaviour
         }
 
         int count = 0;
+        int prevPentas = -1;
         //Create new info panel for each level and set position. Then set the level infor inside Level Sc´ript
         foreach (var level in chapter.chapterLevels)
         {
@@ -46,7 +47,8 @@ public class ChapterPanel : MonoBehaviour
 
             var levelInfoPanelScript = levelInfoPanel.GetComponent<LevelInfoPanel>();
             count++;
-            levelInfoPanelScript.SetLevelInfo(level, count);
+            levelInfoPanelScript.SetLevelInfo(level, count, prevPentas);
+            prevPentas = level.pentagrams;
         }
 
         var chapterNameText = chapterName.GetComponent<TextMeshProUGUI>();
