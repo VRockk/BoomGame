@@ -182,7 +182,7 @@ public class IngameHUD : MonoBehaviour
     private IEnumerator NextRoundDelayed(int roundNumber, float delay)
     {
         yield return new WaitForSeconds(0.1f);
-        ShowSlidingHUD(0.5f);
+        ShowSlidingHUD(0.8f);
         ShowRoundText(delay, roundNumber);
 
     }
@@ -398,8 +398,8 @@ public class IngameHUD : MonoBehaviour
 
         transform.anchoredPosition = new Vector2(-1500f, 0);
         DOTween.Sequence()
-                .Append(transform.DOAnchorPosX(0, 0.5f).SetEase(Ease.OutQuad).SetUpdate(true))
-                            .Insert(1f, transform.DOAnchorPosX(1500f, 0.5f).SetEase(Ease.InQuad).SetUpdate(true));
+                .Append(transform.DOAnchorPosX(0, 0.4f).SetEase(Ease.OutQuad).SetUpdate(true))
+                            .Insert(0.8f, transform.DOAnchorPosX(1500f, 0.4f).SetEase(Ease.InQuad).SetUpdate(true));
 
         StartCoroutine(ActivateObjectWithDelay(hideDelay, roundPanel, false));
     }
@@ -426,7 +426,7 @@ public class IngameHUD : MonoBehaviour
             return;
 
         //Get current bomb cards and add position offset for each one
-        float leftOffset = -40f;
+        float leftOffset = -5f;
         var bombCards = GameObject.FindGameObjectsWithTag("BombCard");
         foreach (var bombCard in bombCards)
         {
@@ -443,11 +443,12 @@ public class IngameHUD : MonoBehaviour
         cardImage.sprite = bomb.GetComponent<Bomb>().inventoryIcon;
 
         //Set sprite aspect ratio so different size icons fit correcly
-        var cardAspectRatioFitter = card.GetComponent<AspectRatioFitter>();
-        cardAspectRatioFitter.aspectRatio = cardImage.sprite.rect.width / cardImage.sprite.rect.height;
+        //var cardAspectRatioFitter = card.GetComponent<AspectRatioFitter>();
 
-        cardTransform.localPosition = new Vector3(leftOffset, -40f, 0);
-        cardTransform.localScale = new Vector3(1.5f, 1.5f, 1f);
+        //cardAspectRatioFitter.aspectRatio = cardImage.sprite.rect.width / cardImage.sprite.rect.height;
+
+        cardTransform.localPosition = new Vector3(leftOffset, -5f, 0);
+        cardTransform.localScale = new Vector3(1f, 1f, 1f);
 
         var bombCardScript = card.GetComponent<BombCard>();
         bombCardScript.bombPrefab = bomb;

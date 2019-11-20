@@ -56,7 +56,7 @@ public class GameController : MonoBehaviour
     public int salvageValue = 100;
 
     private GameMaster gameMaster;
-    private float roundDelay = 1.5f;
+    private float roundDelay = 1f;
 
     [HideInInspector]
     public List<AudioClip> bombScreamsToPlay;
