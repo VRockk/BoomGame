@@ -47,11 +47,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50afc76e2b398c546b7954a7ed37f1ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreValue: 1000
   jointBreakForce: 300000
   jointBreakTorque: 300000
   createJoints: 0
   createManualJoints: 1
   createJointToGround: 0
+  gameController: {fileID: 0}
   ignoredJoints: []
   manualJointLocations:
   - {x: -0.84, y: 3.68}
@@ -81,7 +83,6 @@ MonoBehaviour:
   shatterSFX:
   - {fileID: 8300000, guid: 79aaec8060cd9324c9b01b55a1cb6f1a, type: 3}
   - {fileID: 8300000, guid: 13dffe3d1f9a9a04d9417d9c441a294a, type: 3}
-  scoreValue: 10
 --- !u!1001 &137894847597702692
 PrefabInstance:
   m_ObjectHideFlags: 0

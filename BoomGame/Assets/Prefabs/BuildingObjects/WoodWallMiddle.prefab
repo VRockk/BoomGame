@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 685278331049302840}
   - component: {fileID: 685278331049302839}
   - component: {fileID: 685278331049302838}
+  - component: {fileID: 652202550525278438}
   m_Layer: 0
   m_Name: WoodWallMiddle
   m_TagString: Untagged
@@ -95,10 +96,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 75
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -141,3 +142,51 @@ PolygonCollider2D:
       - {x: 0.39570618, y: 4.1510105}
       - {x: 1.0516052, y: 4.1499386}
       - {x: 1.055, y: 4.96}
+--- !u!114 &652202550525278438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685278331049302843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50afc76e2b398c546b7954a7ed37f1ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreValue: 1000
+  jointBreakForce: 300000
+  jointBreakTorque: 300000
+  createJoints: 0
+  createManualJoints: 1
+  createJointToGround: 0
+  gameController: {fileID: 0}
+  ignoredJoints: []
+  manualJointLocations:
+  - {x: -0.84, y: 3.68}
+  - {x: 0, y: -5.34}
+  - {x: 0, y: 5.34}
+  materialType: 0
+  attachedObjects: []
+  allowDamage: 1
+  deactivateDelay: 0
+  checkedInLevelClear: 1
+  pieceSpawnLocations:
+  - {x: 0, y: 3.66}
+  - {x: 0, y: 1.24}
+  - {x: 0, y: -0.98}
+  - {x: 0, y: -3.49}
+  pieceObjects:
+  - {fileID: 7926757391684530853, guid: fc196b83ab415cb4a913aad7547354ac, type: 3}
+  - {fileID: 5863156690393497168, guid: 28898a0f3cd039149ac80fa4b65a8da6, type: 3}
+  - {fileID: 3233359757888738237, guid: 06e3d27517f583047b2718f9a931593f, type: 3}
+  - {fileID: 3241920828311820937, guid: 8b8f2ae376e1f464ba5a04c9a0f64f9f, type: 3}
+  hitpoints: 2
+  damagedForceLimit: 30000
+  shatterParticle: {fileID: 4077663246738028735, guid: 57e2faf8fcbcaa742998edee10c41a54,
+    type: 3}
+  audioObject: {fileID: 8861113935494233493, guid: f47a1ab8e18b41443ada68a44c6005f6,
+    type: 3}
+  shatterSFX:
+  - {fileID: 8300000, guid: 79aaec8060cd9324c9b01b55a1cb6f1a, type: 3}
+  - {fileID: 8300000, guid: 13dffe3d1f9a9a04d9417d9c441a294a, type: 3}

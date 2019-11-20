@@ -150,12 +150,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46dea71c8ca683f4d9ef0145bed8de11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreValue: 10
+  scoreValue: 2000
   jointBreakForce: 50000
   jointBreakTorque: 50000
   createJoints: 0
   createManualJoints: 1
   createJointToGround: 0
+  gameController: {fileID: 0}
   ignoredJoints: []
   manualJointLocations:
   - {x: -0.85, y: 3.66}

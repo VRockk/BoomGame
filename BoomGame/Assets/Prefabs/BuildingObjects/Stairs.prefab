@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2123040176340378880}
   - component: {fileID: 2123040176340378884}
   m_Layer: 9
-  m_Name: stairs_1
+  m_Name: Stairs
   m_TagString: BuildingObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,7 +96,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 100
+  m_Mass: 75
   m_LinearDrag: 0.1
   m_AngularDrag: 0.1
   m_GravityScale: 5
@@ -187,11 +187,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50afc76e2b398c546b7954a7ed37f1ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreValue: 500
   jointBreakForce: 300000
   jointBreakTorque: 300000
   createJoints: 0
   createManualJoints: 1
   createJointToGround: 0
+  gameController: {fileID: 0}
   ignoredJoints: []
   manualJointLocations:
   - {x: -3.73, y: 4.58}
@@ -220,4 +222,3 @@ MonoBehaviour:
   shatterParticle: {fileID: 0}
   audioObject: {fileID: 0}
   shatterSFX: []
-  scoreValue: 0
