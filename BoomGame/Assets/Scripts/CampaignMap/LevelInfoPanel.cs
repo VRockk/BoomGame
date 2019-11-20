@@ -12,6 +12,7 @@ public class LevelInfoPanel : MonoBehaviour
     public GameObject score;
 
     public GameObject number;
+    public GameObject button;
 
     private string levelName;
 
@@ -27,7 +28,7 @@ public class LevelInfoPanel : MonoBehaviour
 
     }
 
-    public void SetLevelInfo(Level level, int count)
+    public void SetLevelInfo(Level level, int count, int prevPenta)
     {
         var penta1 = penta1Icon.GetComponent<Image>();
         var penta2 = penta2Icon.GetComponent<Image>();
@@ -68,14 +69,15 @@ public class LevelInfoPanel : MonoBehaviour
             scoreText.text = level.score.ToString();
 
         numberText.text = count.ToString();
-    }
 
+        if (prevPenta == 0 && button != null)
+            button.SetActive(false);
+    }
 
     public void OpenLevel()
     {
         //TODO show "loading" screen.
         var chapter = this.transform.parent.parent.parent.gameObject.GetComponent<ChapterPanel>();
         chapter.OpenLevel(levelName);
-
     }
 }
