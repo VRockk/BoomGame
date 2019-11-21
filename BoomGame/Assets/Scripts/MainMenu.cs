@@ -263,4 +263,16 @@ public class MainMenu : MonoBehaviour
             Debug.Log("switch is off");
         }
     }
+
+    public void OnClickLeaderBoardButton()
+    {
+        if (Social.localUser.authenticated)
+        {
+
+            string lbId = "CgkI65f98LAPEAIQAQ";
+            GooglePlayGames.PlayGamesPlatform.Instance.SetDefaultLeaderboardForUI(lbId);
+            Social.Active.ShowLeaderboardUI();
+        }
+       // GooglePlayGames.PlayGamesPlatform.Instance.ShowLeaderboardUI();
+    }
 }
