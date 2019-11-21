@@ -494,7 +494,6 @@ public class GameController : MonoBehaviour
             {
                 Social.ReportScore(playerScore, "CgkI65f98LAPEAIQAQ", (bool success) => {
                     // handle success or failure
-
                     if (success) {
                         Debug.Log("Posted score to Leaderboard.");
                     }
