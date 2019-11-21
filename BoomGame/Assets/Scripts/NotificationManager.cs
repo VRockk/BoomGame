@@ -17,7 +17,8 @@ public class NotificationManager : MonoBehaviour
     {
         CreateNotificationChannel();
 
-        DontDestroyOnLoad(this.gameObject);
+        CreateNotification();
+        //DontDestroyOnLoad(this.gameObject);
     }
 
     public void CreateNotificationChannel()
@@ -49,14 +50,14 @@ public class NotificationManager : MonoBehaviour
     void OnApplicationPause(bool pauseStatus)
     {
         //Create notification when we soft close the app. Cancel when we come back
-        if(!pauseStatus)
-        {
-            AndroidNotificationCenter.CancelNotification(notificationId);
-        }
-        else
-        {
-            CreateNotification();
-        }
+        //if(!pauseStatus)
+        //{
+        //    AndroidNotificationCenter.CancelNotification(notificationId);
+        //}
+        //else
+        //{
+        //    CreateNotification();
+        //}
     }
 
 }

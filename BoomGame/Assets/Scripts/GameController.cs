@@ -10,6 +10,7 @@ using System;
 using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
+using UnityEngine.Profiling;
 
 /// <summary>
 /// Resposible for the ingame logic and input
@@ -291,6 +292,7 @@ public class GameController : MonoBehaviour
         if (GameObject.FindObjectsOfType<Bomb>().Length == 0 || !inputAllowed)
             return false;
 
+        //Profiler.BeginSample("MyPieceOfCode");
 
         var tutorial = GameObject.Find("TutorialUI");
 
@@ -342,6 +344,8 @@ public class GameController : MonoBehaviour
 
         }
 
+        // Code to measure...
+        //Profiler.EndSample();
         Invoke("WaitForNextRound", 2f);
         return true;
     }
