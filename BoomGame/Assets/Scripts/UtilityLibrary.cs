@@ -77,19 +77,15 @@ public class UtilityLibrary : MonoBehaviour
         eventData.position = position;
         var results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventData, results);
+        foreach(var re in results)
+        {
+            if(re.gameObject.name == "TutorialHand")
+            {
+                return false;
+            }
+        }
         return results.Count > 0;
 
-        if (EventSystem.current.IsPointerOverGameObject())
-            return true;
-
-        //check touch
-        if (Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began)
-        {
-            if (EventSystem.current.IsPointerOverGameObject(Input.touches[0].fingerId))
-                return true;
-        }
-
-        return false;
     }
 
     /// <summary>

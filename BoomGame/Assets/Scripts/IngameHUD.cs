@@ -145,16 +145,7 @@ public class IngameHUD : MonoBehaviour
 
     public void NextLevel()
     {
-        if (gameMaster.currentChapterLevels != null)
-        {
-            var nextLevel = gameMaster.currentChapterLevels.SkipWhile(x => x.name != SceneManager.GetActiveScene().name).Skip(1).First();
-            if (nextLevel == null)
-                return;
-            //To load video ads
-            //AdsController.adsInstance.ShowVideoOrInterstitialAds();
-            //TODO: Show loading screens
-            SceneManager.LoadSceneAsync(nextLevel.name, LoadSceneMode.Single);
-        }
+        SceneManager.LoadSceneAsync(gameController.nextLevelName, LoadSceneMode.Single);
     }
 
     public void CampaignMap()
@@ -293,6 +284,8 @@ public class IngameHUD : MonoBehaviour
         resetButton1.SetActive(false);
         resetButton2.SetActive(true);
 
+        nextLevelButton.SetActive(true);
+
         if (gameMaster.currentChapterLevels != null)
         {
             //If last level in chapter, show back to map button instead
@@ -402,6 +395,7 @@ public class IngameHUD : MonoBehaviour
                             .Insert(0.8f, transform.DOAnchorPosX(1500f, 0.4f).SetEase(Ease.InQuad).SetUpdate(true));
 
         StartCoroutine(ActivateObjectWithDelay(hideDelay, roundPanel, false));
+        StartCoroutine(ShowTutorial(hideDelay + 0.3f));
     }
 
     private IEnumerator ActivateObjectWithDelay(float delay, GameObject panel, bool active)
@@ -409,6 +403,23 @@ public class IngameHUD : MonoBehaviour
         yield return new WaitForSeconds(delay);
         panel.SetActive(active);
     }
+
+    private IEnumerator ShowTutorial(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        var tutorial = GameObject.Find("TutorialUI");
+
+        if (tutorial != null)
+        {
+            var tutorialScript = tutorial.GetComponent<Tutorial>();
+            if (tutorialScript != null)
+            {
+                tutorialScript.StartTutorial();
+            }
+        }
+    }
+
 
     public void OpenMainMenu()
     {

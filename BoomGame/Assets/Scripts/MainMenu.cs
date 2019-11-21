@@ -101,7 +101,10 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("CampaignMap");
+        if (PlayerPrefs.GetInt("TutorialPassed", 0) == 1)
+            SceneManager.LoadScene("CampaignMap");
+        else
+            SceneManager.LoadScene("Level_01");
     }
 
 
