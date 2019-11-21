@@ -331,8 +331,6 @@ public class IngameHUD : MonoBehaviour
             {
                 endscreenScript.Enable(0, levelScore);
                 salvagePanel.SetActive(false);
-                //salvagePanel.GetComponent<CanvasGroup>().alpha = 0;
-                //salvagePanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
             }
             else if (levelClear == LevelClear.OnePentagram)
             {
@@ -351,11 +349,14 @@ public class IngameHUD : MonoBehaviour
 
     public void ShowFinishPanel()
     {
-        //var rectTransform = levelFinishPanel.GetComponent<RectTransform>();
-        //rectTransform.
+
         levelFinishPanel.SetActive(true);
-        levelFinishPanel.GetComponent<CanvasGroup>().alpha = 1;
-        levelFinishPanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        var rewardPanelTransform = GameObject.Find("RewardPanel").GetComponent<RectTransform>();
+        if (rewardPanelTransform != null)
+        {
+            rewardPanelTransform.localScale = new Vector3(0, 0, 1);
+            rewardPanelTransform.DOScale(new Vector3(1f, 1f, 1f), 0.4f).SetUpdate(true);
+        }
 
         if (salvagePanel.activeInHierarchy)
         {

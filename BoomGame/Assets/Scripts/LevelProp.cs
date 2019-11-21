@@ -6,6 +6,9 @@ public class LevelProp : MonoBehaviour
 {
     [SerializeField]
     private int hitpoints = 1;
+
+    public GameObject poof;
+    public float poofScale = 1f;
     public int Hitpoints
     {
         get => hitpoints;
@@ -33,7 +36,12 @@ public class LevelProp : MonoBehaviour
 
     }
 
-
+    private void OnDestroy()
+    {
+        var poofD = Instantiate(poof, this.transform.position, new Quaternion());
+        poofD.transform.parent = null;
+        poofD.transform.localScale = new Vector3(poofScale, poofScale, 1f);
+    }
 
     void OnCollisionEnter2D(Collision2D collision)
     {

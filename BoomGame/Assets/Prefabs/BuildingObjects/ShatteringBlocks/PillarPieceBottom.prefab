@@ -100,7 +100,7 @@ Rigidbody2D:
   m_LinearDrag: 0.1
   m_AngularDrag: 0.1
   m_GravityScale: 5
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 6c5305bef19ddf64699d63dc7983e3c2, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -114,7 +114,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 8625762210618266256}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 6c5305bef19ddf64699d63dc7983e3c2, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -130,21 +130,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 1.3428544, y: -0.3324742}
-      - {x: 1.2160503, y: -0.30711338}
-      - {x: 1.3174936, y: 1.1638143}
-      - {x: 0.91172034, y: 1.3667009}
-      - {x: -0.07735175, y: 1.5949483}
-      - {x: -0.50848573, y: 1.5949483}
-      - {x: -1.2693104, y: 1.4681442}
-      - {x: -1.320032, y: 1.4174225}
-      - {x: -1.3453928, y: -0.25639173}
-      - {x: -1.8526093, y: -0.7128866}
-      - {x: -1.8526093, y: -1.4737113}
-      - {x: -1.751166, y: -1.5497937}
-      - {x: 1.7486275, y: -1.5497937}
-      - {x: 1.8500708, y: -1.4229896}
-      - {x: 1.8500708, y: -0.7382474}
+    - - {x: 1.1368023, y: 0.014067709}
+      - {x: 1.1208074, y: 0.60653716}
+      - {x: -1.2578602, y: 0.8270771}
+      - {x: -1.2564157, y: 0.019905388}
+      - {x: -1.7964132, y: -0.44595563}
+      - {x: -1.8167281, y: -1.0627617}
+      - {x: 1.7517278, y: -1.0858136}
+      - {x: 1.7236298, y: -0.37297344}
 --- !u!114 &514357160001719649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,12 +165,12 @@ MonoBehaviour:
   deactivateDelay: 0
   checkedInLevelClear: 1
   pieceSpawnLocations:
-  - {x: 0.66, y: 0.66}
-  - {x: 0, y: 0.66}
-  - {x: -0.66, y: 0.66}
-  - {x: 0.94, y: -1.02}
-  - {x: 0, y: -1.02}
-  - {x: -0.94, y: -1.02}
+  - {x: 0.66, y: 0.34}
+  - {x: 0, y: 0.34}
+  - {x: -0.66, y: 0.34}
+  - {x: 0.94, y: -0.53}
+  - {x: 0, y: -0.53}
+  - {x: -0.94, y: -0.53}
   pieceObjects:
   - {fileID: 2542678690165135598, guid: ab14e2efe7aa8954e9ea66a8e150a2b5, type: 3}
   - {fileID: 2542678690165135598, guid: ab14e2efe7aa8954e9ea66a8e150a2b5, type: 3}

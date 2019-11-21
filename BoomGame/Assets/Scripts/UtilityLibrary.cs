@@ -43,6 +43,7 @@ public class UtilityLibrary : MonoBehaviour
         float distance = heading.magnitude;
         if (distance == 0)
             distance = 1;
+        distance = Mathf.Clamp(distance, 1f, 1000f);
         Vector2 direction = heading / distance;
 
         //Calculate force from the direction multiplied by the power. Force weaker by distance
@@ -50,6 +51,7 @@ public class UtilityLibrary : MonoBehaviour
 
         // Add additional upwards force
         force += new Vector2(0, upwardsForce);
+        print(force);
         return force;
     }
 
@@ -197,6 +199,8 @@ public class UtilityLibrary : MonoBehaviour
                     Vector2 force = UtilityLibrary.CalculateExplosionForce(transform.position, hit.transform.position, power, upwardsForce);
 
                     rb.AddForce(force, ForceMode2D.Impulse);
+                    var torque = (UnityEngine.Random.Range(0f, 1f) > 0.5f  ? -10f : 10f) * force.magnitude;
+                    rb.AddTorque(torque);
                 }
             }
         }
@@ -220,6 +224,8 @@ public class UtilityLibrary : MonoBehaviour
                 Vector2 force = UtilityLibrary.CalculateExplosionForceWithDistance(transform.position, hit.transform.position, power / 10, upwardsForce / 10);
 
                 rb.AddForce(force, ForceMode2D.Impulse);
+                var torque = (UnityEngine.Random.Range(0f, 1f) > 0.5f  ? -10f : 10f) * force.magnitude;
+                rb.AddTorque(torque);
             }
             var barrel = hit.gameObject.GetComponent<TNTBarrel>();
             if (barrel != null)
@@ -259,6 +265,9 @@ public class UtilityLibrary : MonoBehaviour
                         Vector2 force = UtilityLibrary.CalculateExplosionForceWithDistance(transform.position, hit.transform.position, power, upwardsForce);
 
                         rb.AddForce(force, ForceMode2D.Impulse);
+
+                        var torque = (UnityEngine.Random.Range(0f, 1f) > 0.5f  ? -10f : 10f) * force.magnitude;
+                        rb.AddTorque(torque);
                     }
                 }
             }
@@ -272,6 +281,8 @@ public class UtilityLibrary : MonoBehaviour
                 Vector2 force = UtilityLibrary.CalculateExplosionForceWithDistance(transform.position, hit.transform.position, power / 2f, upwardsForce / 2f);
 
                 rb.AddForce(force, ForceMode2D.Impulse);
+                var torque = (UnityEngine.Random.Range(0f, 1f) > 0.5f  ? -10f : 10f) * force.magnitude;
+                rb.AddTorque(torque);
             }
         }
     }

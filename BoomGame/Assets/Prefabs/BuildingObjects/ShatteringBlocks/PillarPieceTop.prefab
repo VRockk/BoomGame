@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2590879576842942299}
   - component: {fileID: 2590879576842942296}
-  - component: {fileID: 2590879576842942297}
   - component: {fileID: 2590879576842942294}
   - component: {fileID: 2590879576842942295}
   - component: {fileID: 3568016131407251021}
@@ -85,39 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2590879576842942297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2590879576842942292}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50afc76e2b398c546b7954a7ed37f1ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreValue: 300
-  jointBreakForce: 50000
-  jointBreakTorque: 50000
-  createJoints: 1
-  createManualJoints: 0
-  createJointToGround: 0
-  gameController: {fileID: 0}
-  ignoredJoints: []
-  manualJointLocations: []
-  materialType: 0
-  attachedObjects: []
-  allowDamage: 1
-  deactivateDelay: 0
-  checkedInLevelClear: 1
-  pieceSpawnLocations: []
-  pieceObjects: []
-  hitpoints: 2
-  damagedForceLimit: 10000
-  shatterParticle: {fileID: 0}
-  audioObject: {fileID: 0}
-  shatterSFX: []
 --- !u!50 &2590879576842942294
 Rigidbody2D:
   serializedVersion: 4
@@ -134,7 +100,7 @@ Rigidbody2D:
   m_LinearDrag: 0.1
   m_AngularDrag: 0.1
   m_GravityScale: 5
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 6c5305bef19ddf64699d63dc7983e3c2, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -148,7 +114,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 2590879576842942292}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 6c5305bef19ddf64699d63dc7983e3c2, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -164,26 +130,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 1.5142212, y: 0.39604187}
-      - {x: 1.8336601, y: 0.44711494}
-      - {x: 1.8403893, y: 1.0304127}
-      - {x: 1.7762032, y: 1.2317448}
-      - {x: -1.7672768, y: 1.2196732}
-      - {x: -1.847256, y: 1.1825783}
-      - {x: -1.847256, y: 0.49783617}
-      - {x: -1.5253906, y: 0.39251137}
-      - {x: -1.529274, y: 0.11742401}
-      - {x: -1.2941475, y: 0.013553619}
-      - {x: -1.2956314, y: -1.0491753}
-      - {x: -0.86403656, y: -1.09412}
-      - {x: -0.62993646, y: -1.0491741}
-      - {x: -0.2748849, y: -1.0998957}
-      - {x: 0.23233154, y: -1.1252565}
-      - {x: 0.9170737, y: -1.2266998}
-      - {x: 1.1960428, y: -1.2266998}
-      - {x: 1.2311745, y: -0.8053131}
-      - {x: 1.2467644, y: -0.009380285}
-      - {x: 1.3989294, y: 0.015980538}
+    - - {x: 1.7785965, y: 0.71912783}
+      - {x: 1.816656, y: 1.3436888}
+      - {x: -1.7665637, y: 1.3154833}
+      - {x: -1.7048575, y: 0.6449809}
+      - {x: -1.201758, y: 0.29779512}
+      - {x: -1.2244322, y: -0.58400786}
+      - {x: 1.1686442, y: -1.1080346}
+      - {x: 1.1850584, y: 0.28016272}
 --- !u!114 &3568016131407251021
 MonoBehaviour:
   m_ObjectHideFlags: 0

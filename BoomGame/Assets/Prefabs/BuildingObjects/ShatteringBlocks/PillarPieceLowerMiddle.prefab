@@ -93,7 +93,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 414980848280537678}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 6c5305bef19ddf64699d63dc7983e3c2, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -109,25 +109,13 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 1.3012564, y: 0.79670197}
-      - {x: 1.225174, y: 0.89814526}
-      - {x: 0.43898842, y: 1.0503101}
-      - {x: -0.09358885, y: 1.1771142}
-      - {x: -0.27111462, y: 1.1771142}
-      - {x: -0.39791873, y: 0.9742277}
-      - {x: -0.8290527, y: 1.1517534}
-      - {x: -1.2855475, y: 1.1263926}
-      - {x: -1.2855475, y: -0.8263907}
-      - {x: -1.2601867, y: -0.927834}
-      - {x: -0.87977433, y: -0.77566904}
-      - {x: -0.6261661, y: -0.9785556}
-      - {x: -0.14431049, y: -1.0546381}
-      - {x: 0.21074103, y: -0.90247315}
-      - {x: 0.38826677, y: -1.1560814}
-      - {x: 0.54043174, y: -1.1560814}
-      - {x: 0.76867914, y: -1.0039165}
+    - - {x: 1.1901369, y: 1.0558124}
+      - {x: 0.78060055, y: 1.0941066}
+      - {x: 0.2765455, y: 0.5713009}
+      - {x: -0.6757654, y: 0.53860384}
+      - {x: -1.1804361, y: 1.1439112}
+      - {x: -1.2067139, y: -0.64244574}
       - {x: 1.225174, y: -1.1307206}
-      - {x: 1.3012564, y: -0.90247315}
 --- !u!50 &414980848280537673
 Rigidbody2D:
   serializedVersion: 4
@@ -144,7 +132,7 @@ Rigidbody2D:
   m_LinearDrag: 0.1
   m_AngularDrag: 0.1
   m_GravityScale: 5
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 6c5305bef19ddf64699d63dc7983e3c2, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
