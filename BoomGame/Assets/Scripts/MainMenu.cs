@@ -268,11 +268,9 @@ public class MainMenu : MonoBehaviour
     {
         if (Social.localUser.authenticated)
         {
-
             string lbId = "CgkI65f98LAPEAIQAQ";
             GooglePlayGames.PlayGamesPlatform.Instance.SetDefaultLeaderboardForUI(lbId);
             Social.Active.ShowLeaderboardUI();
         }
-       // GooglePlayGames.PlayGamesPlatform.Instance.ShowLeaderboardUI();
     }
 }
