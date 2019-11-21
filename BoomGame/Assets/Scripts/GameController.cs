@@ -41,6 +41,8 @@ public class GameController : MonoBehaviour
 
     public GameObject ingameHUD;
 
+    public string nextLevelName;
+
     private IngameHUD hud;
     private CameraHandler cameraHandler;
 
@@ -56,7 +58,7 @@ public class GameController : MonoBehaviour
     public int salvageValue = 100;
 
     private GameMaster gameMaster;
-    private float roundDelay = 1.5f;
+    private float roundDelay = 1f;
 
     [HideInInspector]
     public List<AudioClip> bombScreamsToPlay;
@@ -120,6 +122,12 @@ public class GameController : MonoBehaviour
         else
             gameMaster.SetMusic(null);
 
+        if (gameMaster.currentChapterLevels != null)
+        {
+            var nextLevel = gameMaster.currentChapterLevels.SkipWhile(x => x.name != SceneManager.GetActiveScene().name).Skip(1).First();
+            if (nextLevel != null)
+                nextLevelName = nextLevel.name;
+        }
         //InvokeRepeating("CheckScorelines", 1f, 1f);
     }
 
@@ -203,6 +211,20 @@ public class GameController : MonoBehaviour
                         StartCoroutine(hud.UpdateBombCount(bombCount));
 
                     }
+                    else
+                    {
+
+                        var tutorial = GameObject.Find("TutorialUI");
+
+                        if (tutorial != null)
+                        {
+                            var tutorialScript = tutorial.GetComponent<Tutorial>();
+                            if (tutorialScript != null)
+                            {
+                                tutorialScript.ShowDetonator();
+                            }
+                        }
+                    }
 
                 }
 
@@ -269,6 +291,18 @@ public class GameController : MonoBehaviour
         if (GameObject.FindObjectsOfType<Bomb>().Length == 0 || !inputAllowed)
             return false;
 
+
+        var tutorial = GameObject.Find("TutorialUI");
+
+        if (tutorial != null)
+        {
+            var tutorialScript = tutorial.GetComponent<Tutorial>();
+            if (tutorialScript != null)
+            {
+                tutorialScript.EndTutorial();
+            }
+        }
+
         inputAllowed = false;
         bombScreamsToPlay = new List<AudioClip>();
 
@@ -326,7 +360,7 @@ public class GameController : MonoBehaviour
             if (body != null)
             {
                 //Check if there is a bit of movement still
-                if (body.velocity.magnitude > 0.1f)
+                if (body.velocity.magnitude > 0.2f)
                 {
                     //print(body.gameObject.name + "   " + body.velocity.magnitude);
                     isMovement = true;
@@ -478,7 +512,7 @@ public class GameController : MonoBehaviour
                 return LevelClear.Failed;
             }
         }
-        
+
         float clearPercentage = ((float)levelScore / (float)maxScore) * 100;
         //print(clearPercentage);
         if (clearPercentage > threePentaScore)
@@ -505,10 +539,4 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(delay);
         inputAllowed = allow;
     }
-
-    //private void CheckScorelines()
-    //{
-    //    winlines.UpdateLines(CheckLevelClear());
-    //}
-
 }

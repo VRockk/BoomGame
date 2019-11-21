@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameMaster : MonoBehaviour
@@ -226,4 +228,5 @@ public class GameMaster : MonoBehaviour
         bombData.Add(new BombData(BombType.Mega, PlayerPrefs.GetInt(BombType.Mega.ToString() + "Level", 1), true, "Mega Bomb", "mega"));
         bombData.Add(new BombData(BombType.Void, PlayerPrefs.GetInt(BombType.Void.ToString() + "Level", 1), true, "Void Bomb", "void"));
     }
+
 }

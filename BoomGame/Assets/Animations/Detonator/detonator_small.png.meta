@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: ce56e2d8aa37c544cbdd85a5784a03cb
+guid: 181f74665be859f4f98261fa0d3d53d0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7823720374256248602
-    second: Detonator_0
+      213: 8853113784437195285
+    second: detonator_small_0
   - first:
-      213: -4508198433675987532
-    second: Detonator_1
+      213: -3215847982884077319
+    second: detonator_small_1
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -89,18 +89,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -116,43 +104,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Detonator_0
+      name: detonator_small_0
       rect:
         serializedVersion: 2
-        x: 95
-        y: 0
-        width: 302
-        height: 512
+        x: 13
+        y: 4
+        width: 361
+        height: 596
       alignment: 9
-      pivot: {x: 0.5, y: 0}
+      pivot: {x: 0.5, y: 0.067379}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3738e693f5cd8d6438ff8c0eb28bbdf2
-      internalID: 7823720374256248602
+      spriteID: 1107c784b0bd0a043bc27a743a70754a
+      internalID: 8853113784437195285
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Detonator_1
+      name: detonator_small_1
       rect:
         serializedVersion: 2
-        x: 665
-        y: 0
-        width: 302
-        height: 512
+        x: 459
+        y: 12
+        width: 361
+        height: 588
       alignment: 9
-      pivot: {x: 0.5, y: 0}
+      pivot: {x: 0.5, y: 0.058678593}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 74db9af23bbc9984fad6931d767b28b7
-      internalID: -4508198433675987532
+      spriteID: e73d82444df0c3146aea3495bd86fbd9
+      internalID: -3215847982884077319
       vertices: []
       indices: 
       edges: []

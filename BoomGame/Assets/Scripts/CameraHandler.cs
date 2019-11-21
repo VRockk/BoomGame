@@ -273,7 +273,6 @@ public class CameraHandler : MonoBehaviour
         if ((offset > 0 && cam.orthographicSize > camSizeBounds[0]) || (offset < 0 && cam.orthographicSize < camSizeBounds[1]))
         {
             //TODO smoothing
-
             cam.orthographicSize = Mathf.Clamp(cam.orthographicSize - (offset * speed), camSizeBounds[0], camSizeBounds[1]);
 
             //Pan camera also when zooming in and out

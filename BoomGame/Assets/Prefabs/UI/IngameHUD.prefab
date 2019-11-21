@@ -1069,8 +1069,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 72.973145}
-  m_SizeDelta: {x: 0, y: 145.94592}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5773857112702615216
 CanvasRenderer:
@@ -1190,7 +1190,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -96}
-  m_SizeDelta: {x: 557.2, y: 243.65}
+  m_SizeDelta: {x: 495.3, y: 243.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5900987298489336030
 CanvasRenderer:
@@ -1249,12 +1249,12 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 140
+  m_fontSize: 150
   m_fontSizeBase: 140
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 100
+  m_fontSizeMax: 150
   m_fontStyle: 0
   m_textAlignment: 514
   m_characterSpacing: 0
@@ -1379,7 +1379,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 7823720374256248602, guid: ce56e2d8aa37c544cbdd85a5784a03cb,
+  m_Sprite: {fileID: 8853113784437195285, guid: 181f74665be859f4f98261fa0d3d53d0,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -2738,9 +2738,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c7a20cb9a9a3d64fa99ea16eb939c44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detonatorUp: {fileID: 7823720374256248602, guid: ce56e2d8aa37c544cbdd85a5784a03cb,
+  detonatorUp: {fileID: 8853113784437195285, guid: 181f74665be859f4f98261fa0d3d53d0,
     type: 3}
-  detonatorDown: {fileID: -4508198433675987532, guid: ce56e2d8aa37c544cbdd85a5784a03cb,
+  detonatorDown: {fileID: -3215847982884077319, guid: 181f74665be859f4f98261fa0d3d53d0,
     type: 3}
   detonatePanel: {fileID: 8766382859606608237}
   roundPanel: {fileID: 5550756787402618080}
@@ -3212,7 +3212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AspectMode: 1
-  m_AspectRatio: 0.58984375
+  m_AspectRatio: 0.6057
 --- !u!1 &9206046215224834445
 GameObject:
   m_ObjectHideFlags: 0
@@ -3719,6 +3719,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: BombCount
       objectReference: {fileID: 0}
+    - target: {fileID: 5553317842802212892, guid: cb8230d462ec005418e2405bf0af7f01,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -9010381787305876536, guid: d4b22bbeaeef11a408a329017916805f,
+        type: 2}
+    - target: {fileID: 5553317842802212892, guid: cb8230d462ec005418e2405bf0af7f01,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5553317842802212892, guid: cb8230d462ec005418e2405bf0af7f01,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 63.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 5553317842802212892, guid: cb8230d462ec005418e2405bf0af7f01,
+        type: 3}
+      propertyPath: m_text
+      value: 123
+      objectReference: {fileID: 0}
+    - target: {fileID: 5553317842802212892, guid: cb8230d462ec005418e2405bf0af7f01,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5553317842802212892, guid: cb8230d462ec005418e2405bf0af7f01,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: d4b22bbeaeef11a408a329017916805f,
+        type: 2}
     - target: {fileID: 4635233329272705758, guid: cb8230d462ec005418e2405bf0af7f01,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3754,38 +3786,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5553317842802212892, guid: cb8230d462ec005418e2405bf0af7f01,
-        type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -9010381787305876536, guid: d4b22bbeaeef11a408a329017916805f,
-        type: 2}
-    - target: {fileID: 5553317842802212892, guid: cb8230d462ec005418e2405bf0af7f01,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5553317842802212892, guid: cb8230d462ec005418e2405bf0af7f01,
-        type: 3}
-      propertyPath: m_fontSizeBase
-      value: 63.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 5553317842802212892, guid: cb8230d462ec005418e2405bf0af7f01,
-        type: 3}
-      propertyPath: m_text
-      value: 123
-      objectReference: {fileID: 0}
-    - target: {fileID: 5553317842802212892, guid: cb8230d462ec005418e2405bf0af7f01,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5553317842802212892, guid: cb8230d462ec005418e2405bf0af7f01,
-        type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: d4b22bbeaeef11a408a329017916805f,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb8230d462ec005418e2405bf0af7f01, type: 3}
 --- !u!224 &89432254236390418 stripped

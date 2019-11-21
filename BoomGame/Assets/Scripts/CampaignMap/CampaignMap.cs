@@ -11,7 +11,7 @@ public class CampaignMap : MonoBehaviour
     public GameObject chapterPanel;
     private bool inputAllowed = true;
 
-    private static readonly float panSpeed = 70f;
+    private static readonly float panSpeed = 500f;
 
     private static readonly float[] BoundsX = new float[] { -9f, 70f };
     private static readonly float[] BoundsY = new float[] { -25f, 8f };
@@ -188,7 +188,7 @@ public class CampaignMap : MonoBehaviour
         //hide chapter info panel
         if (chapterPanel != null)
         {
-            if(chapterPanelVisible)
+            if (chapterPanelVisible)
                 chapterPanel.GetComponent<RectTransform>().DOAnchorPosX(800f, Random.Range(0.35f, 0.45f), false).SetEase(Ease.InBack).SetUpdate(true);
             chapterPanelVisible = false;
             //chapterPanel.SetActive(false);
@@ -199,6 +199,8 @@ public class CampaignMap : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenuScene");
     }
+    Tween cameraMoveTween = null;
+
 
     void PanCamera(Vector3 newPanPosition)
     {
@@ -207,13 +209,20 @@ public class CampaignMap : MonoBehaviour
         Vector3 move = new Vector3(offset.x * panSpeed, offset.y * panSpeed, 0);
 
         // Perform the movement
-        cam.transform.Translate(move, Space.World);
+        var newPos = cam.transform.position + move;
+        newPos.x = Mathf.Clamp(newPos.x, BoundsX[0], BoundsX[1]);
+        newPos.y = Mathf.Clamp(newPos.y, BoundsY[0], BoundsY[1]);
+
+        //cam.transform.Translate(move, Space.World);
+        if (cameraMoveTween != null)
+            cameraMoveTween.Kill();
+        cameraMoveTween = cam.transform.DOMove(newPos, 0.5f).SetUpdate(true);
 
         // Ensure the camera remains within bounds.
-        Vector3 pos = cam.transform.position;
-        pos.x = Mathf.Clamp(cam.transform.position.x, BoundsX[0], BoundsX[1]);
-        pos.y = Mathf.Clamp(cam.transform.position.y, BoundsY[0], BoundsY[1]);
-        cam.transform.position = pos;
+        //Vector3 pos = cam.transform.position;
+        //pos.x = Mathf.Clamp(cam.transform.position.x, BoundsX[0], BoundsX[1]);
+        //pos.y = Mathf.Clamp(cam.transform.position.y, BoundsY[0], BoundsY[1]);
+        //cam.transform.position = pos;
 
         // Cache the position
         lastPanPosition = newPanPosition;

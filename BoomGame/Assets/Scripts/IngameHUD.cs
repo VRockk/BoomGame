@@ -145,16 +145,7 @@ public class IngameHUD : MonoBehaviour
 
     public void NextLevel()
     {
-        if (gameMaster.currentChapterLevels != null)
-        {
-            var nextLevel = gameMaster.currentChapterLevels.SkipWhile(x => x.name != SceneManager.GetActiveScene().name).Skip(1).First();
-            if (nextLevel == null)
-                return;
-            //To load video ads
-            //AdsController.adsInstance.ShowVideoOrInterstitialAds();
-            //TODO: Show loading screens
-            SceneManager.LoadSceneAsync(nextLevel.name, LoadSceneMode.Single);
-        }
+        SceneManager.LoadSceneAsync(gameController.nextLevelName, LoadSceneMode.Single);
     }
 
     public void CampaignMap()
@@ -182,7 +173,7 @@ public class IngameHUD : MonoBehaviour
     private IEnumerator NextRoundDelayed(int roundNumber, float delay)
     {
         yield return new WaitForSeconds(0.1f);
-        ShowSlidingHUD(0.5f);
+        ShowSlidingHUD(0.8f);
         ShowRoundText(delay, roundNumber);
 
     }
@@ -293,6 +284,8 @@ public class IngameHUD : MonoBehaviour
         resetButton1.SetActive(false);
         resetButton2.SetActive(true);
 
+        nextLevelButton.SetActive(true);
+
         if (gameMaster.currentChapterLevels != null)
         {
             //If last level in chapter, show back to map button instead
@@ -398,10 +391,11 @@ public class IngameHUD : MonoBehaviour
 
         transform.anchoredPosition = new Vector2(-1500f, 0);
         DOTween.Sequence()
-                .Append(transform.DOAnchorPosX(0, 0.5f).SetEase(Ease.OutQuad).SetUpdate(true))
-                            .Insert(1f, transform.DOAnchorPosX(1500f, 0.5f).SetEase(Ease.InQuad).SetUpdate(true));
+                .Append(transform.DOAnchorPosX(0, 0.4f).SetEase(Ease.OutQuad).SetUpdate(true))
+                            .Insert(0.8f, transform.DOAnchorPosX(1500f, 0.4f).SetEase(Ease.InQuad).SetUpdate(true));
 
         StartCoroutine(ActivateObjectWithDelay(hideDelay, roundPanel, false));
+        StartCoroutine(ShowTutorial(hideDelay + 0.3f));
     }
 
     private IEnumerator ActivateObjectWithDelay(float delay, GameObject panel, bool active)
@@ -409,6 +403,23 @@ public class IngameHUD : MonoBehaviour
         yield return new WaitForSeconds(delay);
         panel.SetActive(active);
     }
+
+    private IEnumerator ShowTutorial(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        var tutorial = GameObject.Find("TutorialUI");
+
+        if (tutorial != null)
+        {
+            var tutorialScript = tutorial.GetComponent<Tutorial>();
+            if (tutorialScript != null)
+            {
+                tutorialScript.StartTutorial();
+            }
+        }
+    }
+
 
     public void OpenMainMenu()
     {
@@ -426,7 +437,7 @@ public class IngameHUD : MonoBehaviour
             return;
 
         //Get current bomb cards and add position offset for each one
-        float leftOffset = -40f;
+        float leftOffset = -5f;
         var bombCards = GameObject.FindGameObjectsWithTag("BombCard");
         foreach (var bombCard in bombCards)
         {
@@ -443,11 +454,12 @@ public class IngameHUD : MonoBehaviour
         cardImage.sprite = bomb.GetComponent<Bomb>().inventoryIcon;
 
         //Set sprite aspect ratio so different size icons fit correcly
-        var cardAspectRatioFitter = card.GetComponent<AspectRatioFitter>();
-        cardAspectRatioFitter.aspectRatio = cardImage.sprite.rect.width / cardImage.sprite.rect.height;
+        //var cardAspectRatioFitter = card.GetComponent<AspectRatioFitter>();
 
-        cardTransform.localPosition = new Vector3(leftOffset, -40f, 0);
-        cardTransform.localScale = new Vector3(1.5f, 1.5f, 1f);
+        //cardAspectRatioFitter.aspectRatio = cardImage.sprite.rect.width / cardImage.sprite.rect.height;
+
+        cardTransform.localPosition = new Vector3(leftOffset, -5f, 0);
+        cardTransform.localScale = new Vector3(1f, 1f, 1f);
 
         var bombCardScript = card.GetComponent<BombCard>();
         bombCardScript.bombPrefab = bomb;
