@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms;
 
 
 using System.Linq;
@@ -446,7 +447,7 @@ public class GameController : MonoBehaviour
         var levelName = SceneManager.GetActiveScene().name;
         var pentagrams = PlayerPrefs.GetInt(levelName + "Pentagrams", 0);
         var savedBombs = PlayerPrefs.GetInt(levelName + "SavedBombs", 0);
-        var score = PlayerPrefs.GetInt(levelName + levelScore, 0);
+        var score = PlayerPrefs.GetInt(levelName + "LevelScore", 0);
 
 
         //PlayerPentagrams and PlayerScore are the values of all gained pentagrams and score from all maps the player has cleared
@@ -484,8 +485,31 @@ public class GameController : MonoBehaviour
         {
             // Reduce the old level score from the player score and add the new score back
             playerScore = playerScore - score + levelScore;
-            PlayerPrefs.SetInt(levelName + "Score", levelScore);
+            PlayerPrefs.SetInt(levelName + "LevelScore", levelScore);
             PlayerPrefs.SetInt("PlayerScore", playerScore);
+            print(playerScore);
+
+            //check user is authenticated
+            if (Social.localUser.authenticated)
+            {
+                Social.ReportScore(playerScore, "CgkI65f98LAPEAIQAQ", (bool success) => {
+                    // handle success or failure
+                    if (success) {
+                        Debug.Log("Posted score to Leaderboard.");
+                    }
+                    else
+                    {
+                        Debug.Log("Failed to post score to leaderboard.");
+                    }
+                });
+            }
+
+
+
+            //send score to leaderboards
+
+           
+
         }
 
         //var bonusSalvage = (bombCount - savedBombs) * bonusSalvageForSavedBomb;
