@@ -1,11 +1,15 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class AnimationEvents : MonoBehaviour
 {
+    public bool clickToSkip = false;
     private GameMaster gameMaster;
+    private AudioSource audioSource;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -13,18 +17,37 @@ public class AnimationEvents : MonoBehaviour
         gameMaster = FindObjectOfType<GameMaster>();
         if (gameMaster == null)
             Debug.LogError("No GameMaster found");
-
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (clickToSkip)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                var animator = GetComponent<Animator>();
+                if(animator != null)
+                {
+                    //print("Skip anim");
+                    animator.SetFloat("AnimSpeed", 2f);
+
+
+
+                    clickToSkip = false;
+                }
+            }
+        }
 
     }
 
     public void PlaySound(AudioClip sound)
     {
-        AudioSource.PlayClipAtPoint(sound, new Vector3(0, 0, 0));
+
+        audioSource.pitch = Random.Range(1f, 1.1f);
+        audioSource.volume = Random.Range(0.95f, 1.05f);
+        audioSource.PlayOneShot(sound);
     }
 
     public void SetMusic(AudioClip music)

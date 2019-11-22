@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameMaster : MonoBehaviour
@@ -9,14 +11,21 @@ public class GameMaster : MonoBehaviour
     [HideInInspector]
     public int currentSalvage;
     [HideInInspector]
-    public BombData regularBombData;
-    [HideInInspector]
-    public BombData acidBombData;
-
+    public List<Level> currentChapterLevels;
 
 
     private AudioSource audioSource;
 
+    private AudioClip newMusicClip;
+    private float musicFadeInTime = 2f;
+    private float musicFadeOutTime = 0.5f;
+    private float musicDefaultVolume = 1f;
+    private float fadeStarted;
+    private bool fadingMusic = false;
+    private bool fadingOut = false;
+
+    [HideInInspector]
+    public List<BombData> bombData;
 
     private bool privacyPolicyAccepted;
     public bool PrivacyPolicyAccepted
@@ -36,6 +45,26 @@ public class GameMaster : MonoBehaviour
         }
     }
 
+    private bool signIn;
+    [HideInInspector]
+    public bool loginShowed = false;
+
+    public bool SignIn
+    {
+        get
+        {
+            return signIn;
+        }
+        set
+        {
+            if (value)
+                PlayerPrefs.SetInt("SignIn", 1);
+            else
+                PlayerPrefs.SetInt("SignIn", 0);
+            signIn = value;
+        }
+    }
+
     void Awake()
     {
         //If we have a situation where we already have a GameMaster, destroy the new one.
@@ -47,10 +76,14 @@ public class GameMaster : MonoBehaviour
         else
         {
 
-            //PlayerPrefs.DeleteAll();
+#if UNITY_EDITOR
+            PlayerPrefs.DeleteAll();
+#endif
             GetPlayerPrefValues();
             DontDestroyOnLoad(this.gameObject);
             //AddSalvage(1500);
+
+
         }
     }
 
@@ -81,105 +114,119 @@ public class GameMaster : MonoBehaviour
             PlayerPrefs.SetInt("CurrentSalvage", 0);
         }
 
-        //Level Progression
-
-
-
+        //currentSalvage = 100000;
         //Bomb data
         GetBombData();
 
-    }
+        //Sign In
+        if (PlayerPrefs.HasKey("SignIn"))
+        {
+            int signed = PlayerPrefs.GetInt("SignIn");
+            if (signed == 1)
+                signIn = true;
+            else
+                signIn = false;
+        }
+        else
+        {
+            signIn = false;
+        }
 
-    private void GetBombData()
-    {
-        //Regular bomb is always unlocked
-        int regularBombUnlocked = PlayerPrefs.GetInt("RegularBombUnlocked", 1);
-        int regularBombUpgrade1 = PlayerPrefs.GetInt("RegularBombUpgrade1", 0);
-        int regularBombUpgrade2 = PlayerPrefs.GetInt("RegularBombUpgrade2", 0);
-        int regularBombUpgrade3 = PlayerPrefs.GetInt("RegularBombUpgrade3", 0);
-        int regularBombUpgrade4 = PlayerPrefs.GetInt("RegularBombUpgrade4", 0);
-
-        regularBombData = new BombData(BombType.Regular,
-            new int[4] { regularBombUpgrade1, regularBombUpgrade2, regularBombUpgrade3, regularBombUpgrade4 },
-            regularBombUnlocked == 1 ? true : false);
-
-        int acidBombUnlocked = PlayerPrefs.GetInt("AcidBombUnlocked", 1);
-        int acidBombUpgrade1 = PlayerPrefs.GetInt("AcidBombUpgrade1", 0);
-        int acidBombUpgrade2 = PlayerPrefs.GetInt("AcidBombUpgrade2", 0);
-        int acidBombUpgrade3 = PlayerPrefs.GetInt("AcidBombUpgrade3", 0);
-        int acidBombUpgrade4 = PlayerPrefs.GetInt("AcidBombUpgrade4", 0);
-
-        acidBombData = new BombData(BombType.Acid,
-            new int[4] { acidBombUpgrade1, acidBombUpgrade2, acidBombUpgrade3, acidBombUpgrade4 },
-            acidBombUnlocked == 1 ? true : false);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-       
         audioSource = GetComponent<AudioSource>();
-
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        //TODO use DOTween for music fading
+        if (fadingMusic)
+        {
+            float timeSinceStarted = Time.time - fadeStarted;
+            if (fadingOut)
+            {
+                float percentage = timeSinceStarted / musicFadeOutTime;
+                float volume = UtilityLibrary.Lerp(musicDefaultVolume, 0f, percentage, LerpMode.EaseIn);
+                audioSource.volume = volume;
+                //fade out previous music
+                if (percentage >= 1f)
+                {
+                    audioSource.Stop();
+                    audioSource.clip = newMusicClip;
+                    audioSource.Play();
+                    percentage = 0;
+                    fadingOut = false;
+                    fadeStarted = Time.time;
+                }
+            }
+            else
+            {
+                float percentage = timeSinceStarted / musicFadeInTime;
+                //fade in new music
+                float volume = UtilityLibrary.Lerp(0f, musicDefaultVolume, percentage, LerpMode.EaseIn);
+                audioSource.volume = volume;
+                if (percentage >= 1f)
+                {
+                    percentage = 0;
+                    fadingOut = false;
+                    fadeStarted = Time.time;
+                    fadingMusic = false;
+                }
+            }
+        }
     }
 
     public void AddSalvage(int salvageToAdd)
     {
         currentSalvage += salvageToAdd;
-        PlayerPrefs.SetInt("CurrentSalvage", currentSalvage);        
+        PlayerPrefs.SetInt("CurrentSalvage", currentSalvage);
     }
 
     public void SetMusic(AudioClip clip)
     {
-        if(audioSource == null)
+        if (audioSource == null)
             audioSource = GetComponent<AudioSource>();
-        //TODO Fade out/fade in
-        audioSource.clip = clip;
-        audioSource.Play();
+
+        if (audioSource != null && clip != null)
+        {
+            //Dont set the same clip again
+            if (audioSource.clip != null && audioSource.clip.name == clip.name)
+                return;
+
+            musicDefaultVolume = audioSource.volume;
+            newMusicClip = clip;
+            fadeStarted = Time.time;
+            fadingMusic = true;
+
+            //Only fade out if we have music already playing
+            if (audioSource.isPlaying)
+                fadingOut = true;
+            else
+            {
+                audioSource.clip = newMusicClip;
+                audioSource.volume = 0f;
+                audioSource.Play();
+                fadingOut = false;
+            }
+        }
     }
 
-    public void PassLevel(int levelNumber)
+    private void GetBombData()
     {
-        if (levelNumber > PlayerPrefs.GetInt("LevelReached", 0))
-        {
-            PlayerPrefs.SetInt("LevelReached", levelNumber);
-        }
-    }
+        bombData = new List<BombData>();
 
-    public void SetBombUpgradeLevel(BombType bombtype, int upgradePosition, int level)
-    {
-        string levelKeyName = "";
-        if (bombtype == BombType.Regular)
-        {
-            levelKeyName = "RegularBombUpgrade";
-        }
-        else if (bombtype == BombType.Acid)
-        {
-            levelKeyName = "AcidBombUpgrade";
-        }
-
-        if (upgradePosition == 1)
-        {
-            levelKeyName += "1";
-        }
-        else if (upgradePosition == 2)
-        {
-            levelKeyName += "2";
-        }
-        else if (upgradePosition == 3)
-        {
-            levelKeyName += "3";
-        }
-        else if (upgradePosition == 4)
-        {
-            levelKeyName += "4";
-        }
-        PlayerPrefs.SetInt(levelKeyName, level);
-        GetBombData();
+        //initialize all bomb types with saved level data
+        bombData.Add(new BombData(BombType.Regular, PlayerPrefs.GetInt(BombType.Regular.ToString() + "Level", 1), false, "Normal Bomb", "normal"));
+        bombData.Add(new BombData(BombType.Acid, PlayerPrefs.GetInt(BombType.Acid.ToString() + "Level", 1), false, "Acid Bomb", "acid"));
+        bombData.Add(new BombData(BombType.Screamer, PlayerPrefs.GetInt(BombType.Screamer.ToString() + "Level", 1), true, "Screamer Bomb", "screamer"));
+        bombData.Add(new BombData(BombType.HolyWater, PlayerPrefs.GetInt(BombType.HolyWater.ToString() + "Level", 1), true, "Holy Water Bomb", "holy"));
+        bombData.Add(new BombData(BombType.Fire, PlayerPrefs.GetInt(BombType.Fire.ToString() + "Level", 1), true, "Fire Bomb", "fire"));
+        bombData.Add(new BombData(BombType.Mega, PlayerPrefs.GetInt(BombType.Mega.ToString() + "Level", 1), true, "Mega Bomb", "mega"));
+        bombData.Add(new BombData(BombType.Void, PlayerPrefs.GetInt(BombType.Void.ToString() + "Level", 1), true, "Void Bomb", "void"));
     }
 
 }

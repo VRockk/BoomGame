@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 
 public class MainMenu : MonoBehaviour
 {
@@ -13,23 +14,37 @@ public class MainMenu : MonoBehaviour
 
     public GameObject privacyPolicyPanel;
     public GameObject mainMenuPanel;
-    public GameObject campaignMapPanel;
     public GameObject shopPanel;
-    public GameObject bombPanel;
+    public GameObject workshopPanel;
     public GameObject bombSelectionPanel;
-
+    public GameObject optionPanel;
     public GameObject gameMasterPrefab;
+    public GameObject gameServicesPanel;
+    public GameObject bombSalvage;
+    public Button loginButton;
+    public TextMeshProUGUI loginText;
 
     private GameMaster gameMaster;
+    public AudioSource audioSource;
+    [HideInInspector]
+    public AudioClip menuMusic;
+    private bool rumbleToggleFlag = true;
+
+
+
 
     void Start()
     {
+        // Select the Google Play Games platform as our social platform implementation
+        GooglePlayGames.PlayGamesPlatform.Activate();
+
         gameMaster = FindObjectOfType<GameMaster>();
         if (gameMaster == null)
         {
             gameMaster = Instantiate(gameMasterPrefab).GetComponent<GameMaster>();
         }
 
+        gameServicesPanel.SetActive(false);
 
         UpdateSalvage();
         if (privacyPolicyPanel != null)
@@ -38,49 +53,58 @@ public class MainMenu : MonoBehaviour
             {
                 mainMenuPanel.SetActive(false);
                 privacyPolicyPanel.SetActive(true);
-                campaignMapPanel.SetActive(false);
                 shopPanel.SetActive(false);
-                bombPanel.SetActive(false);
             }
             else
             {
                 mainMenuPanel.SetActive(true);
                 privacyPolicyPanel.SetActive(false);
-                campaignMapPanel.SetActive(false);
                 shopPanel.SetActive(false);
-                bombPanel.SetActive(false);
+            }
+
+            if (!gameMaster.loginShowed)
+            {
+                if (gameMaster.SignIn == true)
+                {
+                    if (gameServicesPanel != null)
+                    {
+                        gameServicesPanel.SetActive(false);
+                    }
+                    if (!Social.localUser.authenticated)
+                    {
+                        Social.localUser.Authenticate((bool success) =>
+                        {
+
+                        });
+                    }
+                }
+                else
+                {
+                    if (gameServicesPanel != null)
+                    {
+                        gameMaster.loginShowed = true;
+                        gameServicesPanel.SetActive(true);
+                    }
+                }
             }
         }
+
+
     }
 
 
 
     void Update()
     {
-        //Dont update text on every update tick. Instead they should only be updated when the value is changed
-        //salvageText.text = "" + GameMaster.currentSalvage;
-
 
     }
 
-
-
     public void PlayGame()
     {
-        //Starts the next level available in progression
-
-        int levelReached = PlayerPrefs.GetInt("LevelReached", 1);
-        if (levelReached == 1)
-            SceneManager.LoadScene("Tutorial");
+        if (PlayerPrefs.GetInt("TutorialPassed", 0) == 1)
+            SceneManager.LoadScene("CampaignMap");
         else
-        {
-            //Paskaa
-            if (levelReached < 10)
-                SceneManager.LoadScene("Level_0" + levelReached.ToString());
-            else
-                SceneManager.LoadScene("Level_" + levelReached.ToString());
-
-        }
+            SceneManager.LoadScene("Level_01");
     }
 
 
@@ -92,68 +116,49 @@ public class MainMenu : MonoBehaviour
 
     public void AcceptPrivacyPolicy()
     {
+        gameServicesPanel.SetActive(true);
         mainMenuPanel.SetActive(true);
         privacyPolicyPanel.SetActive(false);
-        campaignMapPanel.SetActive(false);
         shopPanel.SetActive(false);
-        bombPanel.SetActive(false);
-        bombSelectionPanel.SetActive(true);
-
+        bombSalvage.SetActive(true);
         gameMaster.PrivacyPolicyAccepted = true;
     }
-    public void OpenPrivacyPolicy()
-    {
-        mainMenuPanel.SetActive(false);
-        shopPanel.SetActive(false);
-        campaignMapPanel.SetActive(false);
-        privacyPolicyPanel.SetActive(true);
-        bombPanel.SetActive(false);
-        bombSelectionPanel.SetActive(true);
-    }
 
-    public void CloseCampaingMap()
-    {
-        mainMenuPanel.SetActive(true);
-        campaignMapPanel.SetActive(false);
-        privacyPolicyPanel.SetActive(false);
-        shopPanel.SetActive(false);
-        bombPanel.SetActive(false);
-        bombSelectionPanel.SetActive(true);
-    }
-    public void OpenCampaignMap()
-    {
-        mainMenuPanel.SetActive(false);
-        privacyPolicyPanel.SetActive(false);
-        campaignMapPanel.SetActive(true);
-        shopPanel.SetActive(false);
-        bombPanel.SetActive(false);
-        bombSelectionPanel.SetActive(true);
-    }
     public void CloseShop()
     {
         mainMenuPanel.SetActive(true);
         privacyPolicyPanel.SetActive(false);
         shopPanel.SetActive(false);
-        campaignMapPanel.SetActive(false);
-        bombPanel.SetActive(false);
-        bombSelectionPanel.SetActive(true);
     }
+
     public void OpenShop()
     {
         mainMenuPanel.SetActive(false);
         privacyPolicyPanel.SetActive(false);
         shopPanel.SetActive(true);
-        campaignMapPanel.SetActive(false);
-        bombPanel.SetActive(false);
-        bombSelectionPanel.SetActive(true);
+
     }
+
+    public void CloseWorkshop()
+    {
+        mainMenuPanel.SetActive(true);
+        privacyPolicyPanel.SetActive(false);
+        workshopPanel.SetActive(false);
+    }
+
+    public void OpenWorkshop()
+    {
+        mainMenuPanel.SetActive(false);
+        privacyPolicyPanel.SetActive(false);
+        workshopPanel.SetActive(true);
+
+    }
+
     public void OpenBombsPanel()
     {
         //mainMenuPanel.SetActive(false);
         privacyPolicyPanel.SetActive(false);
         shopPanel.SetActive(false);
-        campaignMapPanel.SetActive(false);
-        bombPanel.SetActive(true);
         bombSelectionPanel.SetActive(true);
         var upgradePanels = GameObject.FindGameObjectsWithTag("BombUpgradePanel");
         foreach (var upgradePanel in upgradePanels)
@@ -171,9 +176,50 @@ public class MainMenu : MonoBehaviour
         mainMenuPanel.SetActive(true);
         privacyPolicyPanel.SetActive(false);
         shopPanel.SetActive(false);
-        campaignMapPanel.SetActive(false);
-        bombPanel.SetActive(false);
         bombSelectionPanel.SetActive(false);
+    }
+
+    public void OnLoginButtonClick()
+    {
+        if (!Social.localUser.authenticated)
+        {
+            // Authenticate
+            loginText.text = "Authenticating...";
+            loginButton.interactable = false;
+            var buttonText = loginButton.gameObject.GetComponentInChildren<TextMeshProUGUI>();
+            if (buttonText != null)
+                buttonText.color = new Color(1f, 1f, 1f, 0.2f);
+            Social.localUser.Authenticate((bool success) =>
+            {
+                if (success)
+                {
+                    loginText.text = "Authentication succesful";
+                    //var canvasGroup = gameServicesPanel.GetComponent<CanvasGroup>();
+                    //if (canvasGroup != null)
+                    //    canvasGroup.DOFade(0f, 1f);
+                    //else
+                    gameServicesPanel.SetActive(false);
+                    gameMaster.SignIn = true;
+                }
+                else
+                {
+                    loginText.text = "Authentication failed";
+
+                }
+            });
+        }
+        else
+        {
+            gameServicesPanel.SetActive(false);
+        }
+
+    }
+    public void CloseGameServices()
+    {
+        //mainMenuPanel.SetActive(true);
+        //privacyPolicyPanel.SetActive(false);
+        //shopPanel.SetActive(false);
+        gameServicesPanel.SetActive(false);
     }
     public void ShowBombUpgradePanel(GameObject panel)
     {
@@ -182,8 +228,49 @@ public class MainMenu : MonoBehaviour
         {
             upgradePanel.SetActive(false);
         }
-        bombSelectionPanel.SetActive(false);
         panel.SetActive(true);
     }
 
+
+    public void OpenOptionPanel()
+    {
+        optionPanel.SetActive(true);
+    }
+
+    public void CloseOptionPanel()
+    {
+        optionPanel.SetActive(false);
+    }
+
+    public void PlaySound(AudioClip sound)
+    {
+        if (sound != null)
+            audioSource.PlayOneShot(sound);
+    }
+
+
+    public void OnChangeRumble()
+    {
+        Toggle rumbleToggle = (Toggle)FindObjectOfType(typeof(Toggle));
+        if (rumbleToggle.isOn)
+        {
+            rumbleToggleFlag = true;
+            Debug.Log("switch is on");
+        }
+        else
+        {
+            rumbleToggleFlag = false;
+            Debug.Log("switch is off");
+        }
+    }
+
+    public void OnClickLeaderBoardButton()
+    {
+        if (Social.localUser.authenticated)
+        {
+            string lbId = "CgkI65f98LAPEAIQAQ";
+            GooglePlayGames.PlayGamesPlatform.Instance.SetDefaultLeaderboardForUI(lbId);
+            Social.Active.ShowLeaderboardUI();
+        }
+    }
 }

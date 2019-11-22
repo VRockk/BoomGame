@@ -12,20 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46dea71c8ca683f4d9ef0145bed8de11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreValue: 2000
   jointBreakForce: 500000
   jointBreakTorque: 500000
-  createJoints: 1
-  createManualJoints: 0
+  createJoints: 0
+  createManualJoints: 1
   createJointToGround: 0
+  gameController: {fileID: 0}
   ignoredJoints: []
-  manualJointLocations: []
+  manualJointLocations:
+  - {x: 0, y: 5.04}
+  - {x: 0, y: -4.93}
   materialType: 0
   attachedObjects: []
   allowDamage: 1
+  deactivateDelay: 0
+  checkedInLevelClear: 1
   bendLeftSprite: {fileID: -2151823001335124872, guid: b4be78b86414cdb41b68e802b9692c60,
     type: 3}
   bendRightSprite: {fileID: 618557542491236705, guid: b4be78b86414cdb41b68e802b9692c60,
     type: 3}
+  meltVertical: 1
 --- !u!1001 &137894847597702692
 PrefabInstance:
   m_ObjectHideFlags: 0

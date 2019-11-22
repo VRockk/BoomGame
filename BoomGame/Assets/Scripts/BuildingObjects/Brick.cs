@@ -11,6 +11,7 @@ public class Brick : BuildingObject
     public Vector2[] pieceSpawnLocations;
     public GameObject[] pieceObjects;
     private List<GameObject> shatterObjects;
+    private bool deactivateDelayd = false;
 
     public int hitpoints = 2;
 
@@ -19,15 +20,21 @@ public class Brick : BuildingObject
 
     public GameObject shatterParticle;
 
+    public GameObject audioObject;
+
+    public AudioClip[] shatterSFX;
+
     private bool shattered = false;
     private float damageGateDelay = 0f;
     private const float damageDelayDefault = 0.05f;
+    
+
 
     protected override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
         //Draw indicators on piece spawn locations
-        if (pieceSpawnLocations.Length > 0)
+        if (pieceSpawnLocations != null && pieceSpawnLocations.Length > 0)
         {
             foreach (var pieceLocation in pieceSpawnLocations)
             {
@@ -56,32 +63,52 @@ public class Brick : BuildingObject
         for (int e = 0; e < pieceObjects.Length; e++)
         {
             //only create everyother if spawning pieces
-            if (UnityEngine.Random.value >= 0.5 && pieceObjects[e].tag == "Piece")
+            if (pieceObjects[e].tag == "Rubble" && UnityEngine.Random.value >= 0.7)
             {
                 continue;
             }
-
             var newObject = Instantiate(pieceObjects[e]);
 
             newObject.transform.parent = gameObject.transform;
+
             //Set the position showed by the gizmos
             if (pieceSpawnLocations.Length >= e)
             {
 
-                Vector3 localPosition = (this.transform.right * pieceSpawnLocations[e].x) + (this.transform.up * pieceSpawnLocations[e].y);
+                Vector3 localPosition = (this.transform.right * pieceSpawnLocations[e].x * this.transform.localScale.x) + (this.transform.up * pieceSpawnLocations[e].y * this.transform.localScale.y);
                 newObject.transform.position = this.transform.position + new Vector3(localPosition.x, localPosition.y, 0.0f);
                 newObject.transform.localRotation = this.transform.localRotation;
-                //newObject.transform.localScale = this.transform.localScale;
+                //print(this.transform.localScale);
+                newObject.transform.localScale = this.transform.localScale;
             }
+
             var buildingObject = newObject.GetComponent<BuildingObject>();
             if (buildingObject != null)
             {
-                buildingObject.createJoints = false;
-                buildingObject.createManualJoints = false;
-                buildingObject.allowDamage = false;
+                buildingObject.AddMaxScore();
+                buildingObject.gameController = GameObject.FindObjectOfType<GameController>();
+                //buildingObject.createJoints = true;
+                //buildingObject.createManualJoints = true;
+                buildingObject.allowDamage = true;
             }
-            newObject.SetActive(false);
+
+            var brick = newObject.GetComponent<Brick>();
+            if (brick != null)
+            {
+                //Dont allow creating joints to parent objects. 
+                brick.ignoredJoints.Add(gameObject);
+                brick.CreateJoints();
+
+                brick.CreateShatterObjects();
+            }
+
             shatterObjects.Add(newObject);
+
+        }
+
+        foreach (var shatterObject in shatterObjects)
+        {
+            shatterObject.SetActive(false);
         }
 
     }
@@ -144,29 +171,61 @@ public class Brick : BuildingObject
     /// <param name="upwardsForce">Additive power added upwards during explosion</param>
     public void Shatter(Vector3 explosionPos, float power, float upwardsForce)
     {
+        print("shatter");
         if (shattered)
             return;
 
         shattered = true;
 
-        if (shatterParticle != null)
+        //Spawn particles for shattering
+        if (shatterParticle != null && UnityEngine.Random.value >= 0.5)
             Instantiate(shatterParticle, this.transform.position, this.transform.rotation);
 
-        //Add explosion force to new objects
+        ShatterAudio();
+
+        //Active and add explosion force to shattered objects
         foreach (var newObject in shatterObjects)
         {
             newObject.SetActive(true);
             newObject.transform.parent = null;
+            newObject.transform.localScale = this.transform.localScale;
             Rigidbody2D rigidBody = newObject.GetComponent<Rigidbody2D>();
 
             if (rigidBody != null)
             {
-                //add force to spawned small pieces
-                Vector2 force = UtilityLibrary.CalculateExplosionForce(explosionPos, newObject.transform.position, power, upwardsForce);
+
+                Vector2 force = UtilityLibrary.CalculateExplosionForceWithDistance(this.transform.position, newObject.transform.position, 700, 50);
                 rigidBody.AddForce(force, ForceMode2D.Impulse);
+                var torque = (UnityEngine.Random.Range(0f, 1f) > 0.5f ? -1f : 1f) * force.magnitude;
+                rigidBody.AddTorque(torque);
+                //var rubble = newObject.GetComponent<Rubble>();
+                //if (rubble != null)
+                //{
+                //    //rubble.StartMoving();
+                //}
+                //else
+                //{
+                //}
             }
         }
+
         Destroy(this.gameObject);
+        gameController.AddToScore(scoreValue);
     }
 
+    private void ShatterAudio()
+    {
+        //Play sound for shatter
+        if (audioObject != null && shatterSFX != null && UnityEngine.Random.value >= 0.8f)
+        {
+            //select random clip from list and play in new audio object
+            var soundClip = shatterSFX[UnityEngine.Random.Range(0, shatterSFX.Length - 1)];
+            var audioObjectInstance = Instantiate(audioObject, transform.position, transform.rotation);
+            var audioSource = audioObjectInstance.GetComponent<AudioSource>();
+            audioSource.pitch = UnityEngine.Random.Range(0.5f, 0.9f);
+            audioSource.volume = UnityEngine.Random.Range(0.2f, 0.5f);
+            audioSource.clip = soundClip;
+            audioSource.Play();
+        }
+    }
 }

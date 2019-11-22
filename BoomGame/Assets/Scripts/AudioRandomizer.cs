@@ -7,15 +7,19 @@ using UnityEngine;
 /// </summary>
 public class AudioRandomizer : MonoBehaviour
 {
+    public float minPitch = 0.95f;
+    public float maxPitch = 1.05f;
+    public float minVolume = 0.95f;
+    public float maxVolume = 1.05f;
     void Awake()
     {
 
         var audio = GetComponent<AudioSource>();
 
-        if(audio != null)
+        if( audio != null)
         {
-            audio.pitch = Random.Range(0.95f, 1.05f);
-            audio.volume = Random.Range(0.95f, 1.05f);
+            audio.pitch = Random.Range(minPitch, maxPitch);
+            audio.volume = Random.Range(minVolume, maxVolume);
         }
     }
 

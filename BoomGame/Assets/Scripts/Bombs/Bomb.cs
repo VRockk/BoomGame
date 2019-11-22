@@ -1,12 +1,14 @@
-﻿using System;
+﻿using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
     //Delay in seconds before exploding
-    public float delay = 1.0f;
+    public float explosionDelay = 1.0f;
 
     public float destroyRadius = 1.0f;
     public float radius = 1.0f;
@@ -14,7 +16,7 @@ public class Bomb : MonoBehaviour
     public float power = 100.0f;
     public float upwardsForce = 100.0f;
     public bool showExplosionGizmo = false;
-    public AudioClip[] exposionScreamSounds;
+    public AudioClip exposionScreamSound;
     public GameObject explosion;
 
     public GameObject bombAreaIndicator;
@@ -23,10 +25,13 @@ public class Bomb : MonoBehaviour
 
     public GameObject explosionParticles;
 
-    private BombData bombData;
     public BombType bombType;
 
     private GameMaster gameMaster;
+
+    private CameraShake camShake;
+
+    private PhoneVibration phoVibration;
 
     protected virtual void Awake()
     {
@@ -36,24 +41,19 @@ public class Bomb : MonoBehaviour
     protected virtual void Start()
     {
         gameMaster = FindObjectOfType<GameMaster>();
+
+        camShake = Camera.main.GetComponent<CameraShake>();
+
+        phoVibration = Camera.main.GetComponent<PhoneVibration>();
+
         if (gameMaster == null)
             Debug.LogError("No GameMaster found in bomb upgrade panel");
 
-        if (bombType == BombType.Regular)
-        {
-            bombData = gameMaster.regularBombData;
-        }
-        else if (bombType == BombType.Acid)
-        {
-            bombData = gameMaster.acidBombData;
-        }
-        //TODO Get bomb upgrade info and set radius settings
-        var radiusUpgrade = bombData.BombUpgradeLevels[0];
+        var bombData = gameMaster.bombData.First(x => x.BombType == bombType);
 
-        if(radiusUpgrade >0)
-        {
-            radius = radius * (1 + (0.1f * radiusUpgrade));
-        }
+        //Calculate bomb radius from the bomb upgrade level
+        radius = radius * (1 + (0.05f * ((float)bombData.Level -1 )));
+        damageRadius = damageRadius * (1 + (0.05f * ((float)bombData.Level -1 )));
 
         var indicatorRadius = radius / 5;
         bombAreaIndicator.transform.localScale = new Vector3(indicatorRadius, indicatorRadius, 1);
@@ -83,36 +83,33 @@ public class Bomb : MonoBehaviour
         }
     }
 
-    public void Detonate()
+    public void Detonate(float extraDelay)
     {
-        PlayBombScreamSound();
-        StartCoroutine(Explode());
+        StartCoroutine(Explode(extraDelay));
     }
 
-    private void PlayBombScreamSound()
+    protected IEnumerator Explode(float extraDelay)
     {
-        //Get random scream sound and play it.
-        //TODO play only one scream, now we play multiple sounds if we have multiple bombs
-        if (exposionScreamSounds.Length > 0)
-        {
-            var screamSound = exposionScreamSounds[UnityEngine.Random.Range(0, exposionScreamSounds.Length)];
-            AudioSource.PlayClipAtPoint(screamSound, Camera.main.transform.position);
-        }
-    }
-
-    protected IEnumerator Explode()
-    {
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(explosionDelay + extraDelay);
 
 
         //Spawn explosion animation
         if (explosion != null)
             Instantiate(explosion, this.transform.position, Quaternion.identity);
 
-        if(explosionParticles != null)
+        if (explosionParticles != null)
             Instantiate(explosionParticles, this.transform.position, Quaternion.identity);
 
         ExplosionEffect();
+
+        //For some weird reason this doesnt work after another level is loaded!??!?
+
+        if (camShake != null)
+            camShake.Shake(0.5f, 1f, 60, 30, true);
+
+        if (phoVibration != null)
+            phoVibration.Vibrate();
+
         Destroy(this.gameObject);
     }
 
@@ -143,59 +140,7 @@ public class Bomb : MonoBehaviour
             //Objects inside main explosive radius. Shatter, destroy, add force
             foreach (Collider2D hit in colliders)
             {
-                if (hit.gameObject.tag.Contains("BuildingObject"))
-                {
-                    var buildingObject = hit.gameObject.GetComponent<BuildingObject>();
-
-                    if (buildingObject.materialType == MaterialType.Brick)
-                    {
-                        var brick = hit.gameObject.GetComponent<Brick>();
-                        if (brick != null && brick.allowDamage)
-                            brick.Shatter(this.transform.position, power, upwardsForce);
-                    }
-                    else if(buildingObject.materialType == MaterialType.Wood)
-                    {
-                        Destroy(hit.transform.gameObject);
-                    }
-                    else if(buildingObject.materialType == MaterialType.Metal)
-                    {
-                        var metal = hit.gameObject.GetComponent<Metal>();
-                        if (metal != null)
-                        {
-                            metal.Bend(transform.position);
-                        }
-                        Rigidbody2D rb = hit.GetComponent<Rigidbody2D>();
-
-                        if (rb != null)
-                        {
-                            Vector2 force = UtilityLibrary.CalculateExplosionForce(this.transform.position, hit.transform.position, power, upwardsForce);
-
-                            rb.AddForce(force, ForceMode2D.Impulse);
-                        }
-                    }
-
-                }
-                else if (hit.gameObject.tag.Contains("NPCBuilding"))
-                {
-                    var npcHouse = hit.gameObject.GetComponent<NPCBuilding>();
-
-                    if (npcHouse != null)
-                    {
-                        //Destroy NPC buildings if they are hit by the blast
-                        npcHouse.DamageBuilding(10000, false);
-                    }
-                }
-                else
-                {
-                    Rigidbody2D rb = hit.GetComponent<Rigidbody2D>();
-
-                    if (rb != null && hit.gameObject.tag != "Ground")
-                    {
-                        Vector2 force = UtilityLibrary.CalculateExplosionForce(this.transform.position, hit.transform.position, power, upwardsForce);
-
-                        rb.AddForce(force, ForceMode2D.Impulse);
-                    }
-                }
+                UtilityLibrary.ExplosionForces(hit, this.transform, power, upwardsForce);
             }
         }
 
@@ -206,44 +151,30 @@ public class Bomb : MonoBehaviour
 
             foreach (Collider2D hit in damageColliders)
             {
-                if (hit.gameObject.tag.Contains("BuildingObject"))
+                UtilityLibrary.ExplosionDamage(hit, this.transform, power, upwardsForce);
+            }
+        }
+
+        if (radius > 0f)
+        {
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(this.transform.position, radius*1.5f);
+
+            //Objects inside main explosive radius. Shatter, destroy, add force
+            foreach (Collider2D hit in colliders)
+            {
+                Rigidbody2D rb = hit.GetComponent<Rigidbody2D>();
+
+                if (rb != null)
                 {
-                    var brick = hit.gameObject.GetComponent<Brick>();
-                    if (brick != null && brick.allowDamage)
-                    {
-                        //Remove hitpoints
-                        brick.hitpoints--;
+                    Vector2 force = UtilityLibrary.CalculateExplosionForceWithDistance(transform.position, hit.transform.position, power/2, upwardsForce);
 
-                        //No more hitpoints, shatter
-                        if (brick.hitpoints <= 0)
-                        {
-                            brick.Shatter(this.transform.position, 100, 100);
-                        }
-                        else
-                        {
-                            Rigidbody2D rb = hit.GetComponent<Rigidbody2D>();
-
-                            if (rb != null && hit.gameObject.tag != "Ground")
-                            {
-                                Vector2 force = UtilityLibrary.CalculateExplosionForceWithDistance(this.transform.position, hit.transform.position, power, upwardsForce);
-
-                                rb.AddForce(force, ForceMode2D.Impulse);
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    Rigidbody2D rb = hit.GetComponent<Rigidbody2D>();
-
-                    if (rb != null && hit.gameObject.tag != "Ground")
-                    {
-                        Vector2 force = UtilityLibrary.CalculateExplosionForceWithDistance(this.transform.position, hit.transform.position, power, upwardsForce);
-
-                        rb.AddForce(force, ForceMode2D.Impulse);
-                    }
+                    rb.AddForce(force, ForceMode2D.Impulse);
+                    //var torque = (UnityEngine.Random.Range(0f, 1f) > 0.5f ? -10f : 10f) * force.magnitude;
+                    //rb.AddTorque(torque);
                 }
             }
         }
+
     }
+
 }

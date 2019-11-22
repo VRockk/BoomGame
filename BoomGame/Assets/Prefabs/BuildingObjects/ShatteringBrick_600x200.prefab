@@ -12,21 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50afc76e2b398c546b7954a7ed37f1ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreValue: 150
   jointBreakForce: 50000
   jointBreakTorque: 50000
   createJoints: 1
   createManualJoints: 0
   createJointToGround: 0
+  gameController: {fileID: 0}
   ignoredJoints: []
   manualJointLocations: []
   materialType: 0
   attachedObjects: []
   allowDamage: 1
+  deactivateDelay: 0
+  checkedInLevelClear: 1
   pieceSpawnLocations: []
   pieceObjects: []
   hitpoints: 2
   damagedForceLimit: 10000
   shatterParticle: {fileID: 0}
+  audioObject: {fileID: 0}
+  shatterSFX: []
 --- !u!1001 &137894847597702692
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62,7 +68,12 @@ PrefabInstance:
     - target: {fileID: 1863442581099001712, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_AngularDrag
-      value: 0
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863442581099001712, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}

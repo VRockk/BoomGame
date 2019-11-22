@@ -10,10 +10,12 @@ public class Metal : BuildingObject
 {
     public Sprite bendLeftSprite;
     public Sprite bendRightSprite;
-
+    public bool meltVertical = false;
 
     private bool melting = false;
     private float meltSpeed = 0.5f;
+
+   
 
     protected override void OnDrawGizmos()
     {
@@ -41,11 +43,21 @@ public class Metal : BuildingObject
         base.Update();
         if (melting)
         {
-            var yScale = transform.localScale.y - (Time.deltaTime * meltSpeed);
-            //var xScale = transform.localScale.x + (Time.deltaTime * meltSpeed);
-            transform.localScale = new Vector3(transform.localScale.x, yScale, transform.localScale.z);
+            float scale = 1f;
+            if (meltVertical)
+            {
+                scale = transform.localScale.y - (Time.deltaTime * meltSpeed);
+                //var xScale = transform.localScale.x + (Time.deltaTime * meltSpeed);
+                transform.localScale = new Vector3(transform.localScale.x, scale, transform.localScale.z);
+            }
+            else
+            {
+                scale = transform.localScale.x - (Time.deltaTime * meltSpeed);
+                //var xScale = transform.localScale.x + (Time.deltaTime * meltSpeed);
+                transform.localScale = new Vector3(scale, transform.localScale.y, transform.localScale.z);
 
-            if (yScale <= 0.0f)
+            }
+            if (scale <= 0.0f)
             {
                 melting = false;
                 Destroy(gameObject);
@@ -71,7 +83,7 @@ public class Metal : BuildingObject
         {
             Destroy(joint);
         }
-        foreach(var attachedObjectName in attachedObjects)
+        foreach (var attachedObjectName in attachedObjects)
         {
             var attachedObject = GameObject.Find(attachedObjectName);
             if (attachedObject != null)
@@ -79,20 +91,24 @@ public class Metal : BuildingObject
                 joints = attachedObject.GetComponents<FixedJoint2D>();
                 foreach (var joint in joints)
                 {
-                    if (joint.connectedBody.gameObject.name == name)
+                    if (joint.connectedBody != null && joint.connectedBody.gameObject != null)
                     {
-                        Destroy(joint);
+                        if (joint.connectedBody.gameObject.name == name)
+                        {
+                            Destroy(joint);
+                        }
                     }
                 }
             }
         }
 
         var spriteRenderer = GetComponent<SpriteRenderer>();
-        if(spriteRenderer != null)
+        if (spriteRenderer != null)
         {
-            spriteRenderer.color = new Color(0, 1, 0, 1);
+            spriteRenderer.color = new Color(0.3f, 1, 0.3f, 1);
         }
         melting = true;
+        gameController.AddToScore(scoreValue);
         //Destroy(gameObject);
     }
 
