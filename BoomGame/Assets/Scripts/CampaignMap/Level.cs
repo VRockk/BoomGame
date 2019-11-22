@@ -14,6 +14,6 @@ public class Level
         this.name = name;
         pentagrams = PlayerPrefs.GetInt(name + "Pentagrams", 0);
         savedBombs = PlayerPrefs.GetInt(name + "SavedBombs", 0);
-        score = PlayerPrefs.GetInt(name + "Score", 0);
+        score = PlayerPrefs.GetInt(name + "LevelScore", 0);
     }
 }

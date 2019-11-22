@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 5626117355871531924}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1720942980654053502
 SpriteRenderer:
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_Size: {x: 5.12, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1486234901270990050
@@ -105,12 +105,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1486234901270990050}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
+  m_LocalPosition: {x: 1.328, y: 0.201, z: 0}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 1}
   m_Children:
   - {fileID: 6776424580278264309}
   m_Father: {fileID: 5626117355871531924}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7163517279622173409
 SpriteRenderer:
@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 7058097242506835613}
   - component: {fileID: 51228071594136533}
   m_Layer: 0
-  m_Name: Icon
+  m_Name: ChapterIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -190,7 +190,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5626117355871531924}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &51228071594136533
 SpriteRenderer:
@@ -230,12 +230,13 @@ SpriteRenderer:
   m_SortingLayerID: 815570849
   m_SortingLayer: 4
   m_SortingOrder: -2
-  m_Sprite: {fileID: 21300000, guid: 1efeea7f26245194780051d8869d519d, type: 3}
+  m_Sprite: {fileID: 8715432979824011272, guid: 3750724a96d500d46b04441032bd0d0b,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.74, y: 0.79}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -270,9 +271,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 4}
   m_Children:
+  - {fileID: 7058097242506835613}
   - {fileID: 954405676708093483}
   - {fileID: 2881169954046707191}
-  - {fileID: 7058097242506835613}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -297,9 +298,12 @@ MonoBehaviour:
   requirementText: {fileID: 8850139671321535942}
   previousChapter: {fileID: 0}
   selectedIcon: {fileID: 1276352706444586939}
-  levelBronzeSprite: {fileID: 21300000, guid: bc613ea3e00a7c24d86577589f3a5c84, type: 3}
-  levelSilverSprite: {fileID: 21300000, guid: 0447197b887fe7842a1c07e68d5c9b30, type: 3}
-  levelGoldSprite: {fileID: 21300000, guid: 5b33ec35715cc9f4dbeb055dad2fba19, type: 3}
+  levelBronzeSprite: {fileID: 2763043682030118691, guid: 3750724a96d500d46b04441032bd0d0b,
+    type: 3}
+  levelSilverSprite: {fileID: -1890581397909541055, guid: 3750724a96d500d46b04441032bd0d0b,
+    type: 3}
+  levelGoldSprite: {fileID: -4149472923922513390, guid: 3750724a96d500d46b04441032bd0d0b,
+    type: 3}
   enoughPentagrams: 0
   previousLevelsCleared: 1
 --- !u!61 &5949663854736531697
