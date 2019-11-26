@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Net;
+using System.Net.Sockets;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -46,7 +50,7 @@ public class UtilityLibrary : MonoBehaviour
         Vector2 direction = heading / distance;
 
         //Calculate force from the direction multiplied by the power. Force weaker by distance
-        force = direction * (power / (distance +0.5f));
+        force = direction * (power / (distance + 0.5f));
 
         // Add additional upwards force
         force += new Vector2(0, upwardsForce);
@@ -78,9 +82,9 @@ public class UtilityLibrary : MonoBehaviour
         eventData.position = position;
         var results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventData, results);
-        foreach(var re in results)
+        foreach (var re in results)
         {
-            if(re.gameObject.name == "TutorialHand")
+            if (re.gameObject.name == "TutorialHand")
             {
                 return false;
             }
@@ -285,6 +289,12 @@ public class UtilityLibrary : MonoBehaviour
             }
         }
     }
+
+    public static DateTime GetNetTime()
+    {
+        using (WebResponse response = WebRequest.Create("http://www.google.com").GetResponse())
+            return DateTime.ParseExact(response.Headers["date"], "ddd, dd MMM yyyy HH:mm:ss 'GMT'", CultureInfo.InvariantCulture.DateTimeFormat, DateTimeStyles.AssumeUniversal);
+    }
 }
 
 public static class RectTransformExtensions
@@ -308,6 +318,5 @@ public static class RectTransformExtensions
     {
         rt.offsetMin = new Vector2(rt.offsetMin.x, bottom);
     }
-
 
 }

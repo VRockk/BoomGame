@@ -196,8 +196,8 @@ public class Brick : BuildingObject
 
                 Vector2 force = UtilityLibrary.CalculateExplosionForceWithDistance(this.transform.position, newObject.transform.position, 700, 50);
                 rigidBody.AddForce(force, ForceMode2D.Impulse);
-                var torque = (UnityEngine.Random.Range(0f, 1f) > 0.5f ? -1f : 1f) * force.magnitude;
-                rigidBody.AddTorque(torque);
+                //var torque = (UnityEngine.Random.Range(0f, 1f) > 0.5f ? -1f : 1f) * force.magnitude;
+                //rigidBody.AddTorque(torque);
                 //var rubble = newObject.GetComponent<Rubble>();
                 //if (rubble != null)
                 //{

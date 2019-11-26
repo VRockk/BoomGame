@@ -45,7 +45,7 @@ public class AnimationEvents : MonoBehaviour
     public void PlaySound(AudioClip sound)
     {
 
-        audioSource.pitch = Random.Range(1f, 1.1f);
+        audioSource.pitch = Random.Range(0.95f, 1.05f);
         audioSource.volume = Random.Range(0.95f, 1.05f);
         audioSource.PlayOneShot(sound);
     }
