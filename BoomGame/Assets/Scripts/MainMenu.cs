@@ -406,5 +406,12 @@ public class MainMenu : MonoBehaviour
         //UpdateSalvage();
     }
 
+    void OnApplicationPause(bool pauseStatus)
+    {
+        if (!pauseStatus)
+        {
+            timeNow = UtilityLibrary.GetNetTime();
+        }
+    }
 
 }
