@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
 using DG.Tweening;
+using System;
 
 public class MainMenu : MonoBehaviour
 {
@@ -15,22 +16,35 @@ public class MainMenu : MonoBehaviour
     public GameObject privacyPolicyPanel;
     public GameObject mainMenuPanel;
     public GameObject shopPanel;
-    public GameObject workshopPanel;
-    public GameObject bombSelectionPanel;
     public GameObject optionPanel;
+    public GameObject workshopPanel;
     public GameObject gameMasterPrefab;
     public GameObject gameServicesPanel;
     public GameObject bombSalvage;
+    public GameObject lootBoxPanel;
+    public GameObject lootBoxButton;
+    public TextMeshProUGUI lootBoxButtonText;
+    public Image lootboxImage;
     public Button loginButton;
     public TextMeshProUGUI loginText;
 
     private GameMaster gameMaster;
     public AudioSource audioSource;
+
+    public GameObject lootBoxAnim;
+
+
     [HideInInspector]
     public AudioClip menuMusic;
     private bool rumbleToggleFlag = true;
 
 
+    private bool lootBoxAvailable = false;
+
+    private DateTime lootBoxAvailableTime;
+    private DateTime timeNow;
+
+    private string timeFormat = "MM/dd/yyyy HH:mm:ss";
 
 
     void Start()
@@ -45,6 +59,7 @@ public class MainMenu : MonoBehaviour
         }
 
         gameServicesPanel.SetActive(false);
+        lootBoxPanel.SetActive(false);
 
         UpdateSalvage();
         if (privacyPolicyPanel != null)
@@ -90,13 +105,84 @@ public class MainMenu : MonoBehaviour
         }
 
 
+        timeNow = UtilityLibrary.GetNetTime();
+        string lootBoxTime = PlayerPrefs.GetString("LootBoxTime");
+
+        //If lootbox time is not set then we opened game first time. Let user open box right away
+        if (lootBoxTime == "")
+        {
+            lootBoxAvailableTime = timeNow.Add(new TimeSpan(0, 0, 0, 1));
+            PlayerPrefs.SetString("LootBoxTime", lootBoxAvailableTime.ToString(timeFormat));
+            LootboxNotAvailable();
+        }
+        else
+        {
+            lootBoxAvailableTime = DateTime.ParseExact(lootBoxTime, timeFormat, System.Globalization.CultureInfo.InvariantCulture);
+
+            if (lootBoxAvailableTime < timeNow)
+            {
+                LootboxAvailable();
+
+            }
+            else
+            {
+                LootboxNotAvailable();
+            }
+        }
+        print(lootBoxAvailableTime);
+    }
+
+    private void LootboxNotAvailable()
+    {
+        Sprite image = Resources.Load<Sprite>("lootbox_grey");
+        lootboxImage.sprite = image;
+        lootBoxAvailable = false;
+        lootBoxButton.GetComponent<Button>().interactable = false;
+        InvokeRepeating("CheckLootBoxTime", 1f, 1f);
+
+    }
+
+    private void LootboxAvailable()
+    {
+        Sprite image = Resources.Load<Sprite>("lootbox_closed");
+        lootboxImage.sprite = image;
+        lootBoxAvailable = true;
+        lootBoxButtonText.text = "LOOTBOX AVAILABLE";
+        lootBoxButton.GetComponent<Button>().interactable = true;
+
+    }
+
+    private void CheckLootBoxTime()
+    {
+
+        timeNow = timeNow.Add(new TimeSpan(0, 0, 0, 1));
+        //print(newTime);
+        print(timeNow);
+
+        if (lootBoxAvailableTime < timeNow)
+        {
+            lootBoxAvailableTime = UtilityLibrary.GetNetTime();
+            //Just making sure
+            if (lootBoxAvailableTime < timeNow.Add(new TimeSpan(0, 0, 0, 5)))
+            {
+                LootboxAvailable();
+                CancelInvoke("CheckLootBoxTime");
+            }
+
+        }
+        else
+        {
+            var availableIn = lootBoxAvailableTime - timeNow;
+            int hours = (int)availableIn.TotalHours;
+
+            lootBoxButtonText.text = hours.ToString("00") + ":" + availableIn.ToString("mm") + ":" + availableIn.ToString("ss");
+        }
     }
 
 
 
     void Update()
     {
-
     }
 
     public void PlayGame()
@@ -159,13 +245,13 @@ public class MainMenu : MonoBehaviour
         //mainMenuPanel.SetActive(false);
         privacyPolicyPanel.SetActive(false);
         shopPanel.SetActive(false);
-        bombSelectionPanel.SetActive(true);
         var upgradePanels = GameObject.FindGameObjectsWithTag("BombUpgradePanel");
         foreach (var upgradePanel in upgradePanels)
         {
             upgradePanel.SetActive(false);
         }
     }
+
     public void CloseBombsPanel()
     {
         var upgradePanels = GameObject.FindGameObjectsWithTag("BombUpgradePanel");
@@ -176,7 +262,6 @@ public class MainMenu : MonoBehaviour
         mainMenuPanel.SetActive(true);
         privacyPolicyPanel.SetActive(false);
         shopPanel.SetActive(false);
-        bombSelectionPanel.SetActive(false);
     }
 
     public void OnLoginButtonClick()
@@ -214,6 +299,7 @@ public class MainMenu : MonoBehaviour
         }
 
     }
+
     public void CloseGameServices()
     {
         //mainMenuPanel.SetActive(true);
@@ -221,6 +307,7 @@ public class MainMenu : MonoBehaviour
         //shopPanel.SetActive(false);
         gameServicesPanel.SetActive(false);
     }
+
     public void ShowBombUpgradePanel(GameObject panel)
     {
         var upgradePanels = GameObject.FindGameObjectsWithTag("BombUpgradePanel");
@@ -273,4 +360,51 @@ public class MainMenu : MonoBehaviour
             Social.Active.ShowLeaderboardUI();
         }
     }
+
+    public void CloseLootBoxPanel()
+    {
+        lootBoxPanel.GetComponent<CanvasGroup>().DOFade(0f, 1f);
+        lootBoxPanel.GetComponent<CanvasGroup>().interactable = false;
+        lootBoxPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        lootBoxPanel.SetActive(false);
+
+
+    }
+
+    public void OpenDailyLootbox()
+    {
+        timeNow = UtilityLibrary.GetNetTime();
+        //Add day to open new loot box
+        lootBoxAvailableTime = timeNow.Add(new TimeSpan(1, 0, 0, 0));
+        PlayerPrefs.SetString("LootBoxTime", lootBoxAvailableTime.ToString(timeFormat));
+
+        LootboxNotAvailable();
+
+        int salvageGain = UnityEngine.Random.Range(300, 600);
+        lootBoxPanel.SetActive(true);
+        lootBoxPanel.GetComponent<CanvasGroup>().interactable = true;
+        lootBoxPanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        lootBoxPanel.GetComponent<CanvasGroup>().DOFade(1f, 1f);
+        var lootBoxBG = GameObject.Find("LootBoxBG");
+        var salvageGainText = GameObject.Find("SalvageGain").GetComponent<TextMeshProUGUI>();
+        salvageGainText.text = salvageGain.ToString();
+        lootBoxBG.GetComponent<RectTransform>().localScale = new Vector3(0.01f, 0.01f, 0.1f);
+        var lootbox = Instantiate(lootBoxAnim, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0), null);
+        lootbox.transform.localScale = new Vector3(0f, 0f, 1);
+
+        float animDelay = lootbox.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length - 1f;
+
+        var lootboxtween = DOTween.Sequence()
+            .Append(lootbox.transform.DOScale(3f, 0.5f).SetEase(Ease.InExpo).SetUpdate(true))
+                        .Insert(animDelay, lootbox.transform.DOScale(0, 1f).SetEase(Ease.OutExpo).SetUpdate(true));
+
+        gameMaster.AddSalvage(salvageGain);
+
+        DOTween.Sequence()
+            .Append(lootBoxBG.GetComponent<RectTransform>().DOScale(1f, 1f).SetEase(Ease.InBack).SetUpdate(true).SetDelay(animDelay - 0.5f)).OnComplete(UpdateSalvage);
+
+        //UpdateSalvage();
+    }
+
+
 }
