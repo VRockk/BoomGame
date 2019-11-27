@@ -44,7 +44,7 @@ public class MainMenu : MonoBehaviour
     private DateTime lootBoxAvailableTime;
     private DateTime timeNow;
 
-    private string timeFormat = "MM/dd/yyyy HH:mm:ss";
+    private string timeFormat = "MM.dd.yyyy HH.mm.ss";
 
 
     void Start()
@@ -107,12 +107,14 @@ public class MainMenu : MonoBehaviour
 
         timeNow = UtilityLibrary.GetNetTime();
         string lootBoxTime = PlayerPrefs.GetString("LootBoxTime");
-
+        print(lootBoxTime);
         //If lootbox time is not set then we opened game first time. Let user open box right away
         if (lootBoxTime == "")
         {
             lootBoxAvailableTime = timeNow.Add(new TimeSpan(0, 0, 0, 1));
             PlayerPrefs.SetString("LootBoxTime", lootBoxAvailableTime.ToString(timeFormat));
+            //string lootBoxTime = ;
+            print(PlayerPrefs.GetString("LootBoxTime"));
             LootboxNotAvailable();
         }
         else
