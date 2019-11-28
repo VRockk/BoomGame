@@ -59,6 +59,7 @@ public class GameController : MonoBehaviour
 
     public int salvageValue = 100;
 
+
     private GameMaster gameMaster;
     private float roundDelay = 1f;
 
@@ -69,6 +70,7 @@ public class GameController : MonoBehaviour
     private int levelScore;
     private bool allowTimescale = false;
     private TweenerCore<float, float, FloatOptions> timeScaleTween;
+
     private void Awake()
     {
         gameMaster = FindObjectOfType<GameMaster>();
@@ -131,6 +133,7 @@ public class GameController : MonoBehaviour
                 nextLevelName = nextLevel.name;
         }
         //InvokeRepeating("CheckScorelines", 1f, 1f);
+
     }
 
     private void CreateBombIcons()

@@ -32,6 +32,7 @@ public class IngameHUD : MonoBehaviour
     public GameObject bombCardPrefab;
     //public GameObject progressPanel;
     public GameObject progressingPanel;
+    public Doors doors;
     //public Slider slider;
     public Image OnePentagram;
     public Image Bar1;
@@ -41,6 +42,8 @@ public class IngameHUD : MonoBehaviour
 
     public GameObject endScreen;
     public AudioClip menuMusic;
+
+
     private GameMaster gameMaster;
     private CameraHandler cameraHandler;
 
@@ -101,6 +104,9 @@ public class IngameHUD : MonoBehaviour
         //mainMenuButton.GetComponent<RectTransform>().DOAnchorPosX(-230f, 0.0f, true).SetEase(Ease.InBack).SetUpdate(true);
         //bombPanel.GetComponent<RectTransform>().DOAnchorPosX(-500f, 0.0f, true).SetEase(Ease.InBack).SetUpdate(true);
 
+        doors = FindObjectOfType<Doors>();
+        if (doors != null)
+            doors.OpenDoor();
     }
 
     // Update is called once per frame
@@ -145,7 +151,21 @@ public class IngameHUD : MonoBehaviour
 
     public void NextLevel()
     {
+        if (doors != null)
+        {
+            doors.CloseDoor();
+
+            StartCoroutine(LoadLevel(1.5f));
+        }
+        else
+            SceneManager.LoadSceneAsync(gameController.nextLevelName, LoadSceneMode.Single);
+    }
+
+    private IEnumerator LoadLevel(float delay)
+    {
+        yield return new WaitForSeconds(delay);
         SceneManager.LoadSceneAsync(gameController.nextLevelName, LoadSceneMode.Single);
+
     }
 
     public void CampaignMap()
