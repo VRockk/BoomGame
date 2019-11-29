@@ -23,6 +23,7 @@ public class MainMenu : MonoBehaviour
     public GameObject bombSalvage;
     public GameObject lootBoxPanel;
     public GameObject lootBoxButton;
+    public Doors doors;
     public TextMeshProUGUI lootBoxButtonText;
     public Image lootboxImage;
     public Button loginButton;
@@ -45,7 +46,6 @@ public class MainMenu : MonoBehaviour
     private DateTime timeNow;
 
     private string timeFormat = "MM.dd.yyyy HH.mm.ss";
-
 
     void Start()
     {
@@ -134,7 +134,21 @@ public class MainMenu : MonoBehaviour
             }
         }
         //print(lootBoxAvailableTime);
+
+
+        if (!gameMaster.doorOpen && doors != null)
+        {
+            StartCoroutine(OpenDoor());
+        }
     }
+    private IEnumerator OpenDoor()
+    {
+        yield return new WaitForSeconds(0.1f);
+        if (doors != null && !gameMaster.doorOpen)
+            doors.OpenDoor();
+
+    }
+
     Tweener lootBoxShakePos;
     Tweener lootBoxShakeRot;
     private void LootboxNotAvailable()
@@ -204,12 +218,31 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        if (PlayerPrefs.GetInt("TutorialPassed", 0) == 1)
-            SceneManager.LoadScene("CampaignMap");
+        if (doors != null)
+        {
+            doors.CloseDoor();
+
+            if (PlayerPrefs.GetInt("TutorialPassed", 0) == 1)
+                StartCoroutine(LoadLevel(1.5f, "CampaignMap"));
+            else
+                StartCoroutine(LoadLevel(1.5f, "Level_01"));
+        }
         else
-            SceneManager.LoadScene("Level_01");
+        {
+            if (PlayerPrefs.GetInt("TutorialPassed", 0) == 1)
+                SceneManager.LoadSceneAsync("CampaignMap", LoadSceneMode.Single);
+            else
+                SceneManager.LoadSceneAsync("Level_01", LoadSceneMode.Single);
+        }
     }
 
+
+    private IEnumerator LoadLevel(float delay, string levelName)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Single);
+
+    }
 
     public void UpdateSalvage()
     {

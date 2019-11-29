@@ -104,9 +104,16 @@ public class IngameHUD : MonoBehaviour
         //mainMenuButton.GetComponent<RectTransform>().DOAnchorPosX(-230f, 0.0f, true).SetEase(Ease.InBack).SetUpdate(true);
         //bombPanel.GetComponent<RectTransform>().DOAnchorPosX(-500f, 0.0f, true).SetEase(Ease.InBack).SetUpdate(true);
 
-        doors = FindObjectOfType<Doors>();
-        if (doors != null)
+        if (doors != null && !gameMaster.doorOpen)
+            StartCoroutine(OpenDoor());
+    }
+
+    private IEnumerator OpenDoor()
+    {
+        yield return new WaitForSeconds(0.1f);
+        if (doors != null && !gameMaster.doorOpen)
             doors.OpenDoor();
+
     }
 
     // Update is called once per frame
@@ -144,8 +151,14 @@ public class IngameHUD : MonoBehaviour
 
     public void ResetLevel()
     {
-        //TODO: Show loading screens
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
+        if (doors != null)
+        {
+            doors.CloseDoor();
+
+            StartCoroutine(LoadLevel(1.5f, SceneManager.GetActiveScene().name));
+        }
+        else
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
         //Application.LoadLevel();
     }
 
@@ -155,16 +168,16 @@ public class IngameHUD : MonoBehaviour
         {
             doors.CloseDoor();
 
-            StartCoroutine(LoadLevel(1.5f));
+            StartCoroutine(LoadLevel(1.5f, gameController.nextLevelName));
         }
         else
             SceneManager.LoadSceneAsync(gameController.nextLevelName, LoadSceneMode.Single);
     }
 
-    private IEnumerator LoadLevel(float delay)
+    private IEnumerator LoadLevel(float delay, string name)
     {
         yield return new WaitForSeconds(delay);
-        SceneManager.LoadSceneAsync(gameController.nextLevelName, LoadSceneMode.Single);
+        SceneManager.LoadSceneAsync(name, LoadSceneMode.Single);
 
     }
 
@@ -174,11 +187,20 @@ public class IngameHUD : MonoBehaviour
             gameMaster.SetMusic(menuMusic);
         else
             gameMaster.SetMusic(null);
+
         gameMaster.SetMusic(menuMusic);
+
         //To load video ads
         //AdsController.adsInstance.ShowVideoOrInterstitialAds();
         //TODO: Show loading screens
-        SceneManager.LoadSceneAsync("CampaignMap", LoadSceneMode.Single);
+
+        if (doors != null)
+        {
+            doors.CloseDoor();
+
+            StartCoroutine(LoadLevel(1.5f, "CampaignMap"));
+        }
+
         //Application.LoadLevel();
     }
 
@@ -449,7 +471,15 @@ public class IngameHUD : MonoBehaviour
         else
             gameMaster.SetMusic(null);
         gameMaster.SetMusic(menuMusic);
-        SceneManager.LoadScene("MainMenuScene");
+
+        if (doors != null)
+        {
+            doors.CloseDoor();
+
+            StartCoroutine(LoadLevel(1.5f, "MainMenuScene"));
+        }
+        else
+            SceneManager.LoadScene("MainMenuScene");
     }
 
     public void CreateBombCard(GameObject bomb)

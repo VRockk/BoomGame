@@ -6,12 +6,17 @@ public class Doors : MonoBehaviour
 {
 
     public Animator animator;
+    private GameMaster gameMaster;
     // Start is called before the first frame update
     void Start()
     {
 
-
-        //OpenDoor();
+        animator = GetComponent<Animator>();
+        gameMaster = FindObjectOfType<GameMaster>();
+        if(gameMaster.doorOpen)
+            animator.SetBool("doorOpen", true);
+        else
+            animator.SetBool("doorOpen", false);
     }
 
     // Update is called once per frame
@@ -23,13 +28,17 @@ public class Doors : MonoBehaviour
 
     public void OpenDoor()
     {
+        gameMaster = FindObjectOfType<GameMaster>();
+        gameMaster.doorOpen = true;
         animator = GetComponent<Animator>();
-        animator.SetBool("opening", true);
+        animator.SetInteger("openState", 1);
     }
 
     public void CloseDoor()
     {
+        gameMaster = FindObjectOfType<GameMaster>();
+        gameMaster.doorOpen = false;
         animator = GetComponent<Animator>();
-        animator.SetBool("opening", false);
+        animator.SetInteger("openState", 2);
     }
 }

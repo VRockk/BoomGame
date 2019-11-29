@@ -171,7 +171,7 @@ public class Brick : BuildingObject
     /// <param name="upwardsForce">Additive power added upwards during explosion</param>
     public void Shatter(Vector3 explosionPos, float power, float upwardsForce)
     {
-        print("shatter");
+        //print("shatter");
         if (shattered)
             return;
 
