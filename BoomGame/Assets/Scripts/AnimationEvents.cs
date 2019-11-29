@@ -16,7 +16,7 @@ public class AnimationEvents : MonoBehaviour
     {
         gameMaster = FindObjectOfType<GameMaster>();
         if (gameMaster == null)
-            Debug.LogError("No GameMaster found");
+            Debug.LogWarning("No GameMaster found");
         audioSource = GetComponent<AudioSource>();
     }
 

@@ -248,8 +248,10 @@ public class UtilityLibrary : MonoBehaviour
         if (hit.gameObject.tag.Contains("BuildingObject"))
         {
             var brick = hit.gameObject.GetComponent<Brick>();
-            if (brick != null && brick.allowDamage)
+            if (brick != null)
             {
+                brick.allowDamage = true;
+
                 //Remove hitpoints
                 brick.hitpoints--;
                 brick.hitpoints--;
