@@ -392,12 +392,12 @@ public class MainMenu : MonoBehaviour
         if (rumbleToggle.isOn)
         {
             rumbleToggleFlag = true;
-            Debug.Log("switch is on");
+            //Debug.Log("switch is on");
         }
         else
         {
             rumbleToggleFlag = false;
-            Debug.Log("switch is off");
+            //Debug.Log("switch is off");
         }
     }
 

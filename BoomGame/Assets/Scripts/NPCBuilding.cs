@@ -124,7 +124,7 @@ public class NPCBuilding : MonoBehaviour
             spriteRenderer.sprite = buildingSprites[Hitpoints];
             if (Hitpoints == 0)
             {
-                print("Building destroyed: " + this.gameObject.name);
+                //print("Building destroyed: " + this.gameObject.name);
                 //TODO Show smoke cloud effect when building is destroyed
 
                 Instantiate(smokeAnimation, transform.position, Quaternion.identity);

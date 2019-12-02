@@ -13,32 +13,43 @@ public class Doors : MonoBehaviour
 
         animator = GetComponent<Animator>();
         gameMaster = FindObjectOfType<GameMaster>();
-        if(gameMaster.doorOpen)
-            animator.SetBool("doorOpen", true);
+        if (gameMaster != null)
+        {
+            if (gameMaster.doorOpen)
+                animator.SetBool("doorOpen", true);
+            else
+                animator.SetBool("doorOpen", false);
+        }
         else
-            animator.SetBool("doorOpen", false);
+            animator.SetBool("doorOpen", true);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
 
     public void OpenDoor()
     {
         gameMaster = FindObjectOfType<GameMaster>();
-        gameMaster.doorOpen = true;
-        animator = GetComponent<Animator>();
-        animator.SetInteger("openState", 1);
+        if (gameMaster != null)
+        {
+            gameMaster.doorOpen = true;
+            animator = GetComponent<Animator>();
+            animator.SetInteger("openState", 1);
+        }
     }
 
     public void CloseDoor()
     {
         gameMaster = FindObjectOfType<GameMaster>();
-        gameMaster.doorOpen = false;
-        animator = GetComponent<Animator>();
-        animator.SetInteger("openState", 2);
+        if (gameMaster != null)
+        {
+            gameMaster.doorOpen = false;
+            animator = GetComponent<Animator>();
+            animator.SetInteger("openState", 2);
+        }
     }
 }
