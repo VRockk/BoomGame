@@ -108,7 +108,7 @@ public class BuildingObject : MonoBehaviour
 
         //Do raycast to check if there are objects next to this one
         RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), traceDirection, distance);
-        Debug.DrawRay(transform.position, traceDirection * distance, Color.red, 5f);
+        //Debug.DrawRay(transform.position, traceDirection * distance, Color.red, 5f);
 
         value = hit;
 
