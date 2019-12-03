@@ -86,7 +86,7 @@ public class Brick : BuildingObject
             if (buildingObject != null)
             {
                 buildingObject.AddMaxScore();
-                buildingObject.gameController = GameObject.FindObjectOfType<GameController>();
+                buildingObject.gameController = this.gameController;
                 //buildingObject.createJoints = true;
                 //buildingObject.createManualJoints = true;
                 buildingObject.allowDamage = true;

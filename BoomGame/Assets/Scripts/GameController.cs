@@ -29,6 +29,8 @@ public class GameController : MonoBehaviour
     public int twoPentaScore = 50;
     public int threePentaScore = 75;
 
+    public LevelTheme levelTheme = LevelTheme.Fire;
+
     [HideInInspector]
     public bool inputAllowed;
 
@@ -37,7 +39,6 @@ public class GameController : MonoBehaviour
 
     [HideInInspector]
     public GameObject bombUnderMouse;
-
 
     public GameObject gameMasterPrefab;
 
@@ -54,11 +55,7 @@ public class GameController : MonoBehaviour
     public AudioClip plopSound;
     public AudioClip ingameMusic;
 
-
-    //private WinLines winlines;
-
     public int salvageValue = 100;
-
 
     private GameMaster gameMaster;
     private float roundDelay = 1f;

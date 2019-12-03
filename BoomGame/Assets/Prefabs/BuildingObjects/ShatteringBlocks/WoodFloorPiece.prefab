@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1195898052852811324}
   - component: {fileID: 1195898052852811296}
   - component: {fileID: 1195898052852811299}
+  - component: {fileID: 7664560888599953482}
   m_Layer: 0
   m_Name: WoodFloorPiece
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1195898052852811327}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 138.67, y: -44.764694, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -179,3 +180,17 @@ MonoBehaviour:
     type: 3}
   shatterSFX:
   - {fileID: 8300000, guid: 31f860278f58bfe4d803b92f85cd2946, type: 3}
+--- !u!114 &7664560888599953482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195898052852811327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30caccde6f3617b44a62f2d5d21bb4fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireSprite: {fileID: 0}
+  iceSprite: {fileID: 0}

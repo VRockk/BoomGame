@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5052237856603979257}
   - component: {fileID: 7418160913516850001}
   - component: {fileID: 1717395919454985099}
+  - component: {fileID: -4408628351586653711}
   m_Layer: 9
   m_Name: MetalWallRight
   m_TagString: BuildingObject
@@ -170,3 +171,17 @@ MonoBehaviour:
   bendLeftSprite: {fileID: 0}
   bendRightSprite: {fileID: 0}
   meltVertical: 1
+--- !u!114 &-4408628351586653711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3875298270693905834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30caccde6f3617b44a62f2d5d21bb4fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireSprite: {fileID: 0}
+  iceSprite: {fileID: 0}

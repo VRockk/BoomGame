@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 685278331049302839}
   - component: {fileID: 685278331049302838}
   - component: {fileID: 652202550525278438}
+  - component: {fileID: -4894764233130559548}
   m_Layer: 0
   m_Name: WoodWallMiddle
   m_TagString: BuildingObject
@@ -28,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 685278331049302843}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 125.01514, y: 6.552767, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -190,3 +191,17 @@ MonoBehaviour:
   shatterSFX:
   - {fileID: 8300000, guid: 877e9aa5b6bc65a4cab4f948f6cc85b3, type: 3}
   - {fileID: 8300000, guid: 31f860278f58bfe4d803b92f85cd2946, type: 3}
+--- !u!114 &-4894764233130559548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685278331049302843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30caccde6f3617b44a62f2d5d21bb4fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireSprite: {fileID: 0}
+  iceSprite: {fileID: 0}

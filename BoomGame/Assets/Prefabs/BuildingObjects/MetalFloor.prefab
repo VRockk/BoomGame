@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9140437407188974794}
   - component: {fileID: 9140437407188974797}
   - component: {fileID: 9140437407188974796}
+  - component: {fileID: 6726658873846768821}
   m_Layer: 9
   m_Name: MetalFloor
   m_TagString: BuildingObject
@@ -167,3 +168,17 @@ MonoBehaviour:
   bendLeftSprite: {fileID: 0}
   bendRightSprite: {fileID: 0}
   meltVertical: 0
+--- !u!114 &6726658873846768821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9140437407188974799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30caccde6f3617b44a62f2d5d21bb4fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireSprite: {fileID: 0}
+  iceSprite: {fileID: 0}

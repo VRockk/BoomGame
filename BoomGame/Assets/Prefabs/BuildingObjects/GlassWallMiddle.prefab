@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3925606645666125676}
   - component: {fileID: 3925606645666125683}
   - component: {fileID: 3458076876701264340}
+  - component: {fileID: 73469809583565663}
   m_Layer: 9
   m_Name: GlassWallMiddle
   m_TagString: BuildingObject
@@ -232,3 +233,17 @@ MonoBehaviour:
   shatterSFX:
   - {fileID: 8300000, guid: 43b638170c6516f41949f21e9bcd277e, type: 3}
   - {fileID: 8300000, guid: ee846883611c33547b76503984d61aeb, type: 3}
+--- !u!114 &73469809583565663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3925606645666125682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30caccde6f3617b44a62f2d5d21bb4fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireSprite: {fileID: 0}
+  iceSprite: {fileID: 0}

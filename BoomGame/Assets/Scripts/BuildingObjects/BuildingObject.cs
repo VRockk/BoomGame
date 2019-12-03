@@ -60,9 +60,9 @@ public class BuildingObject : MonoBehaviour
         //Dont allow creating joints to parent objects. 
         if (this.transform.parent != null)
             ignoredJoints.Add(this.transform.parent.gameObject);
+        gameController = GameObject.FindObjectOfType<GameController>();
         CreateJoints();
         AddMaxScore();
-        gameController = GameObject.FindObjectOfType<GameController>();
 
     }
 
@@ -70,7 +70,6 @@ public class BuildingObject : MonoBehaviour
     {
         if (scoreAdded == false)
         {
-            GameObject gameController = GameObject.Find("GameController");
             GameController gameControllerScript = gameController.GetComponent<GameController>();
             gameControllerScript.maxScore += scoreValue;
             scoreAdded = true;

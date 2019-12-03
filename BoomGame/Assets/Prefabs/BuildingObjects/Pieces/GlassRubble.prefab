@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2192001007552588292}
   - component: {fileID: 1384580667977806654}
   - component: {fileID: -5183574420325141998}
+  - component: {fileID: 608704697405110723}
   m_Layer: 12
   m_Name: GlassRubble
   m_TagString: Rubble
@@ -143,3 +144,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9cd1c4800944334f8497815e9b86fb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &608704697405110723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8546890470479307831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30caccde6f3617b44a62f2d5d21bb4fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireSprite: {fileID: 0}
+  iceSprite: {fileID: 0}
