@@ -12,18 +12,18 @@ public class ScrollParallaxing : MonoBehaviour
     public float sizeParallax = 0.2f;
 
     private Vector3 defaultScale;
-    private Vector3 defaultPosition;
+
     private void Start()
     {
         if (mainCamera == null)
             mainCamera = Camera.main;
         referenceSize = mainCamera.orthographicSize;
         defaultScale = transform.localScale;
-        defaultPosition = transform.localPosition;
 
     }
     void LateUpdate()
     {
+
         float sizeRatio = (mainCamera.orthographicSize / referenceSize);
         float newSize = (sizeRatio - 1) * sizeParallax + 1;
 

@@ -16,7 +16,7 @@ public class AnimationEvents : MonoBehaviour
     {
         gameMaster = FindObjectOfType<GameMaster>();
         if (gameMaster == null)
-            Debug.LogError("No GameMaster found");
+            Debug.LogWarning("No GameMaster found");
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -45,7 +45,7 @@ public class AnimationEvents : MonoBehaviour
     public void PlaySound(AudioClip sound)
     {
 
-        audioSource.pitch = Random.Range(1f, 1.1f);
+        audioSource.pitch = Random.Range(0.95f, 1.05f);
         audioSource.volume = Random.Range(0.95f, 1.05f);
         audioSource.PlayOneShot(sound);
     }
