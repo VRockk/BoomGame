@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 6460263880152183185}
   - component: {fileID: 6460263880152183184}
   - component: {fileID: 6460263880152183186}
+  - component: {fileID: 1239440986527847133}
   m_Layer: 9
-  m_Name: ConcreteBlockPiece13 1
+  m_Name: ConcreteBlockPiece13
   m_TagString: BuildingObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6460263880152183189}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -96.14, y: -29.81, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -69,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1080482803
-  m_SortingLayer: 2
+  m_SortingLayerID: 1395147817
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -1221513601048308001, guid: 442c3debf759b1440bac1133a5221a18,
     type: 3}
@@ -129,7 +130,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.04, y: 2.37}
+  m_Size: {x: 2.84, y: 2.17}
   m_EdgeRadius: 0
 --- !u!114 &6460263880152183186
 MonoBehaviour:
@@ -185,3 +186,19 @@ MonoBehaviour:
     type: 3}
   shatterSFX:
   - {fileID: 8300000, guid: 13dffe3d1f9a9a04d9417d9c441a294a, type: 3}
+--- !u!114 &1239440986527847133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6460263880152183189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30caccde6f3617b44a62f2d5d21bb4fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireSprite: {fileID: -1221513601048308001, guid: 442c3debf759b1440bac1133a5221a18,
+    type: 3}
+  iceSprite: {fileID: 716337184321282589, guid: 4d965dca0b16c4f42bf9c20bb2fc4d95,
+    type: 3}

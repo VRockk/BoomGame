@@ -14,6 +14,9 @@ TextureImporter:
   - first:
       213: 526982828574939642
     second: metal_blocks_3
+  - first:
+      213: -4710989146705008001
+    second: metal_blocks_4
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -95,6 +98,18 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -113,7 +128,7 @@ TextureImporter:
       name: metal_blocks_0
       rect:
         serializedVersion: 2
-        x: 12
+        x: 19
         y: 888
         width: 983
         height: 173
@@ -124,7 +139,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3dd56770b905ca947aebf5180eecadd5
+      spriteID: 52fce88c404d86c4a95851e67a000e9c
       internalID: -3248338943906635319
       vertices: []
       indices: 
@@ -134,50 +149,8 @@ TextureImporter:
       name: metal_blocks_1
       rect:
         serializedVersion: 2
-        x: 1066
-        y: 55
-        width: 225
-        height: 1001
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 75177150171436c4d839fffcd9c34a4c
-      internalID: -3599151200605180543
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: metal_blocks_2
-      rect:
-        serializedVersion: 2
-        x: 1366
-        y: 43
-        width: 225
-        height: 1001
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 982cbfa571a2fe841a2a911383d46f6c
-      internalID: 6873132354338271848
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: metal_blocks_3
-      rect:
-        serializedVersion: 2
-        x: 1656
-        y: 46
+        x: 1059
+        y: 58
         width: 224
         height: 1001
       alignment: 0
@@ -187,8 +160,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8b9fea786cad891458ac757116753c05
+      spriteID: 9b42d3b9e8d2e794ba1ba2031c14160e
+      internalID: -3599151200605180543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: metal_blocks_2
+      rect:
+        serializedVersion: 2
+        x: 1356
+        y: 57
+        width: 225
+        height: 1001
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b9b1971948ed054794da9f2938b6208
+      internalID: 6873132354338271848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: metal_blocks_3
+      rect:
+        serializedVersion: 2
+        x: 1653
+        y: 54
+        width: 225
+        height: 1001
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 060369e3584afd74983be6707d3df102
       internalID: 526982828574939642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: metal_blocks_4
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 20
+        width: 305
+        height: 829
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c345a736c5c09949aef2b268e722a72
+      internalID: -4710989146705008001
       vertices: []
       indices: 
       edges: []

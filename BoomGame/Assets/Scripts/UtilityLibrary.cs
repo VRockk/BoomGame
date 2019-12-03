@@ -25,6 +25,12 @@ public enum MaterialType
     Wood = 3
 }
 
+public enum LevelTheme
+{
+    Fire = 0,
+    Ice = 1
+}
+
 
 public enum LerpMode
 {

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7503000431151705921}
   - component: {fileID: 7503000431151705934}
   - component: {fileID: 1121593417517127942}
+  - component: {fileID: -8239689732662323592}
   m_Layer: 9
   m_Name: GlassWall
   m_TagString: BuildingObject
@@ -28,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7503000431151705932}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.911787, y: -85.345375, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -72,13 +73,13 @@ SpriteRenderer:
   m_SortingLayerID: -1080482803
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5217403549877823702, guid: 758bf7b4da638624e9a0555eac81589e,
+  m_Sprite: {fileID: 5217403549877823702, guid: 93079a11ea0e65741b00a14cbebb9e03,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.61, y: 10.05}
+  m_Size: {x: 1.61, y: 10.03}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -122,8 +123,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.61, y: 10.05}
-    newSize: {x: 1.61, y: 10.05}
+    oldSize: {x: 1.62, y: 10.03}
+    newSize: {x: 1.61, y: 10.03}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -219,3 +220,19 @@ MonoBehaviour:
   shatterSFX:
   - {fileID: 8300000, guid: 43b638170c6516f41949f21e9bcd277e, type: 3}
   - {fileID: 8300000, guid: ee846883611c33547b76503984d61aeb, type: 3}
+--- !u!114 &-8239689732662323592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7503000431151705932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30caccde6f3617b44a62f2d5d21bb4fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireSprite: {fileID: 5217403549877823702, guid: 93079a11ea0e65741b00a14cbebb9e03,
+    type: 3}
+  iceSprite: {fileID: 6066788283073479934, guid: b4f96780ef890dd4982ba05c5c8a4654,
+    type: 3}

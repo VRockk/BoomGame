@@ -86,7 +86,7 @@ public class Brick : BuildingObject
             if (buildingObject != null)
             {
                 buildingObject.AddMaxScore();
-                buildingObject.gameController = GameObject.FindObjectOfType<GameController>();
+                buildingObject.gameController = this.gameController;
                 //buildingObject.createJoints = true;
                 //buildingObject.createManualJoints = true;
                 buildingObject.allowDamage = true;
@@ -189,6 +189,7 @@ public class Brick : BuildingObject
             newObject.SetActive(true);
             newObject.transform.parent = null;
             newObject.transform.localScale = this.transform.localScale;
+            newObject.transform.localRotation = this.transform.localRotation;
             Rigidbody2D rigidBody = newObject.GetComponent<Rigidbody2D>();
 
             if (rigidBody != null)
