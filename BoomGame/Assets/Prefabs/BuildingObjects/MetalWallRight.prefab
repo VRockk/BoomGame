@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3875298270693905834}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -73,8 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: -1080482803
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 6873132354338271848, guid: 05e5898d261feed4f9e7cc9882035872,
-    type: 3}
+  m_Sprite: {fileID: 526982828574939642, guid: 05e5898d261feed4f9e7cc9882035872, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -132,12 +131,12 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: -1.125, y: 5.005}
-      - {x: -1.1223145, y: 4.160118}
-      - {x: -0.64710236, y: 4.1628075}
-      - {x: -0.6357651, y: 3.265892}
-      - {x: -1.1159058, y: 3.2613792}
       - {x: -1.125, y: -5.005}
       - {x: 1.125, y: -5.005}
+      - {x: 1.0726328, y: 3.2545025}
+      - {x: 0.59914446, y: 3.2474911}
+      - {x: 0.5866518, y: 4.1888666}
+      - {x: 1.1196052, y: 4.195816}
       - {x: 1.125, y: 5.005}
 --- !u!114 &1717395919454985099
 MonoBehaviour:
@@ -183,5 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30caccde6f3617b44a62f2d5d21bb4fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireSprite: {fileID: 0}
-  iceSprite: {fileID: 0}
+  fireSprite: {fileID: 526982828574939642, guid: 05e5898d261feed4f9e7cc9882035872,
+    type: 3}
+  iceSprite: {fileID: 4995186674641397016, guid: d292dfc42f2420d44b8f8dc5d54483fe,
+    type: 3}

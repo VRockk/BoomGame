@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1067603139957140850}
   - component: {fileID: 1067603139957140861}
   - component: {fileID: 1067603139957140851}
+  - component: {fileID: -1531498907154979314}
   m_Layer: 9
   m_Name: ConcreteBlock2Piece6
   m_TagString: BuildingObject
@@ -28,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1067603139957140862}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 133.87, y: -13.6, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -190,3 +191,19 @@ MonoBehaviour:
     type: 3}
   shatterSFX:
   - {fileID: 8300000, guid: 13dffe3d1f9a9a04d9417d9c441a294a, type: 3}
+--- !u!114 &-1531498907154979314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067603139957140862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30caccde6f3617b44a62f2d5d21bb4fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireSprite: {fileID: 5743073317037435382, guid: 442c3debf759b1440bac1133a5221a18,
+    type: 3}
+  iceSprite: {fileID: 1266982259043275940, guid: 4d965dca0b16c4f42bf9c20bb2fc4d95,
+    type: 3}

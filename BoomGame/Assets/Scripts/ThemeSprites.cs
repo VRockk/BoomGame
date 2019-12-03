@@ -12,21 +12,24 @@ public class ThemeSprites : MonoBehaviour
     void Start()
     {
         var gameController = GameObject.FindObjectOfType<GameController>();
+
         //var theme = GameObject.
         //print(gameController.levelTheme);
+
         if (gameController == null)
             print("GameController not found : " + gameObject.name);
+
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
 
         if (spriteRenderer != null)
         {
-            if (gameController.levelTheme == LevelTheme.Fire)
+            if (gameController.levelTheme == LevelTheme.Fire && fireSprite != null)
             {
-
+                spriteRenderer.sprite = fireSprite;
             }
-            else if (gameController.levelTheme == LevelTheme.Ice)
+            else if (gameController.levelTheme == LevelTheme.Ice && iceSprite != null)
             {
-
+                spriteRenderer.sprite = iceSprite;
             }
         }
     }

@@ -36,7 +36,7 @@ public class BuildingObject : MonoBehaviour
     [HideInInspector]
     public bool checkedInLevelClear = true;
 
-    
+
 
 
     protected virtual void OnDrawGizmos()
@@ -68,6 +68,9 @@ public class BuildingObject : MonoBehaviour
 
     public void AddMaxScore()
     {
+        if (gameController == null)
+            gameController = GameObject.FindObjectOfType<GameController>();
+
         if (scoreAdded == false)
         {
             GameController gameControllerScript = gameController.GetComponent<GameController>();

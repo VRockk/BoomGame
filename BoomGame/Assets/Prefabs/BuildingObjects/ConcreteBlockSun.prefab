@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2533565366724417505}
   - component: {fileID: 2533565366724416542}
   - component: {fileID: 2533565366724416543}
+  - component: {fileID: 9082860385833460443}
   m_Layer: 9
   m_Name: ConcreteBlockSun
   m_TagString: BuildingObject
@@ -199,3 +200,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 14.06, y: 10.231173}
   m_EdgeRadius: 0
+--- !u!114 &9082860385833460443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2533565366724416538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30caccde6f3617b44a62f2d5d21bb4fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireSprite: {fileID: 576439488182329757, guid: 442c3debf759b1440bac1133a5221a18,
+    type: 3}
+  iceSprite: {fileID: -1288366709058443245, guid: 4d965dca0b16c4f42bf9c20bb2fc4d95,
+    type: 3}

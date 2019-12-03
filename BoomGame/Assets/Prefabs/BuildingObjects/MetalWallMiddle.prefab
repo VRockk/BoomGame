@@ -73,7 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: -1080482803
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 526982828574939642, guid: 05e5898d261feed4f9e7cc9882035872, type: 3}
+  m_Sprite: {fileID: -3599151200605180543, guid: 05e5898d261feed4f9e7cc9882035872,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -122,7 +123,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.25, y: 10.01}
+    oldSize: {x: 2.24, y: 10.01}
     newSize: {x: 2.24, y: 10.01}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -187,5 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30caccde6f3617b44a62f2d5d21bb4fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireSprite: {fileID: 0}
-  iceSprite: {fileID: 0}
+  fireSprite: {fileID: -3599151200605180543, guid: 05e5898d261feed4f9e7cc9882035872,
+    type: 3}
+  iceSprite: {fileID: 9180601560376074715, guid: d292dfc42f2420d44b8f8dc5d54483fe,
+    type: 3}
