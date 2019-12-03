@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50afc76e2b398c546b7954a7ed37f1ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreValue: 0
   jointBreakForce: 50000
   jointBreakTorque: 50000
   createJoints: 1
   createManualJoints: 0
   createJointToGround: 0
+  gameController: {fileID: 0}
   ignoredJoints: []
   manualJointLocations:
   - {x: 5.44, y: 0}
@@ -42,7 +44,6 @@ MonoBehaviour:
   shatterSFX:
   - {fileID: 8300000, guid: 877e9aa5b6bc65a4cab4f948f6cc85b3, type: 3}
   - {fileID: 8300000, guid: 31f860278f58bfe4d803b92f85cd2946, type: 3}
-  scoreValue: 0
 --- !u!114 &-1111979131129888693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55,11 +56,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1becf639c9fdbf3458e348f42dbf9a3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreValue: 0
   jointBreakForce: 50000
   jointBreakTorque: 50000
   createJoints: 1
   createManualJoints: 0
   createJointToGround: 0
+  gameController: {fileID: 0}
   ignoredJoints: []
   manualJointLocations: []
   materialType: 0
@@ -115,6 +118,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8308141738274041500, guid: bd0bb4d7bab2e7140a8e1646e177eb09,
         type: 3}
+    - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001715, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
