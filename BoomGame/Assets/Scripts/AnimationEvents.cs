@@ -52,6 +52,8 @@ public class AnimationEvents : MonoBehaviour
 
     public void SetMusic(AudioClip music)
     {
+        if (gameMaster == null)
+            gameMaster = FindObjectOfType<GameMaster>();
         gameMaster.SetMusic(music);
     }
 

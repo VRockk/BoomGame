@@ -189,6 +189,7 @@ public class Brick : BuildingObject
             newObject.SetActive(true);
             newObject.transform.parent = null;
             newObject.transform.localScale = this.transform.localScale;
+            newObject.transform.localRotation = this.transform.localRotation;
             Rigidbody2D rigidBody = newObject.GetComponent<Rigidbody2D>();
 
             if (rigidBody != null)
