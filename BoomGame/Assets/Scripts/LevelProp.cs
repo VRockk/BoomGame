@@ -39,6 +39,8 @@ public class LevelProp : MonoBehaviour
     private void OnDestroy()
     {
         var poofD = Instantiate(poof, this.transform.position, new Quaternion());
+        var animator = poofD.GetComponent<Animator>();
+        animator.enabled = true;
         poofD.transform.parent = null;
         poofD.transform.localScale = new Vector3(poofScale, poofScale, 1f);
     }
