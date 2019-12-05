@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6838702331538191684}
   - component: {fileID: 6838702331538191685}
   - component: {fileID: 6838702331538191682}
+  - component: {fileID: -4979655973165265798}
   m_Layer: 9
   m_Name: ThiccPillarMiddle
   m_TagString: BuildingObject
@@ -193,3 +194,19 @@ MonoBehaviour:
   shatterSFX:
   - {fileID: 8300000, guid: 79aaec8060cd9324c9b01b55a1cb6f1a, type: 3}
   - {fileID: 8300000, guid: 13dffe3d1f9a9a04d9417d9c441a294a, type: 3}
+--- !u!114 &-4979655973165265798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6838702331538191683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30caccde6f3617b44a62f2d5d21bb4fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireSprite: {fileID: 2691260891578530931, guid: 442c3debf759b1440bac1133a5221a18,
+    type: 3}
+  iceSprite: {fileID: -3919490916875009266, guid: 4d965dca0b16c4f42bf9c20bb2fc4d95,
+    type: 3}
