@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms;
 
 
 using System.Linq;
@@ -10,6 +11,7 @@ using System;
 using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
+using UnityEngine.Profiling;
 
 /// <summary>
 /// Resposible for the ingame logic and input
@@ -27,6 +29,8 @@ public class GameController : MonoBehaviour
     public int twoPentaScore = 50;
     public int threePentaScore = 75;
 
+    public LevelTheme levelTheme = LevelTheme.Fire;
+
     [HideInInspector]
     public bool inputAllowed;
 
@@ -35,7 +39,6 @@ public class GameController : MonoBehaviour
 
     [HideInInspector]
     public GameObject bombUnderMouse;
-
 
     public GameObject gameMasterPrefab;
 
@@ -52,9 +55,6 @@ public class GameController : MonoBehaviour
     public AudioClip plopSound;
     public AudioClip ingameMusic;
 
-
-    //private WinLines winlines;
-
     public int salvageValue = 100;
 
     private GameMaster gameMaster;
@@ -67,6 +67,7 @@ public class GameController : MonoBehaviour
     private int levelScore;
     private bool allowTimescale = false;
     private TweenerCore<float, float, FloatOptions> timeScaleTween;
+
     private void Awake()
     {
         gameMaster = FindObjectOfType<GameMaster>();
@@ -124,11 +125,13 @@ public class GameController : MonoBehaviour
 
         if (gameMaster.currentChapterLevels != null)
         {
-            var nextLevel = gameMaster.currentChapterLevels.SkipWhile(x => x.name != SceneManager.GetActiveScene().name).Skip(1).First();
-            if (nextLevel != null)
-                nextLevelName = nextLevel.name;
+            var nextLevel = gameMaster.currentChapterLevels.SkipWhile(x => x.name != SceneManager.GetActiveScene().name).Skip(1);
+            //var nextLevel = gameMaster.currentChapterLevels.SkipWhile(x => x.name != SceneManager.GetActiveScene().name).Skip(1).First();
+            if (nextLevel != null && nextLevel.Any() && nextLevel.First() != null)
+                nextLevelName = nextLevel.First().name;
         }
         //InvokeRepeating("CheckScorelines", 1f, 1f);
+
     }
 
     private void CreateBombIcons()
@@ -291,6 +294,7 @@ public class GameController : MonoBehaviour
         if (GameObject.FindObjectsOfType<Bomb>().Length == 0 || !inputAllowed)
             return false;
 
+        //Profiler.BeginSample("MyPieceOfCode");
 
         var tutorial = GameObject.Find("TutorialUI");
 
@@ -342,6 +346,8 @@ public class GameController : MonoBehaviour
 
         }
 
+        // Code to measure...
+        //Profiler.EndSample();
         Invoke("WaitForNextRound", 2f);
         return true;
     }
@@ -394,7 +400,7 @@ public class GameController : MonoBehaviour
     {
         LevelClear levelClear = CheckLevelClear();
 
-        print(levelClear);
+        //print(levelClear);
 
         //Always when Failed
         if (levelClear == LevelClear.Failed)
@@ -442,7 +448,7 @@ public class GameController : MonoBehaviour
         var levelName = SceneManager.GetActiveScene().name;
         var pentagrams = PlayerPrefs.GetInt(levelName + "Pentagrams", 0);
         var savedBombs = PlayerPrefs.GetInt(levelName + "SavedBombs", 0);
-        var score = PlayerPrefs.GetInt(levelName + levelScore, 0);
+        var score = PlayerPrefs.GetInt(levelName + "LevelScore", 0);
 
 
         //PlayerPentagrams and PlayerScore are the values of all gained pentagrams and score from all maps the player has cleared
@@ -480,8 +486,31 @@ public class GameController : MonoBehaviour
         {
             // Reduce the old level score from the player score and add the new score back
             playerScore = playerScore - score + levelScore;
-            PlayerPrefs.SetInt(levelName + "Score", levelScore);
+            PlayerPrefs.SetInt(levelName + "LevelScore", levelScore);
             PlayerPrefs.SetInt("PlayerScore", playerScore);
+            //print(playerScore);
+
+            //check user is authenticated
+            if (Social.localUser.authenticated)
+            {
+                Social.ReportScore(playerScore, "CgkI65f98LAPEAIQAQ", (bool success) => {
+                    // handle success or failure
+                    if (success) {
+                        //Debug.Log("Posted score to Leaderboard.");
+                    }
+                    else
+                    {
+                        //Debug.Log("Failed to post score to leaderboard.");
+                    }
+                });
+            }
+
+
+
+            //send score to leaderboards
+
+           
+
         }
 
         //var bonusSalvage = (bombCount - savedBombs) * bonusSalvageForSavedBomb;

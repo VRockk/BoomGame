@@ -62,7 +62,7 @@ public class AdsController : MonoBehaviour
             {
                 if (Monetization.IsReady(rewarded_video_ad))
                 {
-                    Debug.Log("test");
+                    
                     ShowAdPlacementContent ad = null;
                     ad = Monetization.GetPlacementContent(rewarded_video_ad) as ShowAdPlacementContent;
 
@@ -77,7 +77,6 @@ public class AdsController : MonoBehaviour
             {
                 if (Monetization.IsReady(banner_ad))
                 {
-                    Debug.Log("test");
                     ShowAdPlacementContent ad = null;
                     ad = Monetization.GetPlacementContent(banner_ad) as ShowAdPlacementContent;
 

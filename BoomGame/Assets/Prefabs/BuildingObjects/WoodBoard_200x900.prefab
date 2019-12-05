@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50afc76e2b398c546b7954a7ed37f1ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreValue: 1000
   jointBreakForce: 50000
   jointBreakTorque: 50000
   createJoints: 1
   createManualJoints: 0
   createJointToGround: 0
+  gameController: {fileID: 0}
   ignoredJoints: []
   manualJointLocations: []
   materialType: 0
@@ -27,20 +29,20 @@ MonoBehaviour:
   pieceSpawnLocations:
   - {x: -3, y: 0}
   - {x: 0, y: 0}
-  - {x: -3, y: 0}
+  - {x: 3, y: 0}
   pieceObjects:
   - {fileID: 6522876664913559363, guid: 4bfca3d45c294714ea38264b339875cd, type: 3}
   - {fileID: 3426046553121016473, guid: dafef1690d5b156488f458d7074edb47, type: 3}
   - {fileID: 3426046553121016473, guid: b725593a3a9078d458598fd855ffb4e3, type: 3}
   hitpoints: 2
   damagedForceLimit: 10000
-  shatterParticle: {fileID: 0}
+  shatterParticle: {fileID: 4077663246738028735, guid: c0286859d0f63b847a881aa83a2b6fac,
+    type: 3}
   audioObject: {fileID: 8861113935494233493, guid: f47a1ab8e18b41443ada68a44c6005f6,
     type: 3}
   shatterSFX:
   - {fileID: 8300000, guid: 877e9aa5b6bc65a4cab4f948f6cc85b3, type: 3}
   - {fileID: 8300000, guid: 31f860278f58bfe4d803b92f85cd2946, type: 3}
-  scoreValue: 0
 --- !u!114 &-1111979131129888693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53,11 +55,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1becf639c9fdbf3458e348f42dbf9a3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreValue: 0
   jointBreakForce: 50000
   jointBreakTorque: 50000
   createJoints: 1
   createManualJoints: 0
   createJointToGround: 0
+  gameController: {fileID: 0}
   ignoredJoints: []
   manualJointLocations: []
   materialType: 0
@@ -107,12 +111,6 @@ PrefabInstance:
       propertyPath: m_LinearDrag
       value: 0.1
       objectReference: {fileID: 0}
-    - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 3249140630319401529, guid: b4be78b86414cdb41b68e802b9692c60,
-        type: 3}
     - target: {fileID: 1863442581099001715, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -132,6 +130,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.y
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3249140630319401529, guid: b4be78b86414cdb41b68e802b9692c60,
+        type: 3}
+    - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001713, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}

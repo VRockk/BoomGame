@@ -17,32 +17,17 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Rubble
       objectReference: {fileID: 0}
-    - target: {fileID: 4785638828270524803, guid: ac6f03e6e3056a4429548d492d41c123,
-        type: 3}
-      propertyPath: m_Mass
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4785638828270524803, guid: ac6f03e6e3056a4429548d492d41c123,
-        type: 3}
-      propertyPath: m_GravityScale
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4785638828270524803, guid: ac6f03e6e3056a4429548d492d41c123,
-        type: 3}
-      propertyPath: m_LinearDrag
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4785638828270524803, guid: ac6f03e6e3056a4429548d492d41c123,
-        type: 3}
-      propertyPath: m_AngularDrag
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 6652297626691305361, guid: ac6f03e6e3056a4429548d492d41c123,
         type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -3129373412394539133, guid: b4be78b86414cdb41b68e802b9692c60,
         type: 3}
+    - target: {fileID: 6652297626691305361, guid: ac6f03e6e3056a4429548d492d41c123,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6032074837103792415, guid: ac6f03e6e3056a4429548d492d41c123,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -97,6 +82,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785638828270524803, guid: ac6f03e6e3056a4429548d492d41c123,
+        type: 3}
+      propertyPath: m_Mass
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785638828270524803, guid: ac6f03e6e3056a4429548d492d41c123,
+        type: 3}
+      propertyPath: m_GravityScale
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785638828270524803, guid: ac6f03e6e3056a4429548d492d41c123,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785638828270524803, guid: ac6f03e6e3056a4429548d492d41c123,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5849968127907056663, guid: ac6f03e6e3056a4429548d492d41c123,
         type: 3}

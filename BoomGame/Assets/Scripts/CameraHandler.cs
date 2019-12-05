@@ -194,7 +194,7 @@ public class CameraHandler : MonoBehaviour
         {
             clicked = 0;
             clickTime = 0;
-            print("double click");
+            //print("double click");
             AutoZoom();
         }
         else if (clicked > 2 || Time.time - clickTime > 1) clicked = 0;

@@ -12,6 +12,8 @@ public class GameMaster : MonoBehaviour
     public int currentSalvage;
     [HideInInspector]
     public List<Level> currentChapterLevels;
+    [HideInInspector]
+    public bool doorOpen = true;
 
 
     private AudioSource audioSource;

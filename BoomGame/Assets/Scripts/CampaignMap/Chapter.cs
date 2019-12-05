@@ -113,7 +113,6 @@ public class Chapter : MonoBehaviour
                 }
             }
         }
-
         SetStatus();
     }
 
@@ -156,18 +155,24 @@ public class Chapter : MonoBehaviour
     }
 
 
+    Sequence selectedScaleSeq = null;
     public void SetSelected(bool selected)
     {
         if (chapterIcon != null)
         {
             if (selected)
             {
+                selectedScaleSeq = DOTween.Sequence().Append(chapterIcon.transform.DOScale(new Vector3(1.1f, 1.1f, 1f), 0.3f)).SetLoops(-1, LoopType.Yoyo);
                 //chapterIcon.transform.localScale = new Vector3(1.25f, 1.25f, 1f);
-                chapterIcon.transform.DOScale(new Vector3(1.35f, 1.35f, 1f), 0.3f);
+                //chapterIcon.transform.DOScale(new Vector3(1.35f, 1.35f, 1f), 0.3f).SetLoops(-1, LoopType.Yoyo);
             }
             else
+            {
+                if (selectedScaleSeq != null)
+                    selectedScaleSeq.Kill();
                 //chapterIcon.transform.localScale = new Vector3(1f, 1f, 1f);
                 chapterIcon.transform.DOScale(new Vector3(1, 1, 1), 0.3f);
+            }
         }
     }
 }

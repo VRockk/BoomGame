@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2420416988470521841}
   - component: {fileID: 2420416988470521843}
   - component: {fileID: 2420416988470521842}
+  - component: {fileID: 3381925316651008531}
   m_Layer: 9
   m_Name: GlassWallLeft
   m_TagString: BuildingObject
@@ -28,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2420416988470521844}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26.24, y: -82.05, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -72,13 +73,13 @@ SpriteRenderer:
   m_SortingLayerID: -1080482803
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2445440108949772675, guid: 758bf7b4da638624e9a0555eac81589e,
+  m_Sprite: {fileID: 2445440108949772675, guid: 93079a11ea0e65741b00a14cbebb9e03,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.61, y: 10.03}
+  m_Size: {x: 1.62, y: 10.03}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -210,20 +211,36 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.61, y: 10.03}
-    newSize: {x: 1.61, y: 10.03}
+    oldSize: {x: 1.62, y: 10.03}
+    newSize: {x: 1.62, y: 10.03}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.29943275, y: 4.15699}
-      - {x: 0.79797935, y: 4.155693}
-      - {x: 0.79902256, y: 4.553173}
+    - - {x: 0.79902256, y: 4.553173}
       - {x: 0.7989578, y: 4.999916}
       - {x: -0.79800606, y: 5.0093765}
+      - {x: -0.7788914, y: 4.2005796}
+      - {x: -0.27365905, y: 4.2070227}
+      - {x: -0.24999586, y: 3.2032883}
+      - {x: -0.7920505, y: 3.2018526}
       - {x: -0.7990017, y: -5.0090027}
       - {x: 0.80200005, y: -5.0090027}
-      - {x: 0.805, y: 3.215}
-      - {x: 0.28693008, y: 3.2125092}
+--- !u!114 &3381925316651008531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2420416988470521844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30caccde6f3617b44a62f2d5d21bb4fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireSprite: {fileID: 2445440108949772675, guid: 93079a11ea0e65741b00a14cbebb9e03,
+    type: 3}
+  iceSprite: {fileID: 927022499446520836, guid: b4f96780ef890dd4982ba05c5c8a4654,
+    type: 3}

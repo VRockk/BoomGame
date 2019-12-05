@@ -36,7 +36,7 @@ public class BuildingObject : MonoBehaviour
     [HideInInspector]
     public bool checkedInLevelClear = true;
 
-    
+
 
 
     protected virtual void OnDrawGizmos()
@@ -60,17 +60,19 @@ public class BuildingObject : MonoBehaviour
         //Dont allow creating joints to parent objects. 
         if (this.transform.parent != null)
             ignoredJoints.Add(this.transform.parent.gameObject);
+        gameController = GameObject.FindObjectOfType<GameController>();
         CreateJoints();
         AddMaxScore();
-        gameController = GameObject.FindObjectOfType<GameController>();
 
     }
 
     public void AddMaxScore()
     {
+        if (gameController == null)
+            gameController = GameObject.FindObjectOfType<GameController>();
+
         if (scoreAdded == false)
         {
-            GameObject gameController = GameObject.Find("GameController");
             GameController gameControllerScript = gameController.GetComponent<GameController>();
             gameControllerScript.maxScore += scoreValue;
             scoreAdded = true;
@@ -108,7 +110,7 @@ public class BuildingObject : MonoBehaviour
 
         //Do raycast to check if there are objects next to this one
         RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), traceDirection, distance);
-        Debug.DrawRay(transform.position, traceDirection * distance, Color.red, 5f);
+        //Debug.DrawRay(transform.position, traceDirection * distance, Color.red, 5f);
 
         value = hit;
 

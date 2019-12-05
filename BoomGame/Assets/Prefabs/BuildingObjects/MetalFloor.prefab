@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9140437407188974794}
   - component: {fileID: 9140437407188974797}
   - component: {fileID: 9140437407188974796}
+  - component: {fileID: 6726658873846768821}
   m_Layer: 9
   m_Name: MetalFloor
   m_TagString: BuildingObject
@@ -71,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1080482803
   m_SortingLayer: 2
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: -3248338943906635319, guid: 05e5898d261feed4f9e7cc9882035872,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -167,3 +168,19 @@ MonoBehaviour:
   bendLeftSprite: {fileID: 0}
   bendRightSprite: {fileID: 0}
   meltVertical: 0
+--- !u!114 &6726658873846768821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9140437407188974799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30caccde6f3617b44a62f2d5d21bb4fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireSprite: {fileID: -3248338943906635319, guid: 05e5898d261feed4f9e7cc9882035872,
+    type: 3}
+  iceSprite: {fileID: -3834791567394509963, guid: d292dfc42f2420d44b8f8dc5d54483fe,
+    type: 3}

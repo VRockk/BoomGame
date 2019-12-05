@@ -46,12 +46,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50afc76e2b398c546b7954a7ed37f1ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreValue: 10
+  scoreValue: 1000
   jointBreakForce: 100000
   jointBreakTorque: 100000
   createJoints: 0
   createManualJoints: 1
   createJointToGround: 0
+  gameController: {fileID: 0}
   ignoredJoints: []
   manualJointLocations:
   - {x: -7.5, y: -0.6}
@@ -71,7 +72,7 @@ MonoBehaviour:
   - {fileID: 6522876664913559363, guid: 3ff230cfbf0c6144dba115c1e95ec6b9, type: 3}
   hitpoints: 2
   damagedForceLimit: 10000
-  shatterParticle: {fileID: 4077663246738028735, guid: 57e2faf8fcbcaa742998edee10c41a54,
+  shatterParticle: {fileID: 4077663246738028735, guid: c0286859d0f63b847a881aa83a2b6fac,
     type: 3}
   audioObject: {fileID: 8861113935494233493, guid: f47a1ab8e18b41443ada68a44c6005f6,
     type: 3}
@@ -135,12 +136,11 @@ PrefabInstance:
       propertyPath: m_LinearDrag
       value: 0.1
       objectReference: {fileID: 0}
-    - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
+    - target: {fileID: 1863442581099001712, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -4778740900599128877, guid: eda900de528dc7b48a30d494a40e1d47,
-        type: 3}
+      propertyPath: m_UseAutoMass
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001715, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -165,6 +165,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.x
       value: 14.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4778740900599128877, guid: eda900de528dc7b48a30d494a40e1d47,
+        type: 3}
+    - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001713, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}

@@ -61,8 +61,22 @@ public class ChapterPanel : MonoBehaviour
     public void OpenLevel(string name)
     {
         var gameMaster = FindObjectOfType<GameMaster>();
-        //gameMaster.currentChapterLevels = new List<Level>();
+        var campaignMap = FindObjectOfType<CampaignMap>();
         gameMaster.currentChapterLevels = this.chapter.chapterLevels;
-        SceneManager.LoadScene(name);
+        if (campaignMap.doors != null)
+        {
+            campaignMap.doors.CloseDoor();
+            StartCoroutine(LoadLevel(1.5f, name));
+        }
+        else
+            SceneManager.LoadSceneAsync(name, LoadSceneMode.Single);
     }
+
+    private IEnumerator LoadLevel(float delay, string levelName)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Single);
+
+    }
+
 }

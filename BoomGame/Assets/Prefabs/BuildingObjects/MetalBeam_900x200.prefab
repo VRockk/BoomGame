@@ -33,6 +33,20 @@ MonoBehaviour:
   bendRightSprite: {fileID: 618557542491236705, guid: b4be78b86414cdb41b68e802b9692c60,
     type: 3}
   meltVertical: 1
+--- !u!114 &6648708491369002887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1744478025674971482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30caccde6f3617b44a62f2d5d21bb4fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireSprite: {fileID: 0}
+  iceSprite: {fileID: 0}
 --- !u!1001 &137894847597702692
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40,6 +54,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6093035184211126972, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: fireSprite
+      value: 
+      objectReference: {fileID: -5650569683068494043, guid: b4be78b86414cdb41b68e802b9692c60,
+        type: 3}
+    - target: {fileID: 6093035184211126972, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: iceSprite
+      value: 
+      objectReference: {fileID: -5650569683068494043, guid: b4be78b86414cdb41b68e802b9692c60,
+        type: 3}
     - target: {fileID: 1863442581099001726, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_Name
@@ -81,6 +107,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -5650569683068494043, guid: b4be78b86414cdb41b68e802b9692c60,
         type: 3}
+    - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001715, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
