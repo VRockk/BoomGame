@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5631965501183128297}
   - component: {fileID: 5631965501183128296}
   - component: {fileID: 5631965501183128295}
+  - component: {fileID: -8357700157569933068}
   m_Layer: 0
   m_Name: StairPiece1
   m_TagString: Piece
@@ -154,3 +155,19 @@ PolygonCollider2D:
       - {x: 0.62, y: -1.06}
       - {x: 0.69, y: -1.09}
       - {x: 0.95, y: -1.09}
+--- !u!114 &-8357700157569933068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5631965501183128294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30caccde6f3617b44a62f2d5d21bb4fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireSprite: {fileID: -3821777026937811026, guid: ebb99d819a19fc64682d8e3c6f425def,
+    type: 3}
+  iceSprite: {fileID: -4907061460466504867, guid: be986848f6cc55c4aa123da6f0a126a1,
+    type: 3}

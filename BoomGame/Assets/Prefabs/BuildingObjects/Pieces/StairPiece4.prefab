@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4479729597500257762}
   - component: {fileID: 4479729597500257763}
   - component: {fileID: 4479729597500257764}
+  - component: {fileID: 3329651263717413920}
   m_Layer: 0
   m_Name: StairPiece4
   m_TagString: Piece
@@ -168,3 +169,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &3329651263717413920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4479729597500257765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30caccde6f3617b44a62f2d5d21bb4fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireSprite: {fileID: 5575599648038114821, guid: ebb99d819a19fc64682d8e3c6f425def,
+    type: 3}
+  iceSprite: {fileID: 7602887586384538614, guid: be986848f6cc55c4aa123da6f0a126a1,
+    type: 3}
