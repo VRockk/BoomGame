@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4964522808880166161}
   - component: {fileID: 4964522808880166160}
   - component: {fileID: 8177190962794691525}
+  - component: {fileID: 5994867933362941606}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -45,6 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentSalvage: 0
+  doorOpen: 1
+  loginShowed: 0
 --- !u!82 &8177190962794691525
 AudioSource:
   m_ObjectHideFlags: 0
@@ -141,3 +144,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5994867933362941606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4964522808880166175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dee371ed953029a40b58657af65d5554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bannerPlacement: banner
+  testMode: 1

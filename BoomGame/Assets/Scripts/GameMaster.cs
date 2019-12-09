@@ -51,6 +51,23 @@ public class GameMaster : MonoBehaviour
     [HideInInspector]
     public bool loginShowed = false;
 
+    [HideInInspector]
+    public int retryCount;
+
+    //public int RetryCount
+    //{
+    //    get
+    //    {
+    //        return retryCount;
+    //    }
+    //    set
+    //    {
+    //        retryCount = value;
+    //        PlayerPrefs.SetInt("RetryCount", value);
+    //        PlayerPrefs.SetInt("RetryCount", value);
+    //    }
+    //}
+
     public bool SignIn
     {
         get
