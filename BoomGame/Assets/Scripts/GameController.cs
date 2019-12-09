@@ -132,6 +132,12 @@ public class GameController : MonoBehaviour
         }
         //InvokeRepeating("CheckScorelines", 1f, 1f);
 
+        gameMaster.retryCount++;
+        if (gameMaster.retryCount == 5)
+        {
+            gameMaster.retryCount = 0;
+            AdsController.Instance.ShowVideoAd();
+        }
     }
 
     private void CreateBombIcons()

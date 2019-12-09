@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5347842039257785266}
   - component: {fileID: 5347842039257785267}
   - component: {fileID: 3281663471426854900}
+  - component: {fileID: -1714158751897280648}
   m_Layer: 9
   m_Name: ThiccPillarBottomPiece7
   m_TagString: BuildingObject
@@ -28,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5347842039257785260}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 145.29, y: -41.73, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -175,3 +176,19 @@ MonoBehaviour:
   shatterParticle: {fileID: 0}
   audioObject: {fileID: 0}
   shatterSFX: []
+--- !u!114 &-1714158751897280648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5347842039257785260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30caccde6f3617b44a62f2d5d21bb4fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireSprite: {fileID: -8462087106826404537, guid: 442c3debf759b1440bac1133a5221a18,
+    type: 3}
+  iceSprite: {fileID: -2574322867667613313, guid: 4d965dca0b16c4f42bf9c20bb2fc4d95,
+    type: 3}
