@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 3644582512179387775}
   - component: {fileID: 2632966381267543863}
   - component: {fileID: -687276399844149561}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WoodFloor
-  m_TagString: Untagged
+  m_TagString: BuildingObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,7 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: -1080482803
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 466017568725520630, guid: c545b34450a743a40a87639b4ea66171, type: 3}
+  m_Sprite: {fileID: 5685830840525242127, guid: dc06445b32ac92e429f64c1fbdbbabff,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,8 +101,8 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 9.95, y: 1.7704431}
+    pivot: {x: 0.49095777, y: 0.72067285}
+    oldSize: {x: 10.190478, y: 4.7599998}
     newSize: {x: 9.95, y: 1.7704431}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
