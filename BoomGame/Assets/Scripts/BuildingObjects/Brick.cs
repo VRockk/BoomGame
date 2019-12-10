@@ -63,7 +63,7 @@ public class Brick : BuildingObject
         for (int e = 0; e < pieceObjects.Length; e++)
         {
             //only create everyother if spawning pieces
-            if (pieceObjects[e].tag == "Rubble" && UnityEngine.Random.value >= 0.7)
+            if (pieceObjects[e].tag == "Rubble" && UnityEngine.Random.value >= 0.5)
             {
                 continue;
             }
