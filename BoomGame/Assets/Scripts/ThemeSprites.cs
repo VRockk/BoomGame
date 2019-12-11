@@ -8,8 +8,19 @@ public class ThemeSprites : MonoBehaviour
 
     public Sprite fireSprite;
     public Sprite iceSprite;
+
+    [HideInInspector]
+    public bool skipStart = false;
+
     // Start is called before the first frame update
     void Start()
+    {
+        if (skipStart)
+            return;
+        Initialize();
+    }
+
+    public void Initialize()
     {
         var gameController = GameObject.FindObjectOfType<GameController>();
 

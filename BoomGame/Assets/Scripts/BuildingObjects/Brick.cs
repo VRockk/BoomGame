@@ -53,6 +53,10 @@ public class Brick : BuildingObject
 
     protected override void Start()
     {
+        if (skipStart)
+        {
+            return;
+        }
         base.Start();
         CreateShatterObjects();
     }
@@ -90,6 +94,7 @@ public class Brick : BuildingObject
                 //buildingObject.createJoints = true;
                 //buildingObject.createManualJoints = true;
                 buildingObject.allowDamage = true;
+                buildingObject.skipStart = true;
             }
 
             var brick = newObject.GetComponent<Brick>();
@@ -100,6 +105,12 @@ public class Brick : BuildingObject
                 brick.CreateJoints();
 
                 brick.CreateShatterObjects();
+            }
+            var themeSprites = newObject.GetComponent<ThemeSprites>();
+            if (themeSprites != null)
+            {
+                themeSprites.Initialize();
+                themeSprites.skipStart = true;
             }
 
             shatterObjects.Add(newObject);

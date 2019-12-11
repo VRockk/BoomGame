@@ -30,6 +30,10 @@ public class Metal : BuildingObject
 
     protected override void Start()
     {
+        if (skipStart)
+        {
+            return;
+        }
         base.Start();
     }
 

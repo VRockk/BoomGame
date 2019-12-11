@@ -23,6 +23,10 @@ public class Wood : BuildingObject
 
     protected override void Start()
     {
+        if (skipStart)
+        {
+            return;
+        }
         base.Start();
     }
 

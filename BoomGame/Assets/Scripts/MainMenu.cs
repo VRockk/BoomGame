@@ -23,6 +23,7 @@ public class MainMenu : MonoBehaviour
     public GameObject bombSalvage;
     public GameObject lootBoxPanel;
     public GameObject lootBoxButton;
+    public GameObject creditsPanel;
     public Doors doors;
     public TextMeshProUGUI lootBoxButtonText;
     public Image lootboxImage;
@@ -478,6 +479,18 @@ public class MainMenu : MonoBehaviour
         {
             timeNow = UtilityLibrary.GetNetTime();
         }
+    }
+
+
+    public void CloseCredits()
+    {
+        creditsPanel.SetActive(false);
+    }
+
+    public void OpenCredits()
+    {
+        creditsPanel.SetActive(true);
+
     }
 
 }

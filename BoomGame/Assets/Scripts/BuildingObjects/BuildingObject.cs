@@ -15,6 +15,9 @@ public class BuildingObject : MonoBehaviour
 
 
     [HideInInspector]
+    public bool skipStart = false;
+
+    [HideInInspector]
     public GameController gameController;
 
     public List<GameObject> ignoredJoints = new List<GameObject>();
@@ -57,13 +60,16 @@ public class BuildingObject : MonoBehaviour
 
     protected virtual void Start()
     {
+        if (skipStart)
+        {
+            return;
+        }
         //Dont allow creating joints to parent objects. 
         if (this.transform.parent != null)
             ignoredJoints.Add(this.transform.parent.gameObject);
         gameController = GameObject.FindObjectOfType<GameController>();
         CreateJoints();
         AddMaxScore();
-
     }
 
     public void AddMaxScore()
