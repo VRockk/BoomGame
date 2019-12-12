@@ -53,6 +53,10 @@ public class Brick : BuildingObject
 
     protected override void Start()
     {
+        if (skipStart)
+        {
+            return;
+        }
         base.Start();
         CreateShatterObjects();
     }
@@ -63,7 +67,7 @@ public class Brick : BuildingObject
         for (int e = 0; e < pieceObjects.Length; e++)
         {
             //only create everyother if spawning pieces
-            if (pieceObjects[e].tag == "Rubble" && UnityEngine.Random.value >= 0.7)
+            if (pieceObjects[e].tag == "Rubble" && UnityEngine.Random.value >= 0.5)
             {
                 continue;
             }
@@ -86,10 +90,11 @@ public class Brick : BuildingObject
             if (buildingObject != null)
             {
                 buildingObject.AddMaxScore();
-                buildingObject.gameController = GameObject.FindObjectOfType<GameController>();
+                buildingObject.gameController = this.gameController;
                 //buildingObject.createJoints = true;
                 //buildingObject.createManualJoints = true;
                 buildingObject.allowDamage = true;
+                buildingObject.skipStart = true;
             }
 
             var brick = newObject.GetComponent<Brick>();
@@ -100,6 +105,12 @@ public class Brick : BuildingObject
                 brick.CreateJoints();
 
                 brick.CreateShatterObjects();
+            }
+            var themeSprites = newObject.GetComponent<ThemeSprites>();
+            if (themeSprites != null)
+            {
+                themeSprites.Initialize();
+                themeSprites.skipStart = true;
             }
 
             shatterObjects.Add(newObject);
@@ -171,7 +182,7 @@ public class Brick : BuildingObject
     /// <param name="upwardsForce">Additive power added upwards during explosion</param>
     public void Shatter(Vector3 explosionPos, float power, float upwardsForce)
     {
-        print("shatter");
+        //print("shatter");
         if (shattered)
             return;
 
@@ -189,6 +200,7 @@ public class Brick : BuildingObject
             newObject.SetActive(true);
             newObject.transform.parent = null;
             newObject.transform.localScale = this.transform.localScale;
+            newObject.transform.localRotation = this.transform.localRotation;
             Rigidbody2D rigidBody = newObject.GetComponent<Rigidbody2D>();
 
             if (rigidBody != null)
@@ -196,8 +208,8 @@ public class Brick : BuildingObject
 
                 Vector2 force = UtilityLibrary.CalculateExplosionForceWithDistance(this.transform.position, newObject.transform.position, 700, 50);
                 rigidBody.AddForce(force, ForceMode2D.Impulse);
-                var torque = (UnityEngine.Random.Range(0f, 1f) > 0.5f ? -1f : 1f) * force.magnitude;
-                rigidBody.AddTorque(torque);
+                //var torque = (UnityEngine.Random.Range(0f, 1f) > 0.5f ? -1f : 1f) * force.magnitude;
+                //rigidBody.AddTorque(torque);
                 //var rubble = newObject.GetComponent<Rubble>();
                 //if (rubble != null)
                 //{

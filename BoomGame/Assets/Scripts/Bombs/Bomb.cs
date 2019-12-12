@@ -40,6 +40,7 @@ public class Bomb : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
+        this.gameObject.name = this.gameObject.name + Guid.NewGuid().ToString();
         gameMaster = FindObjectOfType<GameMaster>();
 
         camShake = Camera.main.GetComponent<CameraShake>();
@@ -140,6 +141,8 @@ public class Bomb : MonoBehaviour
             //Objects inside main explosive radius. Shatter, destroy, add force
             foreach (Collider2D hit in colliders)
             {
+                //if(hit.gameObject.name.ToLower().Contains("concrete"))
+                //print(this.name + ":  " + hit.gameObject.name);
                 UtilityLibrary.ExplosionForces(hit, this.transform, power, upwardsForce);
             }
         }
@@ -151,6 +154,8 @@ public class Bomb : MonoBehaviour
 
             foreach (Collider2D hit in damageColliders)
             {
+                //if (hit.gameObject.name.ToLower().Contains("concrete"))
+                //    print(this.name + ":  " + hit.gameObject.name);
                 UtilityLibrary.ExplosionDamage(hit, this.transform, power, upwardsForce);
             }
         }
@@ -162,6 +167,8 @@ public class Bomb : MonoBehaviour
             //Objects inside main explosive radius. Shatter, destroy, add force
             foreach (Collider2D hit in colliders)
             {
+                //if (hit.gameObject.name.ToLower().Contains("concrete"))
+                //    print(this.name + ":  " + hit.gameObject.name);
                 Rigidbody2D rb = hit.GetComponent<Rigidbody2D>();
 
                 if (rb != null)
@@ -169,8 +176,8 @@ public class Bomb : MonoBehaviour
                     Vector2 force = UtilityLibrary.CalculateExplosionForceWithDistance(transform.position, hit.transform.position, power/2, upwardsForce);
 
                     rb.AddForce(force, ForceMode2D.Impulse);
-                    //var torque = (UnityEngine.Random.Range(0f, 1f) > 0.5f ? -10f : 10f) * force.magnitude;
-                    //rb.AddTorque(torque);
+                    var torque = (UnityEngine.Random.Range(0f, 1f) > 0.5f ? -10f : 10f) * force.magnitude;
+                    rb.AddTorque(torque);
                 }
             }
         }

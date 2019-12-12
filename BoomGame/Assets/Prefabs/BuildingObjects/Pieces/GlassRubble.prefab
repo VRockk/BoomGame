@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2192001007552588292}
   - component: {fileID: 1384580667977806654}
   - component: {fileID: -5183574420325141998}
+  - component: {fileID: 608704697405110723}
   m_Layer: 12
   m_Name: GlassRubble
   m_TagString: Rubble
@@ -69,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1395147817
-  m_SortingLayer: 1
+  m_SortingLayerID: -1080482803
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 4055381043080466094, guid: 93079a11ea0e65741b00a14cbebb9e03,
     type: 3}
@@ -143,3 +144,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9cd1c4800944334f8497815e9b86fb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &608704697405110723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8546890470479307831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30caccde6f3617b44a62f2d5d21bb4fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireSprite: {fileID: 4055381043080466094, guid: 93079a11ea0e65741b00a14cbebb9e03,
+    type: 3}
+  iceSprite: {fileID: -3649209302939537669, guid: b4f96780ef890dd4982ba05c5c8a4654,
+    type: 3}

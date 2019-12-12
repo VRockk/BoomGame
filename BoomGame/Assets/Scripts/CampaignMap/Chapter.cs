@@ -160,6 +160,7 @@ public class Chapter : MonoBehaviour
     {
         if (chapterIcon != null)
         {
+            chapterIcon.transform.localScale = new Vector3(1, 1, 1f);
             if (selected)
             {
                 selectedScaleSeq = DOTween.Sequence().Append(chapterIcon.transform.DOScale(new Vector3(1.1f, 1.1f, 1f), 0.3f)).SetLoops(-1, LoopType.Yoyo);

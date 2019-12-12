@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Net;
+using System.Net.Sockets;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -19,6 +23,12 @@ public enum MaterialType
     Brick = 1,
     Metal = 2,
     Wood = 3
+}
+
+public enum LevelTheme
+{
+    Fire = 0,
+    Ice = 1
 }
 
 
@@ -46,7 +56,7 @@ public class UtilityLibrary : MonoBehaviour
         Vector2 direction = heading / distance;
 
         //Calculate force from the direction multiplied by the power. Force weaker by distance
-        force = direction * (power / (distance +0.5f));
+        force = direction * (power / (distance + 0.5f));
 
         // Add additional upwards force
         force += new Vector2(0, upwardsForce);
@@ -78,9 +88,9 @@ public class UtilityLibrary : MonoBehaviour
         eventData.position = position;
         var results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventData, results);
-        foreach(var re in results)
+        foreach (var re in results)
         {
-            if(re.gameObject.name == "TutorialHand")
+            if (re.gameObject.name == "TutorialHand")
             {
                 return false;
             }
@@ -198,8 +208,8 @@ public class UtilityLibrary : MonoBehaviour
                     Vector2 force = UtilityLibrary.CalculateExplosionForce(transform.position, hit.transform.position, power, upwardsForce);
 
                     rb.AddForce(force, ForceMode2D.Impulse);
-                    //var torque = (UnityEngine.Random.Range(0f, 1f) > 0.5f  ? -10f : 10f) * force.magnitude;
-                    //rb.AddTorque(torque);
+                    var torque = (UnityEngine.Random.Range(0f, 1f) > 0.5f ? -10f : 10f) * force.magnitude;
+                    rb.AddTorque(torque);
                 }
             }
         }
@@ -223,8 +233,8 @@ public class UtilityLibrary : MonoBehaviour
                 Vector2 force = UtilityLibrary.CalculateExplosionForceWithDistance(transform.position, hit.transform.position, power / 10, upwardsForce / 10);
 
                 rb.AddForce(force, ForceMode2D.Impulse);
-                //var torque = (UnityEngine.Random.Range(0f, 1f) > 0.5f  ? -10f : 10f) * force.magnitude;
-                //rb.AddTorque(torque);
+                var torque = (UnityEngine.Random.Range(0f, 1f) > 0.5f ? -10f : 10f) * force.magnitude;
+                rb.AddTorque(torque);
             }
             var barrel = hit.gameObject.GetComponent<TNTBarrel>();
             if (barrel != null)
@@ -244,8 +254,10 @@ public class UtilityLibrary : MonoBehaviour
         if (hit.gameObject.tag.Contains("BuildingObject"))
         {
             var brick = hit.gameObject.GetComponent<Brick>();
-            if (brick != null && brick.allowDamage)
+            if (brick != null)
             {
+                brick.allowDamage = true;
+
                 //Remove hitpoints
                 brick.hitpoints--;
                 brick.hitpoints--;
@@ -265,8 +277,8 @@ public class UtilityLibrary : MonoBehaviour
 
                         rb.AddForce(force, ForceMode2D.Impulse);
 
-                        //var torque = (UnityEngine.Random.Range(0f, 1f) > 0.5f  ? -10f : 10f) * force.magnitude;
-                        //rb.AddTorque(torque);
+                        var torque = (UnityEngine.Random.Range(0f, 1f) > 0.5f ? -10f : 10f) * force.magnitude;
+                        rb.AddTorque(torque);
                     }
                 }
             }
@@ -280,10 +292,16 @@ public class UtilityLibrary : MonoBehaviour
                 Vector2 force = UtilityLibrary.CalculateExplosionForceWithDistance(transform.position, hit.transform.position, power / 2f, upwardsForce / 2f);
 
                 rb.AddForce(force, ForceMode2D.Impulse);
-                //var torque = (UnityEngine.Random.Range(0f, 1f) > 0.5f  ? -10f : 10f) * force.magnitude;
-                //rb.AddTorque(torque);
+                var torque = (UnityEngine.Random.Range(0f, 1f) > 0.5f ? -10f : 10f) * force.magnitude;
+                rb.AddTorque(torque);
             }
         }
+    }
+
+    public static DateTime GetNetTime()
+    {
+        using (WebResponse response = WebRequest.Create("http://www.google.com").GetResponse())
+            return DateTime.ParseExact(response.Headers["date"], "ddd, dd MMM yyyy HH:mm:ss 'GMT'", CultureInfo.InvariantCulture.DateTimeFormat, DateTimeStyles.AssumeUniversal);
     }
 }
 
@@ -308,6 +326,5 @@ public static class RectTransformExtensions
     {
         rt.offsetMin = new Vector2(rt.offsetMin.x, bottom);
     }
-
 
 }

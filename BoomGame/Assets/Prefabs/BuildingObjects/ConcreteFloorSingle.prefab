@@ -15,10 +15,10 @@ PolygonCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 1.1605036, y: 0, z: 1.170508, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.054363, y: 1.79}
-    newSize: {x: 10.054363, y: 1.79}
+    border: {x: 4.16, y: 0, z: 5.5699997, w: 0}
+    pivot: {x: 0.5, y: 0.6584277}
+    oldSize: {x: 10.349999, y: 3.8700624}
+    newSize: {x: 10.08, y: 1.850212}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -87,6 +87,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6093035184211126972, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: fireSprite
+      value: 
+      objectReference: {fileID: 5338663877548649919, guid: 442c3debf759b1440bac1133a5221a18,
+        type: 3}
+    - target: {fileID: 6093035184211126972, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: iceSprite
+      value: 
+      objectReference: {fileID: -7826703264244379492, guid: 4d965dca0b16c4f42bf9c20bb2fc4d95,
+        type: 3}
     - target: {fileID: 1863442581099001726, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_Name
@@ -141,17 +153,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 8670749210371160377, guid: 27d58a0ac416c2b428060b1432437151,
+      objectReference: {fileID: -7826703264244379492, guid: 4d965dca0b16c4f42bf9c20bb2fc4d95,
         type: 3}
     - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_Size.x
-      value: 10.054363
+      value: 10.08
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_Size.y
-      value: 1.79
+      value: 1.850212
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001715, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}

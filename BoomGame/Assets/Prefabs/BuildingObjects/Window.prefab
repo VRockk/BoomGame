@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50afc76e2b398c546b7954a7ed37f1ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreValue: 500
   jointBreakForce: 100000
   jointBreakTorque: 100000
   createJoints: 1
   createManualJoints: 0
   createJointToGround: 0
+  gameController: {fileID: 0}
   ignoredJoints: []
   manualJointLocations: []
   materialType: 0
@@ -32,11 +34,10 @@ MonoBehaviour:
   - {fileID: 6522876664913559363, guid: 649dff25d2692d94a80b5b0a16f874b5, type: 3}
   hitpoints: 3
   damagedForceLimit: 10000
-  shatterParticle: {fileID: 4077663246738028735, guid: 57e2faf8fcbcaa742998edee10c41a54,
+  shatterParticle: {fileID: 4077663246738028735, guid: c0286859d0f63b847a881aa83a2b6fac,
     type: 3}
   audioObject: {fileID: 0}
   shatterSFX: []
-  scoreValue: 0
 --- !u!1001 &137894847597702692
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -94,12 +95,6 @@ PrefabInstance:
       propertyPath: m_LinearDrag
       value: 0.1
       objectReference: {fileID: 0}
-    - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -277688410719982976, guid: eda900de528dc7b48a30d494a40e1d47,
-        type: 3}
     - target: {fileID: 1863442581099001715, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -124,6 +119,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.x
       value: 5.790296
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -277688410719982976, guid: eda900de528dc7b48a30d494a40e1d47,
+        type: 3}
+    - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001713, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}

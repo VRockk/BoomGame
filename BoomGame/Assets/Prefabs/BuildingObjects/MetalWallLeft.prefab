@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4419983281227737200}
   - component: {fileID: 4419983281227737201}
   - component: {fileID: 4419983281227737206}
+  - component: {fileID: 7266316136695734338}
   m_Layer: 9
   m_Name: MetalWallLeft
   m_TagString: BuildingObject
@@ -71,11 +72,10 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1080482803
   m_SortingLayer: 2
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 6873132354338271848, guid: 05e5898d261feed4f9e7cc9882035872,
-    type: 3}
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 526982828574939642, guid: 05e5898d261feed4f9e7cc9882035872, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 2.25, y: 10.01}
@@ -170,3 +170,19 @@ MonoBehaviour:
   bendLeftSprite: {fileID: 0}
   bendRightSprite: {fileID: 0}
   meltVertical: 1
+--- !u!114 &7266316136695734338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4419983281227737207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30caccde6f3617b44a62f2d5d21bb4fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireSprite: {fileID: 526982828574939642, guid: 05e5898d261feed4f9e7cc9882035872,
+    type: 3}
+  iceSprite: {fileID: 4995186674641397016, guid: d292dfc42f2420d44b8f8dc5d54483fe,
+    type: 3}

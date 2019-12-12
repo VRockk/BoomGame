@@ -41,11 +41,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50afc76e2b398c546b7954a7ed37f1ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreValue: 0
   jointBreakForce: 200000
   jointBreakTorque: 200000
   createJoints: 0
   createManualJoints: 1
   createJointToGround: 0
+  gameController: {fileID: 0}
   ignoredJoints: []
   manualJointLocations:
   - {x: -0.31, y: 2.1}
@@ -67,7 +69,6 @@ MonoBehaviour:
     type: 3}
   audioObject: {fileID: 0}
   shatterSFX: []
-  scoreValue: 0
 --- !u!1001 &137894847597702692
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -113,7 +114,7 @@ PrefabInstance:
     - target: {fileID: 1863442581099001712, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_Mass
-      value: 50
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001712, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
@@ -131,6 +132,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5884346559343435513, guid: eda900de528dc7b48a30d494a40e1d47,
         type: 3}
+    - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001715, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x

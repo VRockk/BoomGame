@@ -1,105 +1,62 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Monetization;
+using UnityEngine.Advertisements;
 
-// Call this way
-// AdsController.adsInstance.ShowVideoOrInterstitialAds();
 public class AdsController : MonoBehaviour
 {
-    public static AdsController adsInstance;
+    private string videoPlacement = "video";
 
 
-    private string googlePlayStoreId = "3324943";
-    private string appleAppStoreId = "3324942";
+#if UNITY_IOS
+    private string gameId = "3324942";
+#elif UNITY_ANDROID
+    private string gameId = "3324943";
+#endif
 
-    private string video_ad = "video";
-    private string rewarded_video_ad = "rewardedVideo";
-    private string banner_ad = "bannerAds";
+    private static AdsController instance;
+
+    public static AdsController Instance { get { return instance; } }
 
     private void Awake()
     {
-        if (adsInstance != null)
+        if (instance != null && instance != this)
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
         else
         {
-            adsInstance = this;
-            DontDestroyOnLoad(gameObject);
+            instance = this;
+            Advertisement.Initialize(gameId);
         }
     }
-
-    void Start()
+    void OnDestroy()
     {
-        //Check the platform
-        string gameId = googlePlayStoreId;
-        if (Application.platform == RuntimePlatform.IPhonePlayer)
+        if (this == instance)
         {
-            gameId = appleAppStoreId;
+            instance = null;
         }
-        Monetization.Initialize(gameId, true);
     }
 
-    // Update is called once per frame
-    void Update()
+    public AdsController()
     {
-        /*    
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                if (Monetization.IsReady(video_ad)){
-                    ShowAdPlacementContent ad = null;
-                    ad = Monetization.GetPlacementContent(video_ad) as ShowAdPlacementContent;
-
-                    if (ad != null)
-                    {
-                        ad.Show();
-                    }
-                }
-            }
-
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                if (Monetization.IsReady(rewarded_video_ad))
-                {
-                    Debug.Log("test");
-                    ShowAdPlacementContent ad = null;
-                    ad = Monetization.GetPlacementContent(rewarded_video_ad) as ShowAdPlacementContent;
-
-                    if (ad != null)
-                    {
-                        ad.Show();
-                    }
-                }
-            }
-
-            if (Input.GetKeyDown(KeyCode.T))
-            {
-                if (Monetization.IsReady(banner_ad))
-                {
-                    Debug.Log("test");
-                    ShowAdPlacementContent ad = null;
-                    ad = Monetization.GetPlacementContent(banner_ad) as ShowAdPlacementContent;
-
-                    if (ad != null)
-                    {
-                        ad.Show();
-                    }
-                }
-            }*/
     }
-    public void ShowVideoOrInterstitialAds()
+
+    public void ShowVideoAd()
     {
-        //Play videoAds
-        if (Monetization.IsReady(video_ad))
+        StartCoroutine(ShowVideoWhenReady());
+    }
+
+    public void ShowBannerAd()
+    {
+    }
+
+    public IEnumerator ShowVideoWhenReady()
+    {
+        while (!Advertisement.IsReady(videoPlacement))
         {
-            ShowAdPlacementContent ad = null;
-            ad = Monetization.GetPlacementContent(video_ad) as ShowAdPlacementContent;
-
-            if (ad != null)
-            {
-                ad.Show();
-            }
+            yield return new WaitForSeconds(0.5f);
         }
+        Advertisement.Show(videoPlacement);
     }
 }

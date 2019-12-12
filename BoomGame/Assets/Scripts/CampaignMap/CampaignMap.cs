@@ -14,7 +14,7 @@ public class CampaignMap : MonoBehaviour
     private static readonly float panSpeed = 500f;
 
     private static readonly float[] BoundsX = new float[] { -9f, 70f };
-    private static readonly float[] BoundsY = new float[] { -25f, 8f };
+    private static readonly float[] BoundsY = new float[] { -32f, 8f };
     public float defaultCameraSize = 45f;
 
     private Camera cam;
@@ -27,6 +27,7 @@ public class CampaignMap : MonoBehaviour
     private GameMaster gameMaster;
 
     private bool chapterPanelVisible = false;
+    public Doors doors;
 
     void Start()
     {
@@ -42,6 +43,17 @@ public class CampaignMap : MonoBehaviour
         gameObject.transform.parent = null;
         cameraDefaultPos = cam.transform.position;
         cam.orthographicSize = defaultCameraSize;
+
+
+        if (!gameMaster.doorOpen && doors != null)
+            StartCoroutine(OpenDoor());
+    }
+    private IEnumerator OpenDoor()
+    {
+        yield return new WaitForSeconds(0.1f);
+        if (doors != null && !gameMaster.doorOpen)
+            doors.OpenDoor();
+
     }
 
     private void Update()
@@ -197,8 +209,24 @@ public class CampaignMap : MonoBehaviour
 
     public void BackToMenu()
     {
-        SceneManager.LoadScene("MainMenuScene");
+        if (doors != null)
+        {
+            doors.CloseDoor();
+            StartCoroutine(LoadLevel(1.5f, "MainMenuScene"));
+        }
+        else
+            SceneManager.LoadSceneAsync("MainMenuScene", LoadSceneMode.Single);
     }
+
+
+    private IEnumerator LoadLevel(float delay, string levelName)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Single);
+
+    }
+
+
     Tween cameraMoveTween = null;
 
 

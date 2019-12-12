@@ -12,9 +12,12 @@ public class GameMaster : MonoBehaviour
     public int currentSalvage;
     [HideInInspector]
     public List<Level> currentChapterLevels;
+    [HideInInspector]
+    public bool doorOpen = true;
 
 
-    private AudioSource audioSource;
+    [HideInInspector]
+    public AudioSource audioSource;
 
     private AudioClip newMusicClip;
     private float musicFadeInTime = 2f;
@@ -48,6 +51,23 @@ public class GameMaster : MonoBehaviour
     private bool signIn;
     [HideInInspector]
     public bool loginShowed = false;
+
+    [HideInInspector]
+    public int retryCount;
+
+    //public int RetryCount
+    //{
+    //    get
+    //    {
+    //        return retryCount;
+    //    }
+    //    set
+    //    {
+    //        retryCount = value;
+    //        PlayerPrefs.SetInt("RetryCount", value);
+    //        PlayerPrefs.SetInt("RetryCount", value);
+    //    }
+    //}
 
     public bool SignIn
     {

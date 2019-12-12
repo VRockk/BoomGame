@@ -29,6 +29,8 @@ public class GameController : MonoBehaviour
     public int twoPentaScore = 50;
     public int threePentaScore = 75;
 
+    public LevelTheme levelTheme = LevelTheme.Fire;
+
     [HideInInspector]
     public bool inputAllowed;
 
@@ -37,7 +39,6 @@ public class GameController : MonoBehaviour
 
     [HideInInspector]
     public GameObject bombUnderMouse;
-
 
     public GameObject gameMasterPrefab;
 
@@ -54,9 +55,6 @@ public class GameController : MonoBehaviour
     public AudioClip plopSound;
     public AudioClip ingameMusic;
 
-
-    //private WinLines winlines;
-
     public int salvageValue = 100;
 
     private GameMaster gameMaster;
@@ -69,6 +67,7 @@ public class GameController : MonoBehaviour
     private int levelScore;
     private bool allowTimescale = false;
     private TweenerCore<float, float, FloatOptions> timeScaleTween;
+
     private void Awake()
     {
         gameMaster = FindObjectOfType<GameMaster>();
@@ -126,11 +125,19 @@ public class GameController : MonoBehaviour
 
         if (gameMaster.currentChapterLevels != null)
         {
-            var nextLevel = gameMaster.currentChapterLevels.SkipWhile(x => x.name != SceneManager.GetActiveScene().name).Skip(1).First();
-            if (nextLevel != null)
-                nextLevelName = nextLevel.name;
+            var nextLevel = gameMaster.currentChapterLevels.SkipWhile(x => x.name != SceneManager.GetActiveScene().name).Skip(1);
+            //var nextLevel = gameMaster.currentChapterLevels.SkipWhile(x => x.name != SceneManager.GetActiveScene().name).Skip(1).First();
+            if (nextLevel != null && nextLevel.Any() && nextLevel.First() != null)
+                nextLevelName = nextLevel.First().name;
         }
         //InvokeRepeating("CheckScorelines", 1f, 1f);
+
+        gameMaster.retryCount++;
+        if (gameMaster.retryCount == 5)
+        {
+            gameMaster.retryCount = 0;
+            AdsController.Instance.ShowVideoAd();
+        }
     }
 
     private void CreateBombIcons()
@@ -399,7 +406,7 @@ public class GameController : MonoBehaviour
     {
         LevelClear levelClear = CheckLevelClear();
 
-        print(levelClear);
+        //print(levelClear);
 
         //Always when Failed
         if (levelClear == LevelClear.Failed)
@@ -487,7 +494,7 @@ public class GameController : MonoBehaviour
             playerScore = playerScore - score + levelScore;
             PlayerPrefs.SetInt(levelName + "LevelScore", levelScore);
             PlayerPrefs.SetInt("PlayerScore", playerScore);
-            print(playerScore);
+            //print(playerScore);
 
             //check user is authenticated
             if (Social.localUser.authenticated)
@@ -495,11 +502,11 @@ public class GameController : MonoBehaviour
                 Social.ReportScore(playerScore, "CgkI65f98LAPEAIQAQ", (bool success) => {
                     // handle success or failure
                     if (success) {
-                        Debug.Log("Posted score to Leaderboard.");
+                        //Debug.Log("Posted score to Leaderboard.");
                     }
                     else
                     {
-                        Debug.Log("Failed to post score to leaderboard.");
+                        //Debug.Log("Failed to post score to leaderboard.");
                     }
                 });
             }

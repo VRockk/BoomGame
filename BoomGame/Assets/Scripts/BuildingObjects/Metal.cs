@@ -30,6 +30,10 @@ public class Metal : BuildingObject
 
     protected override void Start()
     {
+        if (skipStart)
+        {
+            return;
+        }
         base.Start();
     }
 
@@ -85,6 +89,7 @@ public class Metal : BuildingObject
         }
         foreach (var attachedObjectName in attachedObjects)
         {
+            //TODO should reference the object for this so we didnt have to use find
             var attachedObject = GameObject.Find(attachedObjectName);
             if (attachedObject != null)
             {

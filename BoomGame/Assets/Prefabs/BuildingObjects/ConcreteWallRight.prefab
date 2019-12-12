@@ -17,8 +17,8 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.6711593, y: 10.16}
-    newSize: {x: 2.6711593, y: 10.16}
+    oldSize: {x: 2.67, y: 10.231173}
+    newSize: {x: 2.67, y: 10.231173}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -90,6 +90,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6093035184211126972, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: fireSprite
+      value: 
+      objectReference: {fileID: 8931923641342462492, guid: 442c3debf759b1440bac1133a5221a18,
+        type: 3}
+    - target: {fileID: 6093035184211126972, guid: d58a38304fad7c74f99f67987213949d,
+        type: 3}
+      propertyPath: iceSprite
+      value: 
+      objectReference: {fileID: -2328607824077518273, guid: 4d965dca0b16c4f42bf9c20bb2fc4d95,
+        type: 3}
     - target: {fileID: 1863442581099001726, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_Name
@@ -144,12 +156,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -3739195283210183808, guid: 27d58a0ac416c2b428060b1432437151,
+      objectReference: {fileID: 8931923641342462492, guid: 442c3debf759b1440bac1133a5221a18,
         type: 3}
     - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
@@ -159,12 +171,12 @@ PrefabInstance:
     - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_Size.x
-      value: 2.6711593
+      value: 2.67
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001714, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}
       propertyPath: m_Size.y
-      value: 10.16
+      value: 10.231173
       objectReference: {fileID: 0}
     - target: {fileID: 1863442581099001715, guid: d58a38304fad7c74f99f67987213949d,
         type: 3}

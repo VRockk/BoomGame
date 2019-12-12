@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 414980848280537672}
   - component: {fileID: 414980848280537673}
   - component: {fileID: 6006223073374387135}
+  - component: {fileID: 8025255842530442534}
   m_Layer: 9
   m_Name: PillarPieceLowerMiddle
   m_TagString: BuildingObject
@@ -69,16 +70,16 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1395147817
-  m_SortingLayer: 1
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -4760939060359314092, guid: 27d58a0ac416c2b428060b1432437151,
+  m_SortingLayerID: -1080482803
+  m_SortingLayer: 2
+  m_SortingOrder: 1
+  m_Sprite: {fileID: -5137440814053660350, guid: 442c3debf759b1440bac1133a5221a18,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.4810767, y: 2.46}
+  m_Size: {x: 2.51, y: 2.5002866}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -101,8 +102,8 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.4810767, y: 2.46}
-    newSize: {x: 2.4810767, y: 2.46}
+    oldSize: {x: 2.51, y: 2.5002866}
+    newSize: {x: 2.51, y: 2.5002866}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -128,9 +129,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 25
-  m_LinearDrag: 0.1
-  m_AngularDrag: 0.1
+  m_Mass: 30
+  m_LinearDrag: 0
+  m_AngularDrag: 0
   m_GravityScale: 5
   m_Material: {fileID: 6200000, guid: 6c5305bef19ddf64699d63dc7983e3c2, type: 2}
   m_Interpolate: 0
@@ -186,3 +187,19 @@ MonoBehaviour:
   shatterSFX:
   - {fileID: 8300000, guid: 79aaec8060cd9324c9b01b55a1cb6f1a, type: 3}
   - {fileID: 8300000, guid: 13dffe3d1f9a9a04d9417d9c441a294a, type: 3}
+--- !u!114 &8025255842530442534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414980848280537678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30caccde6f3617b44a62f2d5d21bb4fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireSprite: {fileID: -5137440814053660350, guid: 442c3debf759b1440bac1133a5221a18,
+    type: 3}
+  iceSprite: {fileID: 4512700329678680380, guid: 4d965dca0b16c4f42bf9c20bb2fc4d95,
+    type: 3}
