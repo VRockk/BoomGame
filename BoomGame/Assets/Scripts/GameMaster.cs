@@ -16,7 +16,8 @@ public class GameMaster : MonoBehaviour
     public bool doorOpen = true;
 
 
-    private AudioSource audioSource;
+    [HideInInspector]
+    public AudioSource audioSource;
 
     private AudioClip newMusicClip;
     private float musicFadeInTime = 2f;

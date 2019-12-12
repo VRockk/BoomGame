@@ -47,7 +47,6 @@ public class UtilityLibrary : MonoBehaviour
 {
     public static Vector3 CalculateExplosionForceWithDistance(Vector3 explosionPos, Vector3 hitObjectPosition, float power, float upwardsForce)
     {
-        UnityEngine.Profiling.Profiler.BeginSample("CalculateExplosionForceWithDistance");
         Vector2 force;
         // Calculating the direction from the bomb placement to the overlapping 
         Vector2 heading = hitObjectPosition - explosionPos;
@@ -62,13 +61,11 @@ public class UtilityLibrary : MonoBehaviour
         // Add additional upwards force
         force += new Vector2(0, upwardsForce);
         //print(force);
-        UnityEngine.Profiling.Profiler.EndSample();
         return force;
     }
 
     public static Vector3 CalculateExplosionForce(Vector3 explosionPos, Vector3 hitObjectPosition, float power, float upwardsForce)
     {
-        UnityEngine.Profiling.Profiler.BeginSample("CalculateExplosionForce");
         Vector2 force;
         // Calculating the direction from the bomb placement to the overlapping 
         Vector2 heading = hitObjectPosition - explosionPos;
@@ -82,7 +79,6 @@ public class UtilityLibrary : MonoBehaviour
 
         // Add additional upwards force
         force += new Vector2(0, upwardsForce);
-        UnityEngine.Profiling.Profiler.EndSample();
         return force;
     }
 

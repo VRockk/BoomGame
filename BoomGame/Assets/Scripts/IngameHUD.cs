@@ -188,7 +188,7 @@ public class IngameHUD : MonoBehaviour
         else
             gameMaster.SetMusic(null);
 
-        gameMaster.SetMusic(menuMusic);
+        //gameMaster.SetMusic(menuMusic);
 
         //To load video ads
         //AdsController.adsInstance.ShowVideoOrInterstitialAds();
@@ -353,6 +353,12 @@ public class IngameHUD : MonoBehaviour
                     nextLevelButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = new Color(1f, 1f, 1f, 0.2f);
                 }
             }
+        }
+        else
+        {
+            nextLevelButton.SetActive(false);
+            campaignMapButton.SetActive(true);
+
         }
 
 

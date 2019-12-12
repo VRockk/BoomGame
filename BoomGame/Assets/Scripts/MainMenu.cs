@@ -36,7 +36,6 @@ public class MainMenu : MonoBehaviour
     public GameObject lootBoxAnim;
 
 
-    [HideInInspector]
     public AudioClip menuMusic;
     private bool rumbleToggleFlag = true;
 
@@ -140,6 +139,10 @@ public class MainMenu : MonoBehaviour
         if (!gameMaster.doorOpen && doors != null)
         {
             StartCoroutine(OpenDoor());
+        }
+        if(menuMusic != null)
+        {
+            gameMaster.SetMusic(menuMusic);
         }
     }
     private IEnumerator OpenDoor()
