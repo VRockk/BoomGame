@@ -591,6 +591,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShatteringBrick_300x200 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
+        type: 3}
+      propertyPath: hitpoints
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6649006982650661173, guid: 80b0e34ba46c467458b6d275d3e6fb64,
         type: 3}
       propertyPath: m_GravityScale
@@ -599,7 +604,7 @@ PrefabInstance:
     - target: {fileID: 6649006982650661168, guid: 80b0e34ba46c467458b6d275d3e6fb64,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -43.43
+      value: -43.97
       objectReference: {fileID: 0}
     - target: {fileID: 6649006982650661168, guid: 80b0e34ba46c467458b6d275d3e6fb64,
         type: 3}
@@ -650,11 +655,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
-        type: 3}
-      propertyPath: hitpoints
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80b0e34ba46c467458b6d275d3e6fb64, type: 3}
@@ -998,11 +998,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 125417457488696770, guid: 69c64b9781234404b8c2f2ce986febb7,
         type: 3}
-      propertyPath: hitpoints
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 125417457488696770, guid: 69c64b9781234404b8c2f2ce986febb7,
-        type: 3}
       propertyPath: buildingSprites.Array.data[1]
       value: 
       objectReference: {fileID: 21300000, guid: 29403a3c21a1cee4e8665744c26646c7,
@@ -1282,6 +1277,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShatteringBrick_300x200 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
+        type: 3}
+      propertyPath: manualJointLocations.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
+        type: 3}
+      propertyPath: hitpoints
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
+        type: 3}
+      propertyPath: createManualJoints
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
+        type: 3}
+      propertyPath: manualJointLocations.Array.data[0].x
+      value: 0.38
+      objectReference: {fileID: 0}
+    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
+        type: 3}
+      propertyPath: manualJointLocations.Array.data[0].y
+      value: 1.13
+      objectReference: {fileID: 0}
     - target: {fileID: 6649006982650661173, guid: 80b0e34ba46c467458b6d275d3e6fb64,
         type: 3}
       propertyPath: m_GravityScale
@@ -1346,31 +1366,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
-        type: 3}
-      propertyPath: manualJointLocations.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
-        type: 3}
-      propertyPath: hitpoints
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
-        type: 3}
-      propertyPath: createManualJoints
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
-        type: 3}
-      propertyPath: manualJointLocations.Array.data[0].x
-      value: 0.38
-      objectReference: {fileID: 0}
-    - target: {fileID: -7141429294608313240, guid: 80b0e34ba46c467458b6d275d3e6fb64,
-        type: 3}
-      propertyPath: manualJointLocations.Array.data[0].y
-      value: 1.13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80b0e34ba46c467458b6d275d3e6fb64, type: 3}
